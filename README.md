@@ -18,6 +18,7 @@ The actual portfolio website has intentionally **not** been implemented. No fron
 - `docs/experience-timeline.md` — verified and inferred development sequence.
 - `docs/portfolio-content-map.md` — possible future content grounded in available evidence.
 - `docs/uncertainties-and-questions.md` — only unresolved questions that affect future positioning.
+- `questionnaire.md` and `questionnaire.docx` — an easy-to-complete response form based on the unresolved questions.
 - `docs/research-log.md` — inspection methods, files reviewed, limitations, and privacy decisions.
 - `research/project-notes/` — deeper notes for projects that may deserve later case studies.
 - `research/repository-metadata/` — non-sensitive metadata snapshots used during discovery.
