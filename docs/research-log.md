@@ -13,7 +13,7 @@ Discovery was performed against the authenticated GitHub account `umrndem` and l
 
 ## Repositories considered
 
-GitHub listed seven owned repositories: `sentinel`, `the-matootoo-project`, `ets-website`, `snakinesis`, `financial-tick-data-pipeline`, `rideflow`, and `DataPulse`.
+GitHub listed seven owned repositories: `sentinel`, `the-matootoo-project`, `ets-website`, `snakinesis`, `financial-tick-data-pipeline`, `rideflow`, and `DataPulse`. A separate affiliation query found three additional accessible repositories: `ammaarrahmed/Mehmaan`, `razq8/ets-scroll-world`, and `Sami-Shahid-001/Movies-Data-Manager-DSA`.
 
 Local repositories inspected read-only included:
 

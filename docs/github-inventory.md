@@ -1,11 +1,12 @@
 # GitHub repository inventory
 
-Snapshot date: 24 July 2026. Inventory covers seven repositories owned by `umrndem` returned by GitHub CLI/API. Visibility and activity are snapshots.
+Snapshot date: 24 July 2026. Inventory covers seven repositories owned by `umrndem` plus three additional repositories available through collaborator access. Visibility and activity are snapshots.
 
 ## Account-level observations
 
 - Authenticated account: `umrndem`; display name: Muhammad Umar Nadeem.
 - Seven owned repositories were returned: three private and four public.
+- Three additional accessible repositories were returned through collaborator access: two private and one public.
 - No forks or archived repositories appeared in the returned owned-repository list.
 - All listed repositories show `umrndem` as the only GitHub contributor in the contributor endpoint. This does not prove that no outside code, templates, coursework collaboration, or generated scaffold was used.
 - Primary language distribution spans TypeScript/JavaScript, Python, C++, HTML/CSS, SQL/PLpgSQL, and shell/PowerShell.
@@ -21,6 +22,9 @@ Snapshot date: 24 July 2026. Inventory covers seven repositories owned by `umrnd
 | `financial-tick-data-pipeline` | Public | Small C++ OS/concurrency coursework-style pipeline | C++, shell, Makefile | Coursework worth mentioning / technically interesting | Moderate to high |
 | `rideflow` | Public | Express/MySQL/vanilla-JS ride-hailing simulation | JavaScript, HTML, CSS, SQL | Strong supporting project or academic case study | Moderate; verify authorship split |
 | `DataPulse` | Public | Streamlit business analytics dashboard with ingestion, KPIs, and forecasting | Python | Flagship or strong supporting data-science project | Moderate; README claims need runtime verification |
+| `Sami-Shahid-001/Movies-Data-Manager-DSA` | Public, collaborator access | Collaborative Fall 2025 data-structures project | C++ | Coursework worth mentioning; requires contribution clarification | Moderate |
+| `razq8/ets-scroll-world` | Private, collaborator access | One-commit ETS scroll-scrubbed landing-page experiment | HTML, JavaScript | Technically interesting but not presentation-ready; confidential | Low to moderate |
+| `ammaarrahmed/Mehmaan` | Private, collaborator access | Flutter mobile app described as a Pakistani OYO alternative | Dart, C++, C, Swift, Kotlin, HTML | Requires clarification; likely inherited/collaborative scaffold | Low |
 
 ## Detailed entries
 
@@ -93,3 +97,21 @@ Snapshot date: 24 July 2026. Inventory covers seven repositories owned by `umrnd
 - Strongest technical qualities: end-to-end analytics product shape, configurable column mapping, separation between pages/services/pipeline, basic KPI testing, and a clear attempt to connect analysis with user workflows.
 - Weakest areas / uncertainty: short history and two commits; forecast quality, data provenance, deployed use, security, and role enforcement need verification; README calls it “AI Forecast” but the concrete forecasting method is Prophet, while the generative-AI dependency and assistant implementation need separate inspection before making AI claims.
 - Recommendation: data-science supporting project or possible featured project after runtime and forecast validation. Describe it as an analytics dashboard with forecasting, not as an ML research system.
+
+### `Sami-Shahid-001/Movies-Data-Manager-DSA`
+
+- Public collaborator-access repository created and last pushed 21 April 2026.
+- Apparent purpose: C++ data-structures project using an IMDb movie dataset, custom AVL tree, hash table, linked list, graph, dynamic array, BFS recommendations, and shortest-path relationships.
+- The README credits Samiullah Shahid and Muhammad Umar Nadeem. Commit history shows all three commits authored by Samiullah Shahid, including an author-addition commit; Umar’s exact implementation split is unverified.
+- Classification: coursework worth mentioning if Umar identifies his modules and confirms permission. Use only as a collaborative academic supporting project.
+
+### `razq8/ets-scroll-world`
+
+- Private collaborator-access repository with one commit on 13 July 2026 by `raz-cpu`.
+- Apparent purpose: an ETS landing-page experiment using HTML/JavaScript and scroll-scrubbed video assets. The tree contains `index.html`, `scrub-engine.js`, and desktop/mobile media.
+- No Umar-authored commit or README was observed. Classification: technically interesting but not presentation-ready; do not include unless Umar confirms contribution and authorization, and consider folding it into the ETS story.
+
+### `ammaarrahmed/Mehmaan`
+
+- Private collaborator-access Flutter multi-platform project described as “Mehmaan: Pakistani alternative for OYO.” It contains a small `lib/` surface, platform folders, and bundled assets.
+- GitHub history shows two commits by `ammaarrahmed`; no Umar-authored commit was observed. Do not infer Flutter expertise from generated platform files. Classification: requires clarification and exclude by default.

@@ -17,6 +17,7 @@
 
 - **Financial Tick Data Pipeline:** concise systems/concurrency evidence; include as a technical note rather than a large visual case study.
 - **DataPulse:** if not promoted to flagship, retain as a featured analytics card with honest limits.
+- **Movies Data Manager:** optional academic supporting project; include only with a precise description of Umar’s contribution.
 
 ## Academic work
 
