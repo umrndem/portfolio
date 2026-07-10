@@ -1,0 +1,30 @@
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Generated/runtime files
+node_modules/
+.next/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+dist/
+build/
+coverage/
+*.log
+
+# Local datasets, exports, and databases
+data/raw/
+data/processed/
+*.sqlite
+*.db
+*.sql.gz
+
+# OS/editor files
+.DS_Store
+.vscode/
+.idea/
