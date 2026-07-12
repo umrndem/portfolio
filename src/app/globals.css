@@ -1,13 +1,38 @@
 :root {
-  --paper: #f2f5f1;
-  --paper-bright: #fafcf9;
-  --ink: #11261f;
-  --muted: #5e6f68;
-  --line: #c7d1cb;
-  --signal: #2448ff;
-  --heat: #f25b35;
-  --wash: #dde5ff;
-  --night: #10241e;
+  --color-bg-primary: #f2f5f1;
+  --color-bg-secondary: #fafcf9;
+  --color-surface: rgb(250 252 249 / 0.62);
+  --color-surface-hover: #fafcf9;
+  --color-text-primary: #11261f;
+  --color-text-secondary: #5e6f68;
+  --color-text-muted: #5e6f68;
+  --color-brand-primary: #2448ff;
+  --color-brand-emphasis: #f25b35;
+  --color-brand-subtle: #dde5ff;
+  --color-structure: #10241e;
+  --color-border: #c7d1cb;
+  --color-border-emphasis: #11261f;
+  --color-focus: #2448ff;
+  --color-selection: #2448ff;
+  --color-selection-text: #ffffff;
+  --color-grid: rgb(17 38 31 / 0.025);
+  --color-header-bg: rgb(242 245 241 / 0.9);
+  --color-status-available: #1e9e59;
+  --color-status-available-ring: rgb(30 158 89 / 0.12);
+  --color-footer-text: #b9c8c1;
+  --color-footer-accent: #aab8ff;
+  --color-footer-border: rgb(250 252 249 / 0.28);
+
+  /* Transitional aliases keep the visual layer stable while components migrate. */
+  --paper: var(--color-bg-primary);
+  --paper-bright: var(--color-bg-secondary);
+  --ink: var(--color-text-primary);
+  --muted: var(--color-text-muted);
+  --line: var(--color-border);
+  --signal: var(--color-brand-primary);
+  --heat: var(--color-brand-emphasis);
+  --wash: var(--color-brand-subtle);
+  --night: var(--color-structure);
   --font-sans-fallback: Arial, Helvetica, sans-serif;
   --font-mono-fallback: "Courier New", monospace;
   --page-edge: clamp(1.25rem, 4vw, 4.5rem);
@@ -41,16 +66,16 @@ body::before {
   z-index: -1;
   inset: 0;
   background-image:
-    linear-gradient(rgb(17 38 31 / 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(17 38 31 / 0.025) 1px, transparent 1px);
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
   background-size: 4rem 4rem;
   content: "";
   pointer-events: none;
 }
 
 ::selection {
-  background: var(--signal);
-  color: white;
+  background: var(--color-selection);
+  color: var(--color-selection-text);
 }
 
 a {
@@ -157,7 +182,7 @@ svg {
   min-height: 4.75rem;
   padding-inline: var(--page-edge);
   border-bottom: 1px solid var(--line);
-  background: rgb(242 245 241 / 0.9);
+  background: var(--color-header-bg);
   backdrop-filter: blur(16px);
 }
 
@@ -226,8 +251,8 @@ svg {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
-  background: #1e9e59;
-  box-shadow: 0 0 0 4px rgb(30 158 89 / 0.12);
+  background: var(--color-status-available);
+  box-shadow: 0 0 0 4px var(--color-status-available-ring);
   content: "";
 }
 
@@ -622,7 +647,7 @@ svg {
   gap: 2rem;
   padding: clamp(1.35rem, 3vw, 2.5rem);
   border: 1px solid var(--line);
-  background: rgb(250 252 249 / 0.62);
+  background: var(--color-surface);
   transition:
     border-color 180ms var(--ease-out),
     background 180ms var(--ease-out);
@@ -926,11 +951,11 @@ svg {
 
 .site-footer__actions p {
   max-width: 26rem;
-  color: #b9c8c1;
+  color: var(--color-footer-text);
 }
 
 .site-footer .kicker {
-  color: #aab8ff;
+  color: var(--color-footer-accent);
 }
 
 .site-footer__base {
@@ -940,7 +965,7 @@ svg {
   gap: 2rem;
   align-self: end;
   padding-top: 1.4rem;
-  border-top: 1px solid rgb(250 252 249 / 0.28);
+  border-top: 1px solid var(--color-footer-border);
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.65rem;
   letter-spacing: 0.035em;
