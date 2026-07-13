@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Manrope } from "next/font/google";
 import { SiteHeader } from "@/components/SiteHeader";
+import { themeBootstrapScript } from "@/systems/theme";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -43,8 +44,11 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  colorScheme: "light",
-  themeColor: "#f2f5f1",
+  colorScheme: "light dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f4f0ec" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f0d0e" },
+  ],
 };
 
 export default function RootLayout({
@@ -53,7 +57,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${manrope.variable} ${plexMono.variable}`}>
+    <html
+      lang="en"
+      className={`${manrope.variable} ${plexMono.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
+      </head>
       <body>
         <a className="skip-link" href="#main-content">
           Skip to main content
