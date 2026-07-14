@@ -26,16 +26,6 @@
   --color-footer-accent: #e2a5b0;
   --color-footer-border: rgb(244 240 236 / 0.24);
 
-  /* Transitional aliases keep the visual layer stable while components migrate. */
-  --paper: var(--color-bg-primary);
-  --paper-bright: var(--color-bg-secondary);
-  --ink: var(--color-text-primary);
-  --muted: var(--color-text-muted);
-  --line: var(--color-border);
-  --signal: var(--color-brand-primary);
-  --heat: var(--color-support-accent);
-  --wash: var(--color-brand-subtle);
-  --night: var(--color-structure);
   --font-sans-fallback: Arial, Helvetica, sans-serif;
   --font-mono-fallback: "Courier New", monospace;
   --page-edge: clamp(1.25rem, 4vw, 4.5rem);
@@ -80,13 +70,13 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
-  background: var(--paper);
+  background: var(--color-bg-primary);
 }
 
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
   font-family: var(--font-sans), var(--font-sans-fallback);
   font-size: 1rem;
   line-height: 1.55;
@@ -179,7 +169,7 @@ svg {
   top: 0.75rem;
   left: 0.75rem;
   padding: 0.65rem 0.9rem;
-  background: var(--signal);
+  background: var(--color-brand-primary);
   color: var(--color-selection-text);
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.75rem;
@@ -213,7 +203,7 @@ svg {
   width: 100%;
   min-height: 4.75rem;
   padding-inline: var(--page-edge);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--color-border);
   background: var(--color-header-bg);
   backdrop-filter: blur(16px);
 }
@@ -231,7 +221,7 @@ svg {
 }
 
 .site-header__mark span:nth-child(2) {
-  color: var(--heat);
+  color: var(--color-support-accent);
 }
 
 .site-header nav {
@@ -311,7 +301,7 @@ svg {
   bottom: -0.35rem;
   left: 0;
   height: 1px;
-  background: var(--signal);
+  background: var(--color-brand-primary);
   content: "";
   transform: scaleX(0);
   transform-origin: right;
@@ -353,7 +343,7 @@ svg {
 }
 
 .kicker {
-  color: var(--signal);
+  color: var(--color-brand-primary);
 }
 
 .hero {
@@ -386,7 +376,7 @@ svg {
   height: 0.14em;
   margin-left: 0.1em;
   border-radius: 50%;
-  background: var(--heat);
+  background: var(--color-support-accent);
   content: "";
   vertical-align: 0.05em;
 }
@@ -413,10 +403,10 @@ svg {
   justify-content: space-between;
   min-height: 3rem;
   padding: 0.8rem 1rem;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--color-text-primary);
   border-radius: 0;
-  background: var(--ink);
-  color: var(--paper-bright);
+  background: var(--color-text-primary);
+  color: var(--color-bg-secondary);
   font: inherit;
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.75rem;
@@ -430,21 +420,21 @@ svg {
 }
 
 .button-link:hover {
-  background: var(--signal);
-  border-color: var(--signal);
+  background: var(--color-brand-primary);
+  border-color: var(--color-brand-primary);
   transform: translateY(-2px);
 }
 
 .button-link--light {
-  border-color: var(--paper-bright);
-  background: var(--paper-bright);
-  color: var(--night);
+  border-color: var(--color-bg-secondary);
+  background: var(--color-bg-secondary);
+  color: var(--color-structure);
 }
 
 .button-link--light:hover {
-  background: var(--heat);
-  border-color: var(--heat);
-  color: var(--night);
+  background: var(--color-support-accent);
+  border-color: var(--color-support-accent);
+  color: var(--color-structure);
 }
 
 .text-link {
@@ -467,16 +457,16 @@ svg {
   overflow: hidden;
   aspect-ratio: 4 / 5;
   place-items: center;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--color-text-primary);
   background:
-    linear-gradient(135deg, transparent 49.5%, var(--ink) 50%, transparent 50.5%),
-    linear-gradient(var(--wash), var(--wash));
+    linear-gradient(135deg, transparent 49.5%, var(--color-text-primary) 50%, transparent 50.5%),
+    linear-gradient(var(--color-brand-subtle), var(--color-brand-subtle));
 }
 
 .portrait-placeholder__field::before,
 .portrait-placeholder__field::after {
   position: absolute;
-  border: 1px solid var(--signal);
+  border: 1px solid var(--color-brand-primary);
   border-radius: 50%;
   content: "";
 }
@@ -493,7 +483,7 @@ svg {
   bottom: 8%;
   width: 54%;
   aspect-ratio: 1;
-  border-color: var(--heat);
+  border-color: var(--color-support-accent);
 }
 
 .portrait-placeholder__field span {
@@ -508,7 +498,7 @@ svg {
   position: absolute;
   z-index: 1;
   display: block;
-  background: var(--signal);
+  background: var(--color-brand-primary);
 }
 
 .portrait-placeholder__field i {
@@ -530,14 +520,14 @@ svg {
   grid-template-columns: 1fr 1.6fr;
   gap: 1rem;
   margin-top: 0.85rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.66rem;
   line-height: 1.4;
 }
 
 .portrait-placeholder figcaption span {
-  color: var(--ink);
+  color: var(--color-text-primary);
   text-transform: uppercase;
 }
 
@@ -548,7 +538,7 @@ svg {
   gap: 2rem;
   align-self: end;
   padding-top: 1.4rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--color-border);
 }
 
 .hero__aside p:first-child {
@@ -561,7 +551,7 @@ svg {
 .hero__aside p:last-child {
   grid-column: 2;
   max-width: 33rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 
 .range-section,
@@ -578,7 +568,7 @@ svg {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 2rem;
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid var(--color-text-primary);
 }
 
 .range-section > div:first-child {
@@ -598,7 +588,7 @@ svg {
   grid-column: 9 / -1;
   align-self: end;
   max-width: 28rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 
 .range-section > .range-line {
@@ -615,7 +605,7 @@ svg {
   position: relative;
   height: 2px;
   margin-inline: 0.45rem;
-  background: var(--line);
+  background: var(--color-border);
 }
 
 .range-line__active {
@@ -625,7 +615,7 @@ svg {
   width: calc(((var(--range-end) - var(--range-start)) / var(--segments)) * 100%);
   min-width: 2px;
   height: 4px;
-  background: var(--signal);
+  background: var(--color-brand-primary);
   transform-origin: left;
   animation: range-reveal 560ms var(--ease-out) both;
 }
@@ -640,7 +630,7 @@ svg {
   display: grid;
   gap: 0.7rem;
   justify-items: center;
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.66rem;
   letter-spacing: 0.05em;
@@ -659,24 +649,24 @@ svg {
   width: 0.9rem;
   height: 0.9rem;
   margin-top: -0.5rem;
-  border: 2px solid var(--paper);
+  border: 2px solid var(--color-bg-primary);
   border-radius: 50%;
-  background: var(--line);
-  box-shadow: 0 0 0 1px var(--line);
+  background: var(--color-border);
+  box-shadow: 0 0 0 1px var(--color-border);
 }
 
 .range-line__points li.is-active {
-  color: var(--ink);
+  color: var(--color-text-primary);
 }
 
 .range-line__points li.is-active span {
-  background: var(--signal);
-  box-shadow: 0 0 0 1px var(--signal);
+  background: var(--color-brand-primary);
+  box-shadow: 0 0 0 1px var(--color-brand-primary);
 }
 
 .range-line__points li.is-active:last-child span {
-  background: var(--heat);
-  box-shadow: 0 0 0 1px var(--heat);
+  background: var(--color-support-accent);
+  box-shadow: 0 0 0 1px var(--color-support-accent);
 }
 
 .range-line--compact .range-line__points li {
@@ -699,11 +689,11 @@ svg {
   align-items: start;
   margin-bottom: clamp(3rem, 7vw, 6rem);
   padding-top: 1.2rem;
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid var(--color-text-primary);
 }
 
 .section-heading__index {
-  color: var(--signal);
+  color: var(--color-brand-primary);
 }
 
 .section-heading h2 {
@@ -717,7 +707,7 @@ svg {
 .section-heading__note {
   max-width: 28rem;
   justify-self: end;
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 
 .project-list {
@@ -730,7 +720,7 @@ svg {
   display: grid;
   gap: 2rem;
   padding: clamp(1.35rem, 3vw, 2.5rem);
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   background: var(--color-surface);
   transition:
     border-color 180ms var(--ease-out),
@@ -739,8 +729,8 @@ svg {
 
 .project-card:hover,
 .project-card:focus-within {
-  border-color: var(--ink);
-  background: var(--paper-bright);
+  border-color: var(--color-text-primary);
+  background: var(--color-bg-secondary);
 }
 
 .project-card--featured {
@@ -764,11 +754,11 @@ svg {
 }
 
 .project-card__topline p:first-child span {
-  color: var(--signal);
+  color: var(--color-brand-primary);
 }
 
 .project-card__topline p:last-child {
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 
 .project-card__body {
@@ -812,11 +802,11 @@ svg {
   grid-template-columns: 5rem 1fr;
   gap: 1rem;
   padding-top: 0.7rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--color-border);
 }
 
 .project-card__facts dt {
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.62rem;
   letter-spacing: 0.04em;
@@ -845,7 +835,7 @@ svg {
 .project-card__footer li,
 .case-study__tools li {
   padding: 0.35rem 0.55rem;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.58rem;
   letter-spacing: 0.03em;
@@ -863,8 +853,8 @@ svg {
   grid-template-columns: 2fr 5fr 5fr;
   gap: 2rem;
   padding-block: 1.5rem;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .experience-entry__when,
@@ -878,7 +868,7 @@ svg {
 
 .experience-entry__when p:last-child {
   margin-top: 0.35rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 
 .experience-entry__role h3 {
@@ -891,7 +881,7 @@ svg {
 .experience-entry__role > p:last-child {
   max-width: 34rem;
   margin-top: 1rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 
 .experience-entry ul {
@@ -902,12 +892,12 @@ svg {
 
 .experience-entry li {
   padding: 0.85rem 0;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--color-border);
 }
 
 .experience-entry li::before {
   margin-right: 0.8rem;
-  color: var(--signal);
+  color: var(--color-brand-primary);
   content: "↳";
   font-family: var(--font-mono), var(--font-mono-fallback);
 }
@@ -915,19 +905,19 @@ svg {
 .approach-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+  border-top: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
 }
 
 .approach-grid article {
   min-height: 25rem;
   padding: clamp(1.25rem, 2.5vw, 2rem);
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .approach-grid__number {
-  color: var(--signal);
+  color: var(--color-brand-primary);
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.7rem;
 }
@@ -944,7 +934,7 @@ svg {
 .approach-grid article > p:last-child {
   max-width: 30rem;
   margin-top: 1.25rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 
 .approach-grid .approach-grid__statement {
@@ -953,7 +943,7 @@ svg {
   grid-template-columns: 1fr 2fr;
   gap: 2rem;
   min-height: auto;
-  background: var(--wash);
+  background: var(--color-brand-subtle);
 }
 
 .approach-grid__statement blockquote {
@@ -980,7 +970,7 @@ svg {
 }
 
 .about-grid__lead p:last-child {
-  color: var(--signal);
+  color: var(--color-brand-primary);
 }
 
 .about-grid dl {
@@ -993,11 +983,11 @@ svg {
   grid-template-columns: 7rem 1fr;
   gap: 1rem;
   padding: 1.15rem 0;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--color-border);
 }
 
 .about-grid dt {
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.62rem;
   letter-spacing: 0.04em;
@@ -1010,8 +1000,8 @@ svg {
   gap: 2rem;
   min-height: 75svh;
   padding: clamp(5rem, 10vw, 9rem) var(--page-edge) 2rem;
-  background: var(--night);
-  color: var(--paper-bright);
+  background: var(--color-structure);
+  color: var(--color-bg-secondary);
 }
 
 .site-footer__lead {
@@ -1091,7 +1081,7 @@ svg {
   display: flex;
   grid-column: 1 / -1;
   gap: 0.7rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.66rem;
   letter-spacing: 0.04em;
@@ -1127,11 +1117,11 @@ svg {
 
 .case-study__meta div {
   padding-top: 0.75rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--color-border);
 }
 
 .case-study__meta dt {
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.6rem;
   letter-spacing: 0.04em;
@@ -1153,7 +1143,7 @@ svg {
   grid-template-columns: 3fr 9fr;
   gap: 2rem;
   padding: clamp(1.5rem, 4vw, 3rem);
-  background: var(--wash);
+  background: var(--color-brand-subtle);
 }
 
 .case-study__boundary > div {
@@ -1163,7 +1153,7 @@ svg {
 }
 
 .case-study__boundary strong {
-  color: var(--signal);
+  color: var(--color-brand-primary);
   font-weight: 600;
 }
 
@@ -1185,7 +1175,7 @@ svg {
   gap: 0.6rem;
   margin-top: 1rem;
   padding-left: 1.2rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 
 .case-study__content > nav a {
@@ -1202,7 +1192,7 @@ svg {
   gap: 2rem;
   min-height: 22rem;
   padding: 2rem 0;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--color-border);
 }
 
 .case-study__sections h2 {
@@ -1221,7 +1211,7 @@ svg {
 
 .case-study__section-index {
   grid-column: 1 / -1;
-  color: var(--signal);
+  color: var(--color-brand-primary);
 }
 
 .case-study__sections .case-study__tools {
@@ -1242,12 +1232,12 @@ svg {
 .case-study__private-note {
   max-width: 34rem;
   margin-top: 1.5rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 
 .case-study__next {
   padding-block: 3rem var(--section-space);
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid var(--color-text-primary);
 }
 
 .case-study__next > a {
@@ -1281,7 +1271,7 @@ svg {
 .status-page > p:not(.kicker) {
   max-width: 35rem;
   margin-top: 1.5rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 
 .status-page .button-link {
@@ -1648,7 +1638,7 @@ svg {
   .case-study__content > nav {
     position: static;
     padding-bottom: 2rem;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--color-border);
   }
 
   .case-study__sections > section {
