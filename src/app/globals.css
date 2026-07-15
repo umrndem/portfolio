@@ -11,10 +11,16 @@
   --color-brand-emphasis: #5b1524;
   --color-brand-subtle: #ead9dc;
   --color-brand-deep: #4b1721;
+  --color-brand-fill: #711f30;
+  --color-on-brand: #fdf9f6;
   --color-support-accent: #8a7351;
   --color-structure: #191516;
   --color-border: #d4c8c5;
   --color-border-emphasis: #a99a98;
+  --color-action-bg: #1b1718;
+  --color-action-text: #fbf8f4;
+  --color-link: #1b1718;
+  --color-link-hover: #711f30;
   --color-focus: #8b2f42;
   --color-selection: #711f30;
   --color-selection-text: #fdf9f6;
@@ -47,10 +53,16 @@
   --color-brand-emphasis: #e0a5b0;
   --color-brand-subtle: #32171d;
   --color-brand-deep: #6f1d2c;
+  --color-brand-fill: #812638;
+  --color-on-brand: #f7f0ed;
   --color-support-accent: #b39a70;
   --color-structure: #090708;
   --color-border: #3b3034;
   --color-border-emphasis: #5a454b;
+  --color-action-bg: #f1ece9;
+  --color-action-text: #171315;
+  --color-link: #f1ece9;
+  --color-link-hover: #e0a5b0;
   --color-focus: #e0a5b0;
   --color-selection: #812638;
   --color-selection-text: #f7f0ed;
@@ -74,6 +86,7 @@ html {
 }
 
 body {
+  min-height: 100svh;
   margin: 0;
   background: var(--color-bg-primary);
   color: var(--color-text-primary);
@@ -81,6 +94,9 @@ body {
   font-size: 1rem;
   line-height: 1.55;
   text-rendering: optimizeLegibility;
+  transition:
+    background-color 240ms var(--ease-out),
+    color 240ms var(--ease-out);
 }
 
 body::before {
@@ -169,8 +185,8 @@ svg {
   top: 0.75rem;
   left: 0.75rem;
   padding: 0.65rem 0.9rem;
-  background: var(--color-brand-primary);
-  color: var(--color-selection-text);
+  background: var(--color-brand-fill);
+  color: var(--color-on-brand);
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.75rem;
   transform: translateY(-160%);
@@ -206,6 +222,9 @@ svg {
   border-bottom: 1px solid var(--color-border);
   background: var(--color-header-bg);
   backdrop-filter: blur(16px);
+  transition:
+    background-color 240ms var(--ease-out),
+    border-color 240ms var(--ease-out);
 }
 
 .site-header__mark {
@@ -263,7 +282,10 @@ svg {
     var(--color-text-primary) 50%,
     transparent 50%
   );
-  transition: transform 320ms var(--ease-out);
+  transition:
+    background-color 240ms var(--ease-out),
+    border-color 240ms var(--ease-out),
+    transform 320ms var(--ease-out);
 }
 
 .theme-toggle:hover .theme-toggle__disc {
@@ -384,6 +406,7 @@ svg {
 .hero__intro {
   max-width: 43rem;
   margin-top: clamp(2rem, 5vh, 3.25rem);
+  color: var(--color-text-secondary);
   font-size: clamp(1.12rem, 1.7vw, 1.55rem);
   letter-spacing: -0.022em;
   line-height: 1.45;
@@ -403,10 +426,10 @@ svg {
   justify-content: space-between;
   min-height: 3rem;
   padding: 0.8rem 1rem;
-  border: 1px solid var(--color-text-primary);
+  border: 1px solid var(--color-action-bg);
   border-radius: 0;
-  background: var(--color-text-primary);
-  color: var(--color-bg-secondary);
+  background: var(--color-action-bg);
+  color: var(--color-action-text);
   font: inherit;
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.75rem;
@@ -420,9 +443,10 @@ svg {
 }
 
 .button-link:hover {
-  background: var(--color-brand-primary);
-  border-color: var(--color-brand-primary);
-  transform: translateY(-2px);
+  background: var(--color-brand-fill);
+  border-color: var(--color-brand-fill);
+  color: var(--color-on-brand);
+  transform: translateY(-1px);
 }
 
 .button-link--light {
@@ -438,10 +462,15 @@ svg {
 }
 
 .text-link {
+  color: var(--color-link);
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.75rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+}
+
+.text-link:hover {
+  color: var(--color-link-hover);
 }
 
 .portrait-placeholder {
@@ -551,7 +580,7 @@ svg {
 .hero__aside p:last-child {
   grid-column: 2;
   max-width: 33rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 .range-section,
@@ -568,7 +597,7 @@ svg {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 2rem;
-  border-top: 1px solid var(--color-text-primary);
+  border-top: 1px solid var(--color-border-emphasis);
 }
 
 .range-section > div:first-child {
@@ -689,7 +718,7 @@ svg {
   align-items: start;
   margin-bottom: clamp(3rem, 7vw, 6rem);
   padding-top: 1.2rem;
-  border-top: 1px solid var(--color-text-primary);
+  border-top: 1px solid var(--color-border-emphasis);
 }
 
 .section-heading__index {
