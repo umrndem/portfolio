@@ -239,8 +239,8 @@ svg {
   text-decoration: none;
 }
 
-.site-header__mark span:nth-child(2) {
-  color: var(--color-support-accent);
+.site-header__mark span:nth-child(3) {
+  color: var(--color-brand-primary);
 }
 
 .site-header nav {
@@ -275,11 +275,11 @@ svg {
 .theme-toggle__disc {
   width: 0.85rem;
   height: 0.85rem;
-  border: 1px solid var(--color-text-primary);
+  border: 1px solid var(--color-brand-primary);
   border-radius: 50%;
   background: linear-gradient(
     90deg,
-    var(--color-text-primary) 50%,
+    var(--color-brand-fill) 50%,
     transparent 50%
   );
   transition:
@@ -749,8 +749,9 @@ svg {
   display: grid;
   gap: 2rem;
   padding: clamp(1.35rem, 3vw, 2.5rem);
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  background: transparent;
   transition:
     border-color 180ms var(--ease-out),
     background 180ms var(--ease-out);
@@ -758,12 +759,19 @@ svg {
 
 .project-card:hover,
 .project-card:focus-within {
-  border-color: var(--color-text-primary);
-  background: var(--color-bg-secondary);
+  border-color: var(--color-border-emphasis);
+  background: var(--color-surface);
 }
 
 .project-card--featured {
   min-height: 34rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.project-card--featured:hover,
+.project-card--featured:focus-within {
+  background: var(--color-surface-hover);
 }
 
 .project-card__topline {
@@ -817,6 +825,7 @@ svg {
 .project-card__summary {
   max-width: 44rem;
   margin-top: 1.5rem;
+  color: var(--color-text-secondary);
   font-size: clamp(1.1rem, 1.8vw, 1.45rem);
   letter-spacing: -0.02em;
 }
@@ -910,7 +919,7 @@ svg {
 .experience-entry__role > p:last-child {
   max-width: 34rem;
   margin-top: 1rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 .experience-entry ul {
@@ -1031,6 +1040,9 @@ svg {
   padding: clamp(5rem, 10vw, 9rem) var(--page-edge) 2rem;
   background: var(--color-structure);
   color: var(--color-bg-secondary);
+  transition:
+    background-color 240ms var(--ease-out),
+    color 240ms var(--ease-out);
 }
 
 .site-footer__lead {
@@ -1058,6 +1070,16 @@ svg {
 }
 
 .site-footer .kicker {
+  color: var(--color-footer-accent);
+}
+
+.site-footer .button-link--light:hover {
+  border-color: var(--color-brand-fill);
+  background: var(--color-brand-fill);
+  color: var(--color-on-brand);
+}
+
+.site-footer a:hover {
   color: var(--color-footer-accent);
 }
 
@@ -1133,6 +1155,7 @@ svg {
 .case-study__title > p:last-child {
   max-width: 48rem;
   margin-top: 2rem;
+  color: var(--color-text-secondary);
   font-size: clamp(1.2rem, 2vw, 1.7rem);
   letter-spacing: -0.025em;
 }
@@ -1172,6 +1195,7 @@ svg {
   grid-template-columns: 3fr 9fr;
   gap: 2rem;
   padding: clamp(1.5rem, 4vw, 3rem);
+  border-inline-start: 3px solid var(--color-brand-primary);
   background: var(--color-brand-subtle);
 }
 
@@ -1209,6 +1233,10 @@ svg {
 
 .case-study__content > nav a {
   font-size: 0.8rem;
+}
+
+.case-study__content > nav a:hover {
+  color: var(--color-link-hover);
 }
 
 .case-study__sections {
@@ -1266,7 +1294,7 @@ svg {
 
 .case-study__next {
   padding-block: 3rem var(--section-space);
-  border-top: 1px solid var(--color-text-primary);
+  border-top: 1px solid var(--color-border-emphasis);
 }
 
 .case-study__next > a {
