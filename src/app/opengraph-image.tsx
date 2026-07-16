@@ -15,8 +15,8 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#F2F5F1",
-          color: "#11261F",
+          background: "#0F0D0E",
+          color: "#F1ECE9",
           padding: "72px",
           fontFamily: "sans-serif",
         }}
@@ -30,14 +30,16 @@ export default function OpenGraphImage() {
             letterSpacing: "0.08em",
           }}
         >
-          <span>U / N</span>
+          <span>
+            U <span style={{ color: "#D693A0" }}>/</span> N
+          </span>
           <span>Islamabad · Pakistan</span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
           <div style={{ fontSize: 76, lineHeight: 1.05, maxWidth: 940 }}>
             Muhammad Umar Nadeem
           </div>
-          <div style={{ fontSize: 31, color: "#2448FF" }}>
+          <div style={{ fontSize: 31, color: "#D693A0" }}>
             Systems → Data → Databases → Product → People
           </div>
         </div>
@@ -59,7 +61,7 @@ export default function OpenGraphImage() {
                     width: 14,
                     height: 14,
                     borderRadius: 999,
-                    background: index === 4 ? "#F25B35" : "#2448FF",
+                    background: index === 4 ? "#B39A70" : "#D693A0",
                   }}
                 />
                 <span>{point}</span>
@@ -69,7 +71,7 @@ export default function OpenGraphImage() {
                       display: "block",
                       height: 2,
                       flex: 1,
-                      background: "#C7D1CB",
+                      background: "#3B3034",
                     }}
                   />
                 ) : null}
