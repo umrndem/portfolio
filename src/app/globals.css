@@ -28,6 +28,7 @@
   --color-header-bg: rgb(244 240 236 / 0.9);
   --color-status-available: #49735b;
   --color-status-available-ring: rgb(73 115 91 / 0.14);
+  --color-footer-primary: #fbf8f4;
   --color-footer-text: #c9bfbd;
   --color-footer-accent: #e2a5b0;
   --color-footer-border: rgb(244 240 236 / 0.24);
@@ -70,6 +71,7 @@
   --color-header-bg: rgb(15 13 14 / 0.9);
   --color-status-available: #83aa91;
   --color-status-available-ring: rgb(131 170 145 / 0.14);
+  --color-footer-primary: #f1ece9;
   --color-footer-text: #c5bbba;
   --color-footer-accent: #d693a0;
   --color-footer-border: rgb(241 236 233 / 0.2);
@@ -260,6 +262,8 @@ svg {
   display: inline-flex;
   gap: 0.55rem;
   align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
   min-height: 2.75rem;
   padding: 0;
   border: 0;
@@ -450,8 +454,8 @@ svg {
 }
 
 .button-link--light {
-  border-color: var(--color-bg-secondary);
-  background: var(--color-bg-secondary);
+  border-color: var(--color-footer-primary);
+  background: var(--color-footer-primary);
   color: var(--color-structure);
 }
 
@@ -1039,7 +1043,7 @@ svg {
   min-height: 75svh;
   padding: clamp(5rem, 10vw, 9rem) var(--page-edge) 2rem;
   background: var(--color-structure);
-  color: var(--color-bg-secondary);
+  color: var(--color-footer-primary);
   transition:
     background-color 240ms var(--ease-out),
     color 240ms var(--ease-out);
