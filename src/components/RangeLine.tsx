@@ -34,7 +34,6 @@ export function RangeLine({ active, compact = false }: RangeLineProps) {
             <li
               className={isActive ? "is-active" : undefined}
               key={point}
-              aria-current={isActive ? "step" : undefined}
             >
               <span aria-hidden="true" />
               {point}

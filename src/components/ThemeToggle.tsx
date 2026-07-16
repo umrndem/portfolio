@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, type MouseEvent } from "react";
 import {
   themeStorageKey,
   type PortfolioTheme,
@@ -10,20 +11,35 @@ function readTheme(): PortfolioTheme {
 }
 
 export function ThemeToggle() {
-  function toggleTheme() {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    buttonRef.current?.setAttribute(
+      "aria-pressed",
+      String(readTheme() === "dark"),
+    );
+  }, []);
+
+  function toggleTheme(event: MouseEvent<HTMLButtonElement>) {
     const nextTheme: PortfolioTheme = readTheme() === "dark" ? "light" : "dark";
 
     document.documentElement.dataset.theme = nextTheme;
     document.documentElement.style.colorScheme = nextTheme;
     localStorage.setItem(themeStorageKey, nextTheme);
+    event.currentTarget.setAttribute(
+      "aria-pressed",
+      String(nextTheme === "dark"),
+    );
   }
 
   return (
     <button
+      ref={buttonRef}
       className="theme-toggle"
       type="button"
       onClick={toggleTheme}
-      aria-label="Toggle color theme"
+      aria-label="Dark theme"
+      aria-pressed="false"
       title="Toggle color theme"
     >
       <span className="theme-toggle__disc" aria-hidden="true" />
