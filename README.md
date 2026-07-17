@@ -27,6 +27,7 @@ This is an initial version, not a launch-ready final. A real profile photograph,
 - `docs/design-research-summary.md` — research scope and synthesis.
 - `docs/design-directions.md` / `docs/design-decision.md` — three directions and the selected approach.
 - `docs/information-architecture.md` / `docs/design-system.md` — page structure and visual system.
+- `docs/brand-identity.md` — oxblood rationale, semantic palettes, contrast, and usage rules.
 - `docs/content-boundaries.md` — public-safe, qualified, held, and excluded content.
 - `docs/implementation-notes.md` / `docs/future-iterations.md` — stack, verification, limitations, and next decisions.
 

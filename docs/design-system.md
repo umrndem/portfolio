@@ -9,18 +9,14 @@
 
 ## Color
 
-| Token | Value | Role |
-|---|---|---|
-| `paper` | `#F2F5F1` | mineral page ground |
-| `ink` | `#11261F` | primary text |
-| `muted` | `#5E6F68` | secondary text |
-| `line` | `#C7D1CB` | structure |
-| `signal` | `#2448FF` | links, active evidence |
-| `heat` | `#F25B35` | selected warm annotation |
-| `wash` | `#DDE5FF` | quiet technical surface |
-| `night` | `#10241E` | deep project/footer surface |
+The identity uses two complete semantic palettes:
 
-Color never encodes a claim without text.
+- **Paper:** parchment, ivory, ink, oxblood, wine wash, and muted brass.
+- **Ink:** softened brown-black, warm white, accessible oxblood tints, blackened wine, and muted brass.
+
+Most of the interface remains neutral. Oxblood identifies authorship, active evidence, selected states, and narrative boundaries. Black anchors typography, actions, and the footer rather than dominating every surface. The full token table, ratios, usage rules, and prohibitions live in `docs/brand-identity.md`.
+
+Color never encodes a claim without text or structure.
 
 ## Grid and spacing
 
@@ -36,7 +32,8 @@ Color never encodes a claim without text.
 - Deliberate reveal: 560ms.
 - Easing: `cubic-bezier(.22, 1, .36, 1)`.
 - Links retain underlines or an equally visible non-color affordance.
-- Focus ring: 3px signal blue with 3px offset.
+- Theme transition: 240ms, limited to color and surface properties.
+- Focus ring: 3px oxblood-derived focus color with 3px offset.
 - Reduced motion removes transforms and sequencing, not content.
 
 ## Components
