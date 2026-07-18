@@ -14,7 +14,10 @@
   --color-brand-deep: #5b1428;
   --color-brand-bright: #a12d50;
   --color-brand-fill: #7b1e3a;
+  --color-brand-fill-hover: #8c2344;
   --color-on-brand: #ffffff;
+  --color-on-brand-muted: #f2dce4;
+  --color-on-brand-border: rgb(255 255 255 / 0.3);
   --color-support-accent: #a12d50;
   --color-structure: #1c191b;
   --color-border: #d8ccd0;
@@ -59,7 +62,10 @@
   --color-brand-deep: #5b1428;
   --color-brand-bright: #c94d72;
   --color-brand-fill: #8c2344;
+  --color-brand-fill-hover: #7b1e3a;
   --color-on-brand: #ffffff;
+  --color-on-brand-muted: #f4d8e1;
+  --color-on-brand-border: rgb(255 255 255 / 0.3);
   --color-support-accent: #c94d72;
   --color-structure: #0b0b0e;
   --color-border: #3a3034;
@@ -800,13 +806,13 @@ svg {
 .project-card:hover,
 .project-card:focus-within {
   border-color: var(--color-border-emphasis);
-  background: var(--color-surface);
+  background: var(--color-surface-maroon);
 }
 
 .project-card--featured {
   min-height: 34rem;
   border: 1px solid var(--color-border);
-  background: var(--color-surface);
+  background: var(--color-surface-maroon);
 }
 
 .project-card--featured:hover,
@@ -828,10 +834,13 @@ svg {
 .project-card__topline p:first-child {
   display: flex;
   gap: 1rem;
+  align-items: flex-start;
 }
 
 .project-card__topline p:first-child span {
-  color: var(--color-brand-primary);
+  padding: 0.2rem 0.38rem;
+  background: var(--color-brand-fill);
+  color: var(--color-on-brand);
 }
 
 .project-card__topline p:last-child {
@@ -880,7 +889,7 @@ svg {
   grid-template-columns: 5rem 1fr;
   gap: 1rem;
   padding-top: 0.7rem;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border-emphasis);
 }
 
 .project-card__facts dt {
@@ -913,7 +922,7 @@ svg {
 .project-card__footer li,
 .case-study__tools li {
   padding: 0.35rem 0.55rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-emphasis);
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.58rem;
   letter-spacing: 0.03em;
@@ -924,6 +933,71 @@ svg {
   position: relative;
   z-index: 2;
   flex: none;
+}
+
+.project-card:first-child {
+  border-color: var(--color-brand-fill);
+  background: var(--color-brand-fill);
+  color: var(--color-on-brand);
+}
+
+.project-card:first-child:hover,
+.project-card:first-child:focus-within {
+  border-color: var(--color-brand-fill-hover);
+  background: var(--color-brand-fill-hover);
+}
+
+.project-card:first-child .project-card__topline p:first-child span {
+  background: var(--color-on-brand);
+  color: var(--color-brand-deep);
+}
+
+.project-card:first-child .project-card__topline p:last-child,
+.project-card:first-child .project-card__summary,
+.project-card:first-child .project-card__facts dt {
+  color: var(--color-on-brand-muted);
+}
+
+.project-card:first-child .project-card__facts div,
+.project-card:first-child .project-card__footer li {
+  border-color: var(--color-on-brand-border);
+}
+
+.project-card:first-child .text-link {
+  color: var(--color-on-brand);
+}
+
+.project-card:first-child .range-line__track,
+.project-card:first-child .range-line__points li span {
+  background: var(--color-on-brand-border);
+}
+
+.project-card:first-child .range-line__points li {
+  color: var(--color-on-brand-muted);
+}
+
+.project-card:first-child .range-line__points li span {
+  border-color: var(--color-brand-fill);
+  box-shadow: 0 0 0 1px var(--color-on-brand-border);
+}
+
+.project-card:first-child .range-line__active,
+.project-card:first-child .range-line__points li.is-active span {
+  background: var(--color-on-brand);
+  box-shadow: 0 0 0 1px var(--color-on-brand);
+}
+
+.project-card:first-child .range-line__points li.is-active {
+  color: var(--color-on-brand);
+}
+
+.project-card:first-child .range-line__points li.is-active:last-child span {
+  background: var(--color-footer-accent);
+  box-shadow: 0 0 0 1px var(--color-footer-accent);
+}
+
+.project-card:first-child :focus-visible {
+  outline-color: var(--color-on-brand);
 }
 
 .experience-entry {
@@ -992,6 +1066,10 @@ svg {
   padding: clamp(1.25rem, 2.5vw, 2rem);
   border-right: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
+}
+
+.approach-grid article:first-child {
+  background: var(--color-surface-maroon);
 }
 
 .approach-grid__number {
@@ -1085,7 +1163,7 @@ svg {
   gap: 2rem;
   min-height: 75svh;
   padding: clamp(5rem, 10vw, 9rem) var(--page-edge) 2rem;
-  background: var(--color-structure);
+  background: var(--color-brand-deep);
   color: var(--color-footer-primary);
   transition:
     background-color 240ms var(--ease-out),
@@ -1212,6 +1290,9 @@ svg {
   grid-column: 10 / -1;
   gap: 1rem;
   align-self: center;
+  padding: 1.5rem;
+  border-top: 3px solid var(--color-brand-primary);
+  background: var(--color-surface-maroon);
 }
 
 .case-study__meta div {
@@ -1315,7 +1396,10 @@ svg {
 
 .case-study__section-index {
   grid-column: 1 / -1;
-  color: var(--color-brand-primary);
+  width: fit-content;
+  padding: 0.28rem 0.42rem;
+  background: var(--color-brand-fill);
+  color: var(--color-on-brand);
 }
 
 .case-study__sections .case-study__tools {
