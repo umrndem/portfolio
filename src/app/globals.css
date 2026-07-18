@@ -225,7 +225,7 @@ svg {
   width: 100%;
   min-height: 4.75rem;
   padding-inline: var(--page-edge);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border-emphasis);
   background: var(--color-header-bg);
   backdrop-filter: blur(16px);
   transition:
@@ -323,6 +323,7 @@ svg {
 
 .site-header nav a {
   position: relative;
+  transition: color 180ms var(--ease-out);
 }
 
 .site-header nav a::after {
@@ -342,6 +343,11 @@ svg {
 .site-header nav a:focus-visible::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+.site-header nav a:hover,
+.site-header nav a:focus-visible {
+  color: var(--color-brand-primary);
 }
 
 .site-header__availability {
@@ -377,6 +383,7 @@ svg {
 }
 
 .hero {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 2rem;
@@ -384,6 +391,19 @@ svg {
   min-height: calc(100svh - 4.75rem);
   margin: 0 auto;
   padding: clamp(4rem, 9vh, 7rem) var(--page-edge) 3rem;
+  isolation: isolate;
+}
+
+.hero::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 32%;
+  background: var(--color-brand-fill);
+  content: "";
+  transition: background-color 240ms var(--ease-out);
 }
 
 .hero__copy {
@@ -575,7 +595,7 @@ svg {
   gap: 2rem;
   align-self: end;
   padding-top: 1.4rem;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-brand-primary);
 }
 
 .hero__aside p:first-child {
@@ -605,7 +625,11 @@ svg {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 2rem;
-  border-top: 1px solid var(--color-border-emphasis);
+  border-top: 1px solid var(--color-brand-primary);
+  background: var(--color-brand-subtle);
+  box-shadow: 0 0 0 100vmax var(--color-brand-subtle);
+  clip-path: inset(0 -100vmax);
+  transition: background-color 240ms var(--ease-out);
 }
 
 .range-section > div:first-child {
@@ -617,6 +641,7 @@ svg {
   margin-top: 1.15rem;
   font-size: clamp(2.4rem, 5.2vw, 5.5rem);
   font-weight: 520;
+  color: var(--color-brand-emphasis);
   letter-spacing: -0.055em;
   line-height: 1;
 }
@@ -631,6 +656,10 @@ svg {
 .range-section > .range-line {
   grid-column: 1 / -1;
   margin-top: clamp(3rem, 7vw, 6rem);
+}
+
+.range-section .range-line__points li span {
+  border-color: var(--color-brand-subtle);
 }
 
 .range-line {
@@ -726,11 +755,14 @@ svg {
   align-items: start;
   margin-bottom: clamp(3rem, 7vw, 6rem);
   padding-top: 1.2rem;
-  border-top: 1px solid var(--color-border-emphasis);
+  border-top: 1px solid var(--color-brand-primary);
 }
 
 .section-heading__index {
-  color: var(--color-brand-primary);
+  width: fit-content;
+  padding: 0.28rem 0.42rem;
+  background: var(--color-brand-fill);
+  color: var(--color-on-brand);
 }
 
 .section-heading h2 {
@@ -1004,6 +1036,13 @@ svg {
   display: grid;
   grid-template-columns: 7fr 5fr;
   gap: clamp(3rem, 8vw, 8rem);
+}
+
+.about-section {
+  background: var(--color-surface-maroon);
+  box-shadow: 0 0 0 100vmax var(--color-surface-maroon);
+  clip-path: inset(0 -100vmax);
+  transition: background-color 240ms var(--ease-out);
 }
 
 .about-grid__lead {
@@ -1417,6 +1456,16 @@ svg {
   }
 }
 
+@media (min-width: 701px) {
+  .hero .portrait-placeholder figcaption {
+    color: var(--color-footer-text);
+  }
+
+  .hero .portrait-placeholder figcaption span {
+    color: var(--color-footer-primary);
+  }
+}
+
 @media (max-width: 700px) {
   :root {
     --page-edge: 1.25rem;
@@ -1455,6 +1504,10 @@ svg {
     padding-top: 3.5rem;
   }
 
+  .hero::before {
+    display: none;
+  }
+
   .hero__copy,
   .portrait-placeholder,
   .hero__aside {
@@ -1478,7 +1531,17 @@ svg {
   .portrait-placeholder {
     width: 78%;
     margin-top: 2rem;
+    padding: 1rem;
+    background: var(--color-brand-fill);
     justify-self: end;
+  }
+
+  .portrait-placeholder figcaption {
+    color: var(--color-footer-text);
+  }
+
+  .portrait-placeholder figcaption span {
+    color: var(--color-footer-primary);
   }
 
   .hero__aside {
