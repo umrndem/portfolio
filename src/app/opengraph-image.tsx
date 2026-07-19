@@ -13,16 +13,29 @@ export default function OpenGraphImage() {
           width: "100%",
           height: "100%",
           display: "flex",
+          position: "relative",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#0F0D0E",
-          color: "#F1ECE9",
+          background: "#111113",
+          color: "#F4F1F2",
           padding: "72px",
           fontFamily: "sans-serif",
         }}
       >
         <div
           style={{
+            position: "absolute",
+            display: "flex",
+            top: 0,
+            right: 0,
+            width: "32%",
+            height: "100%",
+            background: "#7B1E3A",
+          }}
+        />
+        <div
+          style={{
+            position: "relative",
             display: "flex",
             justifyContent: "space-between",
             fontSize: 24,
@@ -31,19 +44,33 @@ export default function OpenGraphImage() {
           }}
         >
           <span>
-            U <span style={{ color: "#D693A0" }}>/</span> N
+            U <span style={{ color: "#F0A8BD" }}>/</span> N
           </span>
           <span>Islamabad · Pakistan</span>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+        <div
+          style={{
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            gap: 24,
+          }}
+        >
           <div style={{ fontSize: 76, lineHeight: 1.05, maxWidth: 940 }}>
             Muhammad Umar Nadeem
           </div>
-          <div style={{ fontSize: 31, color: "#D693A0" }}>
+          <div style={{ fontSize: 31, color: "#F0A8BD" }}>
             Systems → Data → Databases → Product → People
           </div>
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
+        <div
+          style={{
+            position: "relative",
+            display: "flex",
+            alignItems: "center",
+            gap: 18,
+          }}
+        >
           {["systems", "data", "databases", "product", "people"].map(
             (point, index) => (
               <div
@@ -61,7 +88,7 @@ export default function OpenGraphImage() {
                     width: 14,
                     height: 14,
                     borderRadius: 999,
-                    background: index === 4 ? "#B39A70" : "#D693A0",
+                    background: index === 4 ? "#C94D72" : "#E18AA5",
                   }}
                 />
                 <span>{point}</span>
@@ -71,7 +98,7 @@ export default function OpenGraphImage() {
                       display: "block",
                       height: 2,
                       flex: 1,
-                      background: "#3B3034",
+                      background: "#65404B",
                     }}
                   />
                 ) : null}
