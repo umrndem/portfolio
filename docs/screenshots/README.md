@@ -19,4 +19,14 @@ Oxblood identity refinement:
 - `oxblood-light-case-desktop.png` — paper theme case-study hero at 1440 × 1000.
 - `oxblood-dark-case-mobile.png` — ink theme case-study hero at 390 × 844.
 
+Clean leather-maroon expansion:
+
+- `maroon-light-home-desktop.png` — paper theme with the hero book-spine composition at 1440 × 1000.
+- `maroon-dark-home-desktop.png` — ink theme with the hero book-spine composition at 1440 × 1000.
+- `maroon-light-home-mobile.png` — paper theme with the compact maroon portrait frame at 390 × 844.
+- `maroon-dark-home-mobile.png` — ink theme with the compact maroon portrait frame at 390 × 844.
+- `maroon-light-projects-desktop.png` — paper theme with strong and soft maroon project hierarchy at 1440 × 1000.
+- `maroon-dark-range-desktop.png` — ink theme range climate at 1440 × 1000.
+- `maroon-light-case-desktop.png` — paper theme case-study hero and maroon metadata surface at 1440 × 1000.
+
 They contain only public-safe portfolio copy and generated design elements. No private project screenshot or company data is included.

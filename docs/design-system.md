@@ -11,10 +11,10 @@
 
 The identity uses two complete semantic palettes:
 
-- **Paper:** parchment, ivory, ink, oxblood, wine wash, and muted brass.
-- **Ink:** softened brown-black, warm white, accessible oxblood tints, blackened wine, and muted brass.
+- **Paper:** clean off-white, white, ink, leather maroon, and pale maroon surfaces.
+- **Ink:** neutral near-black, warm white, accessible maroon text, rich maroon fills, and blackened maroon surfaces.
 
-Most of the interface remains neutral. Oxblood identifies authorship, active evidence, selected states, and narrative boundaries. Black anchors typography, actions, and the footer rather than dominating every surface. The full token table, ratios, usage rules, and prohibitions live in `docs/brand-identity.md`.
+Maroon is a major compositional layer: the hero book-spine panel, range and about climates, lead project, primary actions, footer, labels, dividers, and active states make the identity immediately visible. Neutral surfaces continue to carry long-form reading, while near-black, white, and grey provide structure. The full token table, ratios, usage rules, and prohibitions live in `docs/brand-identity.md`.
 
 Color never encodes a claim without text or structure.
 
@@ -33,7 +33,7 @@ Color never encodes a claim without text or structure.
 - Easing: `cubic-bezier(.22, 1, .36, 1)`.
 - Links retain underlines or an equally visible non-color affordance.
 - Theme transition: 240ms, limited to color and surface properties.
-- Focus ring: 3px oxblood-derived focus color with 3px offset.
+- Focus ring: 3px maroon-derived focus color with 3px offset.
 - Reduced motion removes transforms and sequencing, not content.
 
 ## Components
