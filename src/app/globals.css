@@ -556,6 +556,15 @@ svg {
   letter-spacing: -0.09em;
 }
 
+.portrait-placeholder__field--image::before,
+.portrait-placeholder__field--image::after {
+  display: none;
+}
+
+.portrait-placeholder__field--image img {
+  object-fit: cover;
+}
+
 .portrait-placeholder__field i,
 .portrait-placeholder__field b {
   position: absolute;

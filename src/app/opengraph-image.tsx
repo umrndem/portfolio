@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
+import { profile } from "@/content/profile";
+import { siteSettings } from "@/content/site-settings";
 
-export const alt =
-  "Muhammad Umar Nadeem — software and data systems portfolio";
+export const alt = siteSettings.openGraphAlt;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -46,7 +47,7 @@ export default function OpenGraphImage() {
           <span>
             U <span style={{ color: "#F0A8BD" }}>/</span> N
           </span>
-          <span>Islamabad · Pakistan</span>
+          <span>{profile.location.replace(",", " ·")}</span>
         </div>
         <div
           style={{
@@ -57,7 +58,7 @@ export default function OpenGraphImage() {
           }}
         >
           <div style={{ fontSize: 76, lineHeight: 1.05, maxWidth: 940 }}>
-            Muhammad Umar Nadeem
+            {profile.name}
           </div>
           <div style={{ fontSize: 31, color: "#F0A8BD" }}>
             Systems → Data → Databases → Product → People

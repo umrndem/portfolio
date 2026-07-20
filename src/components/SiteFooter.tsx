@@ -1,24 +1,23 @@
-import { profile } from "@/content/portfolio";
+import { homeContent } from "@/content/home";
+import { profile, socialLinks } from "@/content/profile";
+import { siteSettings } from "@/content/site-settings";
 
 export function SiteFooter() {
   return (
     <footer className="site-footer" id="contact">
       <div className="site-footer__lead">
-        <p className="kicker">Contact / 05</p>
+        <p className="kicker">{homeContent.footer.kicker}</p>
         <h2>
-          Have a difficult problem
+          {homeContent.footer.headline[0]}
           <br />
-          worth structuring?
+          {homeContent.footer.headline[1]}
         </h2>
       </div>
       <div className="site-footer__actions">
         <a className="button-link button-link--light" href={`mailto:${profile.email}`}>
-          Write to Umar <span aria-hidden="true">↗</span>
+          {homeContent.footer.action} <span aria-hidden="true">↗</span>
         </a>
-        <p>
-          I’m looking for opportunities with meaningful technical exposure across
-          software, data systems, and applied AI.
-        </p>
+        <p>{homeContent.footer.availability}</p>
       </div>
       <div className="site-footer__base">
         <p>
@@ -27,14 +26,19 @@ export function SiteFooter() {
           {profile.location}
         </p>
         <nav aria-label="Social links">
-          <a href={profile.github}>GitHub</a>
-          <a href={profile.linkedin}>LinkedIn</a>
-          <a href={profile.instagram}>Instagram</a>
+          {socialLinks.map((link) => (
+            <a href={link.href} key={link.href}>
+              {link.label}
+            </a>
+          ))}
+          {profile.resumePath ? (
+            <a href={profile.resumePath}>Résumé</a>
+          ) : null}
         </nav>
         <p className="site-footer__note">
-          Built with Next.js.
+          {siteSettings.footerNote[0]}
           <br />
-          AI-assisted, human-directed.
+          {siteSettings.footerNote[1]}
         </p>
       </div>
     </footer>

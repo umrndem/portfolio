@@ -1,6 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Manrope } from "next/font/google";
 import { SiteHeader } from "@/components/SiteHeader";
+import { profile } from "@/content/profile";
+import {
+  getSiteUrl,
+  siteSettings,
+} from "@/content/site-settings";
 import { themeBootstrapScript } from "@/systems/theme";
 import "./globals.css";
 
@@ -18,28 +23,26 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  ),
+  metadataBase: getSiteUrl(),
   title: {
-    default: "Muhammad Umar Nadeem — Software & Data Systems",
-    template: "%s — Muhammad Umar Nadeem",
+    default: siteSettings.title,
+    template: siteSettings.titleTemplate,
   },
-  description:
-    "Data Science student and software builder working across C++, data, databases, product systems, and agentic AI.",
-  authors: [{ name: "Muhammad Umar Nadeem" }],
-  creator: "Muhammad Umar Nadeem",
+  description: siteSettings.description,
+  alternates: {
+    canonical: "/",
+  },
+  authors: [{ name: profile.name }],
+  creator: profile.name,
   openGraph: {
-    title: "Muhammad Umar Nadeem — Software & Data Systems",
-    description:
-      "Selected work across C++, data, databases, product systems, and agentic AI.",
+    title: siteSettings.title,
+    description: siteSettings.socialDescription,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Muhammad Umar Nadeem — Software & Data Systems",
-    description:
-      "Selected work across C++, data, databases, product systems, and agentic AI.",
+    title: siteSettings.title,
+    description: siteSettings.socialDescription,
   },
 };
 

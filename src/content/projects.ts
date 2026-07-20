@@ -1,33 +1,20 @@
-export type RangePoint = "systems" | "data" | "databases" | "product" | "people";
+import type {
+  Project,
+  ProjectVisibility,
+  RangePoint,
+} from "./types";
 
-export type Project = {
-  slug: string;
-  title: string;
-  eyebrow: string;
-  summary: string;
-  context: string;
-  status: string;
-  visibility: "Public" | "Private / sanitized";
-  range: [RangePoint, RangePoint];
-  technologies: string[];
-  proof: string;
-  limitation: string;
-  href?: string;
-  sections: {
-    title: string;
-    body: string;
-  }[];
-};
+export type { Project, RangePoint } from "./types";
 
-export const rangePoints: RangePoint[] = [
+export const rangePoints = [
   "systems",
   "data",
   "databases",
   "product",
   "people",
-];
+] satisfies readonly RangePoint[];
 
-export const projects: Project[] = [
+export const allProjects: readonly Project[] = [
   {
     slug: "ets-website",
     title: "ETS Website",
@@ -35,8 +22,9 @@ export const projects: Project[] = [
     summary:
       "A structured public website and CMS system designed around the people who publish, maintain, and find organizational information.",
     context: "Eastern Testing Services · IT internship",
-    status: "Under development · partially deployed",
-    visibility: "Private / sanitized",
+    stage: "Under development · partially deployed",
+    display: "featured",
+    visibility: "private-case-study",
     range: ["databases", "people"],
     technologies: ["Next.js", "React", "Payload CMS", "PostgreSQL"],
     proof:
@@ -73,8 +61,9 @@ export const projects: Project[] = [
     summary:
       "A role-scoped internal system for turning bounded HSEQ and medical-record workflows into auditable, transactional software.",
     context: "Eastern Testing Services · IT internship",
-    status: "Under development · partially deployed",
-    visibility: "Private / sanitized",
+    stage: "Under development · partially deployed",
+    display: "featured",
+    visibility: "private-case-study",
     range: ["databases", "people"],
     technologies: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle", "Zod"],
     proof:
@@ -111,15 +100,16 @@ export const projects: Project[] = [
     summary:
       "A hands-free Snake game controlled by deliberate head movement through an ordinary webcam.",
     context: "Public project · collaborator credited",
-    status: "Versioned releases available",
-    visibility: "Public",
+    stage: "Versioned releases available",
+    display: "supporting",
+    visibility: "public",
     range: ["data", "people"],
     technologies: ["Python", "OpenCV", "MediaPipe", "NumPy", "Pillow"],
     proof:
       "Calibration, smoothed face-center ratios, neutral re-arm behavior, fallback controls, release tags, and focused tests are present in the public repository.",
     limitation:
       "The exact contribution split with Shifa Zeeshan still requires confirmation; no sole-authorship claim is made.",
-    href: "https://github.com/umrndem/snakinesis",
+    repositoryUrl: "https://github.com/umrndem/snakinesis",
     sections: [
       {
         title: "The interaction problem",
@@ -150,15 +140,16 @@ export const projects: Project[] = [
     summary:
       "An end-to-end Streamlit analytics dashboard spanning ingestion, transformation, business KPIs, visualization, export, and a forecasting path.",
     context: "Public project",
-    status: "Early project · validation needed",
-    visibility: "Public",
+    stage: "Early project · validation needed",
+    display: "supporting",
+    visibility: "public",
     range: ["data", "product"],
     technologies: ["Python", "Pandas", "Streamlit", "Plotly", "Prophet"],
     proof:
       "The public source separates pages, services, pipeline steps, configuration, and tests, including a direct KPI test.",
     limitation:
       "Forecast quality, model comparison, data provenance, deployment, and role enforcement are not verified.",
-    href: "https://github.com/umrndem/DataPulse",
+    repositoryUrl: "https://github.com/umrndem/DataPulse",
     sections: [
       {
         title: "The product shape",
@@ -189,15 +180,16 @@ export const projects: Project[] = [
     summary:
       "A compact Linux pipeline that coordinates processes, IPC, worker threads, and aggregation to turn tick CSV records into per-symbol summaries.",
     context: "Public technical project",
-    status: "Compact academic-style system",
-    visibility: "Public",
+    stage: "Compact academic-style system",
+    display: "supporting",
+    visibility: "public",
     range: ["systems", "data"],
     technologies: ["C++17", "POSIX IPC", "pthreads", "Make"],
     proof:
       "The implementation contains fork/exec orchestration, FIFO and shared memory, named semaphores, a bounded queue, worker threads, signal handling, cleanup, and VWAP aggregation.",
     limitation:
       "Course context, benchmarks, large-data behavior, and automated tests remain unverified.",
-    href: "https://github.com/umrndem/financial-tick-data-pipeline",
+    repositoryUrl: "https://github.com/umrndem/financial-tick-data-pipeline",
     sections: [
       {
         title: "The topology",
@@ -223,15 +215,14 @@ export const projects: Project[] = [
   },
 ];
 
-export const profile = {
-  name: "Muhammad Umar Nadeem",
-  shortName: "Umar",
-  location: "Islamabad, Pakistan",
-  email: "umrndem@gmail.com",
-  github: "https://github.com/umrndem",
-  linkedin: "https://www.linkedin.com/in/umrndem/",
-  instagram: "https://www.instagram.com/umrndem/",
-  degree: "BS Data Science · FAST NUCES, Islamabad",
-  graduation: "Expected June 2028",
-  cgpa: "3.42 / 4.00",
+export const visibilityLabels: Record<ProjectVisibility, string> = {
+  public: "Public",
+  "private-case-study": "Private / sanitized",
+  confidential: "Confidential / not published",
 };
+
+// Hidden and confidential entries remain editable without generating public routes.
+export const projects = allProjects.filter(
+  (project) =>
+    project.display !== "hidden" && project.visibility !== "confidential",
+);

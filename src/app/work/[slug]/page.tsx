@@ -3,7 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { RangeLine } from "@/components/RangeLine";
 import { SiteFooter } from "@/components/SiteFooter";
-import { projects } from "@/content/portfolio";
+import {
+  projects,
+  visibilityLabels,
+} from "@/content/projects";
 
 type WorkPageProps = {
   params: Promise<{ slug: string }>;
@@ -26,6 +29,14 @@ export async function generateMetadata({
   return {
     title: project.title,
     description: project.summary,
+    alternates: {
+      canonical: `/work/${project.slug}`,
+    },
+    openGraph: {
+      title: project.title,
+      description: project.summary,
+      type: "article",
+    },
   };
 }
 
@@ -63,11 +74,11 @@ export default async function WorkPage({ params }: WorkPageProps) {
             </div>
             <div>
               <dt>Status</dt>
-              <dd>{project.status}</dd>
+              <dd>{project.stage}</dd>
             </div>
             <div>
               <dt>Visibility</dt>
-              <dd>{project.visibility}</dd>
+              <dd>{visibilityLabels[project.visibility]}</dd>
             </div>
           </dl>
 
@@ -119,8 +130,8 @@ export default async function WorkPage({ params }: WorkPageProps) {
                   <li key={technology}>{technology}</li>
                 ))}
               </ul>
-              {project.href ? (
-                <a className="button-link" href={project.href}>
+              {project.repositoryUrl ? (
+                <a className="button-link" href={project.repositoryUrl}>
                   View public repository <span aria-hidden="true">↗</span>
                 </a>
               ) : (

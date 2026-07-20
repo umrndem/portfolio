@@ -13,7 +13,7 @@ The dependency set is intentionally small. The initial site does not need a stat
 
 ## Content architecture
 
-All portfolio claims and project metadata live in `src/content/portfolio.ts`. Components render the model rather than embedding project copy across page files.
+Editable public content is split by responsibility in `src/content/`: profile and social links, navigation, homepage copy, projects, and global site settings. Shared types live beside those files. Components render these models instead of duplicating frequently edited copy or contact details.
 
 ## Asset status
 

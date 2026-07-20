@@ -1,5 +1,8 @@
 import Link from "next/link";
-import type { Project } from "@/content/portfolio";
+import {
+  visibilityLabels,
+  type Project,
+} from "@/content/projects";
 import { RangeLine } from "./RangeLine";
 
 type ProjectCardProps = {
@@ -20,7 +23,7 @@ export function ProjectCard({
           <span>{String(index + 1).padStart(2, "0")}</span>
           {project.eyebrow}
         </p>
-        <p>{project.visibility}</p>
+        <p>{visibilityLabels[project.visibility]}</p>
       </div>
 
       <div className="project-card__body">
@@ -38,7 +41,7 @@ export function ProjectCard({
           </div>
           <div>
             <dt>Status</dt>
-            <dd>{project.status}</dd>
+            <dd>{project.stage}</dd>
           </div>
         </dl>
       </div>

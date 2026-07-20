@@ -42,10 +42,8 @@ Color never encodes a claim without text or structure.
 - `SectionHeading`
 - `RangeLine`
 - `ProjectCard`
-- `EvidenceTag`
-- `PortraitPlaceholder`
-- `ExperienceEntry`
-- `CaseStudyLayout`
+- `ProfilePortrait`
+- `ThemeToggle`
 - `SiteFooter`
 
 Components encode content roles, not arbitrary visual variants.

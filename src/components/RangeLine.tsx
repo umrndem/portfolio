@@ -1,7 +1,7 @@
-import { rangePoints, type RangePoint } from "@/content/portfolio";
+import { rangePoints, type RangePoint } from "@/content/projects";
 
 type RangeLineProps = {
-  active?: [RangePoint, RangePoint];
+  active?: readonly [RangePoint, RangePoint];
   compact?: boolean;
 };
 
