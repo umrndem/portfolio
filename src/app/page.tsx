@@ -3,14 +3,28 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { RangeLine } from "@/components/RangeLine";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SiteFooter } from "@/components/SiteFooter";
+import { StructuredData } from "@/components/StructuredData";
 import { homeContent } from "@/content/home";
 import { sectionIds } from "@/content/navigation";
-import { profile } from "@/content/profile";
+import { profile, socialLinks } from "@/content/profile";
 import { projects } from "@/content/projects";
+import {
+  getSiteUrl,
+  siteSettings,
+} from "@/content/site-settings";
+import { buildPersonStructuredData } from "@/lib/structured-data";
 
 export default function Home() {
+  const structuredData = buildPersonStructuredData({
+    profile,
+    socialLinks,
+    siteUrl: getSiteUrl(),
+    description: siteSettings.description,
+  });
+
   return (
     <main id="main-content" tabIndex={-1}>
+      <StructuredData value={structuredData} />
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero__copy">
           <p className="kicker">{homeContent.hero.kicker}</p>

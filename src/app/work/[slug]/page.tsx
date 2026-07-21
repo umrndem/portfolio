@@ -37,6 +37,7 @@ export async function generateMetadata({
       title: project.title,
       description: project.summary,
       type: "article",
+      url: `/work/${project.slug}`,
     },
   };
 }
