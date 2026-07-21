@@ -1,10 +1,11 @@
 import { homeContent } from "@/content/home";
+import { sectionIds } from "@/content/navigation";
 import { profile, socialLinks } from "@/content/profile";
 import { siteSettings } from "@/content/site-settings";
 
 export function SiteFooter() {
   return (
-    <footer className="site-footer" id="contact">
+    <footer className="site-footer" id={sectionIds.contact}>
       <div className="site-footer__lead">
         <p className="kicker">{homeContent.footer.kicker}</p>
         <h2>

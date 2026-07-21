@@ -4,6 +4,7 @@ import { RangeLine } from "@/components/RangeLine";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SiteFooter } from "@/components/SiteFooter";
 import { homeContent } from "@/content/home";
+import { sectionIds } from "@/content/navigation";
 import { profile } from "@/content/profile";
 import { projects } from "@/content/projects";
 
@@ -18,7 +19,7 @@ export default function Home() {
             I’m {profile.shortName}, {homeContent.hero.introduction}
           </p>
           <div className="hero__actions">
-            <a className="button-link" href="#work">
+            <a className="button-link" href={`#${sectionIds.work}`}>
               {homeContent.hero.primaryAction} <span aria-hidden="true">↓</span>
             </a>
             <a className="text-link" href={`mailto:${profile.email}`}>
@@ -47,7 +48,11 @@ export default function Home() {
         <RangeLine />
       </section>
 
-      <section className="work-section" id="work" aria-labelledby="work-title">
+      <section
+        className="work-section"
+        id={sectionIds.work}
+        aria-labelledby="work-title"
+      >
         <SectionHeading
           index={homeContent.work.index}
           title={homeContent.work.title}
@@ -89,7 +94,11 @@ export default function Home() {
         </article>
       </section>
 
-      <section className="approach-section" id="approach" aria-labelledby="approach-title">
+      <section
+        className="approach-section"
+        id={sectionIds.approach}
+        aria-labelledby="approach-title"
+      >
         <SectionHeading
           index={homeContent.approach.heading.index}
           title={homeContent.approach.heading.title}
@@ -110,7 +119,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="about-section" id="about" aria-labelledby="about-title">
+      <section
+        className="about-section"
+        id={sectionIds.about}
+        aria-labelledby="about-title"
+      >
         <SectionHeading
           index={homeContent.about.heading.index}
           title={homeContent.about.heading.title}

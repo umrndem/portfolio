@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ContentImage } from "@/components/ContentImage";
 import { RangeLine } from "@/components/RangeLine";
 import { SiteFooter } from "@/components/SiteFooter";
 import {
@@ -98,6 +99,22 @@ export default async function WorkPage({ params }: WorkPageProps) {
             </p>
           </div>
         </aside>
+
+        {project.gallery?.length ? (
+          <section
+            className="case-study__gallery"
+            aria-label={`${project.title} project media`}
+          >
+            {project.gallery.map((asset) => (
+              <ContentImage
+                asset={asset}
+                className="case-study__media"
+                key={asset.src}
+                sizes="(max-width: 960px) 100vw, 42rem"
+              />
+            ))}
+          </section>
+        ) : null}
 
         <div className="case-study__content">
           <nav aria-label="Case study sections">

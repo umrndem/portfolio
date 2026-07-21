@@ -3,6 +3,7 @@ import {
   visibilityLabels,
   type Project,
 } from "@/content/projects";
+import { ContentImage } from "./ContentImage";
 import { RangeLine } from "./RangeLine";
 
 type ProjectCardProps = {
@@ -45,6 +46,14 @@ export function ProjectCard({
           </div>
         </dl>
       </div>
+
+      {project.coverImage ? (
+        <ContentImage
+          asset={project.coverImage}
+          className="project-card__media"
+          sizes="(max-width: 960px) 100vw, 82rem"
+        />
+      ) : null}
 
       <RangeLine active={project.range} compact />
 
