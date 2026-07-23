@@ -35,7 +35,8 @@ npm run dev               # local development server
 npm run lint              # ESLint and Next.js rules
 npm run typecheck         # TypeScript without emitting files
 npm run validate:content  # content, URL, visibility, and asset checks
-npm test                  # current content-integrity test suite
+npm run validate:docs     # maintenance links, paths, and command checks
+npm test                  # content and documentation integrity suite
 npm run build             # production build and static route generation
 npm run start             # serve the production build
 npm run check             # lint + types + tests + production build

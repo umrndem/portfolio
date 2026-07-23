@@ -145,8 +145,8 @@ Product/craft:
 
 ## Known technical debt and deliberate limits
 
-- Automated tests cover content integrity only; there is no unit,
-  integration, visual-regression, or end-to-end suite.
+- Automated tests cover content/asset integrity and documentation paths only;
+  there is no unit, integration, visual-regression, or end-to-end suite.
 - `next/font/google` may require network access on an uncached production build.
 - No redirect map exists for changed project slugs.
 - Project sections support a title plus one body paragraph; richer blocks should

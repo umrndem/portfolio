@@ -32,7 +32,7 @@ The implementation includes concise AI-assisted practice language and explicit p
 
 - `npm run lint` — pass.
 - `npm run typecheck` — pass.
-- `npm test` / `npm run validate:content` — pass; five projects, three social links, visibility rules, URLs, and referenced public assets validated.
+- `npm test` — pass; content/assets plus maintenance documentation links, required paths, and package commands validated.
 - `npm run build` — pass; homepage, five static case-study routes, icon/social image, sitemap, and robots routes produced.
 - `npm audit --omit=dev` — zero known vulnerabilities after narrow patched overrides for transitive PostCSS and Sharp releases.
 - Browser route check — homepage, five case studies, 404, icon, and Open Graph image resolve.

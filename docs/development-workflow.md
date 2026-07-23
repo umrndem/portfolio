@@ -140,9 +140,9 @@ literal state. Keep `strict` TypeScript enabled.
 npm test
 ```
 
-The current automated test suite is the content-integrity/asset validation
-command. There is no unit, integration, or end-to-end framework yet. Do not claim
-broader automated coverage.
+The current automated test suite runs content/asset validation plus maintenance
+documentation link/path/command validation. There is no unit, integration, or
+end-to-end framework yet. Do not claim broader automated coverage.
 
 If future behavior warrants real automated tests, add the smallest suitable
 runner and update this guide, `README.md`, `package.json`, and the handoff.
