@@ -6,6 +6,7 @@
 - React
 - TypeScript
 - Plain CSS with design tokens
+- Typed repository content with a lightweight `tsx` validation command
 
 The dependency set is intentionally small. The initial site does not need a state library, animation package, CMS, analytics, 3D library, or component framework.
 
@@ -31,7 +32,8 @@ The implementation includes concise AI-assisted practice language and explicit p
 
 - `npm run lint` — pass.
 - `npm run typecheck` — pass.
-- `npm run build` — pass; homepage, generated icon/social image, and five static case-study routes produced.
+- `npm test` / `npm run validate:content` — pass; five projects, three social links, visibility rules, URLs, and referenced public assets validated.
+- `npm run build` — pass; homepage, five static case-study routes, icon/social image, sitemap, and robots routes produced.
 - `npm audit --omit=dev` — zero known vulnerabilities after narrow patched overrides for transitive PostCSS and Sharp releases.
 - Browser route check — homepage, five case studies, 404, icon, and Open Graph image resolve.
 - Viewports — 1440 × 1000, 768 × 1024, and 390 × 844 checked; no horizontal overflow.

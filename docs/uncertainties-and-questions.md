@@ -1,33 +1,49 @@
-# Uncertainties and high-priority questions
+# Current uncertainties and decisions
 
-Only questions that materially affect future portfolio accuracy are listed.
+Only unresolved items that still affect the live portfolio are retained here.
+Do not reopen questions already resolved by `portfolio-source-of-truth.md`.
 
 ## Identity and education
 
-- What name, pronouns, location, graduation timing, and contact links should be public?
-- Which courses or academic areas should be represented, and are RideFlow and the financial pipeline coursework?
-- Is there a GPA, award, publication, competition, or society that you want considered and can verify?
+- Is the current academic description third year/fifth semester or fourth year?
+  Continue omitting year/semester until Umar resolves the conflict.
+- Should the verified CGPA remain on the homepage or move to résumé/education
+  detail after final review?
+- Should the approved phone number remain résumé-only?
 
-## Employment and responsibility
+## Assets
 
-- What was your relationship to Eastern Testing Services, and may ETS Website or Sentinel be discussed publicly?
-- For each private project, which parts did you personally design, implement, document, deploy, or maintain?
-- Were you working alone, with a team, or with AI-assisted implementation? What authorship wording do you want for the future portfolio?
+- Which profile photograph is approved for public use?
+- Is the final résumé approved, and which personal details should it contain?
+- Which ETS Website/Sentinel screenshots or abstract diagrams have explicit
+  publication approval?
+- Is a sanitized Snakinesis demo video available?
 
-## Project outcomes
+## Project emphasis and authorship
 
-- Which projects are actively used, deployed, demonstrated to real users, or only coursework/prototypes?
-- Are RideFlow’s Railway demo and DataPulse’s deployment still live and safe to show?
-- Do you have verified metrics, evaluation results, or user feedback for any project? If not, none should be added.
+- Should ETS Website or Sentinel remain the lead professional story?
+- What are the confirmed contribution splits for Snakinesis, RideFlow, and
+  Movies Data Manager?
+- Does DataPulse have a reproducible safe dataset and honest forecast evaluation
+  strong enough for a larger data-science treatment?
+- What course/assessment context, if any, may be stated for the financial
+  pipeline and RideFlow?
 
-## Public assets and confidentiality
+## Voice and direction
 
-- Which screenshots, diagrams, URLs, or recordings are safe to publish for ETS and Sentinel?
-- Are there client, employee, customer, or internal operational details that must never appear even in an abstracted case study?
-- Should The Matootoo Project remain entirely private? The current evidence strongly suggests yes.
+- Should the final voice be more playful, more technical, or remain restrained?
+- Which role audience is primary after the next career decision: software, data
+  systems, applied data science, or a balanced early-career audience?
+- Does the technical range read clearly as project coverage rather than a skill
+  score?
 
-## Direction
+## Deployment
 
-- What roles are you pursuing: data science, data engineering, full-stack engineering, product engineering, or another direction?
-- Which audience matters most: recruiters, graduate programs, collaborators, clients, or a general audience?
-- Which two or three projects do you personally want the portfolio to be remembered for?
+- Which hosting provider, source remote, production branch, and domain are
+  approved?
+- Should preview deployments be access-restricted while professional content is
+  under review?
+- Who owns production deployment and rollback authorization?
+
+Resolved decisions belong in the source of truth/content files. Workflow or
+architectural decisions belong in `docs/decisions.md`.

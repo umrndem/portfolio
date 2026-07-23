@@ -1,20 +1,29 @@
 # Portfolio content map
 
-This is a factual map for a later design phase, not a site specification.
+This is the current bridge between approved facts/evidence and the live content
+modules. For editing steps, use `docs/content-management.md`.
 
-| Possible section | Verified material available | Missing / misleading if invented | Supporting evidence |
+| Visible area | Current source | Evidence/publication boundary | Remaining input |
 |---|---|---|---|
-| Introduction | Name, fourth-year Data Science student, FAST NUCES Islamabad (user-provided) | GPA, graduation date, title, slogan, employment claims | User request context |
-| Current focus | Evidence of full-stack data systems, analytics, computer vision, and systems programming | “AI engineer,” “ML expert,” or production-scale identity | Developer profile and skills map |
-| Selected work | ETS, Sentinel, DataPulse, Snakinesis, RideFlow, financial pipeline | Public screenshots for private work; unverified metrics | Project selection |
-| Case studies | Architecture and contribution evidence for ETS/Sentinel; pipeline/control evidence for public projects | Business outcomes, users, deployment, exact team roles | Research notes |
-| Data science | DataPulse ingestion/KPIs/forecast path; some aggregation and computer vision | Forecast accuracy, research novelty, commercial impact | DataPulse note |
-| Engineering | Sentinel workflow/security, ETS CMS, C++ IPC, RideFlow SQL | Seniority or production scale | Skills map |
-| Academic context | Fourth-year FAST NUCES Islamabad context | Courses, GPA, awards, dates | User confirmation needed |
-| Experience | Repository activity and possible professional/private projects | Employer titles, dates, responsibilities, client names | Questions document |
-| Development philosophy | Evidence of iterative commits and architecture documentation | Personal values or polished slogans not supplied by Umar | Ask user later |
-| Contact / profiles | GitHub profile URL can be linked | Email promotion, LinkedIn, CV, availability | User confirmation needed |
+| Introduction | `src/content/home.ts` + `src/content/profile.ts` | Name, location, degree direction, C++ foundation, and transparent AI-assisted practice are approved/evidence-backed | Final voice review |
+| Current experience | `src/content/home.ts` | ETS internship dates/responsibilities remain qualitative and bounded | Confirm future role/status changes |
+| Technical range | `src/content/projects.ts` | Conceptual systems → people axis, not a proficiency score | Visitor comprehension review |
+| Selected work | `src/content/projects.ts` | ETS Website, Sentinel, Snakinesis, DataPulse, Financial Tick Data Pipeline | Final lead choice; approved media |
+| Case studies | Each project’s `sections` | Proof and limitation are both required; private work is sanitized | Contribution splits and public-safe artifacts |
+| Approach | `src/content/home.ts` | AI assistance and human responsibility stated directly | Final tone review |
+| Education | `src/content/profile.ts` + `src/content/home.ts` | BS Data Science, expected June 2028, verified 3.42/4.00, selected coursework | Academic year/semester remains omitted |
+| Contact/socials | `src/content/profile.ts` | Approved email and profiles; phone intentionally absent from primary site | Approved résumé and phone-placement decision |
+| Profile media | `src/content/profile.ts` | Designed placeholder until an approved public photograph exists | Approved portrait |
+| Metadata | `src/content/site-settings.ts` + route content | Same claims as visible copy; no separate SEO inflation | Production origin/domain |
 
-## Content to avoid
+## Content excluded
 
-Avoid generic “passionate developer” copy, copied README marketing language, unsupported metrics, unapproved private-project details, and a gallery of every repository without selection logic.
+- Matootoo relationship/private archive material;
+- private source, internal records, credentials, operational detail, and
+  unapproved professional media;
+- unsupported metrics, users, outcomes, production scale, awards, or expertise;
+- academic year/semester until the conflict is resolved;
+- contribution claims that exceed confirmed collaboration evidence.
+
+`portfolio-source-of-truth.md` is the canonical human profile.
+`docs/privacy-and-publication.md` is the mandatory publication gate.

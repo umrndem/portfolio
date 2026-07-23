@@ -4,7 +4,7 @@ This is an analytical profile, not final website copy. Claims are separated into
 
 ## Academic context
 
-User-provided context identifies Muhammad Umar Nadeem as a fourth-year Data Science student at FAST NUCES Islamabad Campus. No GPA, graduation date, awards, societies, publications, or course list was verified and none is claimed here.
+The approved source of truth identifies Muhammad Umar Nadeem as a BS Data Science student at FAST NUCES Islamabad Campus, with expected graduation in June 2028 and a verified CGPA of 3.42/4.00. It also records strong results in core computing and mathematics courses. Academic year/semester remains omitted because the supplied descriptions conflict. No Dean’s List placement, scholarship, award, publication, or society leadership is claimed.
 
 ## Technical identity
 
@@ -63,4 +63,4 @@ The clearest depth appears in Sentinel’s transactional workflow and authorizat
 
 ## Recommended positioning
 
-Position the future portfolio around “building data-informed software systems from interface to database.” Lead with one professional/private-safe web system, one analytics project, and one distinctive interaction or systems project. Keep claims grounded in what was implemented, label private work, and do not imply seniority, research expertise, production scale, or business impact without additional evidence.
+The current portfolio positions Umar around building data-informed software systems from interface to database. It leads with private-safe professional systems and supports them with analytics, interaction, and systems evidence. Keep claims grounded in implementation, label private work, and do not imply seniority, research expertise, production scale, or business impact without additional evidence.
