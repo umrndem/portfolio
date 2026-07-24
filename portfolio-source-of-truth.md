@@ -99,10 +99,9 @@ quality; role-enforcement depth.
 |---|---|---|
 | Core stack | Express, JavaScript, MySQL | repository-verified / user-verified |
 | Deployment & services | Railway, Aiven MySQL | user-verified |
-| Infrastructure note | Deployed through Railway with an Aiven-managed MySQL database. | user-verified |
+| Infrastructure note | Previously deployed through Railway with Aiven-managed MySQL. Hosted demo not currently active; repo still supports a fresh MySQL bootstrap and a new local or hosted instance. | user-verified / repository-verified |
 
-Unresolved: contribution split; whether the Railway demo remains live; course
-context; publishable demo URL.
+Unresolved: contribution split; course context; whether any specific demo URL may be republished. Hosted-demo inactivity is user-verified; the fresh-start database/init path is repository-verified from the public README and SQL setup files.
 
 ### Other published projects
 

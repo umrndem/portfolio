@@ -41,11 +41,14 @@ Do not reopen questions already resolved by `portfolio-source-of-truth.md`.
 ## Project deployments (remaining)
 
 Project platforms and services for ETS Website, Sentinel, DataPulse, and RideFlow
-are user-verified in the source of truth. The following remain unresolved:
+are user-verified in the source of truth. RideFlow’s hosted demo is user-verified
+as not currently active, while its fresh-start database/init path remains in the
+public repository. The following remain unresolved:
 
-- whether those deployments are still live;
+- whether ETS, Sentinel, and DataPulse deployments remain live;
 - which deployment URLs may be published;
-- whether any business outcomes may be claimed from the deployed systems.
+- whether any business outcomes may be claimed from the deployed systems;
+- whether any RideFlow demo URL may be republished later.
 
 ## Portfolio site hosting
 

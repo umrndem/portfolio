@@ -157,7 +157,7 @@ export const allProjects: readonly Project[] = [
     summary:
       "A multi-role ride-hailing simulation with Express APIs, MySQL business rules, and rider, driver, and admin surfaces.",
     context: "Public project · collaborative academic context",
-    stage: "Public prototype · previously deployed",
+    stage: "Public prototype · not currently active",
     display: "supporting",
     visibility: "public",
     range: ["databases", "product"],
@@ -165,11 +165,11 @@ export const allProjects: readonly Project[] = [
     deployment: ["Railway", "Aiven"],
     homepageTechnologies: ["Express", "JavaScript", "MySQL", "Railway"],
     infrastructureNote:
-      "Deployed through Railway with an Aiven-managed MySQL database.",
+      "Previously deployed through Railway with an Aiven-managed MySQL database. The hosted demo is not currently active; the repository still supports initializing a fresh database and bringing up a new instance.",
     proof:
       "The public repository includes Express routes, MySQL schema and database-side logic, and role-oriented frontend surfaces for a ride-hailing simulation.",
     limitation:
-      "Contribution split with collaborators still requires confirmation. Current live availability of the Railway demo is unresolved; no production-scale or commercial impact is claimed.",
+      "The hosted demo is not currently active. Contribution split with collaborators still requires confirmation; no production-scale or commercial impact is claimed.",
     repositoryUrl: "https://github.com/umrndem/rideflow",
     sections: [
       {
@@ -185,12 +185,12 @@ export const allProjects: readonly Project[] = [
       {
         title: "Deployment practice",
         body:
-          "The project was deployed through Railway with an Aiven-managed MySQL database, which is useful evidence of connecting an application to hosted infrastructure without claiming production operations expertise.",
+          "The project was previously deployed through Railway with an Aiven-managed MySQL database, which is useful evidence of connecting an application to hosted infrastructure without claiming production operations expertise.",
       },
       {
-        title: "Known limits",
+        title: "Current status",
         body:
-          "Authorship boundaries still need clarification, and the portfolio does not claim that a demo remains live or that the system was operated at commercial scale.",
+          "The hosted demo is not currently active. The repository remains usable as a fresh start: schema, business-logic, and bootstrap SQL—or the bundled database-init script—can stand up a clean MySQL database with the admin account and location graph, after which a new local or hosted Express instance can be run against that database.",
       },
     ],
   },
