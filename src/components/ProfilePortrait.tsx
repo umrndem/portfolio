@@ -42,8 +42,17 @@ export function ProfilePortrait({
         )}
       </div>
       <figcaption>
-        <span>{asset ? "Profile portrait" : placeholder.title}</span>
-        {asset?.caption ?? (asset ? `${name} · ${location}` : placeholder.note)}
+        {asset ? (
+          <>
+            <span>{name}</span>
+            {location}
+          </>
+        ) : (
+          <>
+            <span>{placeholder.title}</span>
+            {placeholder.note}
+          </>
+        )}
       </figcaption>
     </figure>
   );

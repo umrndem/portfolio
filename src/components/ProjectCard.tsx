@@ -64,7 +64,7 @@ export function ProjectCard({
           ))}
         </ul>
         <Link className="text-link" href={`/work/${project.slug}`}>
-          Read the working proof <span aria-hidden="true">↗</span>
+          Read case study <span aria-hidden="true">↗</span>
         </Link>
       </div>
     </article>

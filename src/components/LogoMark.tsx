@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 
 type LogoMarkProps = {
@@ -8,7 +9,7 @@ type LogoMarkProps = {
 // collapses as soon as the pointer leaves — no persisted expanded state.
 export function LogoMark({ label }: LogoMarkProps) {
   return (
-    <Link className="site-header__mark" href="/" aria-label={label}>
+    <Link className="site-header__mark" href="/" aria-label={label} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
       <span
         className="site-header__mark-fixed site-header__mark-fixed--red"
         aria-hidden="true"

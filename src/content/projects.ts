@@ -18,7 +18,7 @@ export const allProjects: readonly Project[] = [
   {
     slug: "ets-website",
     title: "ETS Website",
-    eyebrow: "Professional work · Lead candidate",
+    eyebrow: "Professional work",
     summary:
       "A structured public website and CMS system designed around the people who publish, maintain, and find organizational information.",
     context: "Eastern Testing Services · IT internship",
@@ -57,9 +57,9 @@ export const allProjects: readonly Project[] = [
   {
     slug: "sentinel",
     title: "Sentinel",
-    eyebrow: "Professional work · Technical flagship candidate",
+    eyebrow: "Professional work",
     summary:
-      "A role-scoped internal system for turning bounded HSEQ and medical-record workflows into auditable, transactional software.",
+      "An internal system for managing HSEQ reports and medical-record workflows with role-based access, audit history, and transactional updates.",
     context: "Eastern Testing Services · IT internship",
     stage: "Under development · partially deployed",
     display: "featured",
@@ -96,11 +96,11 @@ export const allProjects: readonly Project[] = [
   {
     slug: "snakinesis",
     title: "Snakinesis",
-    eyebrow: "Computer vision · Interaction",
+    eyebrow: "Computer vision",
     summary:
       "A hands-free Snake game controlled by deliberate head movement through an ordinary webcam.",
     context: "Public project · collaborator credited",
-    stage: "Versioned releases available",
+    stage: "Public release available",
     display: "supporting",
     visibility: "public",
     range: ["data", "people"],
@@ -136,11 +136,11 @@ export const allProjects: readonly Project[] = [
   {
     slug: "datapulse",
     title: "DataPulse",
-    eyebrow: "Analytics · Data product",
+    eyebrow: "Analytics",
     summary:
       "An end-to-end Streamlit analytics dashboard spanning ingestion, transformation, business KPIs, visualization, export, and a forecasting path.",
     context: "Public project",
-    stage: "Early project · validation needed",
+    stage: "Public prototype",
     display: "supporting",
     visibility: "public",
     range: ["data", "product"],
@@ -176,11 +176,11 @@ export const allProjects: readonly Project[] = [
   {
     slug: "financial-tick-pipeline",
     title: "Financial Tick Data Pipeline",
-    eyebrow: "C++ · Operating systems",
+    eyebrow: "C++ and operating systems",
     summary:
       "A compact Linux pipeline that coordinates processes, IPC, worker threads, and aggregation to turn tick CSV records into per-symbol summaries.",
     context: "Public technical project",
-    stage: "Compact academic-style system",
+    stage: "Completed academic project",
     display: "supporting",
     visibility: "public",
     range: ["systems", "data"],
@@ -216,8 +216,8 @@ export const allProjects: readonly Project[] = [
 ];
 
 export const visibilityLabels: Record<ProjectVisibility, string> = {
-  public: "Public",
-  "private-case-study": "Private / sanitized",
+  public: "Public project",
+  "private-case-study": "Private repository · confidential details omitted",
   confidential: "Confidential / not published",
 };
 

@@ -166,7 +166,7 @@ export default async function WorkPage({ params }: WorkPageProps) {
         </div>
 
         <footer className="case-study__next">
-          <p className="kicker">Next working proof</p>
+          <p className="kicker">Next project</p>
           <Link href={`/work/${nextProject.slug}`}>
             <span>{nextProject.title}</span>
             <span aria-hidden="true">↗</span>
