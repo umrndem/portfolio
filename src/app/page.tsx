@@ -4,6 +4,7 @@ import { RangeLine } from "@/components/RangeLine";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StructuredData } from "@/components/StructuredData";
+import { TypingHeadline } from "@/components/TypingHeadline";
 import { homeContent } from "@/content/home";
 import { sectionIds } from "@/content/navigation";
 import { profile, socialLinks } from "@/content/profile";
@@ -28,7 +29,7 @@ export default function Home() {
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero__copy">
           <p className="kicker">{homeContent.hero.kicker}</p>
-          <h1 id="hero-title">{homeContent.hero.title}</h1>
+          <TypingHeadline id="hero-title" text={homeContent.hero.title} />
           <p className="hero__intro">
             I’m {profile.shortName}, {homeContent.hero.introduction}
           </p>
@@ -47,7 +48,10 @@ export default function Home() {
           location={profile.location}
           placeholder={homeContent.hero.portraitPlaceholder}
         />
-        <div className="hero__aside">
+      </section>
+
+      <section className="current-section" aria-label={homeContent.hero.currentLabel}>
+        <div className="current-section__inner">
           <p>{homeContent.hero.currentLabel}</p>
           <p>{homeContent.hero.current}</p>
         </div>
