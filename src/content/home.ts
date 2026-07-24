@@ -1,7 +1,7 @@
 export const homeContent = {
   hero: {
     kicker: "Islamabad · Data Science · Software systems",
-    title: "I turn unclear problems into systems I can explain.",
+    title: "I turn complexity into clarity.",
     introduction:
       "a Data Science student with a strong C++ foundation. I work across data, databases, and product software—using agentic AI heavily, transparently, and with responsibility for the decisions and outcomes.",
     primaryAction: "See selected work",

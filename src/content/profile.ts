@@ -9,7 +9,12 @@ export const profile = {
   graduation: "Expected June 2028",
   cgpa: "3.42 / 4.00",
   // Add approved public assets only. See docs/assets-guide.md before setting these.
-  portrait: undefined,
+  portrait: {
+    src: "/images/profile/umr-picture.jpg",
+    alt: "Muhammad Umar Nadeem seated on a rock at night above the Islamabad city lights",
+    width: 1712,
+    height: 2140,
+  },
   resumePath: undefined,
 } satisfies Profile;
 

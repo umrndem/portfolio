@@ -30,6 +30,7 @@ export function ProfilePortrait({
             alt={asset.alt}
             fill
             priority
+            unoptimized
             sizes="(max-width: 640px) 100vw, (max-width: 960px) 42vw, 24rem"
           />
         ) : (
