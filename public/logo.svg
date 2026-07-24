@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57 38" role="img" aria-label="U/N">
+  <title>U/N</title>
+  <style>
+    .n { fill: #1b1817; }
+    @media (prefers-color-scheme: dark) { .n { fill: #f4f1ef; } }
+  </style>
+  <text y="30" font-family="'IBM Plex Mono', ui-monospace, 'Courier New', monospace" font-size="40" font-weight="700">
+    <tspan x="0" fill="#e5120e">U</tspan>
+  </text>
+  <path d="M23 30 27.5 2 32 2 27.5 30Z" fill="#8f8783" />
+  <text y="30" font-family="'IBM Plex Mono', ui-monospace, 'Courier New', monospace" font-size="40" font-weight="700">
+    <tspan x="32" class="n">N</tspan>
+  </text>
+</svg>
