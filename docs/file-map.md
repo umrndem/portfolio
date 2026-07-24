@@ -33,7 +33,7 @@ framework files are intentionally not documented line by line.
 
 | Path | Visible effect | Edit when | Relationships and cautions |
 |---|---|---|---|
-| `src/app/layout.tsx` | HTML shell, fonts, global metadata, theme bootstrap, header, skip link | Site-wide shell or metadata changes | Theme bootstrap must remain before paint |
+| `src/app/layout.tsx` | HTML shell, fonts, global metadata, pre-paint browser-state bootstraps, header, skip link | Site-wide shell or metadata changes | Theme and logo bootstraps must remain before paint |
 | `src/app/page.tsx` | Homepage section composition | Adding/removing/reordering major sections | Normal copy belongs in `src/content/home.ts` |
 | `src/app/work/[slug]/page.tsx` | Every project case-study route and route metadata | Case-study presentation or route-level metadata changes | Routes derive only from filtered `projects` |
 | `src/app/opengraph-image.tsx` | Default generated social preview | Social-image composition changes | Values must stay public-safe; palette hex values mirror the CSS identity |
@@ -50,6 +50,8 @@ framework files are intentionally not documented line by line.
 | Path | Responsibility | Edit when | Keep out |
 |---|---|---|---|
 | `src/components/SiteHeader.tsx` | Shared mark, navigation, theme toggle, availability | Header structure changes | Duplicate navigation/contact data |
+| `src/components/LogoMark.tsx` | Interactive expandable logo and outside-tap collapse | Logo interaction changes | Brand colors and pre-paint persistence logic |
+| `src/components/TypingHeadline.tsx` | Accessible character reveal for the homepage headline | Hero typing behavior changes | Homepage copy |
 | `src/components/SiteFooter.tsx` | Shared contact, socials, optional résumé, authorship | Footer structure changes | Duplicate profile/social values |
 | `src/components/ThemeToggle.tsx` | Client-side theme switching and state accessibility | Theme interaction changes | Palette values |
 | `src/components/ProfilePortrait.tsx` | Approved portrait or fallback placeholder | Rendering/crop behavior changes | Profile asset path or public copy |
@@ -64,6 +66,7 @@ framework files are intentionally not documented line by line.
 | Path | Responsibility | Edit when | Relationships |
 |---|---|---|---|
 | `src/systems/theme.ts` | Theme type, storage key, pre-paint bootstrap | Persistence or initial-theme logic changes | Used by layout and `ThemeToggle` |
+| `src/systems/logo-mark.ts` | Logo storage key and pre-paint expanded-state bootstrap | Logo persistence changes | Used by layout and `LogoMark` |
 | `src/lib/structured-data.ts` | Builds public Person JSON-LD | Structured-data fields change | Inputs come from profile/social/site settings |
 | `scripts/validate-content.ts` | CLI entry for content and asset checks | Validation inputs or file checks change | Runs through `npm run validate:content` and `npm test` |
 

@@ -101,6 +101,8 @@ Core layout variables:
 
 - Desktop sections use a 12-column grid.
 - The content maximum is 1440px (`90rem`).
+- The homepage hero occupies at least the viewport below the sticky header and
+  ends before the separately bordered “Currently” strip.
 - Section spacing is intentionally generous and fluid.
 - Common gaps are based on roughly 8px increments but may use fluid values.
 - At 960px, major grids simplify while retaining multi-column hierarchy.
@@ -176,6 +178,8 @@ focus in both themes.
 - Theme/surface transitions: 240ms.
 - Theme-disc rotation: 320ms.
 - Range reveal: 560ms.
+- The multiline hero headline types on once, character by character, without
+  changing its final layout. Supporting labels remain static.
 
 Motion is limited to opacity/color/transform-like feedback and the range
 progression. There is no animation library. The

@@ -55,6 +55,7 @@ RootLayout
 ├── SiteHeader
 ├── /                              homepage
 │   ├── hero
+│   ├── current work
 │   ├── technical range
 │   ├── selected projects
 │   ├── experience
@@ -135,7 +136,8 @@ separate file.
 - `SiteHeader` renders navigation, theme control, and availability.
 - `SiteFooter` renders the contact action, social links, optional résumé, and
   authorship note.
-- `ThemeToggle` is the only interactive client component.
+- `ThemeToggle` and `LogoMark` are the small interactive client components in
+  the site shell.
 
 ### Content display
 
@@ -167,6 +169,10 @@ all components
 `ThemeToggle` updates the root attribute, native `color-scheme`, persisted value,
 and `aria-pressed`. CSS provides the light fallback if JavaScript or storage is
 unavailable.
+
+`src/systems/logo-mark.ts` similarly restores the logo’s short-lived expanded
+state before paint. `LogoMark` mirrors that root attribute in React, persists it
+through home navigation, and clears both representations after an outside tap.
 
 See `docs/theme-maintenance.md` before changing this flow.
 
