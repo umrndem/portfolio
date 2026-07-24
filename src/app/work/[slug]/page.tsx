@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ContentImage } from "@/components/ContentImage";
 import { RangeLine } from "@/components/RangeLine";
 import { SiteFooter } from "@/components/SiteFooter";
+import { TechnologyBadge } from "@/components/TechnologyBadge";
 import {
   projects,
   visibilityLabels,
@@ -148,7 +149,7 @@ export default async function WorkPage({ params }: WorkPageProps) {
               <h2>Technical notes</h2>
               <ul>
                 {project.technologies.map((technology) => (
-                  <li key={technology}>{technology}</li>
+                  <li key={technology}><TechnologyBadge name={technology} vertical /></li>
                 ))}
               </ul>
               {project.repositoryUrl ? (

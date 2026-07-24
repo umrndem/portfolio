@@ -184,7 +184,7 @@ export const allProjects: readonly Project[] = [
     display: "supporting",
     visibility: "public",
     range: ["systems", "data"],
-    technologies: ["C++17", "POSIX IPC", "pthreads", "Make"],
+    technologies: ["C++17", "POSIX IPC", "pthreads", "CMake"],
     proof:
       "The implementation contains fork/exec orchestration, FIFO and shared memory, named semaphores, a bounded queue, worker threads, signal handling, cleanup, and VWAP aggregation.",
     limitation:

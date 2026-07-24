@@ -5,6 +5,7 @@ import {
 } from "@/content/projects";
 import { ContentImage } from "./ContentImage";
 import { RangeLine } from "./RangeLine";
+import { TechnologyBadge } from "./TechnologyBadge";
 
 type ProjectCardProps = {
   project: Project;
@@ -60,7 +61,7 @@ export function ProjectCard({
       <div className="project-card__footer">
         <ul aria-label={`${project.title} technologies`}>
           {project.technologies.map((technology) => (
-            <li key={technology}>{technology}</li>
+            <li key={technology}><TechnologyBadge name={technology} /></li>
           ))}
         </ul>
         <Link className="text-link" href={`/work/${project.slug}`}>
