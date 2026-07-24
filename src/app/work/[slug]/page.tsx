@@ -13,6 +13,9 @@ type WorkPageProps = {
   params: Promise<{ slug: string }>;
 };
 
+// Only publication-safe slugs generated below are valid project routes.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
 }
