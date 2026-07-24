@@ -24,7 +24,9 @@ framework files are intentionally not documented line by line.
 | `src/content/profile.ts` | Name, location, email, education, socials, portrait, résumé | Updating identity, contact, education, public profile media | Must agree with source of truth; referenced assets must exist in `public/` |
 | `src/content/navigation.ts` | Header links and canonical homepage section IDs | Adding/removing a top-level homepage section | Page/footer IDs consume `sectionIds`; validation rejects unknown targets |
 | `src/content/home.ts` | Hero, range explanation, work heading, experience, approach, about, footer copy | Normal homepage copy updates | Keep factual claims evidence-backed |
-| `src/content/projects.ts` | Project order, prominence, visibility, cards, case studies, repository links, media | Any project update | `projects` is the publication-safe filtered export; never bypass it in routes |
+| `src/content/projects.ts` | Project order, prominence, visibility, cards, case studies, core/deployment/integration tags, repository links, media | Any project update | `projects` is the publication-safe filtered export; never bypass it in routes. Homepage order also drives next-project links and positional card surfaces. |
+| `src/content/project-surfaces.ts` | Positional red→white / red→near-black card surface level and ink | Changing the Selected Work surface scale or ink rules | Surfaces are positional; never key colors to project names |
+| `src/content/technology-icons.ts` | Local SVG mapping for stack badges | Adding/changing a technology logo | Prefer exact display-name keys; validate files exist |
 | `src/content/site-settings.ts` | Global title, descriptions, availability label, authorship note, site origin | Branding/metadata copy or deployment origin behavior changes | `NEXT_PUBLIC_SITE_URL` remains the environment-specific origin |
 | `src/content/types.ts` | Shared content model | A real rendering/content requirement needs a new field | Update validation and both content guides at the same time |
 | `src/content/validation.ts` | Runtime rules protecting content and publication | The content model or privacy rules change | Keep errors specific; avoid weakening a rule just to pass invalid content |
@@ -78,7 +80,7 @@ framework files are intentionally not documented line by line.
 | `public/images/projects/` | Sanitized covers and case-study galleries | Adding approved project media | Never store internal/private screenshots |
 | `public/images/social/` | Optional static social previews | Replacing generated previews with files | Must be public-safe |
 | `public/documents/` | Approved downloadable PDFs | Adding/replacing résumé | Remove old versions; no private records |
-| `public/icons/` | Optional standalone public icons | A component references a public icon | Active favicon remains in `src/app/icon.svg` |
+| `public/icons/` | Optional standalone public icons and technology logos | A component references a public icon | Active favicon remains in `src/app/icon.svg`; technology marks live under `public/icons/technologies/` |
 | `public/README.md` | Asset-boundary reminder | Directory conventions change | No actual content references |
 
 ## Maintenance documentation
@@ -104,9 +106,12 @@ framework files are intentionally not documented line by line.
 
 `docs/github-inventory.md`, `docs/developer-profile.md`,
 `docs/skills-evidence-map.md`, `docs/project-catalogue.md`,
-`docs/project-selection.md`, `research/project-notes/`, and
-`research/repository-metadata/` support factual claims. Consult them when
-changing project positioning, but do not treat them as current code instructions.
+`docs/project-selection.md`, `docs/project-evidence-notes.md`,
+`docs/portfolio-content-map.md`, and `docs/uncertainties-and-questions.md`
+support factual claims. Consult them when changing project positioning, but do
+not treat them as current code instructions. Prefer
+`portfolio-source-of-truth.md` for user-approved facts and the evidence labels
+repository-verified / user-verified / inferred / unresolved.
 
 `research/design/`, `docs/design-research-summary.md`,
 `docs/design-directions.md`, and `docs/design-decision.md` record how the current

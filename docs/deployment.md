@@ -1,6 +1,12 @@
 # Deployment
 
-## Current deployment state
+This document covers **hosting this portfolio site**. It does not define the
+managed platforms used by individual projects (Vercel/Neon/R2 for ETS and
+Sentinel, Streamlit Community Cloud/Supabase for DataPulse, Railway/Aiven for
+RideFlow). Those project facts live in `portfolio-source-of-truth.md`,
+`src/content/projects.ts`, and `docs/project-evidence-notes.md`.
+
+## Current portfolio deployment state
 
 As audited on 24 July 2026:
 
@@ -12,8 +18,16 @@ As audited on 24 July 2026:
 - no preview-deployment workflow exists;
 - the application produces a standard Next.js production build in `.next/`.
 
-Do not describe the site as deployed until a live origin is explicitly confirmed.
-Do not invent provider or domain instructions.
+Do not describe the portfolio site as deployed until a live origin is explicitly
+confirmed. Do not invent provider or domain instructions.
+
+## Project managed-platform facts (not this site)
+
+User-verified project deployment practice may be described on project cards and
+case studies. Keep that wording practical and restrained. Do not claim DevOps /
+SRE / cloud-architect expertise, production scale, or that a project deployment
+remains live unless separately verified. Never commit secrets, private URLs,
+bucket identifiers, or service tokens.
 
 ## Runtime and build contract
 

@@ -120,6 +120,36 @@ number.
 - **Strong identity fill:** `--color-brand-fill`.
 - **Deep closing surface:** `--color-brand-deep`.
 
+### Selected Work project-card scale
+
+Homepage project cards use a **positional** true-red scale, not project-name
+colors. Levels come from `getProjectSurfaceAssignment(index, count)` in
+`src/content/project-surfaces.ts` and are applied as `data-surface` /
+`data-ink` on each card.
+
+Light-theme canonical stops (1 → strongest red, 6 → near-white):
+
+| Level | Token | Value |
+|---:|---|---|
+| 1 | `--project-surface-1` | `#c90f16` |
+| 2 | `--project-surface-2` | `#d94349` |
+| 3 | `--project-surface-3` | `#e66e73` |
+| 4 | `--project-surface-4` | `#ee989c` |
+| 5 | `--project-surface-5` | `#f6c8ca` |
+| 6 | `--project-surface-6` | `#fff8f8` |
+
+Rules:
+
+- Card 1 is always the strongest red; only the final visible card uses stop 6.
+- With six published projects the mapping is 1…6 in order. With fewer or more
+  cards, indices spread across the same stops so intermediates stay distinct and
+  only the last card is near-white (light) or deepest near-black (dark).
+- Do not hardcode `nth-child` colors or project-name → color maps.
+- Keep the sequence in the true-red family. Do not drift into salmon, peach,
+  beige, brown, mauve, or purple.
+- White / on-brand ink (`data-ink="on-brand"`) is reserved for stop 1 in light
+  theme; mid and pale reds use dark near-black text for contrast.
+
 Cards are editorial planes, not floating dashboard tiles. Shadows are avoided
 except the full-bleed `100vmax` surface technique and small ring constructions.
 Radii remain square for buttons/cards and circular only for points or status

@@ -46,6 +46,28 @@ function requireHttpsUrl(
   }
 }
 
+function validateOptionalStringList(
+  values: readonly string[] | undefined,
+  field: string,
+  errors: string[],
+) {
+  if (values === undefined) {
+    return;
+  }
+
+  if (values.length === 0) {
+    errors.push(`${field} must be omitted or include at least one item.`);
+  }
+
+  if (new Set(values).size !== values.length) {
+    errors.push(`${field} contains duplicates.`);
+  }
+
+  values.forEach((value, index) => {
+    requireText(value, `${field}[${index}]`, errors);
+  });
+}
+
 function validateImage(
   image: ImageAsset,
   field: string,
@@ -123,6 +145,55 @@ function validateProject(
 
   if (new Set(project.technologies).size !== project.technologies.length) {
     errors.push(`${field}.technologies contains duplicates.`);
+  }
+
+  validateOptionalStringList(
+    project.deployment,
+    `${field}.deployment`,
+    errors,
+  );
+  validateOptionalStringList(
+    project.integrations,
+    `${field}.integrations`,
+    errors,
+  );
+
+  if (project.infrastructureNote !== undefined) {
+    requireText(
+      project.infrastructureNote,
+      `${field}.infrastructureNote`,
+      errors,
+    );
+  }
+
+  const stackLabels = [
+    ...project.technologies,
+    ...(project.deployment ?? []),
+    ...(project.integrations ?? []),
+  ];
+
+  if (new Set(stackLabels).size !== stackLabels.length) {
+    errors.push(
+      `${field} repeats a label across technologies, deployment, and integrations.`,
+    );
+  }
+
+  validateOptionalStringList(
+    project.homepageTechnologies,
+    `${field}.homepageTechnologies`,
+    errors,
+  );
+
+  if (project.homepageTechnologies) {
+    const availableLabels = new Set(stackLabels);
+
+    project.homepageTechnologies.forEach((label, labelIndex) => {
+      if (!availableLabels.has(label)) {
+        errors.push(
+          `${field}.homepageTechnologies[${labelIndex}] "${label}" must also appear in technologies, deployment, or integrations.`,
+        );
+      }
+    });
   }
 
   if (project.sections.length === 0) {
@@ -274,4 +345,16 @@ export function collectReferencedPublicAssets(
   });
 
   return [...assets];
+}
+
+export function collectProjectStackLabels(projects: readonly Project[]) {
+  const labels = new Set<string>();
+
+  projects.forEach((project) => {
+    project.technologies.forEach((label) => labels.add(label));
+    project.deployment?.forEach((label) => labels.add(label));
+    project.integrations?.forEach((label) => labels.add(label));
+  });
+
+  return [...labels];
 }

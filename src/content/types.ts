@@ -35,7 +35,21 @@ export type Project = {
   display: ProjectDisplay;
   visibility: ProjectVisibility;
   range: readonly [RangePoint, RangePoint];
+  /** Core application stack shown as the primary technology row. */
   technologies: readonly string[];
+  /** Managed platforms and hosted services (deployment, databases, storage). */
+  deployment?: readonly string[];
+  /** Security and third-party integrations (for example Turnstile). */
+  integrations?: readonly string[];
+  /**
+   * Curated subset shown on the homepage card only. Each label must already
+   * exist in `technologies`, `deployment`, or `integrations`. When omitted, the
+   * homepage card falls back to the full stack. Case-study pages always show the
+   * complete stack regardless of this field.
+   */
+  homepageTechnologies?: readonly string[];
+  /** Optional concise infrastructure sentence for the case-study technical notes. */
+  infrastructureNote?: string;
   proof: string;
   limitation: string;
   repositoryUrl?: string;

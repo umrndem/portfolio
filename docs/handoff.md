@@ -4,7 +4,7 @@
 
 ## What this site is
 
-Muhammad Umar Nadeem’s evidence-backed personal portfolio. It presents five
+Muhammad Umar Nadeem’s evidence-backed personal portfolio. It presents six
 selected software/data projects through problems, systems, proof, and explicit
 claim boundaries.
 
@@ -16,14 +16,15 @@ or remote content service.
 
 - Responsive homepage with introduction, technical range, selected work,
   experience, approach, education, and contact.
-- Five statically generated project case-study routes.
-- Typed content split by editing responsibility.
+- Six statically generated project case-study routes.
+- Typed content split by editing responsibility, including optional project
+  `deployment`, `integrations`, and `infrastructureNote` fields.
 - Explicit featured/supporting/hidden and
   public/private-case-study/confidential project states.
 - Conditional profile portrait, résumé link, project covers, and project
   galleries.
 - Content validation for required fields, slugs, visibility rules, URLs, ranges,
-  alt text, dimensions, and referenced files.
+  alt text, dimensions, referenced files, and mapped technology icon files.
 - Clean leather-maroon light/dark system with saved preference and pre-paint
   initialization.
 - Global/project metadata, generated Open Graph image, favicon, Person JSON-LD,
@@ -39,7 +40,8 @@ or remote content service.
 | Profile, education, email, socials, portrait, résumé | `src/content/profile.ts` |
 | Navigation and homepage section IDs | `src/content/navigation.ts` |
 | Homepage introduction, experience, approach, foundation, footer | `src/content/home.ts` |
-| Project list, order, case studies, publication status, technologies, media | `src/content/projects.ts` |
+| Project list, order, case studies, publication status, technologies, deployment, integrations, media | `src/content/projects.ts` |
+| Technology logo map | `src/content/technology-icons.ts` |
 | Global titles, descriptions, availability, footer note | `src/content/site-settings.ts` |
 | Shared content types | `src/content/types.ts` |
 | Content/publication validation | `src/content/validation.ts` |
@@ -76,8 +78,10 @@ Read `docs/design-system.md`, `docs/brand-identity.md`, and
 The filtered `projects` export excludes hidden/confidential entries. Homepage,
 routes, sitemap, and next-project navigation must use that filtered export.
 
-The first published project receives the strongest maroon lead treatment. Keep
-the intended lead project first.
+The first published project receives the strongest maroon lead treatment through
+the positional surface scale (`data-surface="1"`), not because of its name.
+Keep the intended lead project first in `allProjects`. Card colors spread across
+six true-red stops so only the final visible card is near-white (light theme).
 
 ## Where case studies live
 
@@ -133,7 +137,8 @@ Content/approval:
 - academic year/semester conflict;
 - contribution split confirmation for collaborative work;
 - safe Snakinesis demo media;
-- production domain/provider decision.
+- whether project deployments remain live / which URLs may publish;
+- production domain/provider decision for this portfolio site.
 
 Product/craft:
 

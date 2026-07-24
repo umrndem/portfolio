@@ -16,6 +16,7 @@ export function RangeLine({ active, compact = false }: RangeLineProps) {
         {
           "--range-start": start,
           "--range-end": end,
+          "--segments": rangePoints.length - 1,
         } as React.CSSProperties
       }
       aria-label={
@@ -34,9 +35,10 @@ export function RangeLine({ active, compact = false }: RangeLineProps) {
             <li
               className={isActive ? "is-active" : undefined}
               key={point}
+              style={{ "--point-index": index } as React.CSSProperties}
             >
-              <span aria-hidden="true" />
-              {point}
+              <span className="range-line__dot" aria-hidden="true" />
+              <span className="range-line__label">{point}</span>
             </li>
           );
         })}

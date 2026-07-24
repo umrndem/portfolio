@@ -153,6 +153,47 @@ Do not maintain an unused static duplicate of the generated image.
 
 Check contrast against both light and dark browser chrome where applicable.
 
+## Technology logos
+
+Project stack badges resolve through `src/content/technology-icons.ts` to local
+files under `public/icons/technologies/`.
+
+Rules:
+
+1. Use official brand assets or reputable canonical sources (for example Simple
+   Icons CC0 marks, or vendor documentation SVGs).
+2. Store files locally. Do not hotlink. Do not use AI-generated logos.
+3. Keep readable text labels beside logos in `TechnologyBadge`.
+4. Provide `iconDark` only for monochrome marks that need a white/light variant.
+5. Do not invert multicolor logos with CSS filters.
+6. Set `logoSafeSurface: true` only when a mark needs a small neutral pad on
+   maroon/charcoal project cards.
+7. Do not recolor every logo to the brand maroon.
+8. Cloudflare Turnstile uses the Cloudflare mark with the explicit label
+   `Turnstile` (`turnstile.svg`). Classify Turnstile under `integrations`, never
+   under `deployment`.
+9. Streamlit Community Cloud reuses the Streamlit mark with the explicit label
+   `Streamlit Community Cloud`.
+
+Current managed-service marks and sources (24 July 2026):
+
+| Label | File(s) | Source |
+|---|---|---|
+| Vercel | `vercel.svg`, `vercel-dark.svg` | Simple Icons |
+| Neon | `neon.svg`, `neon-dark.svg` | Simple Icons (develop) |
+| Cloudflare R2 | `cloudflare-r2.svg` | Simple Icons Cloudflare mark |
+| Turnstile | `turnstile.svg` | Simple Icons Cloudflare mark + label |
+| Streamlit Community Cloud | `streamlit-community-cloud.svg` | Simple Icons Streamlit mark |
+| Supabase | `supabase.svg` | Simple Icons |
+| Railway | `railway.svg`, `railway-dark.svg` | Simple Icons |
+| Aiven | `aiven.svg`, `aiven-dark.svg` | Official Aiven crabby SVGs |
+| MySQL | `mysql.svg` | Simple Icons |
+| Express | `express.svg`, `express-dark.svg` | Simple Icons |
+| JavaScript | `javascript.svg` | Simple Icons |
+
+`npm run validate:content` fails if a mapped icon path is missing for a label
+used in `technologies`, `deployment`, or `integrations`.
+
 ## Résumé files
 
 1. Export an approved PDF.

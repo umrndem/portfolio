@@ -27,10 +27,21 @@ export const allProjects: readonly Project[] = [
     visibility: "private-case-study",
     range: ["databases", "people"],
     technologies: ["Next.js", "React", "Payload CMS", "PostgreSQL"],
+    deployment: ["Vercel", "Neon", "Cloudflare R2"],
+    integrations: ["Turnstile"],
+    homepageTechnologies: [
+      "Next.js",
+      "React",
+      "Payload CMS",
+      "PostgreSQL",
+      "Cloudflare R2",
+    ],
+    infrastructureNote:
+      "Deployed through Vercel with Neon PostgreSQL, Cloudflare R2 for media storage, and Cloudflare Turnstile protecting public form submissions.",
     proof:
       "Repository evidence supports substantial work across content models, public routes, media, forms, admin surfaces, and responsive refinement.",
     limitation:
-      "No private source, internal content, confidential records, or unverified business impact is shown.",
+      "No private source, internal content, confidential records, or unverified business impact is shown. Live deployment URLs and production scale are not claimed.",
     sections: [
       {
         title: "The problem",
@@ -66,10 +77,15 @@ export const allProjects: readonly Project[] = [
     visibility: "private-case-study",
     range: ["databases", "people"],
     technologies: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle", "Zod"],
+    deployment: ["Vercel", "Neon", "Cloudflare R2"],
+    integrations: ["Turnstile"],
+    homepageTechnologies: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle", "Zod"],
+    infrastructureNote:
+      "Configured for deployment through Vercel with Neon PostgreSQL, Cloudflare R2 storage, and Cloudflare Turnstile on public-facing request paths.",
     proof:
       "Repository evidence supports explicit domain boundaries, authorization, database-backed sessions, transactional workflow actions, private media delivery, and audit events.",
     limitation:
-      "No production scale, quantified impact, automated-test coverage, employee data, or security-sensitive implementation is claimed.",
+      "No production scale, quantified impact, automated-test coverage, employee data, or security-sensitive implementation is claimed. Live deployment URLs are not published.",
     sections: [
       {
         title: "The problem",
@@ -105,6 +121,7 @@ export const allProjects: readonly Project[] = [
     visibility: "public",
     range: ["data", "people"],
     technologies: ["Python", "OpenCV", "MediaPipe", "NumPy", "Pillow"],
+    homepageTechnologies: ["Python", "OpenCV", "MediaPipe", "NumPy"],
     proof:
       "Calibration, smoothed face-center ratios, neutral re-arm behavior, fallback controls, release tags, and focused tests are present in the public repository.",
     limitation:
@@ -134,6 +151,50 @@ export const allProjects: readonly Project[] = [
     ],
   },
   {
+    slug: "rideflow",
+    title: "RideFlow",
+    eyebrow: "Relational systems",
+    summary:
+      "A multi-role ride-hailing simulation with Express APIs, MySQL business rules, and rider, driver, and admin surfaces.",
+    context: "Public project · collaborative academic context",
+    stage: "Public prototype · previously deployed",
+    display: "supporting",
+    visibility: "public",
+    range: ["databases", "product"],
+    technologies: ["Express", "JavaScript", "MySQL"],
+    deployment: ["Railway", "Aiven"],
+    homepageTechnologies: ["Express", "JavaScript", "MySQL", "Railway"],
+    infrastructureNote:
+      "Deployed through Railway with an Aiven-managed MySQL database.",
+    proof:
+      "The public repository includes Express routes, MySQL schema and database-side logic, and role-oriented frontend surfaces for a ride-hailing simulation.",
+    limitation:
+      "Contribution split with collaborators still requires confirmation. Current live availability of the Railway demo is unresolved; no production-scale or commercial impact is claimed.",
+    repositoryUrl: "https://github.com/umrndem/rideflow",
+    sections: [
+      {
+        title: "The domain",
+        body:
+          "RideFlow models riders, drivers, wallets, payments, ratings, complaints, and payouts as a connected relational system rather than a static mock UI.",
+      },
+      {
+        title: "The stack",
+        body:
+          "An Express API sits in front of MySQL business rules, while vanilla JavaScript pages present role-specific workflows for riders, drivers, and administrators.",
+      },
+      {
+        title: "Deployment practice",
+        body:
+          "The project was deployed through Railway with an Aiven-managed MySQL database, which is useful evidence of connecting an application to hosted infrastructure without claiming production operations expertise.",
+      },
+      {
+        title: "Known limits",
+        body:
+          "Authorship boundaries still need clarification, and the portfolio does not claim that a demo remains live or that the system was operated at commercial scale.",
+      },
+    ],
+  },
+  {
     slug: "datapulse",
     title: "DataPulse",
     eyebrow: "Analytics",
@@ -145,10 +206,14 @@ export const allProjects: readonly Project[] = [
     visibility: "public",
     range: ["data", "product"],
     technologies: ["Python", "Pandas", "Streamlit", "Plotly", "Prophet"],
+    deployment: ["Streamlit Community Cloud", "Supabase"],
+    homepageTechnologies: ["Python", "Pandas", "Streamlit", "Plotly", "Prophet"],
+    infrastructureNote:
+      "Deployed through Streamlit Community Cloud with Supabase-backed services.",
     proof:
       "The public source separates pages, services, pipeline steps, configuration, and tests, including a direct KPI test.",
     limitation:
-      "Forecast quality, model comparison, data provenance, deployment, and role enforcement are not verified.",
+      "Forecast quality, model comparison, data provenance, and role enforcement are not verified. Current live availability of the deployed app is unresolved.",
     repositoryUrl: "https://github.com/umrndem/DataPulse",
     sections: [
       {
@@ -185,6 +250,7 @@ export const allProjects: readonly Project[] = [
     visibility: "public",
     range: ["systems", "data"],
     technologies: ["C++17", "POSIX IPC", "pthreads", "CMake"],
+    homepageTechnologies: ["C++17", "POSIX IPC", "pthreads"],
     proof:
       "The implementation contains fork/exec orchestration, FIFO and shared memory, named semaphores, a bounded queue, worker threads, signal handling, cleanup, and VWAP aggregation.",
     limitation:

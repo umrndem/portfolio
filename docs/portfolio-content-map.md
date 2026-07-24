@@ -8,8 +8,10 @@ modules. For editing steps, use `docs/content-management.md`.
 | Introduction | `src/content/home.ts` + `src/content/profile.ts` | Name, location, degree direction, C++ foundation, and transparent AI-assisted practice are approved/evidence-backed | Final voice review |
 | Current experience | `src/content/home.ts` | ETS internship dates/responsibilities remain qualitative and bounded | Confirm future role/status changes |
 | Technical range | `src/content/projects.ts` | Conceptual systems → people axis, not a proficiency score | Visitor comprehension review |
-| Selected work | `src/content/projects.ts` | ETS Website, Sentinel, Snakinesis, DataPulse, Financial Tick Data Pipeline | Final lead choice; approved media |
-| Case studies | Each project’s `sections` | Proof and limitation are both required; private work is sanitized | Contribution splits and public-safe artifacts |
+| Selected work | `src/content/projects.ts` | Order: ETS Website, Sentinel, Snakinesis, RideFlow, DataPulse, Financial Tick Data Pipeline | Final lead choice; approved media |
+| Project-card surfaces | `src/content/project-surfaces.ts` + `data-surface` on cards | Positional true-red scale; only the last card is near-white | Recheck when published count changes |
+| Core / deployment / integration tags | `technologies`, `deployment`, `integrations` on each project | Core stack remains primary; managed services and Turnstile are user-verified where listed | Live URL publication decisions |
+| Case studies | Each project’s `sections` + optional `infrastructureNote` | Proof and limitation are both required; private work is sanitized | Contribution splits and public-safe artifacts |
 | Approach | `src/content/home.ts` | AI assistance and human responsibility stated directly | Final tone review |
 | Education | `src/content/profile.ts` + `src/content/home.ts` | BS Data Science, expected June 2028, verified 3.42/4.00, selected coursework | Academic year/semester remains omitted |
 | Contact/socials | `src/content/profile.ts` | Approved email and profiles; phone intentionally absent from primary site | Approved résumé and phone-placement decision |
@@ -23,7 +25,9 @@ modules. For editing steps, use `docs/content-management.md`.
   unapproved professional media;
 - unsupported metrics, users, outcomes, production scale, awards, or expertise;
 - academic year/semester until the conflict is resolved;
-- contribution claims that exceed confirmed collaboration evidence.
+- contribution claims that exceed confirmed collaboration evidence;
+- DevOps / SRE / cloud-architect titles or enterprise infrastructure claims.
 
 `portfolio-source-of-truth.md` is the canonical human profile.
+`docs/project-evidence-notes.md` records per-project evidence labels.
 `docs/privacy-and-publication.md` is the mandatory publication gate.

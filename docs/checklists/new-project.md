@@ -32,12 +32,20 @@ Use this entire checklist before publishing a new project.
 - [ ] Unique lowercase kebab-case `slug`.
 - [ ] Factual `title`, `eyebrow`, `summary`, `context`, and `stage`.
 - [ ] Ordered valid `range`.
-- [ ] Unique non-empty `technologies`.
+- [ ] Unique non-empty `technologies` (core stack).
+- [ ] Optional `deployment` / `integrations` lists are accurate, unique, and
+      non-overlapping with each other and `technologies`.
+- [ ] Turnstile (if present) is under `integrations`, not `deployment`.
+- [ ] Optional `infrastructureNote` is concise, factual, and secret-free.
 - [ ] Specific `proof` statement.
-- [ ] Honest `limitation` statement.
+- [ ] Honest `limitation` statement (including unresolved live-deployment status
+      when relevant).
+- [ ] Technology logo mappings exist for intended badge labels.
 - [ ] Three-to-five coherent `sections` with unique titles.
 - [ ] Public HTTPS `repositoryUrl` only if approved.
 - [ ] Object placed at intentional homepage/next-project position.
+- [ ] Positional card surface still progresses correctly for the new published
+      count (only the final card near-white; see `project-surfaces.ts`).
 - [ ] First published/featured treatment reviewed.
 
 ## 4. Media
@@ -72,7 +80,9 @@ Use this entire checklist before publishing a new project.
 - [ ] Heading hierarchy and reading order are correct.
 - [ ] Link/focus states are visible.
 - [ ] Images/captions are accessible.
-- [ ] Technology labels wrap cleanly.
+- [ ] Technology labels wrap cleanly across core and secondary rows.
+- [ ] Secondary deployment/integration rows remain quieter than the core stack.
+- [ ] Logos remain readable on light, dark, and maroon card surfaces.
 - [ ] Maroon hierarchy remains balanced.
 - [ ] Reduced motion still preserves content.
 

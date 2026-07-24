@@ -4,7 +4,7 @@
 
 1. **Introduction** — name, truthful positioning, availability, portrait slot.
 2. **Technical range** — the five-waypoint line and a concise explanation.
-3. **Selected work** — ETS Website, Sentinel, Snakinesis, DataPulse, Financial Tick Data Pipeline.
+3. **Selected work** — ETS Website, Sentinel, Snakinesis, RideFlow, DataPulse, Financial Tick Data Pipeline.
 4. **Experience** — Eastern Testing Services internship with dates and non-quantified responsibilities.
 5. **Approach** — problem framing, architecture, AI-assisted implementation, verification.
 6. **Foundation** — degree, expected graduation, CGPA, selected coursework.

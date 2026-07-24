@@ -54,12 +54,16 @@ Subject to accurate context:
 - profile photograph;
 - phone placement on the primary site;
 - new ETS/Sentinel screenshots, diagrams, detailed workflows, or outcomes;
-- deployment provider/domain/status.
+- portfolio-site hosting provider/domain/status;
+- whether project managed-platform deployments remain live, and which project
+  deployment URLs may be published;
+- business outcomes from deployed systems.
 
 ## Never publish
 
 - credentials, access tokens, cookies, `.env` values, private keys, connection
-  strings, or secret questions;
+  strings, Turnstile secrets, R2 credentials, bucket identifiers, service tokens,
+  or secret questions;
 - private source code or copied internal documentation;
 - internal repository, branch, issue, ticket, deployment, storage, database, or
   service identifiers;

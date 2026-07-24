@@ -20,7 +20,11 @@ the intent behind each field; the type remains authoritative for syntax.
 | `display` | Yes | `"featured"`, `"supporting"`, or `"hidden"`. Controls prominence/publication. |
 | `visibility` | Yes | `"public"`, `"private-case-study"`, or `"confidential"`. Controls publication boundary. |
 | `range` | Yes | Start/end pair on the declared systems → people axis, in forward order. |
-| `technologies` | Yes | Non-empty, unique list of technologies actually demonstrated. |
+| `technologies` | Yes | Non-empty, unique core-stack labels actually demonstrated. Primary badge row. |
+| `deployment` | No | Unique managed platforms and hosted services (for example Vercel, Neon, R2). Omit when none. |
+| `integrations` | No | Unique security/third-party integrations (for example Turnstile). Omit when none. Never list Turnstile under deployment. |
+| `homepageTechnologies` | No | Curated subset shown on the homepage card only. Every label must already exist in `technologies`, `deployment`, or `integrations`. Case-study pages always show the full stack. |
+| `infrastructureNote` | No | One concise factual infrastructure sentence for the case-study technical notes. |
 | `proof` | Yes | Supported evidence statement rendered in the evidence boundary. |
 | `limitation` | Yes | Explicit claim boundary, unknown, or missing proof. |
 | `sections` | Yes | Ordered case-study sections with unique titles and non-empty body copy. |
@@ -30,6 +34,57 @@ the intent behind each field; the type remains authoritative for syntax.
 
 Do not add optional fields solely to make the schema look comprehensive. Add a
 new field when content exists and a component will render it.
+
+Projects without `deployment`, `integrations`, or `infrastructureNote` remain
+valid. Keep core technologies visually primary; quieter secondary rows render
+only when those optional lists are present.
+
+## Stack categories
+
+| Field | Public label | Examples | Rules |
+|---|---|---|---|
+| `technologies` | Core stack | Next.js, PostgreSQL, Express | Required; demonstrated application stack |
+| `deployment` | Deployment & services | Vercel, Neon, Cloudflare R2, Railway, Aiven | Managed platforms, hosted databases, object storage |
+| `integrations` | Security & integrations | Turnstile | Security/bot/form verification and similar integrations |
+
+Labels must be unique across the three lists for a project. Prefer exact names
+that already exist in `src/content/technology-icons.ts` when a logo is desired.
+
+Example:
+
+```ts
+technologies: ["Next.js", "React", "Payload CMS", "PostgreSQL"],
+deployment: ["Vercel", "Neon", "Cloudflare R2"],
+integrations: ["Turnstile"],
+homepageTechnologies: ["Next.js", "React", "Payload CMS", "PostgreSQL", "Cloudflare R2"],
+infrastructureNote:
+  "Deployed through Vercel with Neon PostgreSQL, Cloudflare R2 for media storage, and Cloudflare Turnstile protecting public form submissions.",
+```
+
+## Homepage card curation
+
+The homepage card can be noisy if it lists the full stack plus every managed
+service. Use `homepageTechnologies` to show a curated ~4–5 item subset:
+
+- Select for importance to understanding the project and as evidence of a
+  meaningful skill, not array order.
+- Prefer primary language, primary framework, primary database, one meaningful
+  library/architectural tool, and at most one deployment/infrastructure service
+  when it materially strengthens the story.
+- Avoid several services that communicate nearly the same thing (for example do
+  not show Vercel, Neon, R2, and Turnstile together on one card).
+- Every label must already exist in `technologies`, `deployment`, or
+  `integrations`; validation enforces this. When omitted, the card shows the full
+  stack. The case-study page always shows everything.
+
+The card keeps the same visual hierarchy: curated core labels render in the
+primary row, and curated deployment/integration labels render in the quieter
+secondary rows.
+
+Evidence for deployment and integration claims should be tagged in
+`portfolio-source-of-truth.md` / `docs/project-evidence-notes.md` as
+repository-verified, user-verified, inferred, or unresolved. Do not claim live
+availability, publish private URLs, or store secrets.
 
 ## Slugs and generated routes
 
@@ -98,6 +153,9 @@ ETS Website and Sentinel require all of the following:
 - safe high-level architecture only;
 - no employee, customer, candidate, medical, operational, or company records;
 - no internal URLs, credentials, repository paths, infrastructure identifiers,
+  database connection strings, Turnstile secrets, R2 credentials, bucket names,
+  or service tokens;
+- no exaggerated DevOps / cloud-architecture claims from managed-platform use;
   or security-sensitive implementation;
 - no private source or copied internal documentation;
 - no realistic fake records that could be mistaken for real company data;

@@ -21,21 +21,28 @@ belong to the user unless proven otherwise.
    technologies, outcomes, contribution splits, or deployment status.
 3. Use `portfolio-source-of-truth.md` and the evidence documents before rewriting
    profile or project claims. Record uncertainty instead of resolving it by
-   assumption.
+   assumption. Tag facts as repository-verified, user-verified, inferred, or
+   unresolved.
 4. ETS Website and Sentinel are private professional work. Keep their treatment
    abstract, approved, and sanitized.
 5. Never expose private source, credentials, `.env` values, internal URLs,
-   employee/company/customer data, security-sensitive details, private media, or
+   employee/company/customer data, security-sensitive details, private media,
+   Turnstile secrets, R2 credentials, bucket identifiers, service tokens, or
    Matootoo relationship material.
 6. Describe AI assistance accurately. Do not imply that every line was written
    manually when the approved copy says otherwise.
+7. Describe managed-platform deployment as practical experience only. Do not
+   claim DevOps engineer, cloud architect, SRE, platform engineer, enterprise
+   infrastructure, advanced Cloudflare security expertise, or production scale.
 
 ## Implementation rules
 
 1. Use the existing files in `src/content/` instead of hardcoding a second copy
    of frequently edited content in components.
 2. Keep project models aligned with `src/content/types.ts` and the rules enforced
-   by `src/content/validation.ts`.
+   by `src/content/validation.ts`. Keep core stack in `technologies`, managed
+   platforms in optional `deployment`, and security integrations such as
+   Turnstile in optional `integrations`.
 3. Treat `display: "hidden"` and `visibility: "confidential"` deliberately.
    Confidential projects must never generate public routes.
 4. Keep design-token usage centralized in `src/app/globals.css`. Do not scatter
@@ -57,6 +64,7 @@ belong to the user unless proven otherwise.
 |---|---|
 | Normal copy/profile/contact update | `docs/content-management.md` |
 | Add, edit, reorder, feature, or hide a project | `docs/project-content-guide.md` and `docs/checklists/new-project.md` |
+| Update deployment/services/integrations facts | `portfolio-source-of-truth.md`, `docs/project-evidence-notes.md`, `docs/skills-evidence-map.md` |
 | Add a photo, screenshot, icon, or résumé | `docs/assets-guide.md` |
 | Change colors, spacing, components, or responsive behavior | `docs/design-system.md` |
 | Change theme behavior or tokens | `docs/theme-maintenance.md` |

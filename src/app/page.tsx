@@ -8,6 +8,7 @@ import { TypingHeadline } from "@/components/TypingHeadline";
 import { homeContent } from "@/content/home";
 import { sectionIds } from "@/content/navigation";
 import { profile, socialLinks } from "@/content/profile";
+import { getProjectSurfaceAssignment } from "@/content/project-surfaces";
 import { projects } from "@/content/projects";
 import {
   getSiteUrl,
@@ -77,14 +78,22 @@ export default function Home() {
           note={homeContent.work.note}
         />
         <div className="project-list">
-          {projects.map((project, index) => (
-            <ProjectCard
-              key={project.slug}
-              project={project}
-              index={index}
-              featured={project.display === "featured"}
-            />
-          ))}
+          {projects.map((project, index) => {
+            const surface = getProjectSurfaceAssignment(index, projects.length);
+
+            return (
+              <ProjectCard
+                key={project.slug}
+                project={project}
+                index={index}
+                featured={project.display === "featured"}
+                surfaceLevel={surface.level}
+                surfaceInk={surface.ink}
+                surfaceMode={surface.mode}
+                surfaceMixPercent={surface.mixPercent}
+              />
+            );
+          })}
         </div>
       </section>
 

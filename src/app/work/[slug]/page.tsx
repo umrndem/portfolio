@@ -147,11 +147,58 @@ export default async function WorkPage({ params }: WorkPageProps) {
             <section className="case-study__tools" id="technical-notes">
               <p className="case-study__section-index">+</p>
               <h2>Technical notes</h2>
-              <ul>
-                {project.technologies.map((technology) => (
-                  <li key={technology}><TechnologyBadge name={technology} vertical /></li>
-                ))}
-              </ul>
+
+              <div className="case-study__stack-groups">
+                <div className="case-study__stack-group">
+                  <h3 className="case-study__stack-label">Core stack</h3>
+                  <ul aria-label={`${project.title} core stack`}>
+                    {project.technologies.map((technology) => (
+                      <li key={technology}>
+                        <TechnologyBadge name={technology} vertical />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {project.deployment && project.deployment.length > 0 ? (
+                  <div className="case-study__stack-group case-study__stack-group--secondary">
+                    <h3 className="case-study__stack-label">
+                      Deployment &amp; services
+                    </h3>
+                    <ul aria-label={`${project.title} deployment and services`}>
+                      {project.deployment.map((item) => (
+                        <li key={item}>
+                          <TechnologyBadge name={item} vertical secondary />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+
+                {project.integrations && project.integrations.length > 0 ? (
+                  <div className="case-study__stack-group case-study__stack-group--secondary">
+                    <h3 className="case-study__stack-label">
+                      Security &amp; integrations
+                    </h3>
+                    <ul
+                      aria-label={`${project.title} security and integrations`}
+                    >
+                      {project.integrations.map((item) => (
+                        <li key={item}>
+                          <TechnologyBadge name={item} vertical secondary />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+              </div>
+
+              {project.infrastructureNote ? (
+                <p className="case-study__infrastructure">
+                  {project.infrastructureNote}
+                </p>
+              ) : null}
+
               {project.repositoryUrl ? (
                 <a className="button-link" href={project.repositoryUrl}>
                   View public repository <span aria-hidden="true">↗</span>

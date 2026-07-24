@@ -18,6 +18,7 @@ Do not reopen questions already resolved by `portfolio-source-of-truth.md`.
 - Which ETS Website/Sentinel screenshots or abstract diagrams have explicit
   publication approval?
 - Is a sanitized Snakinesis demo video available?
+- Are any deployment-dashboard screenshots safe to publish?
 
 ## Project emphasis and authorship
 
@@ -37,13 +38,25 @@ Do not reopen questions already resolved by `portfolio-source-of-truth.md`.
 - Does the technical range read clearly as project coverage rather than a skill
   score?
 
-## Deployment
+## Project deployments (remaining)
+
+Project platforms and services for ETS Website, Sentinel, DataPulse, and RideFlow
+are user-verified in the source of truth. The following remain unresolved:
+
+- whether those deployments are still live;
+- which deployment URLs may be published;
+- whether any business outcomes may be claimed from the deployed systems.
+
+## Portfolio site hosting
+
+These questions concern **this portfolio repository’s** public hosting, not the
+project managed-platform facts above:
 
 - Which hosting provider, source remote, production branch, and domain are
-  approved?
+  approved for the portfolio site itself?
 - Should preview deployments be access-restricted while professional content is
   under review?
-- Who owns production deployment and rollback authorization?
+- Who owns production deployment and rollback authorization for the portfolio?
 
 Resolved decisions belong in the source of truth/content files. Workflow or
 architectural decisions belong in `docs/decisions.md`.

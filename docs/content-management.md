@@ -29,7 +29,8 @@ leave the claim out.
 | Profile, contact, education, portrait, résumé, socials | `src/content/profile.ts` |
 | Header navigation and homepage anchors | `src/content/navigation.ts` |
 | Homepage narrative, experience, approach, foundation, footer | `src/content/home.ts` |
-| Project cards, ordering, status, visibility, technologies, case studies, media | `src/content/projects.ts` |
+| Project cards, ordering, status, visibility, technologies, deployment, integrations, case studies, media | `src/content/projects.ts` |
+| Homepage card surface progression (positional red scale) | `src/content/project-surfaces.ts` |
 | Global title, descriptions, availability, authorship note | `src/content/site-settings.ts` |
 
 Use these files instead of repeating a value in a component.
@@ -161,7 +162,8 @@ from the same entry.
 Find its object by `slug` in `src/content/projects.ts`.
 
 - Card copy: `eyebrow`, `summary`, `context`, and `stage`.
-- Technical tags: `technologies`.
+- Technical tags: `technologies` (core), optional `deployment`, optional `integrations`.
+- Infrastructure sentence: optional `infrastructureNote`.
 - Evidence panel: `proof` and `limitation`.
 - Case-study narrative: `sections`.
 - Public repository action: `repositoryUrl`.
@@ -227,13 +229,20 @@ until the user confirms it.
 
 The site intentionally has no proficiency bars or separate master skill list.
 
-- Project-specific technologies: edit `project.technologies`.
+- Project-specific core stack: edit `project.technologies`.
+- Managed platforms / hosted services: edit optional `project.deployment`.
+- Security integrations (for example Turnstile): edit optional `project.integrations`.
+- Case-study infrastructure sentence: edit optional `project.infrastructureNote`.
 - Homepage coursework: edit `homeContent.about.strongCoursework`.
 - Technical range labels: edit `rangePoints` only if the conceptual axis itself
   changes; also update every project range and the range accessibility copy.
 - Broader positioning: edit the about paragraphs only with evidence.
+- Skills evidence and deployment framing: update `docs/skills-evidence-map.md`
+  and `portfolio-source-of-truth.md` when Umar confirms facts.
 
-Technologies should describe demonstrated project use, not every dependency.
+Technologies and services should describe demonstrated project use, not every
+dependency. Keep Turnstile under integrations, not deployment. Do not invent
+live URLs or DevOps titles.
 
 ## Add screenshots or project images
 

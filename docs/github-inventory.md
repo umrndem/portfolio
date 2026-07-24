@@ -34,8 +34,9 @@ Snapshot date: 24 July 2026. Inventory covers seven repositories owned by `umrnd
 - Created 16 July 2026; latest observed push 23 July 2026; default branch `main`.
 - Apparent purpose: an internal Eastern Testing Services HSEQ application for Risk Identification Reports and employee medical-record tracking.
 - Architecture evidence: Next.js App Router, React/TypeScript, PostgreSQL through Drizzle, Zod validation, database-backed sessions, scrypt password hashing, Cloudflare Turnstile, Cloudflare R2 media proxy, role-scoped portal features, and transactional workflow actions.
+- User-verified managed services for portfolio wording: Vercel deployment, Neon PostgreSQL, Cloudflare R2, and Turnstile. Live URL publication and production scale remain unresolved.
 - Strongest technical qualities: explicit domain boundaries, transactional report workflow, server-side authorization, security headers, scoped medical access, audit events, and detailed engineering documentation.
-- Weakest areas / uncertainty: no committed automated tests according to the project’s own known-unknowns; production scale and real usage are not independently verified; the repository is private and contains potentially sensitive HSEQ/employee context.
+- Weakest areas / uncertainty: no committed automated tests according to the project’s own known-unknowns; whether a deployment remains live is unresolved; the repository is private and contains potentially sensitive HSEQ/employee context.
 - Recommendation: private-work case study only after owner/employer approval and substantial redaction. Do not publish internal names, operational workflows, employee details, credentials, screenshots, or database structure beyond an approved abstraction.
 
 ### `ets-website`
@@ -44,8 +45,9 @@ Snapshot date: 24 July 2026. Inventory covers seven repositories owned by `umrnd
 - Created 22 June 2026; latest observed push 15 July 2026; default branch `main`.
 - Apparent purpose: a CMS-backed Eastern Testing Services public website with Payload admin and structured content.
 - Architecture evidence: Next.js 16, React 19, Payload CMS 3, PostgreSQL adapter, S3-compatible storage, structured collections for services, people, media, documents, FAQs, news, policies, track record, careers, and contact submissions; Turnstile and deployment-oriented setup are present.
+- User-verified managed services for portfolio wording: Vercel deployment, Neon PostgreSQL, Cloudflare R2, and Turnstile on public forms. Live URL publication and business outcomes remain unresolved.
 - Strongest technical qualities: breadth of CMS modelling, route/content separation, public and admin surfaces, responsive media/content components, and an unusually detailed maintainer manual.
-- Weakest areas / uncertainty: private repository; business ownership, employment relationship, client permission, deployment responsibility, and production metrics require confirmation; local working tree contained an uncommitted context document not used as committed evidence.
+- Weakest areas / uncertainty: private repository; screenshots and metrics require confirmation; local working tree previously contained an uncommitted context document not used as committed evidence.
 - Recommendation: likely strongest professional case study if permission is confirmed. Present architectural responsibility and concrete shipped features without exposing internal content or claiming sole ownership of organizational decisions.
 
 ### `the-matootoo-project`
@@ -84,8 +86,9 @@ Snapshot date: 24 July 2026. Inventory covers seven repositories owned by `umrnd
 - Created 8 May 2026; latest observed push 8 May 2026; two observed commits.
 - Apparent purpose: full-stack ride-hailing simulation with rider, driver, and admin dashboards.
 - Architecture evidence: Express 5 API, MySQL 8 schema and logic, vanilla JavaScript/HTML/CSS frontend, role-specific surfaces, fare rules, surge/promo logic, wallets/payments, ratings, complaints, refunds, driver payouts, database procedures/triggers/views, bootstrap/check/query SQL, and a Railway demo URL documented in the README.
+- User-verified managed services for portfolio wording: Railway deployment with Aiven-managed MySQL. Whether the demo remains live is unresolved.
 - Strongest technical qualities: broad relational domain model, role-oriented workflow, database-side integrity/business logic, and an end-to-end simulation rather than a static UI.
-- Weakest areas / uncertainty: two commits; README claims such as live deployment and complete flows need manual verification; schema header identifies two students, while GitHub contributor data lists only `umrndem`, so individual contribution is unclear.
+- Weakest areas / uncertainty: two commits; contribution split needs confirmation; schema header identifies two students, while GitHub contributor data lists only `umrndem`.
 - Recommendation: supporting academic case study if the flow can be demonstrated and contribution boundaries are clarified. Avoid calling it production-grade or claiming real ride-hailing impact.
 
 ### `DataPulse`
@@ -94,8 +97,9 @@ Snapshot date: 24 July 2026. Inventory covers seven repositories owned by `umrnd
 - Created 2 May 2026; latest observed push 5 May 2026; two observed commits.
 - Apparent purpose: Streamlit business analytics dashboard with CSV/data-warehouse ingestion, KPI reporting, role-based pages, export, and Prophet forecasting.
 - Architecture evidence: Python package split into ingestion, transformation, prediction, services, pages, UI, configuration mapping, and tests; Pandas/Plotly/SQLAlchemy/PostgreSQL/Prophet dependencies; KPI unit test; Supabase-oriented data access; assistant service and authentication modules.
+- User-verified managed services for portfolio wording: Streamlit Community Cloud deployment with Supabase-backed services. Current live availability remains unresolved.
 - Strongest technical qualities: end-to-end analytics product shape, configurable column mapping, separation between pages/services/pipeline, basic KPI testing, and a clear attempt to connect analysis with user workflows.
-- Weakest areas / uncertainty: short history and two commits; forecast quality, data provenance, deployed use, security, and role enforcement need verification; README calls it “AI Forecast” but the concrete forecasting method is Prophet, while the generative-AI dependency and assistant implementation need separate inspection before making AI claims.
+- Weakest areas / uncertainty: short history and two commits; forecast quality, data provenance, security, and role enforcement need verification; README calls it “AI Forecast” but the concrete forecasting method is Prophet, while the generative-AI dependency and assistant implementation need separate inspection before making AI claims.
 - Recommendation: data-science supporting project or possible featured project after runtime and forecast validation. Describe it as an analytics dashboard with forecasting, not as an ML research system.
 
 ### `Sami-Shahid-001/Movies-Data-Manager-DSA`

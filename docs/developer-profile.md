@@ -1,6 +1,8 @@
 # Developer and data-science profile
 
-This is an analytical profile, not final website copy. Claims are separated into verified context, repository evidence, and cautious inference.
+This is an analytical profile, not final website copy. Claims are separated using
+the repository evidence labels: **repository-verified**, **user-verified**,
+**inferred**, and **unresolved**.
 
 ## Academic context
 
@@ -10,11 +12,14 @@ The approved source of truth identifies Muhammad Umar Nadeem as a BS Data Scienc
 
 The repository evidence most strongly suggests a data-focused full-stack developer with systems and applied analytics breadth. The work is not limited to notebook analysis: it includes database-backed workflows, CMS architecture, authentication and authorization, relational modelling, concurrency, computer-vision interaction, and business analytics. “Applied data-systems developer” is a more defensible future positioning than “machine-learning expert” or “senior software engineer.”
 
+Umar has practical experience deploying projects through managed platforms and connecting hosted databases, object storage, and security integrations. That experience is user-verified project practice, not a claim of DevOps, SRE, cloud-architecture, or platform-engineering expertise.
+
 ## Demonstrated strengths
 
 - Building end-to-end web systems: private Sentinel and ETS repositories show route, feature, data, auth, CMS, and media layers.
 - Domain and relational modelling: Sentinel HSEQ/medical workflows and RideFlow’s SQL domain are concrete evidence.
 - Security-conscious application work: Sentinel documents sessions, hashing, scoped permissions, rate limits, Turnstile, private media delivery, and headers.
+- Managed-platform deployment practice: ETS Website and Sentinel use Vercel, Neon PostgreSQL, Cloudflare R2, and Turnstile; DataPulse uses Streamlit Community Cloud with Supabase; RideFlow uses Railway with Aiven MySQL (user-verified).
 - Applied interaction engineering: Snakinesis contains calibrated computer-vision controls, neutral re-arm logic, menus, sound, and tests.
 - Systems programming: the financial pipeline uses processes, IPC, bounded queues, semaphores, shared memory, and signals.
 - Applied analytics: DataPulse covers ingestion, transformation, KPI calculation, visualization, configurable mappings, and forecasting.
@@ -24,12 +29,12 @@ The repository evidence most strongly suggests a data-focused full-stack develop
 
 - Forecast evaluation and responsible ML: DataPulse includes Prophet but no verified accuracy evaluation or model comparison was found.
 - Testing: Snakinesis has meaningful tests; DataPulse has a small KPI test; Sentinel’s own documentation says no committed automated tests are present.
-- Deployment and operations: RideFlow documents a Railway demo and the private projects contain deployment configuration, but live status and operational responsibility need confirmation.
+- Deployment continuity: platforms and services are user-verified, but whether deployments remain live and which URLs may be published are unresolved.
 - Collaborative engineering: RideFlow and Snakinesis show collaborator signals, but contribution division is not yet documented.
 
 ## Areas with limited evidence
 
-There is limited verified evidence for cloud architecture at scale, observability, CI/CD ownership, formal ML experimentation, statistical inference, public speaking, research publication, production metrics, commercial outcomes, or long-term team leadership. Technologies present only in dependency files are not treated as demonstrated skills.
+There is limited verified evidence for cloud architecture at scale, observability, CI/CD ownership, formal ML experimentation, statistical inference, public speaking, research publication, production metrics, commercial outcomes, or long-term team leadership. Technologies present only in dependency files are not treated as demonstrated skills. Do not describe the managed-platform work as enterprise infrastructure or advanced Cloudflare security expertise.
 
 ## Working style — cautious inferences
 
@@ -54,7 +59,7 @@ There is limited verified evidence for cloud architecture at scale, observabilit
 | Computer vision | Moderate | Snakinesis MediaPipe/OpenCV landmark control |
 | Authentication / authorization | Strong in private evidence | Sentinel; DataPulse claims require further verification |
 | Testing | Moderate | Snakinesis tests, DataPulse KPI test; Sentinel gap documented |
-| DevOps / deployment | Limited to moderate | configuration and README claims; independent deployment proof absent |
+| Managed deployment / hosted services | Moderate | user-verified Vercel/Neon/R2/Turnstile, Streamlit Cloud/Supabase, Railway/Aiven; live status unresolved |
 | Agentic AI workflows | Present as development practice, not as research claim | Matootoo authorship documents; do not generalize without user confirmation |
 
 ## Technical depth
@@ -63,4 +68,4 @@ The clearest depth appears in Sentinel’s transactional workflow and authorizat
 
 ## Recommended positioning
 
-The current portfolio positions Umar around building data-informed software systems from interface to database. It leads with private-safe professional systems and supports them with analytics, interaction, and systems evidence. Keep claims grounded in implementation, label private work, and do not imply seniority, research expertise, production scale, or business impact without additional evidence.
+The current portfolio positions Umar around building data-informed software systems from interface to database, with restrained managed-platform deployment experience. It leads with private-safe professional systems and supports them with analytics, interaction, and systems evidence. Keep claims grounded in implementation, label private work, and do not imply seniority, research expertise, production scale, or business impact without additional evidence.

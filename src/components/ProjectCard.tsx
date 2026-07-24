@@ -3,6 +3,7 @@ import {
   visibilityLabels,
   type Project,
 } from "@/content/projects";
+import type { ProjectSurfaceInk } from "@/content/project-surfaces";
 import { ContentImage } from "./ContentImage";
 import { RangeLine } from "./RangeLine";
 import { TechnologyBadge } from "./TechnologyBadge";
@@ -11,15 +12,46 @@ type ProjectCardProps = {
   project: Project;
   index: number;
   featured?: boolean;
+  surfaceLevel: number;
+  surfaceInk: ProjectSurfaceInk;
+  surfaceMode?: "token" | "mix";
+  surfaceMixPercent?: number;
 };
 
 export function ProjectCard({
   project,
   index,
   featured = false,
+  surfaceLevel,
+  surfaceInk,
+  surfaceMode = "token",
+  surfaceMixPercent = 0,
 }: ProjectCardProps) {
+  const curated = project.homepageTechnologies;
+  const isCurated = (label: string) => !curated || curated.includes(label);
+
+  const coreItems = project.technologies.filter(isCurated);
+  const deploymentItems = (project.deployment ?? []).filter(isCurated);
+  const integrationItems = (project.integrations ?? []).filter(isCurated);
+
+  const hasSecondaryStack =
+    deploymentItems.length > 0 || integrationItems.length > 0;
+
+  const mixStyle =
+    surfaceMode === "mix"
+      ? ({
+          "--project-surface-mix": `${surfaceMixPercent}%`,
+        } as React.CSSProperties)
+      : undefined;
+
   return (
-    <article className={`project-card${featured ? " project-card--featured" : ""}`}>
+    <article
+      className={`project-card${featured ? " project-card--featured" : ""}`}
+      data-surface={surfaceMode === "token" ? surfaceLevel : undefined}
+      data-surface-mode={surfaceMode}
+      data-ink={surfaceInk}
+      style={mixStyle}
+    >
       <div className="project-card__topline">
         <p>
           <span>{String(index + 1).padStart(2, "0")}</span>
@@ -59,11 +91,49 @@ export function ProjectCard({
       <RangeLine active={project.range} compact />
 
       <div className="project-card__footer">
-        <ul aria-label={`${project.title} technologies`}>
-          {project.technologies.map((technology) => (
-            <li key={technology}><TechnologyBadge name={technology} /></li>
-          ))}
-        </ul>
+        <div className="project-card__stack">
+          <ul aria-label={`${project.title} core stack`}>
+            {coreItems.map((technology) => (
+              <li key={technology}>
+                <TechnologyBadge name={technology} />
+              </li>
+            ))}
+          </ul>
+
+          {deploymentItems.length > 0 ? (
+            <ul
+              className="project-card__stack-row project-card__stack-row--secondary"
+              aria-label={`${project.title} deployment and services`}
+            >
+              {deploymentItems.map((item) => (
+                <li key={item}>
+                  <TechnologyBadge name={item} secondary />
+                </li>
+              ))}
+            </ul>
+          ) : null}
+
+          {integrationItems.length > 0 ? (
+            <ul
+              className="project-card__stack-row project-card__stack-row--secondary"
+              aria-label={`${project.title} security and integrations`}
+            >
+              {integrationItems.map((item) => (
+                <li key={item}>
+                  <TechnologyBadge name={item} secondary />
+                </li>
+              ))}
+            </ul>
+          ) : null}
+
+          {hasSecondaryStack ? (
+            <p className="sr-only">
+              Secondary rows list managed deployment services and security
+              integrations separately from the core application stack.
+            </p>
+          ) : null}
+        </div>
+
         <Link className="text-link" href={`/work/${project.slug}`}>
           Read case study <span aria-hidden="true">↗</span>
         </Link>

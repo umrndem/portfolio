@@ -54,3 +54,29 @@ Global metadata comes from `site-settings.ts`, project metadata comes from the
 project model, and sitemap routes come from the filtered published-project
 export. This prevents hidden or confidential work from leaking through a
 separate route list.
+
+## 006 — Project stack is split into core, deployment, and integrations
+
+**Status:** accepted
+**Date:** 24 July 2026
+
+Projects keep a required `technologies` core-stack list and may optionally
+declare `deployment` (managed platforms / hosted databases / object storage)
+and `integrations` (for example Turnstile). Homepage cards keep the core row
+primary and render quieter secondary rows when present. Case studies label the
+three categories and may include a concise `infrastructureNote`. This keeps
+managed-service facts visible without merging them into the application stack
+or inventing DevOps expertise.
+
+## 007 — Selected Work card surfaces are positional
+
+**Status:** accepted
+**Date:** 24 July 2026
+
+Homepage project-card backgrounds use a six-stop true-red scale driven by each
+card’s index and the published project count (`src/content/project-surfaces.ts`,
+`data-surface` / `data-ink`). Colors are not keyed to project names. The first
+card is the strongest red; only the final visible card uses the near-white
+(light) or deepest near-black (dark) stop. Intermediate cards must remain
+visibly red-tinted and mutually distinguishable. Do not allow salmon, peach,
+beige, brown, mauve, or purple drift.

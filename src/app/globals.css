@@ -37,16 +37,18 @@
   --color-footer-text: #e8d4cf;
   --color-footer-accent: #eab4ab;
   --color-footer-border: rgb(255 255 255 / 0.25);
-  --project-surface-1: #C90F16;
-  --project-surface-1-hover: #A80D12;
-  --project-surface-2: #D94A4F;
-  --project-surface-2-hover: #C73A3F;
-  --project-surface-3: #E77A7E;
-  --project-surface-3-hover: #D76A6E;
-  --project-surface-4: #F3B3B5;
-  --project-surface-4-hover: #E3A3A5;
-  --project-surface-5: #FFF7F7;
-  --project-surface-5-hover: #EFE7E7;
+  --project-surface-1: #c90f16;
+  --project-surface-1-hover: #a80d12;
+  --project-surface-2: #d94349;
+  --project-surface-2-hover: #c7353c;
+  --project-surface-3: #e66e73;
+  --project-surface-3-hover: #d95c62;
+  --project-surface-4: #ee989c;
+  --project-surface-4-hover: #e2858a;
+  --project-surface-5: #f6c8ca;
+  --project-surface-5-hover: #efb6b9;
+  --project-surface-6: #fff8f8;
+  --project-surface-6-hover: #f3ecec;
 
   --font-sans-fallback: Arial, Helvetica, sans-serif;
   --font-mono-fallback: "Courier New", monospace;
@@ -95,16 +97,18 @@
   --color-footer-text: #e8d4cf;
   --color-footer-accent: #eab4ab;
   --color-footer-border: rgb(255 255 255 / 0.22);
-  --project-surface-1: #C90F16;
-  --project-surface-1-hover: #A80D12;
-  --project-surface-2: #9A2D30;
-  --project-surface-2-hover: #AA3D40;
-  --project-surface-3: #662928;
-  --project-surface-3-hover: #763938;
-  --project-surface-4: #381E1E;
-  --project-surface-4-hover: #482E2E;
-  --project-surface-5: #161212;
-  --project-surface-5-hover: #262222;
+  --project-surface-1: #c90f16;
+  --project-surface-1-hover: #a80d12;
+  --project-surface-2: #9a2d30;
+  --project-surface-2-hover: #aa3d40;
+  --project-surface-3: #7a282c;
+  --project-surface-3-hover: #8a383c;
+  --project-surface-4: #552022;
+  --project-surface-4-hover: #653032;
+  --project-surface-5: #381e1e;
+  --project-surface-5-hover: #482e2e;
+  --project-surface-6: #161212;
+  --project-surface-6-hover: #262222;
 }
 
 * {
@@ -757,6 +761,7 @@ svg {
 
 .range-line {
   --segments: 4;
+  position: relative;
   width: 100%;
 }
 
@@ -779,15 +784,17 @@ svg {
 }
 
 .range-line__points {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  position: relative;
+  display: flex;
+  justify-content: space-between;
   list-style: none;
 }
 
 .range-line__points li {
-  display: grid;
-  gap: 0.7rem;
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 0;
   color: var(--color-text-muted);
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.66rem;
@@ -795,19 +802,12 @@ svg {
   text-transform: uppercase;
 }
 
-.range-line__points li:first-child {
-  justify-items: start;
-}
-
-.range-line__points li:last-child {
-  justify-items: end;
-}
-
-.range-line__points li span {
+.range-line__dot {
   width: 0.9rem;
   height: 0.9rem;
   position: relative;
   z-index: 1;
+  flex: none;
   margin-top: -0.5rem;
   border: 0;
   border-radius: 50%;
@@ -815,16 +815,26 @@ svg {
   box-shadow: 0 0 0 2px var(--color-on-brand);
 }
 
+.range-line__label {
+  margin-top: 0.7rem;
+  white-space: nowrap;
+}
+
+.range-line__points li:first-child .range-line__label {
+  align-self: flex-start;
+  text-align: left;
+}
+
+.range-line__points li:last-child .range-line__label {
+  align-self: flex-end;
+  text-align: right;
+}
+
 .range-line__points li.is-active {
   color: var(--color-text-primary);
 }
 
-.range-line__points li.is-active span {
-  background: var(--color-brand-primary);
-  box-shadow: 0 0 0 2px var(--color-brand-primary);
-}
-
-.range-line__points li.is-active:last-child span {
+.range-line__points li.is-active .range-line__dot {
   background: var(--color-brand-primary);
   box-shadow: 0 0 0 2px var(--color-brand-primary);
 }
@@ -1030,12 +1040,23 @@ svg {
   justify-content: space-between;
 }
 
+.project-card__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
 .project-card__footer ul,
 .case-study__tools ul {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
   list-style: none;
+}
+
+.project-card__stack-row--secondary {
+  gap: 0.3rem;
 }
 
 .project-card__footer li {
@@ -1048,6 +1069,13 @@ svg {
   font-size: 0.6rem;
 }
 
+.project-card__stack-row--secondary li {
+  padding: 0.35rem 0.55rem;
+  min-height: 1.85rem;
+  border-color: color-mix(in srgb, var(--color-border-emphasis) 70%, transparent);
+  opacity: 0.88;
+}
+
 .case-study__tools li {
   display: flex;
   align-items: center;
@@ -1056,6 +1084,25 @@ svg {
   height: 4.25rem;
   border: 1px solid var(--color-border-emphasis);
   overflow: hidden;
+}
+
+.case-study__stack-group--secondary li {
+  width: auto;
+  min-width: 4.25rem;
+  height: auto;
+  min-height: 4.25rem;
+  max-width: 7.5rem;
+  padding: 0.45rem 0.4rem;
+}
+
+.case-study__stack-group--secondary .technology-badge--vertical {
+  white-space: normal;
+}
+
+.case-study__stack-group--secondary .technology-badge__label {
+  white-space: normal;
+  text-align: center;
+  overflow-wrap: break-word;
 }
 
 .project-card__footer .text-link {
@@ -1093,16 +1140,40 @@ svg {
   word-break: break-word;
 }
 
+.technology-badge--secondary .technology-badge__label {
+  font-size: 0.55rem;
+  opacity: 0.9;
+}
+
+.technology-badge__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.technology-badge--logo-safe .technology-badge__mark {
+  padding: 0.15rem;
+  border-radius: 0.2rem;
+  background: color-mix(in srgb, var(--color-surface) 88%, var(--color-text-primary) 12%);
+}
+
 .technology-badge__icon {
   display: block;
   width: 1.125rem;
   height: 1.125rem;
   flex-shrink: 0;
+  object-fit: contain;
 }
 
 .technology-badge--vertical .technology-badge__icon {
   width: 2.25rem;
   height: 2.25rem;
+}
+
+.technology-badge--secondary:not(.technology-badge--vertical) .technology-badge__icon {
+  width: 0.95rem;
+  height: 0.95rem;
 }
 
 .technology-badge__label {
@@ -1125,117 +1196,165 @@ svg {
   display: block;
 }
 
-.project-card:first-child {
+/* Positional red→white (light) / red→near-black (dark) project surfaces.
+   Levels come from data-surface on each card (1…6), not from project names.
+   Only the final published card should map to stop 6. */
+.project-card[data-surface="1"] {
   border-color: var(--project-surface-1);
   background: var(--project-surface-1);
-  color: var(--color-on-brand);
 }
 
-.project-card:first-child:hover,
-.project-card:first-child:focus-within {
+.project-card[data-surface="1"]:hover,
+.project-card[data-surface="1"]:focus-within {
   border-color: var(--project-surface-1-hover);
   background: var(--project-surface-1-hover);
 }
 
-.project-card:first-child h3 {
+.project-card[data-surface="2"] {
+  background: var(--project-surface-2);
+}
+
+.project-card[data-surface="2"]:hover,
+.project-card[data-surface="2"]:focus-within {
+  background: var(--project-surface-2-hover);
+}
+
+.project-card[data-surface="3"] {
+  background: var(--project-surface-3);
+}
+
+.project-card[data-surface="3"]:hover,
+.project-card[data-surface="3"]:focus-within {
+  background: var(--project-surface-3-hover);
+}
+
+.project-card[data-surface="4"] {
+  background: var(--project-surface-4);
+}
+
+.project-card[data-surface="4"]:hover,
+.project-card[data-surface="4"]:focus-within {
+  background: var(--project-surface-4-hover);
+}
+
+.project-card[data-surface="5"] {
+  background: var(--project-surface-5);
+}
+
+.project-card[data-surface="5"]:hover,
+.project-card[data-surface="5"]:focus-within {
+  background: var(--project-surface-5-hover);
+}
+
+.project-card[data-surface="6"] {
+  background: var(--project-surface-6);
+}
+
+.project-card[data-surface="6"]:hover,
+.project-card[data-surface="6"]:focus-within {
+  background: var(--project-surface-6-hover);
+}
+
+/* Continuous blend when published count exceeds the discrete token scale. */
+.project-card[data-surface-mode="mix"] {
+  background: color-mix(
+    in oklch,
+    var(--project-surface-1),
+    var(--project-surface-6) var(--project-surface-mix, 0%)
+  );
+}
+
+.project-card[data-surface-mode="mix"]:hover,
+.project-card[data-surface-mode="mix"]:focus-within {
+  background: color-mix(
+    in oklch,
+    var(--project-surface-1-hover),
+    var(--project-surface-6-hover) var(--project-surface-mix, 0%)
+  );
+}
+
+/* White / on-brand ink on the deepest red stop only (light theme). */
+.project-card[data-ink="on-brand"] {
+  color: var(--color-on-brand);
+}
+
+.project-card[data-ink="on-brand"] h3 {
   letter-spacing: -0.04em;
 }
 
-.project-card:first-child .project-card__topline p:first-child span {
+.project-card[data-ink="on-brand"] .project-card__topline p:first-child span {
   background: var(--color-on-brand);
   color: var(--color-brand-deep);
 }
 
-.project-card:first-child .project-card__topline p:last-child,
-.project-card:first-child .project-card__summary,
-.project-card:first-child .project-card__facts dt {
+.project-card[data-ink="on-brand"] .project-card__topline p:last-child,
+.project-card[data-ink="on-brand"] .project-card__summary,
+.project-card[data-ink="on-brand"] .project-card__facts dt {
   color: var(--color-on-brand-muted);
 }
 
-.project-card:first-child .project-card__facts div,
-.project-card:first-child .project-card__footer li {
+.project-card[data-ink="on-brand"] .project-card__facts div,
+.project-card[data-ink="on-brand"] .project-card__footer li {
   border-color: var(--color-on-brand-border);
 }
 
-.project-card:first-child .text-link {
+.project-card[data-ink="on-brand"] .project-card__stack-row--secondary li {
+  border-color: color-mix(in srgb, var(--color-on-brand-border) 75%, transparent);
+}
+
+.project-card[data-ink="on-brand"] .technology-badge--logo-safe .technology-badge__mark {
+  background: color-mix(in srgb, #ffffff 88%, transparent);
+}
+
+.project-card[data-ink="on-brand"] .text-link {
   color: var(--color-on-brand);
 }
 
-.project-card:first-child .range-line__track {
+.project-card[data-ink="on-brand"] .range-line__track {
   background: var(--color-on-brand-border);
 }
 
-.project-card:first-child .range-line__points li span {
+.project-card[data-ink="on-brand"] .range-line__dot {
   background: var(--color-on-brand);
   box-shadow: 0 0 0 2px var(--color-on-brand);
 }
 
-.project-card:first-child .range-line__points li {
+.project-card[data-ink="on-brand"] .range-line__points li {
   color: var(--color-on-brand-muted);
 }
 
-.project-card:first-child .range-line__active,
-.project-card:first-child .range-line__points li.is-active span {
+.project-card[data-ink="on-brand"] .range-line__active,
+.project-card[data-ink="on-brand"] .range-line__points li.is-active .range-line__dot {
   background: var(--color-on-brand);
   box-shadow: 0 0 0 2px var(--color-on-brand);
 }
 
-.project-card:first-child .range-line__points li.is-active {
+.project-card[data-ink="on-brand"] .range-line__points li.is-active {
   color: var(--color-on-brand);
 }
 
-.project-card:first-child .range-line__points li.is-active:last-child span {
-  background: var(--color-on-brand);
-  box-shadow: 0 0 0 2px var(--color-on-brand);
-}
-
-.project-card:first-child :focus-visible {
+.project-card[data-ink="on-brand"] :focus-visible {
   outline-color: var(--color-on-brand);
 }
 
-.project-card--featured:nth-child(2) {
-  background: var(--project-surface-2);
-}
-
-.project-card--featured:nth-child(2):hover,
-.project-card--featured:nth-child(2):focus-within {
-  background: var(--project-surface-2-hover);
-}
-
-.project-card:nth-child(3) {
-  background: var(--project-surface-3);
-}
-
-.project-card:nth-child(3):hover,
-.project-card:nth-child(3):focus-within {
-  background: var(--project-surface-3-hover);
-}
-
-.project-card:nth-child(4) {
-  background: var(--project-surface-4);
-}
-
-.project-card:nth-child(4):hover,
-.project-card:nth-child(4):focus-within {
-  background: var(--project-surface-4-hover);
-}
-
-.project-card:nth-child(5) {
-  background: var(--project-surface-5);
-}
-
-.project-card:nth-child(5):hover,
-.project-card:nth-child(5):focus-within {
-  background: var(--project-surface-5-hover);
-}
-
-.project-card:nth-child(2) .project-card__summary,
-.project-card:nth-child(2) .project-card__facts dt,
-.project-card:nth-child(3) .project-card__summary,
-.project-card:nth-child(3) .project-card__facts dt,
-.project-card:nth-child(4) .project-card__summary,
-.project-card:nth-child(4) .project-card__facts dt {
+/* Mid reds keep near-black body copy for WCAG contrast on light theme. */
+.project-card[data-ink="default"][data-surface="2"] .project-card__summary,
+.project-card[data-ink="default"][data-surface="2"] .project-card__facts dt,
+.project-card[data-ink="default"][data-surface="3"] .project-card__summary,
+.project-card[data-ink="default"][data-surface="3"] .project-card__facts dt,
+.project-card[data-ink="default"][data-surface="4"] .project-card__summary,
+.project-card[data-ink="default"][data-surface="4"] .project-card__facts dt {
   color: var(--color-text-primary);
+}
+
+/* Dark theme: every stop is dark enough for light text; deepen lead-card ink. */
+[data-theme="dark"] .project-card[data-surface="1"] {
+  color: var(--color-on-brand);
+}
+
+[data-theme="dark"] .project-card[data-ink="default"] .project-card__summary,
+[data-theme="dark"] .project-card[data-ink="default"] .project-card__facts dt {
+  color: var(--color-text-secondary);
 }
 
 .experience-entry {
@@ -1665,8 +1784,44 @@ svg {
 
 .case-study__tools ul,
 .case-study__tools .button-link,
+.case-study__tools .case-study__infrastructure,
 .case-study__private-note {
   grid-column: 2;
+}
+
+.case-study__stack-groups {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.case-study__stack-group ul {
+  margin-top: 0.65rem;
+}
+
+.case-study__stack-label {
+  margin: 0;
+  font-family: var(--font-mono), var(--font-mono-fallback);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.case-study__stack-group--secondary .case-study__stack-label {
+  opacity: 0.9;
+}
+
+.case-study__stack-group--secondary li {
+  opacity: 0.92;
+}
+
+.case-study__infrastructure {
+  max-width: 40rem;
+  margin-top: 1.25rem;
+  color: var(--color-text-muted);
 }
 
 .case-study__tools .button-link {
@@ -1887,9 +2042,12 @@ svg {
 
   .range-line__track {
     position: absolute;
+    top: 0.45rem;
+    bottom: 0.45rem;
+    left: 0.45rem;
     width: 2px;
-    height: calc(100% - 1rem);
-    margin: 0.5rem 0 0 0.45rem;
+    height: auto;
+    margin: 0;
   }
 
   .range-line__active {
@@ -1908,22 +2066,35 @@ svg {
   }
 
   .range-line__points {
-    grid-template-columns: 1fr;
-    gap: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0;
+    min-height: 12rem;
   }
 
   .range-line__points li,
   .range-line__points li:first-child,
   .range-line__points li:last-child {
-    grid-template-columns: 1rem 1fr;
-    gap: 0.8rem;
+    flex-direction: row;
     align-items: center;
-    justify-items: start;
+    width: auto;
+    gap: 0.8rem;
   }
 
-  .range-line__points li span {
+  .range-line__dot {
     z-index: 1;
     margin-top: 0;
+  }
+
+  .range-line__label {
+    margin-top: 0;
+  }
+
+  .range-line__points li:first-child .range-line__label,
+  .range-line__points li:last-child .range-line__label {
+    align-self: auto;
+    text-align: left;
   }
 
   @keyframes range-reveal-mobile {
@@ -2101,6 +2272,8 @@ svg {
   .case-study__sections section > p:last-child,
   .case-study__tools ul,
   .case-study__tools .button-link,
+  .case-study__tools .case-study__infrastructure,
+  .case-study__stack-groups,
   .case-study__private-note {
     grid-column: 1;
   }
@@ -2136,7 +2309,7 @@ svg {
 
 @media (forced-colors: active) {
   .range-line__active,
-  .range-line__points li span {
+  .range-line__dot {
     forced-color-adjust: none;
   }
 }

@@ -2,6 +2,8 @@
 
 Only skills with concrete evidence are included. Dependency-only presence is not treated as proof of use.
 
+Evidence labels used in notes: **repository-verified**, **user-verified**, **inferred**, **unresolved**.
+
 | Skill | Evidence | Repository | Evidence strength | Publicly demonstrable | Notes |
 |---|---|---|---|---|---|
 | Next.js / React / TypeScript application architecture | App Router routes, feature modules, shared components, server actions | Sentinel; ETS | Strong | Conditional | Sentinel and ETS are private |
@@ -16,7 +18,15 @@ Only skills with concrete evidence are included. Dependency-only presence is not
 | Data ingestion and transformation | Configurable column mapping, Pandas merge/clean/load pipeline | DataPulse | Moderate | Yes | Validate with a safe sample dataset |
 | KPI calculation | Revenue, order count, AOV implementation and unit test | DataPulse | Moderate | Yes | Small but direct evidence |
 | Time-series forecasting | Prophet service/path | DataPulse | Limited | Yes, carefully | No verified accuracy or experiment record |
-| Business dashboard/UI | Streamlit pages, Plotly-oriented analytics flow, export/targets | DataPulse | Moderate | Yes | Deployment and role enforcement need verification |
+| Business dashboard/UI | Streamlit pages, Plotly-oriented analytics flow, export/targets | DataPulse | Moderate | Yes | Role enforcement still needs verification |
+| Vercel deployment | Managed Next.js deployment for ETS Website and Sentinel | ETS; Sentinel | Moderate | Conditional | user-verified practical deployment; live URL unresolved |
+| Neon-managed PostgreSQL | Hosted PostgreSQL connected to ETS Website and Sentinel | ETS; Sentinel | Moderate | Conditional | user-verified; do not publish connection details |
+| Cloudflare R2 integration | Object storage for media/assets on ETS Website and Sentinel | ETS; Sentinel | Moderate | Conditional | user-verified; abstract media handling only |
+| Cloudflare Turnstile integration | Bot protection / form or request verification | ETS; Sentinel | Moderate | Conditional | user-verified; not a deployment platform; no secrets |
+| Streamlit Community Cloud deployment | Hosted DataPulse deployment | DataPulse | Moderate | Yes, carefully | user-verified; current live status unresolved |
+| Supabase integration | Supabase-backed services used with DataPulse | DataPulse | Moderate | Yes, carefully | user-verified; do not claim advanced backend platform ownership |
+| Railway deployment | Managed deployment for RideFlow | RideFlow | Moderate | Yes, carefully | user-verified; demo liveness unresolved |
+| Aiven-managed MySQL | Hosted MySQL used by RideFlow | RideFlow | Moderate | Yes, carefully | user-verified; no connection strings in public copy |
 | Relational business modelling | Users, rides, wallets, payments, ratings, complaints, payouts | RideFlow | Moderate | Yes | Academic/collaborative context needs clarification |
 | Database-side business rules | MySQL constraints, procedures, triggers, views | RideFlow | Moderate | Yes | Do not call production-grade |
 | C++ process orchestration | fork/exec, child reaping, signal handling | Financial pipeline | Strong | Yes | Small one-commit project |
@@ -26,6 +36,16 @@ Only skills with concrete evidence are included. Dependency-only presence is not
 | Documentation / architecture communication | Maintainer manuals, architecture docs, decision records | ETS; Sentinel; Matootoo | Strong | Conditional | Extract general methods only |
 | AI-assisted development | Explicit authorship/process disclosure in private project documentation | Matootoo | Present | No by default | Ask how Umar wants this represented publicly |
 
-## Technologies not promoted as skills yet
+## Framing for deployment-related skills
 
-Prophet, Supabase, Google Generative AI, Cloudflare services, Railway, R2, Three.js, and deployment tooling appear in manifests or documentation, but their operational depth and ownership vary. They should be described only when a concrete implementation path and user-confirmed responsibility are documented.
+Describe these as practical experience deploying on managed platforms, connecting
+hosted databases, configuring object storage, managing environment configuration,
+navigating dashboards, integrating Turnstile, and troubleshooting service
+integrations. Do not inflate into DevOps, SRE, cloud architecture, or platform
+engineering expertise.
+
+## Technologies still handled carefully
+
+Prophet forecasting depth, Google Generative AI, Three.js, and any dependency that
+lacks a concrete user-confirmed implementation path remain limited or excluded
+from skill claims until evidence improves.
