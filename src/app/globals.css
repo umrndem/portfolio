@@ -755,10 +755,6 @@ svg {
   margin-top: clamp(3rem, 7vw, 6rem);
 }
 
-.range-section .range-line__points li span {
-  border-color: var(--color-brand-subtle);
-}
-
 .range-line {
   --segments: 4;
   width: 100%;
@@ -812,10 +808,9 @@ svg {
   width: 0.9rem;
   height: 0.9rem;
   margin-top: -0.5rem;
-  border: 2px solid var(--color-bg-primary);
+  border: 0;
   border-radius: 50%;
   background: var(--color-border);
-  box-shadow: 0 0 0 1px var(--color-border);
 }
 
 .range-line__points li.is-active {
@@ -824,12 +819,10 @@ svg {
 
 .range-line__points li.is-active span {
   background: var(--color-brand-primary);
-  box-shadow: 0 0 0 1px var(--color-brand-primary);
 }
 
 .range-line__points li.is-active:last-child span {
   background: var(--color-support-accent);
-  box-shadow: 0 0 0 1px var(--color-support-accent);
 }
 
 .range-line--compact .range-line__points li {
@@ -1069,6 +1062,10 @@ svg {
   background: var(--project-surface-1-hover);
 }
 
+.project-card:first-child h3 {
+  letter-spacing: -0.04em;
+}
+
 .project-card:first-child .project-card__topline p:first-child span {
   background: var(--color-on-brand);
   color: var(--color-brand-deep);
@@ -1098,15 +1095,9 @@ svg {
   color: var(--color-on-brand-muted);
 }
 
-.project-card:first-child .range-line__points li span {
-  border-color: var(--color-brand-fill);
-  box-shadow: 0 0 0 1px var(--color-on-brand-border);
-}
-
 .project-card:first-child .range-line__active,
 .project-card:first-child .range-line__points li.is-active span {
   background: var(--color-on-brand);
-  box-shadow: 0 0 0 1px var(--color-on-brand);
 }
 
 .project-card:first-child .range-line__points li.is-active {
@@ -1115,7 +1106,6 @@ svg {
 
 .project-card:first-child .range-line__points li.is-active:last-child span {
   background: var(--color-footer-accent);
-  box-shadow: 0 0 0 1px var(--color-footer-accent);
 }
 
 .project-card:first-child :focus-visible {
