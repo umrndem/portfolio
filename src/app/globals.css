@@ -1,41 +1,41 @@
 :root {
   color-scheme: light;
-  --color-bg-primary: #f8f5f6;
+  --color-bg-primary: #f7f5f3;
   --color-bg-secondary: #ffffff;
-  --color-surface: #f1ecee;
-  --color-surface-hover: #f7eff2;
-  --color-surface-maroon: #f2e3e8;
-  --color-text-primary: #1c191b;
-  --color-text-secondary: #5f5559;
-  --color-text-muted: #766b70;
-  --color-brand-primary: #7b1e3a;
-  --color-brand-emphasis: #8c2344;
-  --color-brand-subtle: #f2e3e8;
-  --color-brand-deep: #5b1428;
-  --color-brand-bright: #a12d50;
-  --color-brand-fill: #7b1e3a;
-  --color-brand-fill-hover: #8c2344;
+  --color-surface: #f1ede9;
+  --color-surface-hover: #f4ece8;
+  --color-surface-maroon: #f1e1de;
+  --color-text-primary: #1b1817;
+  --color-text-secondary: #5f5754;
+  --color-text-muted: #7a716c;
+  --color-brand-primary: #d31616;
+  --color-brand-emphasis: #b51313;
+  --color-brand-subtle: #f1e1de;
+  --color-brand-deep: #7a1414;
+  --color-brand-bright: #e5120e;
+  --color-brand-fill: #c71616;
+  --color-brand-fill-hover: #a81212;
   --color-on-brand: #ffffff;
-  --color-on-brand-muted: #f2dce4;
-  --color-on-brand-border: rgb(255 255 255 / 0.3);
-  --color-support-accent: #a12d50;
-  --color-structure: #1c191b;
-  --color-border: #d8ccd0;
-  --color-border-emphasis: #b79ca5;
-  --color-action-bg: #7b1e3a;
+  --color-on-brand-muted: #f7dcd6;
+  --color-on-brand-border: rgb(255 255 255 / 0.32);
+  --color-support-accent: #e5120e;
+  --color-structure: #1b1817;
+  --color-border: #dad2cc;
+  --color-border-emphasis: #cf9a94;
+  --color-action-bg: #c71616;
   --color-action-text: #ffffff;
-  --color-link: #1c191b;
-  --color-link-hover: #7b1e3a;
-  --color-focus: #a12d50;
-  --color-selection: #7b1e3a;
+  --color-link: #1b1817;
+  --color-link-hover: #d31616;
+  --color-focus: #e5120e;
+  --color-selection: #c71616;
   --color-selection-text: #ffffff;
-  --color-grid: rgb(123 30 58 / 0.035);
-  --color-header-bg: rgb(248 245 246 / 0.92);
+  --color-grid: rgb(229 18 14 / 0.05);
+  --color-header-bg: rgb(247 245 243 / 0.92);
   --color-status-available: #4e755f;
   --color-status-available-ring: rgb(78 117 95 / 0.14);
   --color-footer-primary: #ffffff;
-  --color-footer-text: #e6d8dd;
-  --color-footer-accent: #f0a9bd;
+  --color-footer-text: #e8d4cf;
+  --color-footer-accent: #eab4ab;
   --color-footer-border: rgb(255 255 255 / 0.25);
 
   --font-sans-fallback: Arial, Helvetica, sans-serif;
@@ -48,42 +48,42 @@
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --color-bg-primary: #111113;
-  --color-bg-secondary: #19191d;
-  --color-surface: #1f1f23;
-  --color-surface-hover: #292329;
-  --color-surface-maroon: #241319;
-  --color-text-primary: #f4f1f2;
-  --color-text-secondary: #cec5c8;
-  --color-text-muted: #a89da1;
-  --color-brand-primary: #e18aa5;
-  --color-brand-emphasis: #f0a8bd;
-  --color-brand-subtle: #241319;
-  --color-brand-deep: #5b1428;
-  --color-brand-bright: #c94d72;
-  --color-brand-fill: #8c2344;
-  --color-brand-fill-hover: #7b1e3a;
+  --color-bg-primary: #111111;
+  --color-bg-secondary: #191919;
+  --color-surface: #1f1f1f;
+  --color-surface-hover: #262626;
+  --color-surface-maroon: #241212;
+  --color-text-primary: #f4f1ef;
+  --color-text-secondary: #b9b2af;
+  --color-text-muted: #8f8783;
+  --color-brand-primary: #f5453b;
+  --color-brand-emphasis: #f75a50;
+  --color-brand-subtle: #241212;
+  --color-brand-deep: #7a1414;
+  --color-brand-bright: #fa2a1e;
+  --color-brand-fill: #c71616;
+  --color-brand-fill-hover: #a81212;
   --color-on-brand: #ffffff;
-  --color-on-brand-muted: #f4d8e1;
-  --color-on-brand-border: rgb(255 255 255 / 0.3);
-  --color-support-accent: #c94d72;
-  --color-structure: #0b0b0e;
-  --color-border: #3a3034;
-  --color-border-emphasis: #65404b;
-  --color-action-bg: #8c2344;
+  --color-on-brand-muted: #f7dcd6;
+  --color-on-brand-border: rgb(255 255 255 / 0.32);
+  --color-support-accent: #fa2a1e;
+  --color-structure: #0b0b0b;
+  --color-border: #332f2d;
+  --color-border-emphasis: #6e2a26;
+  --color-action-bg: #c71616;
   --color-action-text: #ffffff;
-  --color-link: #f4f1f2;
-  --color-link-hover: #f0a8bd;
-  --color-focus: #f0a8bd;
-  --color-selection: #8c2344;
+  --color-link: #f4f1ef;
+  --color-link-hover: #f5453b;
+  --color-focus: #fa2a1e;
+  --color-selection: #c71616;
   --color-selection-text: #ffffff;
-  --color-grid: rgb(225 138 165 / 0.035);
-  --color-header-bg: rgb(17 17 19 / 0.92);
+  --color-grid: rgb(250 42 30 / 0.06);
+  --color-header-bg: rgb(17 17 17 / 0.92);
   --color-status-available: #86ac94;
   --color-status-available-ring: rgb(134 172 148 / 0.14);
   --color-footer-primary: #ffffff;
-  --color-footer-text: #e6d8dd;
-  --color-footer-accent: #f0a8bd;
+  --color-footer-text: #e8d4cf;
+  --color-footer-accent: #eab4ab;
   --color-footer-border: rgb(255 255 255 / 0.22);
 }
 
@@ -241,18 +241,77 @@ svg {
 
 .site-header__mark {
   display: inline-flex;
-  gap: 0.45rem;
-  align-items: center;
+  align-items: baseline;
   justify-self: start;
+  /* Fixed hit area: the box never resizes on hover (only the inner letters
+     animate), so the hover target can't oscillate under the cursor. */
+  min-width: 8rem;
   font-family: var(--font-mono), var(--font-mono-fallback);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
   text-decoration: none;
+  color: var(--color-text-primary);
 }
 
-.site-header__mark span:nth-child(3) {
-  color: var(--color-brand-primary);
+/* Colors hardcoded to match icon.svg exactly (identical in both themes). */
+.site-header__mark-fixed--red {
+  color: #e5120e;
+}
+
+/* Hover-expand: "U / N" grows into "UMRNDEM" and the slash collapses out. */
+.site-header__mark-reveal,
+.site-header__mark-slash {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: baseline;
+  transition:
+    max-width 440ms var(--ease-out),
+    opacity 300ms var(--ease-out);
+}
+
+.site-header__mark-reveal {
+  max-width: 0;
+  opacity: 0;
+}
+
+.site-header__mark-reveal--red {
+  color: #e5120e;
+}
+
+.site-header__mark-slash {
+  max-width: 2em;
+  margin-inline: 0.025em;
+  color: #8f8783;
+}
+
+.site-header__mark-slash-svg {
+  display: block;
+  height: 0.78em;
+  width: auto;
+  transform: translateY(0.01em);
+}
+
+.site-header__mark:hover .site-header__mark-reveal,
+.site-header__mark:focus-visible .site-header__mark-reveal {
+  max-width: 5ch;
+  opacity: 1;
+}
+
+.site-header__mark:hover .site-header__mark-slash,
+.site-header__mark:focus-visible .site-header__mark-slash {
+  max-width: 0;
+  padding-inline: 0;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header__mark-reveal,
+  .site-header__mark-slash {
+    transition: opacity 300ms var(--ease-out);
+  }
 }
 
 .site-header nav {
@@ -306,29 +365,19 @@ svg {
   transform: rotate(180deg);
 }
 
-.theme-toggle__label--dark {
-  display: none;
+/* Disc indicates the active mode: system = split, light = hollow, dark = filled. */
+.theme-toggle__disc--light {
+  background: transparent;
 }
 
-:root[data-theme="dark"] .theme-toggle__label--light {
-  display: none;
-}
-
-:root[data-theme="dark"] .theme-toggle__label--dark {
-  display: inline;
-}
-
-.site-header nav a,
-.site-header__availability {
-  font-family: var(--font-mono), var(--font-mono-fallback);
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  text-transform: uppercase;
+.theme-toggle__disc--dark {
+  background: var(--color-brand-fill);
 }
 
 .site-header nav a {
   position: relative;
+  /* No default underline — only the animated ::after shows on hover/focus. */
+  text-decoration: none;
   transition: color 180ms var(--ease-out);
 }
 
@@ -356,22 +405,6 @@ svg {
   color: var(--color-brand-primary);
 }
 
-.site-header__availability {
-  display: inline-flex;
-  gap: 0.55rem;
-  align-items: center;
-  justify-self: end;
-}
-
-.site-header__availability::before {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  background: var(--color-status-available);
-  box-shadow: 0 0 0 4px var(--color-status-available-ring);
-  content: "";
-}
-
 .kicker,
 .section-heading__index,
 .case-study__section-index {
@@ -395,62 +428,72 @@ svg {
   gap: 2rem;
   width: min(100%, var(--page-width));
   min-height: calc(100svh - 4.75rem);
+  min-height: calc(100dvh - 4.75rem);
   margin: 0 auto;
-  padding: clamp(4rem, 9vh, 7rem) var(--page-edge) 3rem;
+  padding: clamp(1.5rem, 5vh, 6rem) var(--page-edge) clamp(1.5rem, 3vh, 4rem);
   isolation: isolate;
-}
-
-.hero::before {
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 32%;
-  background: var(--color-brand-fill);
-  content: "";
-  transition: background-color 240ms var(--ease-out);
+  /* Center the copy + portrait row within the full-height hero so the content
+     is balanced (no top-packed gap). The current-section that follows supplies
+     the red divider, which lands exactly at the hero's bottom boundary. Fluid,
+     height-aware sizing (below) keeps the row compact enough to never clip. */
+  align-content: center;
 }
 
 .hero__copy {
   grid-column: 1 / span 8;
-  align-self: center;
+  /* Top-align so the heading flows down from just under the header and never
+     clips off the top of the viewport when zoomed in. */
+  align-self: start;
+  /* Grid items default to min-width: auto, which lets an unbreakable word in
+     the big heading force the track wider than the viewport (overflow at high
+     zoom / very narrow widths). min-width: 0 lets the column shrink instead. */
+  min-width: 0;
+}
+
+.typing-headline__word {
+  /* inline (not inline-block) so text-wrap: balance can even out the line
+     lengths; nowrap keeps each word from breaking across lines. */
+  display: inline;
+  white-space: nowrap;
+}
+
+.typing-headline__character {
+  opacity: 0;
+  animation: type-character 42ms linear
+    calc(180ms + (var(--typing-index) * 34ms)) forwards;
 }
 
 .hero h1 {
   max-width: 14ch;
-  margin-top: 1.4rem;
-  font-size: clamp(3.2rem, 7.4vw, 7.5rem);
+  margin-top: clamp(0.5rem, 2vh, 1.6rem);
+  /* Fluid and height-aware: the middle term picks the smaller of a width- or
+     height-based size, so the heading grows to fill tall viewports and shrinks
+     to fit short or zoomed ones (and narrow aspect ratios) without overflowing. */
+  font-size: clamp(1.9rem, min(7.5vw, 10.5vh), 7rem);
   font-weight: 520;
   letter-spacing: -0.065em;
-  line-height: 0.94;
-}
-
-.hero h1::after {
-  display: inline-block;
-  width: 0.14em;
-  height: 0.14em;
-  margin-left: 0.1em;
-  border-radius: 50%;
-  background: var(--color-support-accent);
-  content: "";
-  vertical-align: 0.05em;
+  /* 1.02 (not 0.94) so descenders like the "p" leg clear the tittle of an "i"
+     on the next line at large sizes — tight lines were colliding at ~1080p. */
+  line-height: 1.02;
+  /* Let long words break rather than spill past the viewport at high zoom. */
+  overflow-wrap: anywhere;
 }
 
 .hero__intro {
   max-width: 43rem;
-  margin-top: clamp(2rem, 5vh, 3.25rem);
+  margin-top: clamp(0.85rem, 3.5vh, 3rem);
   color: var(--color-text-secondary);
-  font-size: clamp(1.12rem, 1.7vw, 1.55rem);
+  font-size: clamp(1rem, 0.4vw + 0.9vh, 1.5rem);
   letter-spacing: -0.022em;
   line-height: 1.45;
 }
 
 .hero__actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
   align-items: center;
-  margin-top: 2.25rem;
+  margin-top: clamp(0.85rem, 3vh, 2.5rem);
 }
 
 .button-link {
@@ -508,10 +551,25 @@ svg {
 }
 
 .portrait-placeholder {
+  position: relative;
   grid-column: 9 / -1;
   align-self: start;
-  width: min(100%, 24rem);
+  /* Scale with viewport height (grow to fill tall screens, shrink on short or
+     zoomed ones) while capped so it never forces the hero taller than the screen. */
+  width: min(100%, 30rem, 46vh);
   justify-self: end;
+}
+
+.portrait-placeholder::before {
+  position: absolute;
+  z-index: -1;
+  top: -1.4rem;
+  left: -1.4rem;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: var(--color-brand-fill);
+  content: "";
+  transition: background-color 240ms var(--ease-out);
 }
 
 .portrait-placeholder__field {
@@ -592,35 +650,39 @@ svg {
   grid-template-columns: 1fr 1.6fr;
   gap: 1rem;
   margin-top: 0.85rem;
-  color: var(--color-text-muted);
+  color: var(--color-brand-bright);
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.66rem;
   line-height: 1.4;
 }
 
 .portrait-placeholder figcaption span {
-  color: var(--color-text-primary);
+  color: var(--color-brand-bright);
   text-transform: uppercase;
 }
 
-.hero__aside {
+.current-section {
+  width: min(100%, var(--page-width));
+  margin: 0 auto;
+  padding-inline: var(--page-edge);
+}
+
+.current-section__inner {
   display: grid;
-  grid-column: 1 / -1;
   grid-template-columns: 2fr 4fr 6fr;
   gap: 2rem;
-  align-self: end;
-  padding-top: 1.4rem;
+  padding-block: 1.4rem clamp(3rem, 6vw, 5rem);
   border-top: 1px solid var(--color-brand-primary);
 }
 
-.hero__aside p:first-child {
+.current-section__inner p:first-child {
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.68rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-.hero__aside p:last-child {
+.current-section__inner p:last-child {
   grid-column: 2;
   max-width: 33rem;
   color: var(--color-text-secondary);
@@ -760,6 +822,17 @@ svg {
   }
   to {
     transform: scaleX(1);
+  }
+}
+
+@keyframes type-character {
+  0% {
+    opacity: 0;
+  }
+
+  8%,
+  100% {
+    opacity: 1;
   }
 }
 
@@ -1523,10 +1596,6 @@ svg {
     justify-self: end;
   }
 
-  .site-header__availability {
-    display: none;
-  }
-
   .hero__copy {
     grid-column: 1 / span 7;
   }
@@ -1588,16 +1657,6 @@ svg {
   }
 }
 
-@media (min-width: 701px) {
-  .hero .portrait-placeholder figcaption {
-    color: var(--color-footer-text);
-  }
-
-  .hero .portrait-placeholder figcaption span {
-    color: var(--color-footer-primary);
-  }
-}
-
 @media (max-width: 700px) {
   :root {
     --page-edge: 1.25rem;
@@ -1620,9 +1679,8 @@ svg {
     padding-block: 0.5rem;
   }
 
-  .theme-toggle__label--light,
-  .theme-toggle__label--dark,
-  :root[data-theme="dark"] .theme-toggle__label--dark {
+  /* Icon-only on mobile to save header space; the disc still indicates the mode. */
+  .theme-toggle__label {
     display: none;
   }
 
@@ -1632,8 +1690,11 @@ svg {
 
   .hero {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    min-height: auto;
-    padding-top: 3.5rem;
+    /* Fill the screen and split copy (top) from portrait (bottom) so the whole
+       landing message — heading, intro, actions and photo — is visible at once. */
+    min-height: calc(100svh - 4rem);
+    align-content: space-between;
+    padding-top: clamp(1.25rem, 3.5vh, 3rem);
   }
 
   .hero::before {
@@ -1641,18 +1702,18 @@ svg {
   }
 
   .hero__copy,
-  .portrait-placeholder,
-  .hero__aside {
+  .portrait-placeholder {
     grid-column: 1 / -1;
   }
 
   .hero h1 {
-    max-width: 12ch;
-    font-size: clamp(3.35rem, 16vw, 5.5rem);
+    max-width: 16ch;
+    font-size: clamp(1.9rem, 8.5vw, 3.1rem);
   }
 
   .hero__intro {
-    font-size: 1.08rem;
+    margin-top: clamp(0.75rem, 2.5vh, 1.5rem);
+    font-size: clamp(0.9rem, 3.6vw, 1.05rem);
   }
 
   .hero__actions {
@@ -1661,27 +1722,16 @@ svg {
   }
 
   .portrait-placeholder {
-    width: 78%;
-    margin-top: 2rem;
-    padding: 1rem;
-    background: var(--color-brand-fill);
+    width: 64%;
+    margin-top: clamp(1rem, 2vh, 1.75rem);
     justify-self: end;
   }
 
-  .portrait-placeholder figcaption {
-    color: var(--color-footer-text);
-  }
-
-  .portrait-placeholder figcaption span {
-    color: var(--color-footer-primary);
-  }
-
-  .hero__aside {
+  .current-section__inner {
     grid-template-columns: 1fr;
-    margin-top: 1rem;
   }
 
-  .hero__aside p:last-child {
+  .current-section__inner p:last-child {
     grid-column: 1;
   }
 
@@ -1941,11 +1991,14 @@ svg {
   .button-link:hover {
     transform: none;
   }
+
+  .typing-headline__character {
+    opacity: 1;
+    animation: none !important;
+  }
 }
 
 @media (forced-colors: active) {
-  .site-header__availability::before,
-  .hero h1::after,
   .range-line__active,
   .range-line__points li span {
     forced-color-adjust: none;

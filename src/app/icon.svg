@@ -1,6 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#111113"/>
-  <circle cx="48" cy="16" r="6" fill="#a12d50"/>
-  <path d="M13 16v20c0 9 5 14 13 14s13-5 13-14V16h-7v20c0 5-2 8-6 8s-6-3-6-8V16h-7Z" fill="#f8f5f6"/>
-  <path d="M43 29h8v21h-8z" fill="#e18aa5"/>
+  <style>
+    .n { fill: #1b1817; }
+    @media (prefers-color-scheme: dark) { .n { fill: #f4f1ef; } }
+  </style>
+  <text y="44" font-family="'IBM Plex Mono', ui-monospace, 'Courier New', monospace" font-size="40" font-weight="700">
+    <tspan x="4" fill="#e5120e">U</tspan>
+  </text>
+  <path d="M27 44 31.5 16 36 16 31.5 44Z" fill="#8f8783" />
+  <text y="44" font-family="'IBM Plex Mono', ui-monospace, 'Courier New', monospace" font-size="40" font-weight="700">
+    <tspan x="36" class="n">N</tspan>
+  </text>
 </svg>

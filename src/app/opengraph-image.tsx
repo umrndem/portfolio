@@ -17,8 +17,8 @@ export default function OpenGraphImage() {
           position: "relative",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#111113",
-          color: "#F4F1F2",
+          background: "#111111",
+          color: "#F4F1EF",
           padding: "72px",
           fontFamily: "sans-serif",
         }}
@@ -31,7 +31,7 @@ export default function OpenGraphImage() {
             right: 0,
             width: "32%",
             height: "100%",
-            background: "#7B1E3A",
+            background: "#C71616",
           }}
         />
         <div
@@ -45,7 +45,8 @@ export default function OpenGraphImage() {
           }}
         >
           <span>
-            U <span style={{ color: "#F0A8BD" }}>/</span> N
+            <span style={{ color: "#FA2A1E" }}>U</span>{" "}
+            <span style={{ color: "#8F8783" }}>/</span> N
           </span>
           <span>{profile.location.replace(",", " ·")}</span>
         </div>
@@ -60,7 +61,7 @@ export default function OpenGraphImage() {
           <div style={{ fontSize: 76, lineHeight: 1.05, maxWidth: 940 }}>
             {profile.name}
           </div>
-          <div style={{ fontSize: 31, color: "#F0A8BD" }}>
+          <div style={{ fontSize: 31, color: "#FA2A1E" }}>
             Systems → Data → Databases → Product → People
           </div>
         </div>
@@ -89,7 +90,7 @@ export default function OpenGraphImage() {
                     width: 14,
                     height: 14,
                     borderRadius: 999,
-                    background: index === 4 ? "#C94D72" : "#E18AA5",
+                    background: index === 4 ? "#FA2A1E" : "#F5453B",
                   }}
                 />
                 <span>{point}</span>
@@ -99,7 +100,7 @@ export default function OpenGraphImage() {
                       display: "block",
                       height: 2,
                       flex: 1,
-                      background: "#65404B",
+                      background: "#6E2A26",
                     }}
                   />
                 ) : null}
