@@ -8,7 +8,7 @@ export const siteSettings = {
   openGraphAlt:
     "Muhammad Umar Nadeem — software and data systems portfolio",
   availabilityLabel: "Open to opportunities",
-  footerNote: ["Built with Next.js.", "AI-assisted, human-directed."],
+  footerNote: ["Every pixel intentional.", "Every claim evidenced."],
 } as const;
 
 export function getSiteUrl() {

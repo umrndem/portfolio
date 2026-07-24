@@ -763,7 +763,6 @@ svg {
 .range-line__track {
   position: relative;
   height: 2px;
-  margin-inline: 0.45rem;
   background: var(--color-border);
 }
 
@@ -807,10 +806,13 @@ svg {
 .range-line__points li span {
   width: 0.9rem;
   height: 0.9rem;
+  position: relative;
+  z-index: 1;
   margin-top: -0.5rem;
   border: 0;
   border-radius: 50%;
-  background: var(--color-border);
+  background: var(--color-on-brand);
+  box-shadow: 0 0 0 2px var(--color-on-brand);
 }
 
 .range-line__points li.is-active {
@@ -819,10 +821,12 @@ svg {
 
 .range-line__points li.is-active span {
   background: var(--color-brand-primary);
+  box-shadow: 0 0 0 2px var(--color-brand-primary);
 }
 
 .range-line__points li.is-active:last-child span {
-  background: var(--color-support-accent);
+  background: var(--color-brand-primary);
+  box-shadow: 0 0 0 2px var(--color-brand-primary);
 }
 
 .range-line--compact .range-line__points li {
@@ -1086,9 +1090,13 @@ svg {
   color: var(--color-on-brand);
 }
 
-.project-card:first-child .range-line__track,
-.project-card:first-child .range-line__points li span {
+.project-card:first-child .range-line__track {
   background: var(--color-on-brand-border);
+}
+
+.project-card:first-child .range-line__points li span {
+  background: var(--color-on-brand);
+  box-shadow: 0 0 0 2px var(--color-on-brand);
 }
 
 .project-card:first-child .range-line__points li {
@@ -1098,6 +1106,7 @@ svg {
 .project-card:first-child .range-line__active,
 .project-card:first-child .range-line__points li.is-active span {
   background: var(--color-on-brand);
+  box-shadow: 0 0 0 2px var(--color-on-brand);
 }
 
 .project-card:first-child .range-line__points li.is-active {
@@ -1105,7 +1114,8 @@ svg {
 }
 
 .project-card:first-child .range-line__points li.is-active:last-child span {
-  background: var(--color-footer-accent);
+  background: var(--color-on-brand);
+  box-shadow: 0 0 0 2px var(--color-on-brand);
 }
 
 .project-card:first-child :focus-visible {
@@ -1336,7 +1346,7 @@ svg {
   font-size: clamp(3rem, 7.4vw, 7.5rem);
   font-weight: 500;
   letter-spacing: -0.065em;
-  line-height: 0.94;
+  line-height: 1.12;
 }
 
 .site-footer__actions {
