@@ -1964,7 +1964,7 @@ svg {
 }
 
 .acknowledgements__hero-main h1 {
-  max-width: 11ch;
+  max-width: 12ch;
   /* Height-aware like the homepage hero so short/zoomed viewports still fit. */
   font-size: clamp(2.4rem, min(8vw, 11vh), 8.5rem);
   font-weight: 520;
@@ -1978,17 +1978,13 @@ svg {
   display: block;
 }
 
-/* Glyph-level optical fixes for leading t-glyphs. Nudge the glyph, not the
-   whole line. First-line capital T and third-line lowercase t use separate
-   offsets so each can be tuned independently. */
+/* Glyph-level optical fix for the first-line capital T: its wide top bar makes
+   the stem look indented relative to the lines below. Nudge the glyph, not the
+   whole line. */
 .acknowledgements__optical-t {
   display: inline-block;
   margin-left: -0.19em;
   margin-right: -0.01em;
-}
-
-.acknowledgements__optical-t--lower {
-  margin-left: -0.05em;
 }
 
 .acknowledgements__introduction {

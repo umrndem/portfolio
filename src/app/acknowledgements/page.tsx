@@ -43,8 +43,6 @@ export default function AcknowledgementsPage() {
             <h1>
               {acknowledgementsPage.titleLines.map((line, index) => {
                 const isFirst = index === 0;
-                const isLast =
-                  index === acknowledgementsPage.titleLines.length - 1;
 
                 return (
                   <span
@@ -58,13 +56,6 @@ export default function AcknowledgementsPage() {
                     {isFirst ? (
                       <>
                         <span className="acknowledgements__optical-t">
-                          {line.slice(0, 1)}
-                        </span>
-                        {line.slice(1)}
-                      </>
-                    ) : isLast ? (
-                      <>
-                        <span className="acknowledgements__optical-t acknowledgements__optical-t--lower">
                           {line.slice(0, 1)}
                         </span>
                         {line.slice(1)}

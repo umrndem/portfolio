@@ -3,7 +3,7 @@ import type { Acknowledgement } from "./types";
 export const acknowledgementsPage = {
   eyebrow: "Acknowledgements",
   /** Fixed display lines for the hero heading. */
-  titleLines: ["The hands", "behind", "the man."],
+  titleLines: ["The people", "I carry", "with me."],
   introduction:
     "I built the work shown here, but I did not become the person capable of building it alone. This page is for the people whose faith, care, patience, friendship, and guidance shaped the way I think and keep going.",
   praiseKicker: "First and foremost",
@@ -58,7 +58,7 @@ export const acknowledgementsPage = {
     },
   ] satisfies readonly Acknowledgement[],
   closing:
-    "Their names are written here, but their influence appears throughout the rest of the site.",
+    "They are mentioned here, but their influence appears throughout the rest of the site.",
   returnLabel: "Back to the work",
   returnHref: "/#work" as const,
 } as const;
