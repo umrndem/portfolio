@@ -279,7 +279,7 @@ svg {
 }
 
 .site-header__mark {
-  --logo-height: 1.6rem;
+  --logo-height: 2.4rem;
   /* Every glyph SVG is 172 viewBox units tall, so one lockup unit is this. */
   --logo-unit: calc(var(--logo-height) / 172);
   --logo-travel: calc(170 * var(--logo-unit));
