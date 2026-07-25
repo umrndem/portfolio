@@ -1,4 +1,5 @@
 import type {
+  Acknowledgement,
   ImageAsset,
   NavigationItem,
   Profile,
@@ -8,6 +9,7 @@ import type {
 } from "./types";
 
 type PortfolioContent = {
+  acknowledgements: readonly Acknowledgement[];
   allProjects: readonly Project[];
   profile: Profile;
   socialLinks: readonly SocialLink[];
@@ -230,9 +232,50 @@ function validateProject(
   });
 }
 
+function validateAcknowledgements(
+  acknowledgements: readonly Acknowledgement[],
+  errors: string[],
+) {
+  const ids = new Set<string>();
+  const orders = new Set<number>();
+
+  acknowledgements.forEach((entry, index) => {
+    const field = `acknowledgements[${index}]`;
+
+    if (!slugPattern.test(entry.id)) {
+      errors.push(`${field}.id must use lowercase kebab-case.`);
+    }
+
+    requireText(entry.publicDisplayName, `${field}.publicDisplayName`, errors);
+    requireText(entry.relationshipLabel, `${field}.relationshipLabel`, errors);
+    requireText(entry.acknowledgement, `${field}.acknowledgement`, errors);
+
+    if (!Number.isInteger(entry.order) || entry.order < 1) {
+      errors.push(`${field}.order must be a positive integer.`);
+    }
+
+    if (ids.has(entry.id)) {
+      errors.push(`Duplicate acknowledgement id "${entry.id}".`);
+    }
+
+    if (orders.has(entry.order)) {
+      errors.push(`Duplicate acknowledgement order "${entry.order}".`);
+    }
+
+    if (index > 0 && entry.order <= acknowledgements[index - 1].order) {
+      errors.push("Acknowledgements must be listed in ascending order.");
+    }
+
+    ids.add(entry.id);
+    orders.add(entry.order);
+  });
+}
+
 export function validatePortfolioContent(content: PortfolioContent) {
   const errors: string[] = [];
   const slugs = new Set<string>();
+
+  validateAcknowledgements(content.acknowledgements, errors);
 
   content.allProjects.forEach((project, index) => {
     validateProject(project, index, content.rangePoints, errors);

@@ -132,6 +132,23 @@ credentials, private deployment URLs, bucket identifiers, or service tokens.
 - Matootoo relationship/archive material remains excluded by default.
 - No metrics, users, impact, awards, or production-scale claims without evidence.
 
+## Acknowledgements
+
+The dedicated public acknowledgement page and the following display forms were
+explicitly approved by Umar on 25 July 2026:
+
+- praise and gratitude to Allah must lead the page as a foundation panel;
+- parents: relationship label only, no names;
+- sister: relationship label only, no name;
+- brother: relationship label only, no name;
+- Ammaar Ahmed: full name approved as the main technical anchor, with brotherly guidance;
+- Abdullah Khan: full name approved for designing the U/N logo / identity mark.
+
+These acknowledgements describe personal support and influence. They must not
+imply project authorship, employment, formal mentorship, or technical
+contribution beyond the approved wording. See `docs/acknowledgements.md` for the
+public display and privacy states.
+
 ## Portfolio set / homepage order
 
 Published Selected Work order (also recorded in `docs/project-selection.md`):

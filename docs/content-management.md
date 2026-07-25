@@ -29,9 +29,10 @@ leave the claim out.
 | Profile, contact, education, portrait, résumé, socials | `src/content/profile.ts` |
 | Header navigation and homepage anchors | `src/content/navigation.ts` |
 | Homepage narrative, experience, approach, foundation, footer | `src/content/home.ts` |
+| Acknowledgement page copy, public display forms, privacy states, order | `src/content/acknowledgements.ts` |
 | Project cards, ordering, status, visibility, technologies, deployment, integrations, case studies, media | `src/content/projects.ts` |
 | Homepage card surface progression (positional red scale) | `src/content/project-surfaces.ts` |
-| Global title, descriptions, availability, authorship note | `src/content/site-settings.ts` |
+| Global title, descriptions, availability | `src/content/site-settings.ts` |
 
 Use these files instead of repeating a value in a component.
 
@@ -118,6 +119,34 @@ export const socialLinks = [
 - Labels must be unique.
 
 The validator rejects malformed or duplicate social entries.
+
+## Add, edit, anonymize, or remove an acknowledgement
+
+Read `docs/acknowledgements.md` and `docs/privacy-and-publication.md` first.
+Acknowledgements require explicit current approval; never infer them from private
+notes, messages, contacts, repository history, or project collaboration.
+
+Edit `acknowledgementsPage.entries` in
+`src/content/acknowledgements.ts`:
+
+- `publicDisplayName` is the only name/relationship wording rendered publicly;
+- `relationshipLabel` gives concise public context without adding history;
+- `acknowledgement` describes the approved support or influence;
+- `privacy` is `public`, `limited`, or `anonymous` as defined in
+  `docs/acknowledgements.md`;
+- `order` controls display sequence and must remain unique and ascending.
+
+To anonymize someone, replace identifying fields with approved indirect wording
+and set `privacy: "anonymous"`. To remove someone, delete the entry and update
+the acknowledgement source document. Do not add profiles, contact details,
+workplaces, schools, photographs, or private conversations without separate
+approval.
+
+The homepage does not render acknowledgement names. The dedicated route is
+`/acknowledgements`, linked quietly from the shared footer so the homepage
+contact CTA remains the ending of the primary flow. Page hierarchy, faith-panel
+role, list presentation, closing copy, and tone rules live in
+`docs/acknowledgements.md`.
 
 ## Update the résumé
 

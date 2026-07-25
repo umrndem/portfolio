@@ -11,6 +11,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     },
+    {
+      url: new URL("/acknowledgements", siteUrl).toString(),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
     ...projects.map((project) => ({
       url: new URL(`/work/${project.slug}`, siteUrl).toString(),
       changeFrequency: "monthly" as const,

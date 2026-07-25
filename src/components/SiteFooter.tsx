@@ -1,8 +1,8 @@
+import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm";
 import { homeContent } from "@/content/home";
 import { sectionIds } from "@/content/navigation";
 import { profile, socialLinks } from "@/content/profile";
-import { siteSettings } from "@/content/site-settings";
 
 export function SiteFooter() {
   return (
@@ -45,9 +45,7 @@ export function SiteFooter() {
           ) : null}
         </nav>
         <p className="site-footer__note">
-          {siteSettings.footerNote[0]}
-          <br />
-          {siteSettings.footerNote[1]}
+          <Link href="/acknowledgements">Acknowledgements</Link>
         </p>
       </div>
     </footer>

@@ -34,6 +34,9 @@ belong to the user unless proven otherwise.
 7. Describe managed-platform deployment as practical experience only. Do not
    claim DevOps engineer, cloud architect, SRE, platform engineer, enterprise
    infrastructure, advanced Cloudflare security expertise, or production scale.
+8. Acknowledgements require explicit approval. Never infer people, names,
+   relationships, or public wording from private notes or repository history;
+   follow `docs/acknowledgements.md`.
 
 ## Implementation rules
 
@@ -63,6 +66,7 @@ belong to the user unless proven otherwise.
 | Task | Read first |
 |---|---|
 | Normal copy/profile/contact update | `docs/content-management.md` |
+| Add, edit, anonymize, or remove an acknowledgement | `docs/acknowledgements.md` and `docs/privacy-and-publication.md` |
 | Add, edit, reorder, feature, or hide a project | `docs/project-content-guide.md` and `docs/checklists/new-project.md` |
 | Update deployment/services/integrations facts | `portfolio-source-of-truth.md`, `docs/project-evidence-notes.md`, `docs/skills-evidence-map.md` |
 | Add a photo, screenshot, icon, or résumé | `docs/assets-guide.md` |

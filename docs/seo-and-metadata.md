@@ -12,6 +12,7 @@ is no separate SEO CMS or duplicated route catalogue.
 | Author/creator name | `src/content/profile.ts` |
 | Metadata composition and homepage canonical | `src/app/layout.tsx` |
 | Project title/description/canonical/Open Graph | `src/app/work/[slug]/page.tsx`, using `projects.ts` |
+| Acknowledgement metadata/canonical | `src/app/acknowledgements/page.tsx` |
 | Default social image | `src/app/opengraph-image.tsx` |
 | Social-image alt text | `src/content/site-settings.ts` |
 | Favicon | `src/app/icon.svg` |
@@ -51,8 +52,11 @@ in `src/content/site-settings.ts`.
 The title template formats project pages as:
 
 ```text
-Project title — Muhammad Umar Nadeem
+Project title · Muhammad Umar Nadeem
 ```
+
+`/acknowledgements` opts out of that template with an absolute document title of
+`Acknowledgements` only (no name suffix).
 
 Keep titles factual, concise, and human-readable. Do not pack keyword lists into
 the title.
@@ -71,6 +75,7 @@ is intentional: do not create a more impressive hidden SEO claim.
 ## Canonical URLs
 
 - Homepage: `/`
+- Acknowledgements: `/acknowledgements`
 - Project page: `/work/<project.slug>`
 
 `metadataBase` resolves these against `NEXT_PUBLIC_SITE_URL`.
@@ -142,9 +147,10 @@ without sufficient public evidence.
 /sitemap.xml
 ```
 
-It includes the homepage and every project in the publication-safe `projects`
-export. Featured projects receive a slightly higher priority hint. Hidden and
-confidential projects are excluded automatically.
+It includes the homepage, the public acknowledgement route, and every project in
+the publication-safe `projects` export. Featured projects receive a slightly
+higher priority hint. Hidden and confidential projects are excluded
+automatically.
 
 Do not maintain a second manual project URL list.
 
@@ -188,6 +194,7 @@ Check:
 
 ```text
 http://localhost:3000/
+http://localhost:3000/acknowledgements
 http://localhost:3000/work/snakinesis
 http://localhost:3000/opengraph-image
 http://localhost:3000/icon.svg
@@ -216,6 +223,8 @@ private preview containing unapproved professional material.
 - [ ] Canonical paths match routes.
 - [ ] Project slug changes were assessed for redirects.
 - [ ] Social image contains no confidential material.
+- [ ] Acknowledgement metadata contains no names or context beyond the approved
+      visible page.
 - [ ] Structured data contains no unsupported claims.
 - [ ] Sitemap includes all and only public routes.
 - [ ] Robots points to the correct sitemap.

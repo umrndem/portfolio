@@ -1908,6 +1908,214 @@ svg {
   text-align: right;
 }
 
+.site-footer__note a {
+  display: inline-flex;
+  min-height: 1.75rem;
+  align-items: center;
+}
+
+.acknowledgements {
+  width: min(100%, var(--page-width));
+  margin: 0 auto;
+  padding-inline: var(--page-edge);
+}
+
+.acknowledgements__hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+  /* Match the homepage landing: fill the viewport below the sticky header and
+     keep breadcrumb, eyebrow, title, and intro visible without scrolling. */
+  min-height: calc(100svh - var(--header-offset));
+  min-height: calc(100dvh - var(--header-offset));
+  align-content: center;
+  padding-block: clamp(1.25rem, 4vh, 3.5rem);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.acknowledgements__breadcrumb {
+  display: flex;
+  grid-column: 1 / -1;
+  gap: 0.65rem;
+  align-items: center;
+  margin-bottom: clamp(0.35rem, 1.5vh, 1rem);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono), var(--font-mono-fallback);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.acknowledgements__breadcrumb a:hover {
+  color: var(--color-brand-primary);
+}
+
+.acknowledgements__eyebrow {
+  grid-column: 1 / span 3;
+  align-self: start;
+  padding-top: 0.45rem;
+  margin: 0;
+}
+
+.acknowledgements__hero-main {
+  grid-column: 4 / -1;
+  min-width: 0;
+}
+
+.acknowledgements__hero-main h1 {
+  max-width: 11ch;
+  /* Height-aware like the homepage hero so short/zoomed viewports still fit. */
+  font-size: clamp(2.4rem, min(8vw, 11vh), 8.5rem);
+  font-weight: 520;
+  /* Softer tracking than the previous -0.075em so the leading “T” and following
+     lines share a cleaner left edge instead of looking optically skewed. */
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+}
+
+.acknowledgements__title-line {
+  display: block;
+}
+
+/* Glyph-level optical fixes for leading t-glyphs. Nudge the glyph, not the
+   whole line. First-line capital T and third-line lowercase t use separate
+   offsets so each can be tuned independently. */
+.acknowledgements__optical-t {
+  display: inline-block;
+  margin-left: -0.19em;
+  margin-right: -0.01em;
+}
+
+.acknowledgements__optical-t--lower {
+  margin-left: -0.05em;
+}
+
+.acknowledgements__introduction {
+  max-width: 39rem;
+  margin-top: clamp(0.85rem, 3vh, 2.25rem);
+  color: var(--color-text-secondary);
+  font-size: clamp(1rem, min(1.5vw, 2.2vh), 1.28rem);
+  line-height: 1.55;
+}
+
+.acknowledgements__praise {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.25rem 2rem;
+  padding-block: clamp(2.25rem, 5vw, 3.75rem);
+  background: var(--color-brand-deep);
+  color: var(--color-on-brand);
+  box-shadow: 0 0 0 100vmax var(--color-brand-deep);
+  clip-path: inset(0 -100vmax);
+}
+
+.acknowledgements__praise > .kicker {
+  grid-column: 1 / span 3;
+  color: var(--color-on-brand-muted);
+}
+
+.acknowledgements__praise-copy {
+  grid-column: 4 / span 8;
+}
+
+.acknowledgements__praise h2 {
+  max-width: 18ch;
+  font-size: clamp(1.85rem, 3.8vw, 3.4rem);
+  font-weight: 520;
+  letter-spacing: -0.05em;
+  line-height: 1.05;
+  color: var(--color-on-brand);
+}
+
+.acknowledgements__praise-copy > p {
+  max-width: 42rem;
+  margin-top: 1.1rem;
+  color: var(--color-on-brand-muted);
+  font-size: clamp(0.98rem, 1.2vw, 1.12rem);
+  line-height: 1.6;
+}
+
+.acknowledgements__entries {
+  padding-block: clamp(1.5rem, 4vw, 3rem) clamp(2rem, 5vw, 3.5rem);
+}
+
+.acknowledgements__entry {
+  display: grid;
+  grid-template-columns:
+    0.65rem
+    minmax(8.5rem, 2.2fr)
+    minmax(12rem, 2.6fr)
+    minmax(0, 6fr);
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+  align-items: start;
+  padding-block: clamp(1.5rem, 3.5vw, 2.5rem);
+  border-top: 1px solid var(--color-border);
+}
+
+.acknowledgements__entry:first-of-type {
+  border-top: 0;
+}
+
+.acknowledgements__marker {
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-top: 0.55rem;
+  border-radius: 50%;
+  background: var(--color-brand-primary);
+}
+
+.acknowledgements__relationship {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono), var(--font-mono-fallback);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.acknowledgements__name {
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+  font-weight: 520;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.acknowledgements__copy {
+  max-width: 38rem;
+  color: var(--color-text-secondary);
+  font-size: clamp(0.98rem, 1.15vw, 1.05rem);
+  line-height: 1.65;
+}
+
+.acknowledgements__closing {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.5rem 2rem;
+  align-items: end;
+  margin-block: clamp(1rem, 3vw, 2rem) clamp(2rem, 5vw, 4rem);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border-top: 1px solid var(--color-border-emphasis);
+  background: var(--color-surface-maroon);
+}
+
+.acknowledgements__closing > p {
+  grid-column: 1 / span 8;
+  max-width: 34rem;
+  color: var(--color-text-primary);
+  font-size: clamp(1.15rem, 2vw, 1.7rem);
+  letter-spacing: -0.025em;
+  line-height: 1.4;
+}
+
+.acknowledgements__closing .text-link {
+  grid-column: 9 / -1;
+  justify-self: end;
+}
+
 .case-study {
   width: min(100%, var(--page-width));
   margin: 0 auto;
@@ -2537,6 +2745,88 @@ svg {
     grid-column: 1 / -1;
     justify-self: start;
     text-align: left;
+  }
+
+  .acknowledgements__hero {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem 1rem;
+    /* Keep the full landing message in the first viewport on mobile too. */
+    min-height: calc(100svh - var(--header-offset));
+    min-height: calc(100dvh - var(--header-offset));
+    padding-block: clamp(1.25rem, 3.5vh, 2.5rem);
+  }
+
+  .acknowledgements__breadcrumb,
+  .acknowledgements__eyebrow,
+  .acknowledgements__hero-main {
+    grid-column: 1 / -1;
+  }
+
+  .acknowledgements__breadcrumb {
+    margin-bottom: clamp(0.35rem, 1.2vh, 0.75rem);
+  }
+
+  .acknowledgements__eyebrow {
+    padding-top: 0;
+  }
+
+  .acknowledgements__hero-main h1 {
+    margin-top: 0.15rem;
+    font-size: clamp(2.25rem, min(13vw, 8.5vh), 4.4rem);
+  }
+
+  .acknowledgements__introduction {
+    margin-top: clamp(0.7rem, 2vh, 1.1rem);
+    font-size: clamp(0.95rem, 3.4vw, 1.08rem);
+  }
+
+  .acknowledgements__praise {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.85rem;
+    padding-block: clamp(2rem, 7vw, 2.75rem);
+  }
+
+  .acknowledgements__praise > .kicker,
+  .acknowledgements__praise-copy {
+    grid-column: 1 / -1;
+  }
+
+  .acknowledgements__entry {
+    grid-template-columns: 0.65rem 1fr;
+    gap: 0.35rem 0.9rem;
+    padding-block: 1.75rem;
+  }
+
+  .acknowledgements__relationship,
+  .acknowledgements__name,
+  .acknowledgements__copy {
+    grid-column: 2;
+  }
+
+  .acknowledgements__marker {
+    grid-row: 1 / span 3;
+    margin-top: 0.45rem;
+  }
+
+  .acknowledgements__name {
+    white-space: normal;
+    font-size: clamp(1.25rem, 5.5vw, 1.55rem);
+  }
+
+  .acknowledgements__closing {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-block: 1.5rem 2.5rem;
+    padding: 1.75rem;
+  }
+
+  .acknowledgements__closing > p,
+  .acknowledgements__closing .text-link {
+    grid-column: 1;
+  }
+
+  .acknowledgements__closing .text-link {
+    justify-self: start;
   }
 
   .case-study__hero {

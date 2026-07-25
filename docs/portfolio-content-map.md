@@ -16,6 +16,7 @@ modules. For editing steps, use `docs/content-management.md`.
 | Education | `src/content/profile.ts` + `src/content/home.ts` | BS Data Science, expected June 2028, verified 3.42/4.00, selected coursework | Academic year/semester remains omitted |
 | Contact/socials | `src/content/profile.ts` | Approved email and profiles; phone intentionally absent from primary site | Approved résumé and phone-placement decision |
 | Profile media | `src/content/profile.ts` | Designed placeholder until an approved public photograph exists | Approved portrait |
+| Acknowledgements | `src/content/acknowledgements.ts` + `docs/acknowledgements.md` | Explicitly approved public display forms; family remains relationship-only; personal support does not imply authorship | Reconfirm approval before expanding identification or context |
 | Metadata | `src/content/site-settings.ts` + route content | Same claims as visible copy; no separate SEO inflation | Production origin/domain |
 
 ## Content excluded

@@ -50,6 +50,7 @@ npm run check             # lint + types + tests + production build
 | Social links | `src/content/profile.ts` |
 | Navigation and homepage anchors | `src/content/navigation.ts` |
 | Homepage introduction, experience, approach, about, footer copy | `src/content/home.ts` |
+| Approved acknowledgements, privacy states, and order | `src/content/acknowledgements.ts` |
 | Projects, ordering, visibility, technologies, case studies, media | `src/content/projects.ts` |
 | Global title, descriptions, availability label | `src/content/site-settings.ts` |
 | Light/dark colors, spacing, component styling | `src/app/globals.css` |

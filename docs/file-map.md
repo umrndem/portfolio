@@ -22,12 +22,13 @@ framework files are intentionally not documented line by line.
 | Path | Visible effect | Edit when | Relationships and cautions |
 |---|---|---|---|
 | `src/content/profile.ts` | Name, location, email, education, socials, portrait, résumé | Updating identity, contact, education, public profile media | Must agree with source of truth; referenced assets must exist in `public/` |
+| `src/content/acknowledgements.ts` | Approved public names/labels, acknowledgements, privacy states, order, and closing copy | Adding, editing, anonymizing, reordering, or removing an acknowledgement | Follow `docs/acknowledgements.md`; never infer entries from private notes |
 | `src/content/navigation.ts` | Header links and canonical homepage section IDs | Adding/removing a top-level homepage section | Page/footer IDs consume `sectionIds`; validation rejects unknown targets |
-| `src/content/home.ts` | Hero, range explanation, work heading, experience, approach, about, footer copy | Normal homepage copy updates | Keep factual claims evidence-backed |
+| `src/content/home.ts` | Hero, range explanation, work heading, experience, approach, about, footer copy | Normal homepage copy updates | Keep factual claims evidence-backed; acknowledgements have their own module |
 | `src/content/projects.ts` | Project order, prominence, visibility, cards, case studies, core/deployment/integration tags, repository links, media | Any project update | `projects` is the publication-safe filtered export; never bypass it in routes. Homepage order also drives next-project links and positional card surfaces. |
 | `src/content/project-surfaces.ts` | Positional lead-red opacity scale and ink | Changing the Selected Work surface scale or ink rules | Surfaces are positional; never key colors to project names |
 | `src/content/technology-icons.ts` | Local SVG mapping for stack badges | Adding/changing a technology logo | Prefer exact display-name keys; validate files exist |
-| `src/content/site-settings.ts` | Global title, descriptions, availability label, authorship note, site origin | Branding/metadata copy or deployment origin behavior changes | `NEXT_PUBLIC_SITE_URL` remains the environment-specific origin |
+| `src/content/site-settings.ts` | Global title, descriptions, availability label, site origin | Branding/metadata copy or deployment origin behavior changes | `NEXT_PUBLIC_SITE_URL` remains the environment-specific origin |
 | `src/content/types.ts` | Shared content model | A real rendering/content requirement needs a new field | Update validation and both content guides at the same time |
 | `src/content/validation.ts` | Runtime rules protecting content and publication | The content model or privacy rules change | Keep errors specific; avoid weakening a rule just to pass invalid content |
 
@@ -37,6 +38,7 @@ framework files are intentionally not documented line by line.
 |---|---|---|---|
 | `src/app/layout.tsx` | HTML shell, fonts, global metadata, pre-paint browser-state bootstraps, header, skip link | Site-wide shell or metadata changes | Theme and logo bootstraps must remain before paint |
 | `src/app/page.tsx` | Homepage section composition | Adding/removing/reordering major sections | Normal copy belongs in `src/content/home.ts` |
+| `src/app/acknowledgements/page.tsx` | Dedicated editorial acknowledgement page and metadata | Changing acknowledgement presentation or route metadata | Render only approved fields from `src/content/acknowledgements.ts` |
 | `src/app/work/layout.tsx` | Work-route shell; scroll reset on case-study soft navigations | Work-segment layout behavior changes | Keep scroll reset local to `/work/*` |
 | `src/app/work/[slug]/page.tsx` | Every project case-study route and route metadata | Case-study presentation or route-level metadata changes | Routes derive only from filtered `projects` |
 | `src/app/opengraph-image.tsx` | Default generated social preview | Social-image composition changes | Values must stay public-safe; palette hex values mirror the CSS identity |
@@ -58,7 +60,7 @@ framework files are intentionally not documented line by line.
 | `src/components/LogoMark.tsx` | Interactive expandable logo and outside-tap collapse | Logo interaction changes | Brand colors and pre-paint persistence logic |
 | `src/components/TypingHeadline.tsx` | Accessible character reveal for the homepage headline | Hero typing behavior changes | Homepage copy |
 | `src/components/Reveal.tsx` | One-shot scroll entrance for headings and approach steps | Reveal timing or host element changes | Project-card choreography or ETS-style scrub scenes |
-| `src/components/SiteFooter.tsx` | Shared contact form shell, socials, optional résumé, authorship | Footer structure changes | Duplicate profile/social values |
+| `src/components/SiteFooter.tsx` | Shared contact form shell, socials, optional résumé, acknowledgement utility link | Footer structure changes | Duplicate profile/social/acknowledgement content |
 | `src/components/ContactForm.tsx` | Client contact form posting to `/api/contact` | Form fields, status copy, or submission UX | Mail provider secrets or inbox logic |
 | `src/components/ThemeToggle.tsx` | Client-side theme switching and state accessibility | Theme interaction changes | Palette values |
 | `src/components/ProfilePortrait.tsx` | Approved portrait or fallback placeholder | Rendering/crop behavior changes | Profile asset path or public copy |
@@ -103,6 +105,7 @@ framework files are intentionally not documented line by line.
 | `docs/development-workflow.md` | Branch-to-commit workflow and commands |
 | `docs/deployment.md` | Current deployment readiness and provider-neutral release steps |
 | `docs/privacy-and-publication.md` | Mandatory privacy and approval checklist |
+| `docs/acknowledgements.md` | Approved acknowledgement display forms, privacy states, and safe editing |
 | `docs/troubleshooting.md` | Stack-specific failure diagnosis |
 | `docs/decisions.md` | Architectural decision record |
 | `docs/checklists/` | Reusable content and new-project checklists |

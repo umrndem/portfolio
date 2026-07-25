@@ -102,3 +102,18 @@ section/approach reveals. Prefer final-state-first behavior under
 `prefers-reduced-motion`. Do not port ETS Website scroll engines (sticky SVG
 morph, Three.js scrub, coverflow, deck flip, 3D marquee, snap sections, peel
 hero, or evidence count-ups).
+
+## 010 — Acknowledgements are a separate privacy-gated route
+
+**Status:** accepted
+**Date:** 25 July 2026
+
+Acknowledgements live in a dedicated typed module and render at
+`/acknowledgements`. The shared footer exposes a quiet utility link; the page is
+not part of primary navigation and does not interrupt the homepage or contact
+CTA. Public display forms and privacy states require explicit approval recorded
+in `docs/acknowledgements.md`. The content validator enforces unique IDs and
+ascending order, while privacy review—not inference—controls identification.
+
+The page sequence is editorial hero → faith foundation panel → continuous
+uniform acknowledgement list → closing panel → standard footer.

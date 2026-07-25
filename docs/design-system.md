@@ -60,6 +60,7 @@ Strong maroon is concentrated in:
 - the lead project;
 - primary actions;
 - the footer;
+- the acknowledgement praise rule (not the full page);
 - selected labels and progression marks.
 
 Soft/blackened maroon supports:
@@ -296,6 +297,26 @@ Test at 390 × 844, 768 × 1024, and 1440 × 1000 after visible changes.
 
 Do not create generic variant systems for one use. Add a typed variant only when
 multiple real content instances need it.
+
+## Acknowledgements page
+
+`/acknowledgements` is a restrained editorial route, not a card grid or credits
+roll. Its hierarchy uses:
+
+- a full-viewport landing hero below the sticky header (same logic as the
+  homepage), so breadcrumb, eyebrow, title, and introduction stay visible
+  without scrolling; height-aware type and spacing keep the block from clipping;
+- a deep-maroon faith foundation with light text;
+- one continuous, uniform acknowledgement list (small marker, context label,
+  name, copy) with quiet row separators — no category headings, layout
+  variants, edge ribbons, or dotted timeline decoration;
+- a quiet closing panel with a return link to `/#work`, then the
+  standard footer;
+- the existing one-shot `Reveal` motion, with reduced-motion final states.
+
+The homepage and contact CTA remain unchanged. Do not promote the
+Acknowledgements link into primary navigation or introduce portraits, profile
+cards, sentimental illustration, or decorative animation.
 
 ## Change branding safely
 

@@ -192,6 +192,26 @@ Do not use technical impressiveness to override personal privacy. Any future
 public treatment would require a separate explicit decision about whether the
 project should appear at all and which narrow implementation facts are safe.
 
+## Personal acknowledgements
+
+Acknowledgements are public identity content, not harmless decorative copy.
+Before publishing or expanding an entry:
+
+- require explicit current approval for the public display name and wording;
+- use relationship-only or indirect wording when a name is not approved;
+- do not infer acknowledgements from private notes, messages, contacts,
+  repository history, or project collaboration;
+- do not add workplaces, schools, profiles, photographs, contact details, or
+  private history unless separately approved;
+- keep personal support distinct from professional authorship and contribution;
+- treat praise to Allah as the page foundation, not a person entry;
+- do not use acknowledgement metadata or social previews to expose names beyond
+  the visible approved page.
+
+The active approval record and privacy-state meanings live in
+`docs/acknowledgements.md`. When approval is ambiguous, choose the more private
+display or omit the entry.
+
 ## Résumé and profile media
 
 - The résumé must be explicitly approved before entering `public/documents/`.

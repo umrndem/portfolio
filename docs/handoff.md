@@ -17,6 +17,8 @@ or remote content service.
 - Responsive homepage with introduction, technical range, selected work,
   experience, approach, education, and contact.
 - Six statically generated project case-study routes.
+- Dedicated privacy-gated `/acknowledgements` route linked quietly from the
+  shared footer base.
 - Typed content split by editing responsibility, including optional project
   `deployment`, `integrations`, and `infrastructureNote` fields.
 - Explicit featured/supporting/hidden and
@@ -40,11 +42,12 @@ or remote content service.
 | Content | File |
 |---|---|
 | Profile, education, email, socials, portrait, résumé | `src/content/profile.ts` |
+| Approved acknowledgement copy, privacy states, order | `src/content/acknowledgements.ts` |
 | Navigation and homepage section IDs | `src/content/navigation.ts` |
 | Homepage introduction, experience, approach, foundation, footer / contact form copy | `src/content/home.ts` |
 | Project list, order, case studies, publication status, technologies, deployment, integrations, media | `src/content/projects.ts` |
 | Technology logo map | `src/content/technology-icons.ts` |
-| Global titles, descriptions, availability, footer note | `src/content/site-settings.ts` |
+| Global titles, descriptions, availability | `src/content/site-settings.ts` |
 | Shared content types | `src/content/types.ts` |
 | Content/publication validation | `src/content/validation.ts` |
 
@@ -179,6 +182,8 @@ These are not reasons to introduce a CMS or large framework.
 - Everything under `public/` is anonymously reachable after deployment.
 - Matootoo relationship content, private media, archive/corpus, and analysis are
   excluded.
+- Acknowledgements must follow `docs/acknowledgements.md`; do not infer names,
+  relationships, or wording from private material or repository history.
 - Never invent metrics, outcomes, roles, contribution splits, or production
   claims.
 - New professional assets/content require Umar’s explicit approval.
@@ -221,6 +226,7 @@ public/private-sanitized project route in both themes.
 - Development workflow: `docs/development-workflow.md`
 - Deployment: `docs/deployment.md`
 - Privacy: `docs/privacy-and-publication.md`
+- Acknowledgements: `docs/acknowledgements.md`
 - Troubleshooting: `docs/troubleshooting.md`
 - Decisions: `docs/decisions.md`
 - Checklists: `docs/checklists/`

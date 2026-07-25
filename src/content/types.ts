@@ -68,6 +68,17 @@ export type NavigationItem = {
   href: `/#${string}`;
 };
 
+export type AcknowledgementPrivacy = "public" | "limited" | "anonymous";
+
+export type Acknowledgement = {
+  id: string;
+  publicDisplayName: string;
+  relationshipLabel: string;
+  acknowledgement: string;
+  privacy: AcknowledgementPrivacy;
+  order: number;
+};
+
 export type Profile = {
   name: string;
   shortName: string;

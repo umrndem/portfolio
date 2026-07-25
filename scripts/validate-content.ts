@@ -1,5 +1,6 @@
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
+import { acknowledgementsPage } from "../src/content/acknowledgements";
 import { primaryNavigation, sectionIds } from "../src/content/navigation";
 import { profile, socialLinks } from "../src/content/profile";
 import {
@@ -15,6 +16,7 @@ import {
 } from "../src/content/validation";
 
 validatePortfolioContent({
+  acknowledgements: acknowledgementsPage.entries,
   allProjects,
   profile,
   socialLinks,
@@ -62,5 +64,5 @@ if (missingTechnologyIcons.length > 0) {
 }
 
 console.log(
-  `Validated ${allProjects.length} projects, ${socialLinks.length} social links, and all referenced public assets.`,
+  `Validated ${allProjects.length} projects, ${acknowledgementsPage.entries.length} acknowledgements, ${socialLinks.length} social links, and all referenced public assets.`,
 );

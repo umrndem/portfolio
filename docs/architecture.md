@@ -32,6 +32,7 @@ project metadata, navigation, or frequently edited homepage copy.
 │   ├── app/
 │   │   ├── layout.tsx              global shell and metadata
 │   │   ├── page.tsx                homepage composition
+│   │   ├── acknowledgements/       dedicated acknowledgement route
 │   │   ├── work/[slug]/page.tsx    generated case-study route
 │   │   ├── globals.css             tokens and all visual styling
 │   │   ├── opengraph-image.tsx     generated social preview
@@ -62,6 +63,11 @@ RootLayout
 │   ├── approach
 │   ├── foundation
 │   └── SiteFooter                 contact form + socials
+├── /acknowledgements              approved public thanks
+│   ├── editorial introduction and praise
+│   ├── privacy-safe acknowledgement entries
+│   ├── restrained return link
+│   └── SiteFooter
 ├── /work/[slug]                   one route per published project
 │   ├── case-study hero
 │   ├── evidence boundary
@@ -122,6 +128,8 @@ flowchart LR
 The editable modules have distinct responsibilities:
 
 - `profile.ts` — identity, education, contact, socials, portrait, résumé.
+- `acknowledgements.ts` — approved public acknowledgement copy, privacy states,
+  order, and closing/return labels.
 - `navigation.ts` — labels and canonical homepage anchor IDs.
 - `home.ts` — homepage narrative and experience copy.
 - `projects.ts` — project order, visibility, proof, limitations, technologies,
@@ -139,7 +147,7 @@ separate file.
 
 - `SiteHeader` renders navigation, theme control, and availability.
 - `SiteFooter` renders the contact action, social links, optional résumé, and
-  authorship note.
+  quiet `/acknowledgements` utility link.
 - `ThemeToggle` and `LogoMark` are the small interactive client components in
   the site shell.
 
@@ -200,9 +208,10 @@ The generated favicon and default Open Graph image use App Router files under
 ## Metadata flow
 
 `site-settings.ts` supplies global title and descriptions. `layout.tsx` builds
-global Metadata, project routes derive route-specific metadata, and
-`opengraph-image.tsx` renders the shared social image. `sitemap.ts` includes only
-published project routes. `robots.ts` points crawlers to that sitemap.
+global Metadata, project and acknowledgement routes declare route-specific
+metadata, and `opengraph-image.tsx` renders the shared social image. `sitemap.ts`
+includes the homepage, acknowledgements, and only published project routes.
+`robots.ts` points crawlers to that sitemap.
 
 `NEXT_PUBLIC_SITE_URL` supplies the production origin. The local fallback exists
 only to keep development deterministic.
