@@ -1029,12 +1029,13 @@ svg {
   height: 0.9rem;
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
   flex: none;
   margin-top: -0.5rem;
-  border: 0;
+  border: 2px solid var(--color-bg-primary);
   border-radius: 50%;
-  background: var(--color-on-brand);
-  box-shadow: 0 0 0 2px var(--color-on-brand);
+  /* Opaque page fill so the track cannot show through the circle. */
+  background: var(--color-bg-primary);
 }
 
 .range-line__label {
@@ -1057,8 +1058,8 @@ svg {
 }
 
 .range-line__points li.is-active .range-line__dot {
+  border-color: var(--color-brand-primary);
   background: var(--color-brand-primary);
-  box-shadow: 0 0 0 2px var(--color-brand-primary);
 }
 
 .range-line--compact .range-line__points li {
@@ -1411,15 +1412,18 @@ svg {
   background: var(--color-border);
 }
 
+/* Idle dots match the card fill so the track is fully masked underneath. */
 .project-card .range-line__dot {
-  background: #ffffff;
-  box-shadow: 0 0 0 2px #ffffff;
+  border: 2px solid #ffffff;
+  background: var(--range-dot-mask, #ffffff);
+  box-shadow: none;
 }
 
 .project-card .range-line__active,
 .project-card .range-line__points li.is-active .range-line__dot {
+  border-color: var(--color-brand-primary);
   background: var(--color-brand-primary);
-  box-shadow: 0 0 0 2px var(--color-brand-primary);
+  box-shadow: none;
 }
 
 /* Red span would disappear on the red tiles, so those invert to solid white. */
@@ -1428,14 +1432,16 @@ svg {
 }
 
 .project-card[data-ink="on-brand"] .range-line__dot {
-  background: rgb(255 255 255 / 0.5);
-  box-shadow: 0 0 0 2px rgb(255 255 255 / 0.5);
+  border-color: rgb(255 255 255 / 0.92);
+  background: var(--range-dot-mask, var(--project-surface-1));
+  box-shadow: none;
 }
 
 .project-card[data-ink="on-brand"] .range-line__active,
 .project-card[data-ink="on-brand"] .range-line__points li.is-active .range-line__dot {
+  border-color: #ffffff;
   background: #ffffff;
-  box-shadow: 0 0 0 2px #ffffff;
+  box-shadow: none;
 }
 
 .project-card__footer .text-link span[aria-hidden="true"] {
@@ -1537,63 +1543,80 @@ svg {
    Levels come from data-surface on each card (1…6), not from project names.
    Only the final published card should map to stop 6. */
 .project-card[data-surface="1"] {
+  --range-dot-mask: var(--project-surface-1);
   border-color: var(--project-surface-1);
   background: var(--project-surface-1);
 }
 
 .project-card[data-surface="1"]:hover,
 .project-card[data-surface="1"]:focus-within {
+  --range-dot-mask: var(--project-surface-1-hover);
   border-color: var(--project-surface-1-hover);
   background: var(--project-surface-1-hover);
 }
 
 .project-card[data-surface="2"] {
+  --range-dot-mask: var(--project-surface-2);
   background: var(--project-surface-2);
 }
 
 .project-card[data-surface="2"]:hover,
 .project-card[data-surface="2"]:focus-within {
+  --range-dot-mask: var(--project-surface-2-hover);
   background: var(--project-surface-2-hover);
 }
 
 .project-card[data-surface="3"] {
+  --range-dot-mask: var(--project-surface-3);
   background: var(--project-surface-3);
 }
 
 .project-card[data-surface="3"]:hover,
 .project-card[data-surface="3"]:focus-within {
+  --range-dot-mask: var(--project-surface-3-hover);
   background: var(--project-surface-3-hover);
 }
 
 .project-card[data-surface="4"] {
+  --range-dot-mask: var(--project-surface-4);
   background: var(--project-surface-4);
 }
 
 .project-card[data-surface="4"]:hover,
 .project-card[data-surface="4"]:focus-within {
+  --range-dot-mask: var(--project-surface-4-hover);
   background: var(--project-surface-4-hover);
 }
 
 .project-card[data-surface="5"] {
+  --range-dot-mask: var(--project-surface-5);
   background: var(--project-surface-5);
 }
 
 .project-card[data-surface="5"]:hover,
 .project-card[data-surface="5"]:focus-within {
+  --range-dot-mask: var(--project-surface-5-hover);
   background: var(--project-surface-5-hover);
 }
 
 .project-card[data-surface="6"] {
+  --range-dot-mask: var(--project-surface-6);
   background: var(--project-surface-6);
 }
 
 .project-card[data-surface="6"]:hover,
 .project-card[data-surface="6"]:focus-within {
+  --range-dot-mask: var(--project-surface-6-hover);
   background: var(--project-surface-6-hover);
 }
 
 /* Continuous blend when published count exceeds the discrete token scale. */
 .project-card[data-surface-mode="mix"] {
+  --range-dot-mask: color-mix(
+    in oklch,
+    var(--project-surface-1),
+    var(--project-surface-6) var(--project-surface-mix, 0%)
+  );
   background: color-mix(
     in oklch,
     var(--project-surface-1),
@@ -1603,6 +1626,11 @@ svg {
 
 .project-card[data-surface-mode="mix"]:hover,
 .project-card[data-surface-mode="mix"]:focus-within {
+  --range-dot-mask: color-mix(
+    in oklch,
+    var(--project-surface-1-hover),
+    var(--project-surface-6-hover) var(--project-surface-mix, 0%)
+  );
   background: color-mix(
     in oklch,
     var(--project-surface-1-hover),
@@ -2000,8 +2028,10 @@ svg {
   display: grid;
   grid-column: 1 / -1;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "address links note";
   gap: 2rem;
   align-self: end;
+  align-items: center;
   margin-top: clamp(2rem, 6vw, 4rem);
   padding-top: 1.4rem;
   border-top: 1px solid var(--color-footer-border);
@@ -2011,8 +2041,13 @@ svg {
   text-transform: uppercase;
 }
 
+.site-footer__address {
+  grid-area: address;
+}
+
 .site-footer__base nav {
   display: flex;
+  grid-area: links;
   gap: 1.5rem;
   justify-self: center;
 }
@@ -2024,6 +2059,7 @@ svg {
 }
 
 .site-footer__note {
+  grid-area: note;
   justify-self: end;
   text-align: right;
 }
@@ -2566,12 +2602,38 @@ svg {
     grid-template-columns: 1fr;
   }
 
-  .site-footer__lead {
+  .site-footer__lead,
+  .site-footer__form,
+  .site-footer__base {
     grid-column: 1 / -1;
   }
 
-  .site-footer__form {
-    grid-column: 1 / -1;
+  /* Socials on top; location + acknowledgements share the line below. */
+  .site-footer__base {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "links links"
+      "address note";
+    gap: 0.55rem 1.25rem;
+    align-items: center;
+  }
+
+  .site-footer__address {
+    grid-area: address;
+  }
+
+  .site-footer__base nav {
+    grid-area: links;
+    flex-wrap: wrap;
+    gap: 0.55rem 1.25rem;
+    justify-content: space-between;
+    justify-self: stretch;
+  }
+
+  .site-footer__note {
+    grid-area: note;
+    justify-self: end;
+    text-align: right;
   }
 
   .contact-form__row {
@@ -2681,20 +2743,34 @@ svg {
     margin-top: 1rem;
   }
 
+  .range-line {
+    --range-dot-size: 0.875rem;
+    --range-track-width: 2px;
+    --range-active-width: 4px;
+    --range-row-size: 2.75rem;
+    position: relative;
+  }
+
+  .range-line__body {
+    position: relative;
+  }
+
   .range-line__track {
     position: absolute;
-    top: 0.45rem;
-    bottom: 0.45rem;
-    left: 0.45rem;
-    width: 2px;
+    z-index: 0;
+    /* Center the stroke inside the fixed-width rail that also holds the dots. */
+    top: calc(var(--range-row-size) / 2);
+    bottom: calc(var(--range-row-size) / 2);
+    left: calc((var(--range-dot-size) - var(--range-track-width)) / 2);
+    width: var(--range-track-width);
     height: auto;
     margin: 0;
   }
 
   .range-line__active {
     top: calc((var(--range-start) / var(--segments)) * 100%);
-    left: -1px;
-    width: 4px;
+    left: calc((var(--range-active-width) - var(--range-track-width)) / -2);
+    width: var(--range-active-width);
     min-width: 0;
     height: calc(((var(--range-end) - var(--range-start)) / var(--segments)) * 100%);
     min-height: 2px;
@@ -2702,34 +2778,34 @@ svg {
     animation-name: range-reveal-mobile;
   }
 
-  .range-line {
-    position: relative;
-  }
-
   .range-line__span {
     margin-bottom: 1rem;
   }
 
   .range-line__points {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 0;
-    min-height: 12rem;
+    display: grid;
+    grid-template-rows: repeat(calc(var(--segments) + 1), var(--range-row-size));
+    min-height: 0;
+    padding-inline: 0;
+    margin: 0;
   }
 
   .range-line__points li,
   .range-line__points li:first-child,
   .range-line__points li:last-child {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: var(--range-dot-size) minmax(0, 1fr);
     align-items: center;
     width: auto;
-    gap: 0.8rem;
+    column-gap: 0.8rem;
   }
 
   .range-line__dot {
     z-index: 1;
+    width: var(--range-dot-size);
+    height: var(--range-dot-size);
     margin-top: 0;
+    justify-self: center;
   }
 
   .range-line__label {
@@ -2829,9 +2905,11 @@ svg {
 
   .site-footer {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    /* Let the footer size to its content instead of reserving a tall column
-       that leaves a dead gap above the bottom bar on phones. */
+    /* Size to content and pull the bottom padding in so maroon does not
+       linger as empty space under the last footer line. */
     min-height: auto;
+    gap: 1.5rem;
+    padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
   }
 
   .site-footer__lead,
@@ -2841,34 +2919,42 @@ svg {
   }
 
   .site-footer__form {
-    margin-top: 2rem;
+    margin-top: 1.25rem;
   }
 
   .contact-form__row {
     grid-template-columns: 1fr;
   }
 
-  /* Stack the bottom bar into one clean left-aligned column so the name,
-     links, and acknowledgements read in order instead of splitting sideways. */
   .site-footer__base {
-    grid-template-columns: 1fr;
-    gap: 1.35rem;
-    align-self: end;
-    text-align: left;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "links links"
+      "address note";
+    gap: 0.45rem 1rem;
+    align-self: stretch;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+  }
+
+  .site-footer__address {
+    grid-area: address;
   }
 
   .site-footer__base nav {
+    grid-area: links;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0.75rem 1.5rem;
-    justify-self: start;
-    text-align: left;
+    gap: 0.45rem 1rem;
+    justify-content: space-between;
+    justify-self: stretch;
   }
 
   .site-footer__note {
-    grid-column: 1 / -1;
-    justify-self: start;
-    text-align: left;
+    grid-area: note;
+    justify-self: end;
+    text-align: right;
   }
 
   .acknowledgements__hero {

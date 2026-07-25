@@ -24,11 +24,7 @@ export function SiteFooter() {
       </div>
 
       <div className="site-footer__base">
-        <p>
-          {profile.name}
-          <br />
-          {profile.location}
-        </p>
+        <p className="site-footer__address">{profile.location}</p>
         <nav aria-label="Social links">
           {socialLinks.map((link) => (
             <a
