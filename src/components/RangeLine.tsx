@@ -106,24 +106,28 @@ export function RangeLine({ active, compact = false }: RangeLineProps) {
           ))}
         </p>
       ) : null}
-      <div className="range-line__track" aria-hidden="true">
-        <span className="range-line__active" />
+      {/* Positioning context for the track so the mobile vertical line spans
+          exactly the dot column, not the caption above it. */}
+      <div className="range-line__body">
+        <div className="range-line__track" aria-hidden="true">
+          <span className="range-line__active" />
+        </div>
+        <ol className="range-line__points">
+          {rangePoints.map((point, index) => {
+            const isActive = index >= start && index <= end;
+            return (
+              <li
+                className={isActive ? "is-active" : undefined}
+                key={point}
+                style={{ "--point-index": index } as React.CSSProperties}
+              >
+                <span className="range-line__dot" aria-hidden="true" />
+                <span className="range-line__label">{point}</span>
+              </li>
+            );
+          })}
+        </ol>
       </div>
-      <ol className="range-line__points">
-        {rangePoints.map((point, index) => {
-          const isActive = index >= start && index <= end;
-          return (
-            <li
-              className={isActive ? "is-active" : undefined}
-              key={point}
-              style={{ "--point-index": index } as React.CSSProperties}
-            >
-              <span className="range-line__dot" aria-hidden="true" />
-              <span className="range-line__label">{point}</span>
-            </li>
-          );
-        })}
-      </ol>
     </div>
   );
 }

@@ -829,6 +829,12 @@ svg {
   width: 100%;
 }
 
+/* Anchors the absolutely positioned mobile track to the dots, excluding the
+   "Spans …" caption, so the line never leaks past the first dot. */
+.range-line__body {
+  position: relative;
+}
+
 .range-line__span {
   margin: 0 0 0.85rem;
   text-align: right;
