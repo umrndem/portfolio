@@ -55,6 +55,7 @@
   --page-edge: clamp(1.25rem, 4vw, 4.5rem);
   --page-width: 90rem;
   --section-space: clamp(6rem, 12vw, 11rem);
+  --section-space-tight: clamp(3rem, 6vw, 5.5rem);
   --footer-space: clamp(5rem, 10vw, 9rem);
   --header-offset: 4.75rem;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -164,9 +165,14 @@ a {
    so the heading's red border lands flush under the sticky header; the footer
    has no internal line, so its own top edge aligns instead. */
 .work-section,
-.approach-section,
 .about-section {
   scroll-margin-top: calc(-1 * var(--section-space));
+}
+
+/* Approach sits below Experience with a tightened junction, so its own top
+   padding is the reduced value. */
+.approach-section {
+  scroll-margin-top: calc(-1 * var(--section-space-tight));
 }
 
 main:focus-visible {
@@ -730,12 +736,14 @@ svg {
 }
 
 /* Facing paddings stacked to nearly 2× section-space; keep one section's worth. */
-.work-section {
-  padding-bottom: clamp(3rem, 6vw, 5.5rem);
+.work-section,
+.experience-section {
+  padding-bottom: var(--section-space-tight);
 }
 
-.experience-section {
-  padding-top: clamp(3rem, 6vw, 5.5rem);
+.experience-section,
+.approach-section {
+  padding-top: var(--section-space-tight);
 }
 
 .range-section {

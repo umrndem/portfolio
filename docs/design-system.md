@@ -97,6 +97,7 @@ Core layout variables:
 --page-edge: clamp(1.25rem, 4vw, 4.5rem);
 --page-width: 90rem;
 --section-space: clamp(6rem, 12vw, 11rem);
+--section-space-tight: clamp(3rem, 6vw, 5.5rem);
 --footer-space: clamp(5rem, 10vw, 9rem);
 --header-offset: 5.75rem;
 ```
@@ -107,8 +108,10 @@ Core layout variables:
   ends before the separately bordered “Currently” strip.
 - Section spacing is intentionally generous and fluid.
 - Where two full-space sections meet and the break would otherwise read as dead
-  area, halve the facing paddings instead of raising `--section-space`. Selected
-  Work and Experience already do this.
+  area, use `--section-space-tight` on the facing paddings instead of raising
+  `--section-space`. Work→Experience and Experience→Approach already do this.
+  A section whose top padding is tightened must also use the tight value in its
+  negative `scroll-margin-top` (see anchor scrolling below).
 
 ### Anchor scrolling
 
@@ -116,11 +119,12 @@ Core layout variables:
 700px) and is applied once through `scroll-padding-top` on `html`. Never add a
 second offset through a global `[id]` rule.
 
-Homepage navigation targets set `scroll-margin-top: calc(-1 * var(--section-space))`
-so the jump skips the section's decorative top padding entirely and the
-heading's red border line lands flush under the header. The footer has no
-internal line, so its own top edge aligns there instead. Add the same rule for
-any new anchored section with generous internal padding.
+Homepage navigation targets set a negative `scroll-margin-top` equal to their
+own top padding (`--section-space`, or `--section-space-tight` for tightened
+junctions such as Approach) so the jump skips the decorative padding entirely
+and the heading's red border line lands flush under the header. The footer has
+no internal line, so its own top edge aligns there instead. Add the same rule
+for any new anchored section with generous internal padding.
 - Common gaps are based on roughly 8px increments but may use fluid values.
 - At 960px, major grids simplify while retaining multi-column hierarchy.
 - At 700px, pages switch to four columns or a single content column with a
