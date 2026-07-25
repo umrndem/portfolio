@@ -1959,10 +1959,8 @@ svg {
 
 .case-study__section-index {
   grid-column: 1 / -1;
-  width: fit-content;
-  padding: 0.28rem 0.42rem;
-  background: var(--color-brand-fill);
-  color: var(--color-on-brand);
+  margin: 0;
+  color: var(--color-brand-primary);
 }
 
 .case-study__sections .case-study__tools {

@@ -37,26 +37,26 @@ export const allProjects: readonly Project[] = [
       "Cloudflare R2",
     ],
     infrastructureNote:
-      "Deployed through Vercel with Neon PostgreSQL, Cloudflare R2 for media storage, and Cloudflare Turnstile protecting public form submissions.",
+      "I deployed this through Vercel with Neon PostgreSQL, Cloudflare R2 for media storage, and Cloudflare Turnstile protecting public form submissions.",
     proof:
-      "Repository evidence supports substantial work across content models, public routes, media, forms, admin surfaces, and responsive refinement.",
+      "I can show repository evidence across content models, public routes, media, forms, admin surfaces, and responsive refinement.",
     limitation:
-      "No private source, internal content, confidential records, or unverified business impact is shown. Live deployment URLs and production scale are not claimed.",
+      "I do not show private source, internal content, confidential records, or unverified business impact. I also do not claim live deployment URLs or production scale.",
     sections: [
       {
         title: "The problem",
         body:
-          "Public information and internal publishing needed a clearer structure than a collection of disconnected pages. The work involved translating stakeholder requirements into a system that could serve visitors and the people maintaining content.",
+          "I needed to give public information and internal publishing a clearer structure than a collection of disconnected pages. That meant translating stakeholder requirements into a system that could serve visitors and the people maintaining content.",
       },
       {
         title: "The system",
         body:
-          "The implementation separates structured CMS collections from public routes and reusable content components. It includes media and document handling, forms, editorial relationships, and an administration surface.",
+          "I separated structured CMS collections from public routes and reusable content components. The work covers media and document handling, forms, editorial relationships, and an administration surface.",
       },
       {
         title: "Interaction layer",
         body:
-          "The public experience also includes scroll-driven choreography: one-shot entrance reveals, pinned section sequences, and selective heavier 3D moments where the narrative needs them. That work is described only at technique level here—no client screens, internal content, or production URLs.",
+          "I also built scroll-driven choreography into the public experience: one-shot entrance reveals, pinned section sequences, and selective heavier 3D moments where the narrative needs them. I describe that work only at technique level here—no client screens, internal content, or production URLs.",
       },
       {
         title: "My responsibility",
@@ -66,7 +66,7 @@ export const allProjects: readonly Project[] = [
       {
         title: "What I can show",
         body:
-          "This case study stays deliberately abstract until approved screenshots and diagrams are prepared. Project name, technology choices, architecture at a safe level, anonymized workflows, and high-level interaction techniques are permitted; private source and operational data are not.",
+          "I keep this case study deliberately abstract until approved screenshots and diagrams are prepared. I can discuss the project name, technology choices, architecture at a safe level, anonymized workflows, and high-level interaction techniques; I cannot show private source or operational data.",
       },
     ],
   },
@@ -86,31 +86,31 @@ export const allProjects: readonly Project[] = [
     integrations: ["Turnstile"],
     homepageTechnologies: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle", "Zod"],
     infrastructureNote:
-      "Configured for deployment through Vercel with Neon PostgreSQL, Cloudflare R2 storage, and Cloudflare Turnstile on public-facing request paths.",
+      "I configured this for deployment through Vercel with Neon PostgreSQL, Cloudflare R2 storage, and Cloudflare Turnstile on public-facing request paths.",
     proof:
-      "Repository evidence supports explicit domain boundaries, authorization, database-backed sessions, transactional workflow actions, private media delivery, and audit events.",
+      "I can show repository evidence for explicit domain boundaries, authorization, database-backed sessions, transactional workflow actions, private media delivery, and audit events.",
     limitation:
-      "No production scale, quantified impact, automated-test coverage, employee data, or security-sensitive implementation is claimed. Live deployment URLs are not published.",
+      "I do not claim production scale, quantified impact, automated-test coverage, employee data, or security-sensitive implementation. I also do not publish live deployment URLs.",
     sections: [
       {
         title: "The problem",
         body:
-          "Operational reporting and medical-record workflows require different access boundaries, clear states, and an audit trail. The challenge was not a dashboard; it was preserving rules while making the system usable.",
+          "I was working with operational reporting and medical-record workflows that need different access boundaries, clear states, and an audit trail. The challenge was not a dashboard; it was preserving rules while keeping the system usable.",
       },
       {
         title: "The system",
         body:
-          "Feature boundaries separate reporting, medical, organization, and administration concerns. Role-derived authority and transactional mutations keep workflow changes and audit events together.",
+          "I separated feature boundaries for reporting, medical, organization, and administration concerns. Role-derived authority and transactional mutations keep workflow changes and audit events together.",
       },
       {
         title: "The tradeoff",
         body:
-          "The strongest engineering evidence is backend and domain behavior, while the safest public presentation must remain abstract. A truthful portfolio page should prefer a sanitized flow diagram over realistic fake company screens.",
+          "My strongest engineering evidence sits in backend and domain behavior, while the safest public presentation has to stay abstract. On this page I prefer a sanitized flow description over realistic fake company screens.",
       },
       {
         title: "Known gap",
         body:
-          "The inspected project documentation says committed automated tests are not yet present. That gap remains visible instead of being disguised by a polished case-study surface.",
+          "The project documentation I inspected says committed automated tests are not yet present. I leave that gap visible instead of disguising it with a polished case-study surface.",
       },
     ],
   },
@@ -128,30 +128,30 @@ export const allProjects: readonly Project[] = [
     technologies: ["Python", "OpenCV", "MediaPipe", "NumPy", "Pillow"],
     homepageTechnologies: ["Python", "OpenCV", "MediaPipe", "NumPy"],
     proof:
-      "Calibration, smoothed face-center ratios, neutral re-arm behavior, fallback controls, release tags, and focused tests are present in the public repository.",
+      "I can point to calibration, smoothed face-center ratios, neutral re-arm behavior, fallback controls, release tags, and focused tests in the public repository.",
     limitation:
-      "The exact contribution split with Shifa Zeeshan still requires confirmation; no sole-authorship claim is made.",
+      "I still need confirmation of the exact contribution split with Shifa Zeeshan; I do not claim sole authorship.",
     repositoryUrl: "https://github.com/umrndem/snakinesis",
     sections: [
       {
         title: "The interaction problem",
         body:
-          "Early eye-gaze control was too jittery for reliable play. The useful shift was to treat control as a deliberate gesture system with calibration, thresholds, and a return to neutral before another command.",
+          "I found early eye-gaze control too jittery for reliable play. The useful shift for me was treating control as a deliberate gesture system with calibration, thresholds, and a return to neutral before another command.",
       },
       {
         title: "The control loop",
         body:
-          "OpenCV captures frames, MediaPipe provides face landmarks, and the controller converts smoothed relative movement into one-shot directions. Keyboard input remains available as an accessible fallback.",
+          "I use OpenCV to capture frames, MediaPipe for face landmarks, and a controller that converts smoothed relative movement into one-shot directions. I keep keyboard input available as an accessible fallback.",
       },
       {
         title: "Evidence",
         body:
-          "The repository includes tests around face-loss prompts, direction selection, gesture gating, timing, and game behavior, plus tagged releases from the initial version through later fixes.",
+          "In the repository I included tests around face-loss prompts, direction selection, gesture gating, timing, and game behavior, plus tagged releases from the initial version through later fixes.",
       },
       {
         title: "Before final copy",
         body:
-          "A safe demo video and a confirmed collaborator contribution split are needed. The portfolio should present the control decision—not merely the retro game surface.",
+          "I still need a safe demo video and a confirmed collaborator contribution split. Until then I present the control decision—not merely the retro game surface.",
       },
     ],
   },
@@ -170,32 +170,32 @@ export const allProjects: readonly Project[] = [
     deployment: ["Railway", "Aiven"],
     homepageTechnologies: ["Express", "JavaScript", "MySQL", "Railway"],
     infrastructureNote:
-      "Previously deployed through Railway with an Aiven-managed MySQL database. The hosted demo is not currently active; the repository still supports initializing a fresh database and bringing up a new instance.",
+      "I previously deployed this through Railway with an Aiven-managed MySQL database. The hosted demo is not currently active; the repository still supports initializing a fresh database and bringing up a new instance.",
     proof:
-      "The public repository includes Express routes, MySQL schema and database-side logic, and role-oriented frontend surfaces for a ride-hailing simulation.",
+      "I can show Express routes, MySQL schema and database-side logic, and role-oriented frontend surfaces for a ride-hailing simulation in the public repository.",
     limitation:
-      "The hosted demo is not currently active. Contribution split with collaborators still requires confirmation; no production-scale or commercial impact is claimed.",
+      "The hosted demo is not currently active. I still need confirmation of the contribution split with collaborators; I do not claim production-scale or commercial impact.",
     repositoryUrl: "https://github.com/umrndem/rideflow",
     sections: [
       {
         title: "The domain",
         body:
-          "RideFlow models riders, drivers, wallets, payments, ratings, complaints, and payouts as a connected relational system rather than a static mock UI.",
+          "I modeled riders, drivers, wallets, payments, ratings, complaints, and payouts as a connected relational system rather than a static mock UI.",
       },
       {
         title: "The stack",
         body:
-          "An Express API sits in front of MySQL business rules, while vanilla JavaScript pages present role-specific workflows for riders, drivers, and administrators.",
+          "I put an Express API in front of MySQL business rules, with vanilla JavaScript pages for role-specific workflows for riders, drivers, and administrators.",
       },
       {
         title: "Deployment practice",
         body:
-          "The project was previously deployed through Railway with an Aiven-managed MySQL database, which is useful evidence of connecting an application to hosted infrastructure without claiming production operations expertise.",
+          "I previously deployed the project through Railway with an Aiven-managed MySQL database. That is useful evidence that I can connect an application to hosted infrastructure; it is not a claim of production operations expertise.",
       },
       {
         title: "Current status",
         body:
-          "The hosted demo is not currently active. The repository remains usable as a fresh start: schema, business-logic, and bootstrap SQL—or the bundled database-init script—can stand up a clean MySQL database with the admin account and location graph, after which a new local or hosted Express instance can be run against that database.",
+          "The hosted demo is not currently active. I can still use the repository as a fresh start: schema, business-logic, and bootstrap SQL—or the bundled database-init script—stand up a clean MySQL database with the admin account and location graph, after which I can run a new local or hosted Express instance against that database.",
       },
     ],
   },
@@ -214,32 +214,32 @@ export const allProjects: readonly Project[] = [
     deployment: ["Streamlit Community Cloud", "Supabase"],
     homepageTechnologies: ["Python", "Pandas", "Streamlit", "Plotly", "Prophet"],
     infrastructureNote:
-      "Deployed through Streamlit Community Cloud with Supabase-backed services.",
+      "I deployed this through Streamlit Community Cloud with Supabase-backed services.",
     proof:
-      "The public source separates pages, services, pipeline steps, configuration, and tests, including a direct KPI test.",
+      "I can show public source that separates pages, services, pipeline steps, configuration, and tests, including a direct KPI test.",
     limitation:
-      "Forecast quality, model comparison, data provenance, and role enforcement are not verified. Current live availability of the deployed app is unresolved.",
+      "I have not verified forecast quality, model comparison, data provenance, or role enforcement. Whether the deployed app remains live is still unresolved.",
     repositoryUrl: "https://github.com/umrndem/DataPulse",
     sections: [
       {
         title: "The product shape",
         body:
-          "DataPulse is more useful as evidence of an analytics workflow than as an ML claim: configured ingestion, transformation, KPIs, charts, export, targets, and forecasting are connected in one application.",
+          "I treat DataPulse as evidence of an analytics workflow more than as an ML claim: configured ingestion, transformation, KPIs, charts, export, targets, and forecasting connected in one application.",
       },
       {
-        title: "What is demonstrated",
+        title: "What I can show",
         body:
-          "Pandas-based transformation, configurable column mappings, service boundaries, visual reporting, and a small known-data KPI test have concrete repository support.",
+          "I have concrete repository support for Pandas-based transformation, configurable column mappings, service boundaries, visual reporting, and a small known-data KPI test.",
       },
       {
-        title: "What is not demonstrated",
+        title: "What I do not claim",
         body:
-          "There is no verified forecast evaluation, model comparison, messy external dataset study, or production usage. The portfolio therefore calls this analytics with forecasting—not AI research.",
+          "I have not verified forecast evaluation, model comparison, a messy external dataset study, or production usage. I therefore call this analytics with forecasting—not AI research.",
       },
       {
         title: "Next proof",
         body:
-          "A reproducible public-safe dataset, runtime validation, baseline comparison, and explicit error metrics would make this a substantially stronger data-science case study.",
+          "I would strengthen this as a data-science case study with a reproducible public-safe dataset, runtime validation, baseline comparison, and explicit error metrics.",
       },
     ],
   },
@@ -257,30 +257,30 @@ export const allProjects: readonly Project[] = [
     technologies: ["C++17", "POSIX IPC", "pthreads", "CMake"],
     homepageTechnologies: ["C++17", "POSIX IPC", "pthreads"],
     proof:
-      "The implementation contains fork/exec orchestration, FIFO and shared memory, named semaphores, a bounded queue, worker threads, signal handling, cleanup, and VWAP aggregation.",
+      "I implemented fork/exec orchestration, FIFO and shared memory, named semaphores, a bounded queue, worker threads, signal handling, cleanup, and VWAP aggregation.",
     limitation:
-      "Course context, benchmarks, large-data behavior, and automated tests remain unverified.",
+      "I have not verified course context, benchmarks, large-data behavior, or automated tests.",
     repositoryUrl: "https://github.com/umrndem/financial-tick-data-pipeline",
     sections: [
       {
         title: "The topology",
         body:
-          "A dispatcher prepares IPC resources and launches ingester, processor, and reporter processes. The processor combines a bounded producer-consumer queue with worker threads before publishing shared-memory output.",
+          "I built a dispatcher that prepares IPC resources and launches ingester, processor, and reporter processes. The processor combines a bounded producer-consumer queue with worker threads before publishing shared-memory output.",
       },
       {
         title: "Why it matters",
         body:
-          "The project is small, but it provides concrete evidence that my strongest language is grounded in processes, memory, concurrency primitives, cleanup, and data aggregation—not only syntax exercises.",
+          "The project is small, but it gives me concrete evidence that my strongest language is grounded in processes, memory, concurrency primitives, cleanup, and data aggregation—not only syntax exercises.",
       },
       {
         title: "Aggregation",
         body:
-          "Records are summarized per symbol with volume, count, high, low, and volume-weighted average price. This is systems-oriented data processing, not machine learning.",
+          "I summarize records per symbol with volume, count, high, low, and volume-weighted average price. This is systems-oriented data processing, not machine learning.",
       },
       {
         title: "Known limits",
         body:
-          "One observed commit and no documented benchmark make production or performance claims inappropriate. The next useful step is a reproducible run and an honest throughput experiment.",
+          "With one observed commit and no documented benchmark, I do not claim production or performance results. The next useful step for me is a reproducible run and an honest throughput experiment.",
       },
     ],
   },

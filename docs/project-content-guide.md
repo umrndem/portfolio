@@ -198,8 +198,11 @@ Three to five sections are usually enough:
 4. **Tradeoff or boundary** — what was deliberately limited.
 5. **Next proof** — the honest next validation step, if useful.
 
-Use titles specific to the project. The current routes render one paragraph per
-section; add richer section types only when real content requires them.
+Use titles specific to the project. Write section bodies, proof, limitation,
+and infrastructure notes in first person (“I …”). Avoid third-person exposé
+phrasing such as “The implementation separates…” or “The repository includes…”
+when the claim is about your own work. The current routes render one paragraph
+per section; add richer section types only when real content requires them.
 
 ## Complete example
 

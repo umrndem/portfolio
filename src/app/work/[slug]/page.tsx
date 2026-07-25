@@ -145,7 +145,6 @@ export default async function WorkPage({ params }: WorkPageProps) {
             ))}
 
             <section className="case-study__tools" id="technical-notes">
-              <p className="case-study__section-index">+</p>
               <h2>Technical notes</h2>
 
               <div className="case-study__stack-groups">
