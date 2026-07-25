@@ -146,7 +146,10 @@ separate file.
 ### Content display
 
 - `ProjectCard` renders summary-level project evidence.
-- `RangeLine` maps a project onto the systems-to-people axis.
+- `RangeLine` maps a project onto the systems-to-people axis and fills when
+  scrolled into view.
+- `Reveal` provides one-shot scroll entrances for section headings and approach
+  steps.
 - `SectionHeading` enforces homepage section hierarchy.
 - `ProfilePortrait` renders an approved profile image or the current placeholder.
 - `ContentImage` renders validated cover/gallery media and optional captions.

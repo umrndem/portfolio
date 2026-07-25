@@ -54,13 +54,14 @@ framework files are intentionally not documented line by line.
 | `src/components/SiteHeader.tsx` | Shared mark, navigation, theme toggle, availability | Header structure changes | Duplicate navigation/contact data |
 | `src/components/LogoMark.tsx` | Interactive expandable logo and outside-tap collapse | Logo interaction changes | Brand colors and pre-paint persistence logic |
 | `src/components/TypingHeadline.tsx` | Accessible character reveal for the homepage headline | Hero typing behavior changes | Homepage copy |
+| `src/components/Reveal.tsx` | One-shot scroll entrance for headings and approach steps | Reveal timing or host element changes | Project-card choreography or ETS-style scrub scenes |
 | `src/components/SiteFooter.tsx` | Shared contact form shell, socials, optional résumé, authorship | Footer structure changes | Duplicate profile/social values |
 | `src/components/ContactForm.tsx` | Client contact form posting to `/api/contact` | Form fields, status copy, or submission UX | Mail provider secrets or inbox logic |
 | `src/components/ThemeToggle.tsx` | Client-side theme switching and state accessibility | Theme interaction changes | Palette values |
 | `src/components/ProfilePortrait.tsx` | Approved portrait or fallback placeholder | Rendering/crop behavior changes | Profile asset path or public copy |
 | `src/components/ProjectCard.tsx` | Homepage project summaries and cover media | Card presentation changes | Project facts |
 | `src/components/ContentImage.tsx` | Optimized project image and caption rendering | Shared image rendering changes | Asset-specific facts |
-| `src/components/RangeLine.tsx` | Technical-range diagram | Range interaction/presentation changes | A second range-point source |
+| `src/components/RangeLine.tsx` | Technical-range diagram with scroll-gated fill | Range interaction/presentation changes | A second range-point source |
 | `src/components/SectionHeading.tsx` | Homepage section heading layout | Shared heading markup changes | Section-specific copy |
 | `src/components/StructuredData.tsx` | Safe JSON-LD serialization | Serialization requirements change | Person/project facts |
 

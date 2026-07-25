@@ -27,6 +27,8 @@ or remote content service.
   alt text, dimensions, referenced files, and mapped technology icon files.
 - Clean leather-maroon light/dark system with saved preference and pre-paint
   initialization.
+- Restrained scroll motion: IntersectionObserver-gated range fills, one-shot
+  section/approach reveals, and light project-card hover feedback.
 - Global/project metadata, generated Open Graph image, favicon, Person JSON-LD,
   sitemap, and robots route.
 - Linting, strict type checking, content-integrity tests, production build, and

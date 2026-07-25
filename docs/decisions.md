@@ -91,3 +91,14 @@ client form posts to `/api/contact`, which validates input and currently returns
 stub success without sending mail. A honeypot field discourages trivial bots.
 When a custom domain is live, wire a server-only mail provider through
 non-public environment variables. Keep the direct `mailto:` fallback.
+
+## 009 — Scroll motion stays one-shot and explanatory
+
+**Status:** accepted
+**Date:** 25 July 2026
+
+Homepage motion uses IntersectionObserver for range-line fills and restrained
+section/approach reveals. Prefer final-state-first behavior under
+`prefers-reduced-motion`. Do not port ETS Website scroll engines (sticky SVG
+morph, Three.js scrub, coverflow, deck flip, 3D marquee, snap sections, peel
+hero, or evidence count-ups).

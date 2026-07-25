@@ -1,6 +1,7 @@
 import { ProfilePortrait } from "@/components/ProfilePortrait";
 import { ProjectCard } from "@/components/ProjectCard";
 import { RangeLine } from "@/components/RangeLine";
+import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StructuredData } from "@/components/StructuredData";
@@ -59,11 +60,15 @@ export default function Home() {
       </section>
 
       <section className="range-section" aria-labelledby="range-title">
-        <div>
-          <p className="kicker">{homeContent.range.kicker}</p>
-          <h2 id="range-title">{homeContent.range.title}</h2>
-        </div>
-        <p>{homeContent.range.description}</p>
+        <Reveal className="range-section__intro">
+          <div>
+            <p className="kicker">{homeContent.range.kicker}</p>
+            <h2 id="range-title">{homeContent.range.title}</h2>
+          </div>
+        </Reveal>
+        <Reveal className="range-section__copy" delayMs={80}>
+          <p>{homeContent.range.description}</p>
+        </Reveal>
         <RangeLine />
       </section>
 
@@ -72,11 +77,13 @@ export default function Home() {
         id={sectionIds.work}
         aria-labelledby="work-title"
       >
-        <SectionHeading
-          index={homeContent.work.index}
-          title={homeContent.work.title}
-          note={homeContent.work.note}
-        />
+        <Reveal>
+          <SectionHeading
+            index={homeContent.work.index}
+            title={homeContent.work.title}
+            note={homeContent.work.note}
+          />
+        </Reveal>
         <div className="project-list">
           {projects.map((project, index) => {
             const surface = getProjectSurfaceAssignment(index, projects.length);
@@ -98,11 +105,13 @@ export default function Home() {
       </section>
 
       <section className="experience-section" aria-labelledby="experience-title">
-        <SectionHeading
-          index={homeContent.experience.heading.index}
-          title={homeContent.experience.heading.title}
-          note={homeContent.experience.heading.note}
-        />
+        <Reveal>
+          <SectionHeading
+            index={homeContent.experience.heading.index}
+            title={homeContent.experience.heading.title}
+            note={homeContent.experience.heading.note}
+          />
+        </Reveal>
         <article className="experience-entry">
           <div className="experience-entry__when">
             <p>{homeContent.experience.period}</p>
@@ -126,23 +135,29 @@ export default function Home() {
         id={sectionIds.approach}
         aria-labelledby="approach-title"
       >
-        <SectionHeading
-          index={homeContent.approach.heading.index}
-          title={homeContent.approach.heading.title}
-          note={homeContent.approach.heading.note}
-        />
+        <Reveal>
+          <SectionHeading
+            index={homeContent.approach.heading.index}
+            title={homeContent.approach.heading.title}
+            note={homeContent.approach.heading.note}
+          />
+        </Reveal>
         <div className="approach-grid">
-          {homeContent.approach.steps.map((step) => (
-            <article key={step.key}>
+          {homeContent.approach.steps.map((step, index) => (
+            <Reveal as="article" delayMs={index * 70} key={step.key}>
               <p className="approach-grid__number">{step.key}</p>
               <h3>{step.title}</h3>
               <p>{step.body}</p>
-            </article>
+            </Reveal>
           ))}
-          <article className="approach-grid__statement">
+          <Reveal
+            as="article"
+            className="approach-grid__statement"
+            delayMs={homeContent.approach.steps.length * 70}
+          >
             <p className="kicker">{homeContent.approach.boundaryLabel}</p>
             <blockquote>{homeContent.approach.boundary}</blockquote>
-          </article>
+          </Reveal>
         </div>
       </section>
 
@@ -151,11 +166,13 @@ export default function Home() {
         id={sectionIds.about}
         aria-labelledby="about-title"
       >
-        <SectionHeading
-          index={homeContent.about.heading.index}
-          title={homeContent.about.heading.title}
-          note={homeContent.about.heading.note}
-        />
+        <Reveal>
+          <SectionHeading
+            index={homeContent.about.heading.index}
+            title={homeContent.about.heading.title}
+            note={homeContent.about.heading.note}
+          />
+        </Reveal>
         <div className="about-grid">
           <div className="about-grid__lead">
             {homeContent.about.paragraphs.map((paragraph) => (

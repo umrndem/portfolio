@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { rangePoints, type RangePoint } from "@/content/projects";
 
 type RangeLineProps = {
@@ -6,12 +9,47 @@ type RangeLineProps = {
 };
 
 export function RangeLine({ active, compact = false }: RangeLineProps) {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
   const start = active ? rangePoints.indexOf(active[0]) : 0;
   const end = active ? rangePoints.indexOf(active[1]) : rangePoints.length - 1;
 
+  useEffect(() => {
+    const node = rootRef.current;
+
+    if (!node) {
+      return;
+    }
+
+    // Final fill state comes from CSS under prefers-reduced-motion.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35, rootMargin: "0px 0px -4% 0px" },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div
-      className={`range-line${compact ? " range-line--compact" : ""}`}
+      ref={rootRef}
+      className={[
+        "range-line",
+        compact ? "range-line--compact" : "",
+        inView ? "is-in-view" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
       style={
         {
           "--range-start": start,

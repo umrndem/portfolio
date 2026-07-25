@@ -207,17 +207,24 @@ focus in both themes.
 - Common hover transitions: 180ms.
 - Theme/surface transitions: 240ms.
 - Theme-disc rotation: 320ms.
-- Range reveal: 560ms.
+- Range reveal: 560ms, gated by IntersectionObserver so lines animate when
+  scrolled into view rather than on initial page load.
+- Section headings and approach steps use a one-shot `Reveal` entrance
+  (opacity + slight rise). Approach steps may stagger lightly; project cards
+  do not.
+- Project-card hover may nudge the case-study arrow and scale cover media
+  slightly (about 2%). No card entrance choreography.
 - The multiline hero headline types on once, character by character, without
   changing its final layout. Supporting labels remain static.
 
 Motion is limited to opacity/color/transform-like feedback and the range
 progression. There is no animation library. The
 `prefers-reduced-motion: reduce` block disables smooth scrolling, collapses
-animation/transition durations, and removes the button lift.
+animation/transition durations, removes the button lift, and forces reveal /
+  range / card-hover transforms into their final resting state.
 
-Do not add bounce, red flashes, glowing sweeps, parallax, or decorative motion
-that competes with reading.
+Do not add bounce, red flashes, glowing sweeps, parallax, sticky scrub
+scenes, 3D marquees, or decorative motion that competes with reading.
 
 ## Responsive behavior
 
