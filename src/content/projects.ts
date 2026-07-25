@@ -54,6 +54,11 @@ export const allProjects: readonly Project[] = [
           "The implementation separates structured CMS collections from public routes and reusable content components. It includes media and document handling, forms, editorial relationships, and an administration surface.",
       },
       {
+        title: "Interaction layer",
+        body:
+          "The public experience also includes scroll-driven choreography: one-shot entrance reveals, pinned section sequences, and selective heavier 3D moments where the narrative needs them. That work is described only at technique level here—no client screens, internal content, or production URLs.",
+      },
+      {
         title: "My responsibility",
         body:
           "I gathered requirements through relevant stakeholders, shaped the architecture and constraints, directed AI-assisted implementation, tested the working system, reviewed changes, and iterated on weak behavior. I do not claim that I manually wrote every line.",
@@ -61,7 +66,7 @@ export const allProjects: readonly Project[] = [
       {
         title: "What I can show",
         body:
-          "This case study stays deliberately abstract until approved screenshots and diagrams are prepared. Project name, technology choices, architecture at a safe level, and anonymized workflows are permitted; private source and operational data are not.",
+          "This case study stays deliberately abstract until approved screenshots and diagrams are prepared. Project name, technology choices, architecture at a safe level, anonymized workflows, and high-level interaction techniques are permitted; private source and operational data are not.",
       },
     ],
   },

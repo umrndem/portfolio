@@ -97,6 +97,8 @@ Core layout variables:
 --page-edge: clamp(1.25rem, 4vw, 4.5rem);
 --page-width: 90rem;
 --section-space: clamp(6rem, 12vw, 11rem);
+--footer-space: clamp(5rem, 10vw, 9rem);
+--header-offset: 5.75rem;
 ```
 
 - Desktop sections use a 12-column grid.
@@ -104,6 +106,21 @@ Core layout variables:
 - The homepage hero occupies at least the viewport below the sticky header and
   ends before the separately bordered “Currently” strip.
 - Section spacing is intentionally generous and fluid.
+- Where two full-space sections meet and the break would otherwise read as dead
+  area, halve the facing paddings instead of raising `--section-space`. Selected
+  Work and Experience already do this.
+
+### Anchor scrolling
+
+`--header-offset` equals the sticky-header height (4.75rem desktop, 4rem at
+700px) and is applied once through `scroll-padding-top` on `html`. Never add a
+second offset through a global `[id]` rule.
+
+Homepage navigation targets set `scroll-margin-top: calc(-1 * var(--section-space))`
+so the jump skips the section's decorative top padding entirely and the
+heading's red border line lands flush under the header. The footer has no
+internal line, so its own top edge aligns there instead. Add the same rule for
+any new anchored section with generous internal padding.
 - Common gaps are based on roughly 8px increments but may use fluid values.
 - At 960px, major grids simplify while retaining multi-column hierarchy.
 - At 700px, pages switch to four columns or a single content column with a
@@ -212,8 +229,9 @@ focus in both themes.
 - Section headings and approach steps use a one-shot `Reveal` entrance
   (opacity + slight rise). Approach steps may stagger lightly; project cards
   do not.
-- Project-card hover may nudge the case-study arrow and scale cover media
-  slightly (about 2%). No card entrance choreography.
+- Project-card hover lifts the tile slightly, softens a brand-tinted shadow,
+  nudges the case-study arrow, and scales cover media slightly. No card
+  entrance choreography.
 - The multiline hero headline types on once, character by character, without
   changing its final layout. Supporting labels remain static.
 

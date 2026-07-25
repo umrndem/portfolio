@@ -13,6 +13,9 @@ Evidence labels: **repository-verified**, **user-verified**, **inferred**,
   confirmed for portfolio wording as user-verified.
 - Deployment through Vercel with Neon PostgreSQL and Cloudflare R2: user-verified.
 - Cloudflare Turnstile on public forms: user-verified.
+- Scroll-driven public interaction layer (entrance reveals, pinned section
+  sequences, selective heavier 3D moments): repository-verified from local
+  project inspection; described abstractly only.
 - Live URL, dashboard screenshots, and business outcomes: unresolved.
 - Public treatment remains a sanitized private case study.
 

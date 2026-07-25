@@ -52,6 +52,7 @@ framework files are intentionally not documented line by line.
 | Path | Responsibility | Edit when | Keep out |
 |---|---|---|---|
 | `src/components/SiteHeader.tsx` | Shared mark, navigation, theme toggle, availability | Header structure changes | Duplicate navigation/contact data |
+| `src/components/PrimaryNav.tsx` | Client header nav; re-scrolls same-page anchors on repeat clicks | Primary-navigation behavior changes | Navigation labels/targets (`src/content/navigation.ts`) |
 | `src/components/LogoMark.tsx` | Interactive expandable logo and outside-tap collapse | Logo interaction changes | Brand colors and pre-paint persistence logic |
 | `src/components/TypingHeadline.tsx` | Accessible character reveal for the homepage headline | Hero typing behavior changes | Homepage copy |
 | `src/components/Reveal.tsx` | One-shot scroll entrance for headings and approach steps | Reveal timing or host element changes | Project-card choreography or ETS-style scrub scenes |

@@ -55,6 +55,8 @@
   --page-edge: clamp(1.25rem, 4vw, 4.5rem);
   --page-width: 90rem;
   --section-space: clamp(6rem, 12vw, 11rem);
+  --footer-space: clamp(5rem, 10vw, 9rem);
+  --header-offset: 4.75rem;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -117,7 +119,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
+  scroll-padding-top: var(--header-offset);
   background: var(--color-bg-primary);
 }
 
@@ -158,8 +160,13 @@ a {
   text-underline-offset: 0.2em;
 }
 
-[id] {
-  scroll-margin-top: 6rem;
+/* Navigation targets carry their own large top padding. Scroll past all of it
+   so the heading's red border lands flush under the sticky header; the footer
+   has no internal line, so its own top edge aligns instead. */
+.work-section,
+.approach-section,
+.about-section {
+  scroll-margin-top: calc(-1 * var(--section-space));
 }
 
 main:focus-visible {
@@ -722,6 +729,15 @@ svg {
   padding: var(--section-space) var(--page-edge);
 }
 
+/* Facing paddings stacked to nearly 2× section-space; keep one section's worth. */
+.work-section {
+  padding-bottom: clamp(3rem, 6vw, 5.5rem);
+}
+
+.experience-section {
+  padding-top: clamp(3rem, 6vw, 5.5rem);
+}
+
 .range-section {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -922,6 +938,7 @@ svg {
 
 .project-card {
   position: relative;
+  z-index: 0;
   display: grid;
   gap: 2rem;
   padding: clamp(1.35rem, 3vw, 2.5rem);
@@ -930,13 +947,18 @@ svg {
   background: transparent;
   transition:
     border-color 180ms var(--ease-out),
-    background 180ms var(--ease-out);
+    background 180ms var(--ease-out),
+    transform 180ms var(--ease-out),
+    box-shadow 180ms var(--ease-out);
 }
 
 .project-card:hover,
 .project-card:focus-within {
+  z-index: 1;
   border-color: var(--color-border-emphasis);
   background: var(--color-surface-maroon);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px color-mix(in oklch, var(--color-brand-deep) 16%, transparent);
 }
 
 .project-card--featured {
@@ -948,6 +970,8 @@ svg {
 .project-card--featured:hover,
 .project-card--featured:focus-within {
   background: var(--color-surface-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px color-mix(in oklch, var(--color-brand-deep) 16%, transparent);
 }
 
 .project-card__topline {
@@ -1024,7 +1048,7 @@ svg {
 
 .project-card:hover .project-card__media img,
 .project-card:focus-within .project-card__media img {
-  transform: scale(1.02);
+  transform: scale(1.035);
 }
 
 .project-card__media figcaption,
@@ -1556,7 +1580,7 @@ svg {
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 2rem;
   min-height: 75svh;
-  padding: clamp(5rem, 10vw, 9rem) var(--page-edge) 2rem;
+  padding: var(--footer-space) var(--page-edge) 2rem;
   background: var(--color-brand-deep);
   color: var(--color-footer-primary);
   transition:
@@ -2119,6 +2143,7 @@ svg {
   :root {
     --page-edge: 1.25rem;
     --section-space: 6.5rem;
+    --header-offset: 4rem;
   }
 
   body::before {
@@ -2488,6 +2513,14 @@ svg {
   .range-line.is-in-view .range-line__active {
     transform: scaleX(1);
     animation: none !important;
+  }
+
+  .project-card:hover,
+  .project-card:focus-within,
+  .project-card--featured:hover,
+  .project-card--featured:focus-within {
+    transform: none;
+    box-shadow: none;
   }
 
   .project-card:hover .project-card__media img,

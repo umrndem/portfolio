@@ -213,7 +213,7 @@ Emulate `prefers-reduced-motion: reduce` and confirm:
 - range animation and transitions collapse;
 - reveal sections and range fills show their final state immediately;
 - button hover does not translate;
-- project-card cover/arrow hover transforms are suppressed;
+- project-card lift, shadow, cover, and arrow hover transforms are suppressed;
 - no content disappears.
 
 Finish with:
