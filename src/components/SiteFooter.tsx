@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm";
+import { ScrollTopLink } from "@/components/ScrollTopLink";
 import { homeContent } from "@/content/home";
 import { sectionIds } from "@/content/navigation";
 import { profile, socialLinks } from "@/content/profile";
@@ -45,7 +45,7 @@ export function SiteFooter() {
           ) : null}
         </nav>
         <p className="site-footer__note">
-          <Link href="/acknowledgements">Acknowledgements</Link>
+          <ScrollTopLink href="/acknowledgements">Acknowledgements</ScrollTopLink>
         </p>
       </div>
     </footer>
