@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono, Manrope } from "next/font/google";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { SiteHeader } from "@/components/SiteHeader";
 import { profile } from "@/content/profile";
 import {
@@ -74,6 +75,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <SiteHeader />
+        <ScrollToTop />
         {children}
       </body>
     </html>

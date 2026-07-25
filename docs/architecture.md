@@ -102,6 +102,7 @@ currently returns stub success; it is not a content API or CMS.
 - the pre-paint theme bootstrap;
 - skip navigation;
 - the shared site header;
+- soft-navigation scroll reset via `ScrollToTop`;
 - global CSS.
 
 Individual routes own their `<main>` content and footer. Project routes generate
