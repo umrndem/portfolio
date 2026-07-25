@@ -39,7 +39,7 @@ or remote content service.
 |---|---|
 | Profile, education, email, socials, portrait, résumé | `src/content/profile.ts` |
 | Navigation and homepage section IDs | `src/content/navigation.ts` |
-| Homepage introduction, experience, approach, foundation, footer | `src/content/home.ts` |
+| Homepage introduction, experience, approach, foundation, footer / contact form copy | `src/content/home.ts` |
 | Project list, order, case studies, publication status, technologies, deployment, integrations, media | `src/content/projects.ts` |
 | Technology logo map | `src/content/technology-icons.ts` |
 | Global titles, descriptions, availability, footer note | `src/content/site-settings.ts` |

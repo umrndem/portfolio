@@ -1,3 +1,4 @@
+import { ContactForm } from "@/components/ContactForm";
 import { homeContent } from "@/content/home";
 import { sectionIds } from "@/content/navigation";
 import { profile, socialLinks } from "@/content/profile";
@@ -13,13 +14,15 @@ export function SiteFooter() {
           <br />
           {homeContent.footer.headline[1]}
         </h2>
+        <p className="site-footer__availability">
+          {homeContent.footer.availability}
+        </p>
       </div>
-      <div className="site-footer__actions">
-        <a className="button-link button-link--light" href={`mailto:${profile.email}`}>
-          {homeContent.footer.action} <span aria-hidden="true">↗</span>
-        </a>
-        <p>{homeContent.footer.availability}</p>
+
+      <div className="site-footer__form">
+        <ContactForm />
       </div>
+
       <div className="site-footer__base">
         <p>
           {profile.name}

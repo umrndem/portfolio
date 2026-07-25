@@ -1528,27 +1528,30 @@ svg {
 }
 
 .site-footer__lead {
-  grid-column: 1 / span 8;
+  grid-column: 1 / span 5;
+  align-self: start;
 }
 
 .site-footer h2 {
   margin-top: 1.25rem;
-  font-size: clamp(3rem, 7.4vw, 7.5rem);
+  font-size: clamp(2.6rem, 5.8vw, 5.6rem);
   font-weight: 500;
   letter-spacing: -0.065em;
   line-height: 1.12;
 }
 
-.site-footer__actions {
-  display: grid;
-  grid-column: 9 / -1;
-  gap: 1.25rem;
-  align-content: end;
+.site-footer__availability {
+  max-width: 28rem;
+  margin-top: 1.5rem;
+  color: var(--color-footer-text);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  letter-spacing: -0.01em;
+  line-height: 1.5;
 }
 
-.site-footer__actions p {
-  max-width: 26rem;
-  color: var(--color-footer-text);
+.site-footer__form {
+  grid-column: 7 / -1;
+  align-self: start;
 }
 
 .site-footer .kicker {
@@ -1565,12 +1568,135 @@ svg {
   color: var(--color-footer-accent);
 }
 
+.contact-form {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.contact-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.contact-form__field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.contact-form__field span {
+  font-family: var(--font-mono), var(--font-mono-fallback);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-footer-accent);
+}
+
+.contact-form__field input,
+.contact-form__field textarea {
+  width: 100%;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid var(--color-footer-border);
+  border-radius: 0;
+  background: rgb(255 255 255 / 0.06);
+  color: var(--color-footer-primary);
+  font: inherit;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  transition:
+    border-color 160ms var(--ease-out),
+    background-color 160ms var(--ease-out);
+}
+
+.contact-form__field textarea {
+  min-height: 8.5rem;
+  resize: vertical;
+}
+
+.contact-form__field input::placeholder,
+.contact-form__field textarea::placeholder {
+  color: rgb(255 255 255 / 0.42);
+}
+
+.contact-form__field input:hover,
+.contact-form__field textarea:hover {
+  border-color: rgb(255 255 255 / 0.45);
+  background: rgb(255 255 255 / 0.09);
+}
+
+.contact-form__field input:focus-visible,
+.contact-form__field textarea:focus-visible {
+  outline: 2px solid var(--color-footer-accent);
+  outline-offset: 2px;
+  border-color: var(--color-footer-accent);
+}
+
+.contact-form__field input:disabled,
+.contact-form__field textarea:disabled,
+.contact-form .button-link:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.contact-form__honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.contact-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: center;
+  margin-top: 0.35rem;
+}
+
+.contact-form__mailto {
+  color: var(--color-footer-accent);
+}
+
+.contact-form__mailto:hover {
+  color: var(--color-footer-primary);
+}
+
+.contact-form__status {
+  min-height: 2.75rem;
+}
+
+.contact-form__status p {
+  display: grid;
+  gap: 0.35rem;
+  max-width: 34rem;
+  color: var(--color-footer-text);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.contact-form__status strong {
+  font-family: var(--font-mono), var(--font-mono-fallback);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-footer-accent);
+}
+
+.contact-form__status--error strong {
+  color: #ffb4a8;
+}
+
 .site-footer__base {
   display: grid;
   grid-column: 1 / -1;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem;
   align-self: end;
+  margin-top: clamp(2rem, 6vw, 4rem);
   padding-top: 1.4rem;
   border-top: 1px solid var(--color-footer-border);
   font-family: var(--font-mono), var(--font-mono-fallback);
@@ -1935,8 +2061,12 @@ svg {
     grid-column: 1 / -1;
   }
 
-  .site-footer__actions {
-    grid-column: 8 / -1;
+  .site-footer__form {
+    grid-column: 1 / -1;
+  }
+
+  .contact-form__row {
+    grid-template-columns: 1fr;
   }
 
   .case-study__title {
@@ -2188,13 +2318,17 @@ svg {
   }
 
   .site-footer__lead,
-  .site-footer__actions,
+  .site-footer__form,
   .site-footer__base {
     grid-column: 1 / -1;
   }
 
-  .site-footer__actions {
-    margin-top: 3rem;
+  .site-footer__form {
+    margin-top: 2rem;
+  }
+
+  .contact-form__row {
+    grid-template-columns: 1fr;
   }
 
   .site-footer__base {

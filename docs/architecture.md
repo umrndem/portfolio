@@ -61,7 +61,7 @@ RootLayout
 │   ├── experience
 │   ├── approach
 │   ├── foundation
-│   └── SiteFooter
+│   └── SiteFooter                 contact form + socials
 ├── /work/[slug]                   one route per published project
 │   ├── case-study hero
 │   ├── evidence boundary
@@ -70,6 +70,7 @@ RootLayout
 │   ├── technical notes
 │   ├── next-project link
 │   └── SiteFooter
+├── /api/contact                   stub contact endpoint (validate; mail later)
 ├── /opengraph-image               generated social image
 ├── /icon.svg                      App Router favicon
 ├── /sitemap.xml                   generated from published projects
@@ -81,6 +82,9 @@ RootLayout
 `projects` export. A project with `display: "hidden"` or
 `visibility: "confidential"` is absent from the homepage, static parameters,
 sitemap, and public next-project sequence.
+
+The contact form is the only App Router API surface. It validates submissions and
+currently returns stub success; it is not a content API or CMS.
 
 ## Layout hierarchy
 

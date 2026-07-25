@@ -85,8 +85,13 @@ corrected or approved the underlying fact.
 - Availability label: change `siteSettings.availabilityLabel` in
   `src/content/site-settings.ts`.
 - Footer opportunity sentence: change `homeContent.footer.availability`.
+- Contact form labels/status copy: change `homeContent.footer.form`.
 - Do not add the approved phone number to the primary site without a deliberate
   user decision; the current source of truth recommends résumé-only placement.
+
+The footer contact form posts to `/api/contact`. Until a mail provider is wired
+with server-only env vars (see `.env.example`), submissions are validated and
+acknowledged in stub mode. Keep the direct `mailto:` fallback.
 
 Search after changing contact data:
 

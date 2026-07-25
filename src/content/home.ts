@@ -60,7 +60,7 @@ export const homeContent = {
         key: "B",
         title: "Structure the system",
         body:
-          "I research unfamiliar technology, discuss architecture and tradeoffs, and split the work into boundaries another person—or agent—can follow.",
+          "I look into unfamiliar tools, talk through architecture and tradeoffs, and break the work into clear pieces another person or agent can understand.",
       },
       {
         key: "C",
@@ -92,5 +92,23 @@ export const homeContent = {
     action: "Write to me",
     availability:
       "I’m open to internships and technical roles where I can solve real problems, learn quickly, and contribute useful work.",
+    form: {
+      nameLabel: "Name",
+      namePlaceholder: "Your name",
+      emailLabel: "Email",
+      emailPlaceholder: "you@example.com",
+      messageLabel: "Message",
+      messagePlaceholder: "What are you working on, and how might I help?",
+      submitLabel: "Send message",
+      submittingLabel: "Sending…",
+      successTitle: "Message ready",
+      successBody:
+        "Thanks — the form is working. Email delivery will connect when this site is deployed with a mail provider.",
+      errorTitle: "Could not send",
+      errorBody:
+        "Something went wrong on the form endpoint. You can still reach me directly by email.",
+      directEmailLabel: "Or email directly",
+      honeypotLabel: "Company",
+    },
   },
 } as const;

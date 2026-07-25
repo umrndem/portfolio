@@ -142,8 +142,9 @@ If page-background colors change, synchronize the `themeColor` values in
   on-brand text.
 - Footer stays deep maroon in both modes with dedicated footer text tokens.
 - Profile/project images do not receive automatic color filters.
-- Native form/browser surfaces inherit `color-scheme`, although the current site
-  has no forms.
+- Native form/browser surfaces inherit `color-scheme`. The footer contact form uses
+footer tokens for light text on deep maroon; verify inputs, placeholders, focus
+rings, and status messages in both themes.
 
 ## Charts and future diagrams
 

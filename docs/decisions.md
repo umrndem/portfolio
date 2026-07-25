@@ -80,3 +80,14 @@ card is the strongest red; only the final visible card uses the near-white
 (light) or deepest near-black (dark) stop. Intermediate cards must remain
 visibly red-tinted and mutually distinguishable. Do not allow salmon, peach,
 beige, brown, mauve, or purple drift.
+
+## 008 — Contact form lives in the footer with a stub mail API
+
+**Status:** accepted
+**Date:** 25 July 2026
+
+The Contact navigation target remains `#contact` on the deep-maroon footer. A
+client form posts to `/api/contact`, which validates input and currently returns
+stub success without sending mail. A honeypot field discourages trivial bots.
+When a custom domain is live, wire a server-only mail provider through
+non-public environment variables. Keep the direct `mailto:` fallback.
