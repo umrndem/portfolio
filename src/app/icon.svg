@@ -3,11 +3,11 @@
     .n { fill: #1b1817; }
     @media (prefers-color-scheme: dark) { .n { fill: #f4f1ef; } }
   </style>
-  <text y="44" font-family="'IBM Plex Mono', ui-monospace, 'Courier New', monospace" font-size="40" font-weight="700">
-    <tspan x="4" fill="#e5120e">U</tspan>
-  </text>
-  <path d="M27 44 31.5 16 36 16 31.5 44Z" fill="#8f8783" />
-  <text y="44" font-family="'IBM Plex Mono', ui-monospace, 'Courier New', monospace" font-size="40" font-weight="700">
-    <tspan x="36" class="n">N</tspan>
-  </text>
+  <!-- Same outlined Bahnschrift Bold SemiCondensed lockup as public/logo.svg,
+       scaled into the square favicon canvas. -->
+  <g transform="translate(4 5.3) scale(0.3146)">
+    <path d="M0 20 H22 V107 C22 121 28 128 37.5 128 C47 128 53 121 53 107 V20 H75 V105 C75 134 61 150 37.5 150 C14 150 0 134 0 105 Z" fill="#e5120e" />
+    <path d="M52 170 L96 0 L115 0 L71 170 Z" fill="#8f8783" />
+    <path class="n" d="M99 150 V20 H121 L156 97 V20 H178 V150 H156 L121 73 V150 Z" />
+  </g>
 </svg>

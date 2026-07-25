@@ -1,5 +1,8 @@
 "use client";
+
 import Link from "next/link";
+import { BrandLogoGlyph } from "./BrandLogoGlyph";
+import { BrandLogoReveal } from "./BrandLogoReveal";
 
 type LogoMarkProps = {
   label: string;
@@ -9,34 +12,41 @@ type LogoMarkProps = {
 // collapses as soon as the pointer leaves — no persisted expanded state.
 export function LogoMark({ label }: LogoMarkProps) {
   return (
-    <Link className="site-header__mark" href="/" aria-label={label} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+    <Link
+      className="site-header__mark"
+      href="/"
+      aria-label={label}
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+    >
       <span
-        className="site-header__mark-fixed site-header__mark-fixed--red"
+        className="site-header__mark-layer site-header__mark-layer--u"
         aria-hidden="true"
       >
-        U
+        <BrandLogoGlyph glyph="u" />
       </span>
       <span
-        className="site-header__mark-reveal site-header__mark-reveal--red"
+        className="site-header__mark-layer site-header__mark-layer--mr"
         aria-hidden="true"
       >
-        MR
+        <BrandLogoReveal segment="mr" />
       </span>
-      <span className="site-header__mark-slash" aria-hidden="true">
-        <svg
-          className="site-header__mark-slash-svg"
-          viewBox="0 0 9 28"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path d="M0 28 4.5 0 9 0 4.5 28Z" fill="currentColor" />
-        </svg>
+      <span
+        className="site-header__mark-layer site-header__mark-layer--slash"
+        aria-hidden="true"
+      >
+        <BrandLogoGlyph glyph="slash" />
       </span>
-      <span className="site-header__mark-fixed" aria-hidden="true">
-        N
+      <span
+        className="site-header__mark-layer site-header__mark-layer--n"
+        aria-hidden="true"
+      >
+        <BrandLogoGlyph glyph="n" />
       </span>
-      <span className="site-header__mark-reveal" aria-hidden="true">
-        DEM
+      <span
+        className="site-header__mark-layer site-header__mark-layer--dem"
+        aria-hidden="true"
+      >
+        <BrandLogoReveal segment="dem" />
       </span>
     </Link>
   );

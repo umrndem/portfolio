@@ -28,7 +28,7 @@ export const homeContent = {
     heading: {
       index: "02",
       title: "Experience",
-      note: "What I worked on during my internship at Eastern Testing Services.",
+      note: "Roles, internships, and the work I took ownership of along the way.",
     },
     period: "Jun — Aug 2026",
     duration: "Eight weeks",

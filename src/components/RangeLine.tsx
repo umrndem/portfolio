@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { rangePoints, type RangePoint } from "@/content/projects";
 
 type RangeLineProps = {
@@ -8,11 +8,39 @@ type RangeLineProps = {
   compact?: boolean;
 };
 
+function spannedPoints(active: readonly [RangePoint, RangePoint]) {
+  const start = rangePoints.indexOf(active[0]);
+  const end = rangePoints.indexOf(active[1]);
+
+  if (start === -1 || end === -1 || start > end) {
+    return [] as RangePoint[];
+  }
+
+  return rangePoints.slice(start, end + 1);
+}
+
+function formatRangeTopics(topics: readonly RangePoint[]) {
+  if (topics.length === 0) {
+    return "";
+  }
+
+  if (topics.length === 1) {
+    return topics[0];
+  }
+
+  if (topics.length === 2) {
+    return `${topics[0]} and ${topics[1]}`;
+  }
+
+  return `${topics.slice(0, -1).join(", ")}, and ${topics[topics.length - 1]}`;
+}
+
 export function RangeLine({ active, compact = false }: RangeLineProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
   const start = active ? rangePoints.indexOf(active[0]) : 0;
   const end = active ? rangePoints.indexOf(active[1]) : rangePoints.length - 1;
+  const spanned = active ? spannedPoints(active) : [];
 
   useEffect(() => {
     const node = rootRef.current;
@@ -58,11 +86,26 @@ export function RangeLine({ active, compact = false }: RangeLineProps) {
         } as React.CSSProperties
       }
       aria-label={
-        active
-          ? `Technical range from ${active[0]} to ${active[1]}`
+        spanned.length > 0
+          ? `Technical range spanning ${formatRangeTopics(spanned)}`
           : "Technical range from systems through data, databases, product, and people"
       }
     >
+      {spanned.length > 0 ? (
+        <p className="range-line__span" aria-hidden="true">
+          <span className="range-line__span-prefix">Spans</span>
+          {spanned.map((point, index) => (
+            <Fragment key={point}>
+              {index > 0 ? (
+                <span className="range-line__span-sep"> · </span>
+              ) : (
+                " "
+              )}
+              <span className="range-line__span-topic">{point}</span>
+            </Fragment>
+          ))}
+        </p>
+      ) : null}
       <div className="range-line__track" aria-hidden="true">
         <span className="range-line__active" />
       </div>

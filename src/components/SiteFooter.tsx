@@ -31,7 +31,12 @@ export function SiteFooter() {
         </p>
         <nav aria-label="Social links">
           {socialLinks.map((link) => (
-            <a href={link.href} key={link.href}>
+            <a
+              href={link.href}
+              key={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {link.label}
             </a>
           ))}

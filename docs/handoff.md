@@ -83,7 +83,7 @@ routes, sitemap, and next-project navigation must use that filtered export.
 The first published project receives the strongest maroon lead treatment through
 the positional surface scale (`data-surface="1"`), not because of its name.
 Keep the intended lead project first in `allProjects`. Card colors spread across
-six true-red stops so only the final visible card is near-white (light theme).
+six opacity stops of one lead red so only the final visible card is the lowest tint.
 
 ## Where case studies live
 

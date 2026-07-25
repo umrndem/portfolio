@@ -76,7 +76,11 @@ harsh. Do not make every heading, border, or card red.
 
 - **Primary:** Manrope through `next/font/google`, emitted as a self-hosted font
   asset by the production build.
-- **Utility:** IBM Plex Mono through `next/font/google`, weights 400 and 500.
+- **Utility:** JetBrains Mono through `next/font/google`, weights 400 and 500.
+- **Brand lockup:** Bahnschrift bold semi-condensed, outlined as vector paths in
+  `src/components/brand-logo-paths.ts`, `public/logo.svg`, and
+  `src/app/icon.svg`. The header keeps U and N as fixed outlined glyphs and
+  reveals outlined MR/DEM paths on hover while the slash collapses out.
 - **CSS variables:** `--font-sans` and `--font-mono` are attached to `<html>` in
   `src/app/layout.tsx`. Shared mono eyebrow size is `--font-size-eyebrow`
   (`0.8rem`), used by kickers, section indexes, approach step numbers, about
@@ -146,33 +150,35 @@ number.
 
 ### Selected Work project-card scale
 
-Homepage project cards use a **positional** true-red scale, not project-name
-colors. Levels come from `getProjectSurfaceAssignment(index, count)` in
-`src/content/project-surfaces.ts` and are applied as `data-surface` /
-`data-ink` on each card.
+Homepage project cards use a **positional** opacity scale of one lead red, not
+project-name colors or separate shade hexes. Levels come from
+`getProjectSurfaceAssignment(index, count)` in `src/content/project-surfaces.ts`
+and are applied as `data-surface` / `data-ink` on each card.
 
-Light-theme canonical stops (1 → strongest red, 6 → near-white):
+Canonical stops (1 → solid lead red, 6 → lowest opacity over page ground):
 
-| Level | Token | Value |
+| Level | Token | Mix |
 |---:|---|---|
-| 1 | `--project-surface-1` | `#c90f16` |
-| 2 | `--project-surface-2` | `#d94349` |
-| 3 | `--project-surface-3` | `#e66e73` |
-| 4 | `--project-surface-4` | `#ee989c` |
-| 5 | `--project-surface-5` | `#f6c8ca` |
-| 6 | `--project-surface-6` | `#fff8f8` |
+| 1 | `--project-surface-1` | `#c90f16` (solid) |
+| 2 | `--project-surface-2` | 80% lead red over `--color-bg-primary` |
+| 3 | `--project-surface-3` | 58% |
+| 4 | `--project-surface-4` | 36% |
+| 5 | `--project-surface-5` | 18% |
+| 6 | `--project-surface-6` | 6% |
 
 Rules:
 
-- Card 1 is always the strongest red; only the final visible card uses stop 6.
+- Card 1 is always solid lead red; only the final visible card uses stop 6.
 - With six published projects the mapping is 1…6 in order. With fewer or more
   cards, indices spread across the same stops so intermediates stay distinct and
-  only the last card is near-white (light) or deepest near-black (dark).
+  only the last card is the lowest-opacity tint.
 - Do not hardcode `nth-child` colors or project-name → color maps.
-- Keep the sequence in the true-red family. Do not drift into salmon, peach,
-  beige, brown, mauve, or purple.
-- White / on-brand ink (`data-ink="on-brand"`) is reserved for stop 1 in light
-  theme; mid and pale reds use dark near-black text for contrast.
+- Vary opacity of `--project-surface-1` only. Do not invent lighter/darker shade
+  hexes that drift into salmon, peach, beige, brown, mauve, or purple.
+- White / on-brand ink (`data-ink="on-brand"`) is used on stops 1–2 (solid and
+  high-opacity red). Mid and pale stops use strong near-black card ink tokens
+  (`--card-ink*`) instead of page-muted greys, so copy stays readable on every
+  tint. Dark theme keeps light ink throughout.
 
 Cards are editorial planes, not floating dashboard tiles. Shadows are avoided
 except the full-bleed `100vmax` surface technique and small ring constructions.
@@ -282,7 +288,7 @@ Test at 390 × 844, 768 × 1024, and 1440 × 1000 after visible changes.
 | Component | Variants |
 |---|---|
 | `ProjectCard` | featured/supporting from content; first published card is the strong lead treatment; optional cover |
-| `RangeLine` | full and compact; optional active start/end |
+| `RangeLine` | full and compact; optional active start/end; right-aligned span caption |
 | `ProfilePortrait` | approved image or designed placeholder |
 | `ContentImage` | project cover/gallery class and optional caption |
 | `button-link` | default and light-on-footer |

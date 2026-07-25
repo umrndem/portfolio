@@ -25,7 +25,7 @@ framework files are intentionally not documented line by line.
 | `src/content/navigation.ts` | Header links and canonical homepage section IDs | Adding/removing a top-level homepage section | Page/footer IDs consume `sectionIds`; validation rejects unknown targets |
 | `src/content/home.ts` | Hero, range explanation, work heading, experience, approach, about, footer copy | Normal homepage copy updates | Keep factual claims evidence-backed |
 | `src/content/projects.ts` | Project order, prominence, visibility, cards, case studies, core/deployment/integration tags, repository links, media | Any project update | `projects` is the publication-safe filtered export; never bypass it in routes. Homepage order also drives next-project links and positional card surfaces. |
-| `src/content/project-surfaces.ts` | Positional red→white / red→near-black card surface level and ink | Changing the Selected Work surface scale or ink rules | Surfaces are positional; never key colors to project names |
+| `src/content/project-surfaces.ts` | Positional lead-red opacity scale and ink | Changing the Selected Work surface scale or ink rules | Surfaces are positional; never key colors to project names |
 | `src/content/technology-icons.ts` | Local SVG mapping for stack badges | Adding/changing a technology logo | Prefer exact display-name keys; validate files exist |
 | `src/content/site-settings.ts` | Global title, descriptions, availability label, authorship note, site origin | Branding/metadata copy or deployment origin behavior changes | `NEXT_PUBLIC_SITE_URL` remains the environment-specific origin |
 | `src/content/types.ts` | Shared content model | A real rendering/content requirement needs a new field | Update validation and both content guides at the same time |
@@ -64,7 +64,7 @@ framework files are intentionally not documented line by line.
 | `src/components/ProfilePortrait.tsx` | Approved portrait or fallback placeholder | Rendering/crop behavior changes | Profile asset path or public copy |
 | `src/components/ProjectCard.tsx` | Homepage project summaries and cover media | Card presentation changes | Project facts |
 | `src/components/ContentImage.tsx` | Optimized project image and caption rendering | Shared image rendering changes | Asset-specific facts |
-| `src/components/RangeLine.tsx` | Technical-range diagram with scroll-gated fill | Range interaction/presentation changes | A second range-point source |
+| `src/components/RangeLine.tsx` | Technical-range diagram with scroll-gated fill and span caption | Range interaction/presentation changes | A second range-point source |
 | `src/components/SectionHeading.tsx` | Homepage section heading layout | Shared heading markup changes | Section-specific copy |
 | `src/components/StructuredData.tsx` | Safe JSON-LD serialization | Serialization requirements change | Person/project facts |
 

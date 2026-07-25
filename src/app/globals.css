@@ -37,18 +37,19 @@
   --color-footer-text: #e8d4cf;
   --color-footer-accent: #eab4ab;
   --color-footer-border: rgb(255 255 255 / 0.25);
+  /* Same lead red at descending opacity over the page ground — no shade drift. */
   --project-surface-1: #c90f16;
   --project-surface-1-hover: #a80d12;
-  --project-surface-2: #d94349;
-  --project-surface-2-hover: #c7353c;
-  --project-surface-3: #e66e73;
-  --project-surface-3-hover: #d95c62;
-  --project-surface-4: #ee989c;
-  --project-surface-4-hover: #e2858a;
-  --project-surface-5: #f6c8ca;
-  --project-surface-5-hover: #efb6b9;
-  --project-surface-6: #fff8f8;
-  --project-surface-6-hover: #f3ecec;
+  --project-surface-2: color-mix(in srgb, var(--project-surface-1) 80%, var(--color-bg-primary));
+  --project-surface-2-hover: color-mix(in srgb, var(--project-surface-1-hover) 80%, var(--color-bg-primary));
+  --project-surface-3: color-mix(in srgb, var(--project-surface-1) 58%, var(--color-bg-primary));
+  --project-surface-3-hover: color-mix(in srgb, var(--project-surface-1-hover) 58%, var(--color-bg-primary));
+  --project-surface-4: color-mix(in srgb, var(--project-surface-1) 36%, var(--color-bg-primary));
+  --project-surface-4-hover: color-mix(in srgb, var(--project-surface-1-hover) 36%, var(--color-bg-primary));
+  --project-surface-5: color-mix(in srgb, var(--project-surface-1) 18%, var(--color-bg-primary));
+  --project-surface-5-hover: color-mix(in srgb, var(--project-surface-1-hover) 18%, var(--color-bg-primary));
+  --project-surface-6: color-mix(in srgb, var(--project-surface-1) 6%, var(--color-bg-primary));
+  --project-surface-6-hover: color-mix(in srgb, var(--project-surface-1-hover) 6%, var(--color-bg-primary));
 
   --font-sans-fallback: Arial, Helvetica, sans-serif;
   --font-mono-fallback: "Courier New", monospace;
@@ -103,16 +104,16 @@
   --color-footer-border: rgb(255 255 255 / 0.22);
   --project-surface-1: #c90f16;
   --project-surface-1-hover: #a80d12;
-  --project-surface-2: #9a2d30;
-  --project-surface-2-hover: #aa3d40;
-  --project-surface-3: #7a282c;
-  --project-surface-3-hover: #8a383c;
-  --project-surface-4: #552022;
-  --project-surface-4-hover: #653032;
-  --project-surface-5: #381e1e;
-  --project-surface-5-hover: #482e2e;
-  --project-surface-6: #161212;
-  --project-surface-6-hover: #262222;
+  --project-surface-2: color-mix(in srgb, var(--project-surface-1) 80%, var(--color-bg-primary));
+  --project-surface-2-hover: color-mix(in srgb, var(--project-surface-1-hover) 80%, var(--color-bg-primary));
+  --project-surface-3: color-mix(in srgb, var(--project-surface-1) 58%, var(--color-bg-primary));
+  --project-surface-3-hover: color-mix(in srgb, var(--project-surface-1-hover) 58%, var(--color-bg-primary));
+  --project-surface-4: color-mix(in srgb, var(--project-surface-1) 36%, var(--color-bg-primary));
+  --project-surface-4-hover: color-mix(in srgb, var(--project-surface-1-hover) 36%, var(--color-bg-primary));
+  --project-surface-5: color-mix(in srgb, var(--project-surface-1) 18%, var(--color-bg-primary));
+  --project-surface-5-hover: color-mix(in srgb, var(--project-surface-1-hover) 18%, var(--color-bg-primary));
+  --project-surface-6: color-mix(in srgb, var(--project-surface-1) 6%, var(--color-bg-primary));
+  --project-surface-6-hover: color-mix(in srgb, var(--project-surface-1-hover) 6%, var(--color-bg-primary));
 }
 
 * {
@@ -278,76 +279,110 @@ svg {
 }
 
 .site-header__mark {
-  display: inline-flex;
-  align-items: baseline;
-  justify-self: start;
-  /* Fixed hit area: the box never resizes on hover (only the inner letters
-     animate), so the hover target can't oscillate under the cursor. */
-  min-width: 8rem;
-  font-family: var(--font-mono), var(--font-mono-fallback);
-  font-size: 1.6rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  line-height: 1;
-  text-decoration: none;
-  color: var(--color-text-primary);
-}
-
-/* Colors hardcoded to match icon.svg exactly (identical in both themes). */
-.site-header__mark-fixed--red {
-  color: #e5120e;
-}
-
-/* Hover-expand: "U / N" grows into "UMRNDEM" and the slash collapses out. */
-.site-header__mark-reveal,
-.site-header__mark-slash {
+  --logo-height: 1.6rem;
+  /* Every glyph SVG is 172 viewBox units tall, so one lockup unit is this. */
+  --logo-unit: calc(var(--logo-height) / 172);
+  --logo-travel: calc(170 * var(--logo-unit));
+  position: relative;
   display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  vertical-align: baseline;
+  justify-self: start;
+  /* Fixed hit area and stage: layers are absolutely positioned and animate with
+     transform and clip only, so the reveal never triggers layout and the glyphs
+     never land on fractional pixels mid-animation. */
+  min-width: 8rem;
+  height: var(--logo-height);
+  overflow: visible;
+  text-decoration: none;
+}
+
+/* Each layer's left offset places its sliced viewBox on the shared lockup grid. */
+.site-header__mark-layer {
+  position: absolute;
+  top: 0;
+  line-height: 0;
+}
+
+.site-header__mark-layer svg {
+  display: block;
+  height: var(--logo-height);
+  width: auto;
+}
+
+.site-header__mark-layer .brand-logo__n {
+  fill: #1b1817;
+}
+
+:root[data-theme="dark"] .site-header__mark-layer .brand-logo__n {
+  fill: #f4f1ef;
+}
+
+.site-header__mark-layer--u {
+  left: calc(-1 * var(--logo-unit));
+}
+
+.site-header__mark-layer--slash {
+  left: calc(51 * var(--logo-unit));
+  transition: opacity 300ms var(--ease-out);
+}
+
+.site-header__mark-layer--mr {
+  left: calc(76 * var(--logo-unit));
+}
+
+.site-header__mark-layer--n {
+  left: calc(98 * var(--logo-unit));
+  transition: transform 440ms var(--ease-out);
+}
+
+/* DEM starts immediately after N on the lockup grid (N ends at x≈178). */
+.site-header__mark-layer--dem {
+  left: calc(178 * var(--logo-unit));
   transition:
-    max-width 440ms var(--ease-out),
+    transform 440ms var(--ease-out),
+    clip-path 440ms var(--ease-out),
     opacity 300ms var(--ease-out);
 }
 
-.site-header__mark-reveal {
-  max-width: 0;
+/* Hover-expand: "U / N" grows into "UMRNDEM" and the slash fades out. */
+.site-header__mark-layer--mr,
+.site-header__mark-layer--dem {
+  clip-path: inset(0 100% 0 0);
   opacity: 0;
 }
 
-.site-header__mark-reveal--red {
-  color: #e5120e;
+.site-header__mark-layer--mr {
+  transition:
+    clip-path 440ms var(--ease-out),
+    opacity 300ms var(--ease-out);
 }
 
-.site-header__mark-slash {
-  max-width: 2em;
-  margin-inline: 0.025em;
-  color: #8f8783;
+.site-header__mark:hover .site-header__mark-layer--n,
+.site-header__mark:focus-visible .site-header__mark-layer--n,
+.site-header__mark:hover .site-header__mark-layer--dem,
+.site-header__mark:focus-visible .site-header__mark-layer--dem {
+  transform: translateX(var(--logo-travel));
 }
 
-.site-header__mark-slash-svg {
-  display: block;
-  height: 0.78em;
-  width: auto;
-  transform: translateY(0.01em);
-}
-
-.site-header__mark:hover .site-header__mark-reveal,
-.site-header__mark:focus-visible .site-header__mark-reveal {
-  max-width: 5ch;
+.site-header__mark:hover .site-header__mark-layer--mr,
+.site-header__mark:focus-visible .site-header__mark-layer--mr,
+.site-header__mark:hover .site-header__mark-layer--dem,
+.site-header__mark:focus-visible .site-header__mark-layer--dem {
+  clip-path: inset(0);
   opacity: 1;
 }
 
-.site-header__mark:hover .site-header__mark-slash,
-.site-header__mark:focus-visible .site-header__mark-slash {
-  max-width: 0;
-  padding-inline: 0;
+.site-header__mark:hover .site-header__mark-layer--slash,
+.site-header__mark:focus-visible .site-header__mark-layer--slash {
   opacity: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .site-header__mark-reveal,
-  .site-header__mark-slash {
+  .site-header__mark-layer--n,
+  .site-header__mark-layer--dem {
+    transition: opacity 300ms var(--ease-out);
+  }
+
+  .site-header__mark-layer--mr {
     transition: opacity 300ms var(--ease-out);
   }
 }
@@ -793,6 +828,34 @@ svg {
   width: 100%;
 }
 
+.range-line__span {
+  margin: 0 0 0.85rem;
+  text-align: right;
+  font-family: var(--font-mono), var(--font-mono-fallback);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  line-height: 1.45;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+
+.range-line__span-prefix {
+  margin-inline-end: 0.15em;
+  color: inherit;
+}
+
+.range-line__span-topic {
+  color: inherit;
+  font-weight: 500;
+}
+
+.range-line__span-sep {
+  color: var(--color-brand-primary);
+  font-weight: 400;
+}
+
 .range-line__track {
   position: relative;
   height: 2px;
@@ -875,6 +938,12 @@ svg {
   font-size: 0.58rem;
 }
 
+.range-line--compact .range-line__span {
+  margin-bottom: 0.7rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+}
+
 @keyframes range-reveal {
   from {
     transform: scaleX(0);
@@ -954,6 +1023,12 @@ svg {
   border: 0;
   border-top: 1px solid var(--color-border);
   background: transparent;
+  /* Per-card ink: strong enough for every surface stop (overridden by data-ink). */
+  --card-ink: var(--color-text-primary);
+  --card-ink-soft: color-mix(in srgb, var(--color-text-primary) 92%, transparent);
+  --card-ink-quiet: color-mix(in srgb, var(--color-text-primary) 84%, transparent);
+  --card-rule: color-mix(in srgb, var(--color-text-primary) 30%, transparent);
+  color: var(--card-ink);
   transition:
     border-color 180ms var(--ease-out),
     background 180ms var(--ease-out),
@@ -1007,7 +1082,7 @@ svg {
 }
 
 .project-card__topline p:last-child {
-  color: var(--color-text-muted);
+  color: var(--card-ink-quiet);
 }
 
 .project-card__body {
@@ -1022,10 +1097,12 @@ svg {
   font-weight: 520;
   letter-spacing: -0.06em;
   line-height: 0.95;
+  color: var(--card-ink);
 }
 
 .project-card h3 a {
   text-decoration: none;
+  color: inherit;
 }
 
 .project-card h3 a::after {
@@ -1037,7 +1114,7 @@ svg {
 .project-card__summary {
   max-width: 44rem;
   margin-top: 1.5rem;
-  color: var(--color-text-secondary);
+  color: var(--card-ink-soft);
   font-size: clamp(1.1rem, 1.8vw, 1.45rem);
   letter-spacing: -0.02em;
 }
@@ -1078,11 +1155,11 @@ svg {
   grid-template-columns: 5.75rem 1fr;
   gap: 1rem;
   padding-top: 0.7rem;
-  border-top: 1px solid var(--color-border-emphasis);
+  border-top: 1px solid var(--card-rule);
 }
 
 .project-card__facts dt {
-  color: var(--color-text-muted);
+  color: var(--card-ink-quiet);
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: var(--font-size-eyebrow);
   font-weight: 500;
@@ -1092,6 +1169,7 @@ svg {
 
 .project-card__facts dd {
   font-size: 0.84rem;
+  color: var(--card-ink);
 }
 
 .project-card__footer {
@@ -1125,16 +1203,18 @@ svg {
   align-items: center;
   padding: 0.6rem 0.75rem;
   min-height: 2.25rem;
-  border: 1px solid var(--color-border-emphasis);
+  border: 1px solid var(--card-rule);
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.6rem;
+  color: var(--card-ink);
 }
 
 .project-card__stack-row--secondary li {
   padding: 0.35rem 0.55rem;
   min-height: 1.85rem;
-  border-color: color-mix(in srgb, var(--color-border-emphasis) 70%, transparent);
-  opacity: 0.88;
+  border-color: color-mix(in srgb, var(--card-rule) 75%, transparent);
+  opacity: 1;
+  color: var(--card-ink-soft);
 }
 
 .case-study__tools li {
@@ -1170,6 +1250,65 @@ svg {
   position: relative;
   z-index: 2;
   flex: none;
+  color: var(--card-ink);
+}
+
+.project-card__footer .text-link:hover {
+  color: var(--card-ink);
+}
+
+.project-card .range-line__span {
+  color: var(--card-ink);
+}
+
+.project-card .range-line__span-sep {
+  color: color-mix(in srgb, var(--card-ink) 72%, transparent);
+}
+
+.project-card .range-line__points li {
+  color: var(--card-ink-quiet);
+}
+
+.project-card .range-line__points li.is-active {
+  color: var(--card-ink);
+}
+
+/* The bar itself stays white track + red span on every surface stop; only the
+   labels follow card ink. */
+.project-card .range-line__track {
+  background: rgb(255 255 255 / 0.6);
+}
+
+.project-card[data-surface="5"] .range-line__track,
+.project-card[data-surface="6"] .range-line__track {
+  background: var(--color-border);
+}
+
+.project-card .range-line__dot {
+  background: #ffffff;
+  box-shadow: 0 0 0 2px #ffffff;
+}
+
+.project-card .range-line__active,
+.project-card .range-line__points li.is-active .range-line__dot {
+  background: var(--color-brand-primary);
+  box-shadow: 0 0 0 2px var(--color-brand-primary);
+}
+
+/* Red span would disappear on the red tiles, so those invert to solid white. */
+.project-card[data-ink="on-brand"] .range-line__track {
+  background: rgb(255 255 255 / 0.34);
+}
+
+.project-card[data-ink="on-brand"] .range-line__dot {
+  background: rgb(255 255 255 / 0.5);
+  box-shadow: 0 0 0 2px rgb(255 255 255 / 0.5);
+}
+
+.project-card[data-ink="on-brand"] .range-line__active,
+.project-card[data-ink="on-brand"] .range-line__points li.is-active .range-line__dot {
+  background: #ffffff;
+  box-shadow: 0 0 0 2px #ffffff;
 }
 
 .project-card__footer .text-link span[aria-hidden="true"] {
@@ -1267,7 +1406,7 @@ svg {
   display: block;
 }
 
-/* Positional red→white (light) / red→near-black (dark) project surfaces.
+/* Positional opacity of lead red over page ground (light and dark).
    Levels come from data-surface on each card (1…6), not from project names.
    Only the final published card should map to stop 6. */
 .project-card[data-surface="1"] {
@@ -1344,9 +1483,13 @@ svg {
   );
 }
 
-/* White / on-brand ink on the deepest red stop only (light theme). */
+/* White / on-brand ink on the deepest red stops (1–2). */
 .project-card[data-ink="on-brand"] {
-  color: var(--color-on-brand);
+  --card-ink: #ffffff;
+  --card-ink-soft: color-mix(in srgb, #ffffff 88%, transparent);
+  --card-ink-quiet: color-mix(in srgb, #ffffff 76%, transparent);
+  --card-rule: rgb(255 255 255 / 0.34);
+  color: var(--card-ink);
 }
 
 .project-card[data-ink="on-brand"] h3 {
@@ -1354,78 +1497,42 @@ svg {
 }
 
 .project-card[data-ink="on-brand"] .project-card__topline p:first-child span {
-  background: var(--color-on-brand);
+  background: #ffffff;
   color: var(--color-brand-deep);
-}
-
-.project-card[data-ink="on-brand"] .project-card__topline p:last-child,
-.project-card[data-ink="on-brand"] .project-card__summary,
-.project-card[data-ink="on-brand"] .project-card__facts dt {
-  color: var(--color-on-brand-muted);
-}
-
-.project-card[data-ink="on-brand"] .project-card__facts div,
-.project-card[data-ink="on-brand"] .project-card__footer li {
-  border-color: var(--color-on-brand-border);
-}
-
-.project-card[data-ink="on-brand"] .project-card__stack-row--secondary li {
-  border-color: color-mix(in srgb, var(--color-on-brand-border) 75%, transparent);
 }
 
 .project-card[data-ink="on-brand"] .technology-badge--logo-safe .technology-badge__mark {
   background: color-mix(in srgb, #ffffff 88%, transparent);
 }
 
-.project-card[data-ink="on-brand"] .text-link {
-  color: var(--color-on-brand);
-}
-
-.project-card[data-ink="on-brand"] .range-line__track {
-  background: var(--color-on-brand-border);
-}
-
-.project-card[data-ink="on-brand"] .range-line__dot {
-  background: var(--color-on-brand);
-  box-shadow: 0 0 0 2px var(--color-on-brand);
-}
-
-.project-card[data-ink="on-brand"] .range-line__points li {
-  color: var(--color-on-brand-muted);
-}
-
-.project-card[data-ink="on-brand"] .range-line__active,
-.project-card[data-ink="on-brand"] .range-line__points li.is-active .range-line__dot {
-  background: var(--color-on-brand);
-  box-shadow: 0 0 0 2px var(--color-on-brand);
-}
-
-.project-card[data-ink="on-brand"] .range-line__points li.is-active {
-  color: var(--color-on-brand);
-}
-
 .project-card[data-ink="on-brand"] :focus-visible {
-  outline-color: var(--color-on-brand);
+  outline-color: #ffffff;
 }
 
-/* Mid reds keep near-black body copy for WCAG contrast on light theme. */
-.project-card[data-ink="default"][data-surface="2"] .project-card__summary,
-.project-card[data-ink="default"][data-surface="2"] .project-card__facts dt,
-.project-card[data-ink="default"][data-surface="3"] .project-card__summary,
-.project-card[data-ink="default"][data-surface="3"] .project-card__facts dt,
-.project-card[data-ink="default"][data-surface="4"] .project-card__summary,
-.project-card[data-ink="default"][data-surface="4"] .project-card__facts dt {
-  color: var(--color-text-primary);
+/* Mid/pale stops: keep strong dark ink (card tokens already avoid page greys).
+   Slightly strengthen soft ink on the pinker mid stops for WCAG on red tints. */
+.project-card[data-ink="default"][data-surface="3"],
+.project-card[data-ink="default"][data-surface="4"] {
+  --card-ink-soft: color-mix(in srgb, var(--color-text-primary) 96%, transparent);
+  --card-ink-quiet: color-mix(in srgb, var(--color-text-primary) 90%, transparent);
+  --card-rule: color-mix(in srgb, var(--color-text-primary) 34%, transparent);
 }
 
-/* Dark theme: every stop is dark enough for light text; deepen lead-card ink. */
-[data-theme="dark"] .project-card[data-surface="1"] {
-  color: var(--color-on-brand);
+/* Dark theme: light ink on every stop; lead cards stay full white. */
+[data-theme="dark"] .project-card[data-ink="default"] {
+  --card-ink: var(--color-text-primary);
+  --card-ink-soft: color-mix(in srgb, var(--color-text-primary) 90%, transparent);
+  --card-ink-quiet: color-mix(in srgb, var(--color-text-primary) 78%, transparent);
+  --card-rule: rgb(244 241 239 / 0.3);
 }
 
-[data-theme="dark"] .project-card[data-ink="default"] .project-card__summary,
-[data-theme="dark"] .project-card[data-ink="default"] .project-card__facts dt {
-  color: var(--color-text-secondary);
+[data-theme="dark"] .project-card[data-surface="1"],
+[data-theme="dark"] .project-card[data-ink="on-brand"] {
+  --card-ink: #ffffff;
+  --card-ink-soft: color-mix(in srgb, #ffffff 88%, transparent);
+  --card-ink-quiet: color-mix(in srgb, #ffffff 76%, transparent);
+  --card-rule: rgb(255 255 255 / 0.34);
+  color: var(--card-ink);
 }
 
 .experience-entry {
@@ -1828,8 +1935,8 @@ svg {
   margin-top: 1rem;
   font-size: clamp(4rem, 10vw, 10rem);
   font-weight: 520;
-  letter-spacing: -0.075em;
-  line-height: 0.86;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
 }
 
 .case-study__title > p:last-child {
@@ -2265,6 +2372,10 @@ svg {
 
   .range-line {
     position: relative;
+  }
+
+  .range-line__span {
+    margin-bottom: 1rem;
   }
 
   .range-line__points {

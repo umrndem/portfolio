@@ -1,14 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57 38" role="img" aria-label="U/N">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 180 172" role="img" aria-label="U/N">
   <title>U/N</title>
   <style>
     .n { fill: #1b1817; }
     @media (prefers-color-scheme: dark) { .n { fill: #f4f1ef; } }
   </style>
-  <text y="30" font-family="'IBM Plex Mono', ui-monospace, 'Courier New', monospace" font-size="40" font-weight="700">
-    <tspan x="0" fill="#e5120e">U</tspan>
-  </text>
-  <path d="M23 30 27.5 2 32 2 27.5 30Z" fill="#8f8783" />
-  <text y="30" font-family="'IBM Plex Mono', ui-monospace, 'Courier New', monospace" font-size="40" font-weight="700">
-    <tspan x="32" class="n">N</tspan>
-  </text>
+  <!-- Bahnschrift Bold SemiCondensed letterforms, outlined so the lockup and
+       spacing render identically on every platform. -->
+  <path d="M0 20 H22 V107 C22 121 28 128 37.5 128 C47 128 53 121 53 107 V20 H75 V105 C75 134 61 150 37.5 150 C14 150 0 134 0 105 Z" fill="#e5120e" />
+  <path d="M52 170 L96 0 L115 0 L71 170 Z" fill="#8f8783" />
+  <path class="n" d="M99 150 V20 H121 L156 97 V20 H178 V150 H156 L121 73 V150 Z" />
 </svg>

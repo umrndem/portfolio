@@ -9,7 +9,7 @@ modules. For editing steps, use `docs/content-management.md`.
 | Current experience | `src/content/home.ts` | ETS internship dates/responsibilities remain qualitative and bounded | Confirm future role/status changes |
 | Technical range | `src/content/projects.ts` | Conceptual systems → people axis, not a proficiency score | Visitor comprehension review |
 | Selected work | `src/content/projects.ts` | Order: ETS Website, Sentinel, Snakinesis, RideFlow, DataPulse, Financial Tick Data Pipeline | Final lead choice; approved media |
-| Project-card surfaces | `src/content/project-surfaces.ts` + `data-surface` on cards | Positional true-red scale; only the last card is near-white | Recheck when published count changes |
+| Project-card surfaces | `src/content/project-surfaces.ts` + `data-surface` on cards | Positional opacity of lead red; only the last card is lowest tint | Recheck when published count changes |
 | Core / deployment / integration tags | `technologies`, `deployment`, `integrations` on each project | Core stack remains primary; managed services and Turnstile are user-verified where listed | Live URL publication decisions |
 | Case studies | Each project’s `sections` + optional `infrastructureNote` | Proof and limitation are both required; private work is sanitized | Contribution splits and public-safe artifacts |
 | Approach | `src/content/home.ts` | AI assistance and human responsibility stated directly | Final tone review |

@@ -240,7 +240,8 @@ The site intentionally has no proficiency bars or separate master skill list.
 - Case-study infrastructure sentence: edit optional `project.infrastructureNote`.
 - Homepage coursework: edit `homeContent.about.strongCoursework`.
 - Technical range labels: edit `rangePoints` only if the conceptual axis itself
-  changes; also update every project range and the range accessibility copy.
+  changes; also update every project range. Project cards and case studies name
+  the spanned topics via `RangeLine` from each project’s `range` pair.
 - Broader positioning: edit the about paragraphs only with evidence.
 - Skills evidence and deployment framing: update `docs/skills-evidence-map.md`
   and `portfolio-source-of-truth.md` when Umar confirms facts.
