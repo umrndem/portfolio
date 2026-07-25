@@ -58,6 +58,7 @@
   --section-space-tight: clamp(3rem, 6vw, 5.5rem);
   --footer-space: clamp(5rem, 10vw, 9rem);
   --header-offset: 4.75rem;
+  --font-size-eyebrow: 0.8rem;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -447,7 +448,7 @@ svg {
 .case-study__section-index {
   font-variant-numeric: tabular-nums;
   font-family: var(--font-mono), var(--font-mono-fallback);
-  font-size: 0.7rem;
+  font-size: var(--font-size-eyebrow);
   font-weight: 500;
   letter-spacing: 0.075em;
   line-height: 1.4;
@@ -1074,7 +1075,7 @@ svg {
 
 .project-card__facts div {
   display: grid;
-  grid-template-columns: 5rem 1fr;
+  grid-template-columns: 5.75rem 1fr;
   gap: 1rem;
   padding-top: 0.7rem;
   border-top: 1px solid var(--color-border-emphasis);
@@ -1083,8 +1084,9 @@ svg {
 .project-card__facts dt {
   color: var(--color-text-muted);
   font-family: var(--font-mono), var(--font-mono-fallback);
-  font-size: 0.62rem;
-  letter-spacing: 0.04em;
+  font-size: var(--font-size-eyebrow);
+  font-weight: 500;
+  letter-spacing: 0.075em;
   text-transform: uppercase;
 }
 
@@ -1501,7 +1503,7 @@ svg {
 .approach-grid__number {
   color: var(--color-brand-primary);
   font-family: var(--font-mono), var(--font-mono-fallback);
-  font-size: 0.7rem;
+  font-size: var(--font-size-eyebrow);
 }
 
 .approach-grid h3 {
@@ -1569,7 +1571,7 @@ svg {
 
 .about-grid dl div {
   display: grid;
-  grid-template-columns: 7rem 1fr;
+  grid-template-columns: 9.5rem 1fr;
   gap: 1rem;
   padding: 1.15rem 0;
   border-top: 1px solid var(--color-border);
@@ -1578,8 +1580,9 @@ svg {
 .about-grid dt {
   color: var(--color-text-muted);
   font-family: var(--font-mono), var(--font-mono-fallback);
-  font-size: 0.62rem;
-  letter-spacing: 0.04em;
+  font-size: var(--font-size-eyebrow);
+  font-weight: 500;
+  letter-spacing: 0.075em;
   text-transform: uppercase;
 }
 
@@ -1855,8 +1858,9 @@ svg {
 .case-study__meta dt {
   color: var(--color-text-muted);
   font-family: var(--font-mono), var(--font-mono-fallback);
-  font-size: 0.6rem;
-  letter-spacing: 0.04em;
+  font-size: var(--font-size-eyebrow);
+  font-weight: 500;
+  letter-spacing: 0.075em;
   text-transform: uppercase;
 }
 
@@ -1996,9 +2000,9 @@ svg {
 .case-study__stack-label {
   margin: 0;
   font-family: var(--font-mono), var(--font-mono-fallback);
-  font-size: 0.7rem;
+  font-size: var(--font-size-eyebrow);
   font-weight: 500;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.075em;
   text-transform: uppercase;
   color: var(--color-text-muted);
 }
@@ -2377,7 +2381,7 @@ svg {
   }
 
   .about-grid dl div {
-    grid-template-columns: 6rem 1fr;
+    grid-template-columns: 8.5rem 1fr;
   }
 
   .site-footer {

@@ -189,7 +189,7 @@ export default function Home() {
               <dd>{profile.graduation}</dd>
             </div>
             <div>
-              <dt>Verified CGPA</dt>
+              <dt>CGPA</dt>
               <dd>{profile.cgpa}</dd>
             </div>
             <div>

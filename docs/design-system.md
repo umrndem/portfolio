@@ -78,7 +78,10 @@ harsh. Do not make every heading, border, or card red.
   asset by the production build.
 - **Utility:** IBM Plex Mono through `next/font/google`, weights 400 and 500.
 - **CSS variables:** `--font-sans` and `--font-mono` are attached to `<html>` in
-  `src/app/layout.tsx`.
+  `src/app/layout.tsx`. Shared mono eyebrow size is `--font-size-eyebrow`
+  (`0.8rem`), used by kickers, section indexes, approach step numbers, about
+  education labels, project-card/case-study meta labels, and case-study stack
+  labels.
 - **Fallbacks:** semantic fallback stacks are tokens in `globals.css`.
 - **Display scale:** fluid `clamp()` values, reaching roughly 64–160px depending
   on the hero/case-study context.
