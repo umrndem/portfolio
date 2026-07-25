@@ -37,6 +37,7 @@ framework files are intentionally not documented line by line.
 |---|---|---|---|
 | `src/app/layout.tsx` | HTML shell, fonts, global metadata, pre-paint browser-state bootstraps, header, skip link | Site-wide shell or metadata changes | Theme and logo bootstraps must remain before paint |
 | `src/app/page.tsx` | Homepage section composition | Adding/removing/reordering major sections | Normal copy belongs in `src/content/home.ts` |
+| `src/app/work/layout.tsx` | Work-route shell; scroll reset on case-study soft navigations | Work-segment layout behavior changes | Keep scroll reset local to `/work/*` |
 | `src/app/work/[slug]/page.tsx` | Every project case-study route and route metadata | Case-study presentation or route-level metadata changes | Routes derive only from filtered `projects` |
 | `src/app/opengraph-image.tsx` | Default generated social preview | Social-image composition changes | Values must stay public-safe; palette hex values mirror the CSS identity |
 | `src/app/sitemap.ts` | `/sitemap.xml` | Public route rules change | Must continue excluding hidden/confidential work |
@@ -53,6 +54,7 @@ framework files are intentionally not documented line by line.
 |---|---|---|---|
 | `src/components/SiteHeader.tsx` | Shared mark, navigation, theme toggle, availability | Header structure changes | Duplicate navigation/contact data |
 | `src/components/PrimaryNav.tsx` | Client header nav; re-scrolls same-page anchors on repeat clicks | Primary-navigation behavior changes | Navigation labels/targets (`src/content/navigation.ts`) |
+| `src/components/ScrollToTop.tsx` | Resets viewport to top on `/work/*` soft navigations | Work-route scroll behavior changes | Homepage hash scrolling |
 | `src/components/LogoMark.tsx` | Interactive expandable logo and outside-tap collapse | Logo interaction changes | Brand colors and pre-paint persistence logic |
 | `src/components/TypingHeadline.tsx` | Accessible character reveal for the homepage headline | Hero typing behavior changes | Homepage copy |
 | `src/components/Reveal.tsx` | One-shot scroll entrance for headings and approach steps | Reveal timing or host element changes | Project-card choreography or ETS-style scrub scenes |
