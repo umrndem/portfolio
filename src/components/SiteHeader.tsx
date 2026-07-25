@@ -1,5 +1,6 @@
 import { profile } from "@/content/profile";
 import { LogoMark } from "./LogoMark";
+import { MobileMenu } from "./MobileMenu";
 import { PrimaryNav } from "./PrimaryNav";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -10,6 +11,7 @@ export function SiteHeader() {
       <PrimaryNav />
       <div className="site-header__actions">
         <ThemeToggle />
+        <MobileMenu />
       </div>
     </header>
   );

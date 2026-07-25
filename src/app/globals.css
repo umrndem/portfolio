@@ -387,7 +387,7 @@ svg {
   }
 }
 
-.site-header nav {
+.site-header__nav {
   display: flex;
   gap: clamp(1.25rem, 3vw, 3rem);
   align-items: center;
@@ -398,6 +398,126 @@ svg {
   gap: clamp(0.8rem, 2vw, 1.75rem);
   align-items: center;
   justify-self: end;
+}
+
+/* The hamburger + drop-down are desktop-hidden; only tight viewports use them. */
+.site-header__menu {
+  display: none;
+}
+
+.site-header__menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.site-header__menu-icon,
+.site-header__menu-icon::before,
+.site-header__menu-icon::after {
+  display: block;
+  width: 1.4rem;
+  height: 1.5px;
+  background: currentColor;
+  transition:
+    transform 240ms var(--ease-out),
+    opacity 160ms var(--ease-out);
+}
+
+.site-header__menu-icon {
+  position: relative;
+}
+
+.site-header__menu-icon::before,
+.site-header__menu-icon::after {
+  position: absolute;
+  left: 0;
+  content: "";
+}
+
+.site-header__menu-icon::before {
+  top: -0.45rem;
+}
+
+.site-header__menu-icon::after {
+  top: 0.45rem;
+}
+
+/* Collapse the three bars into an X while open. */
+.site-header__menu-icon[data-open="true"] {
+  background: transparent;
+}
+
+.site-header__menu-icon[data-open="true"]::before {
+  transform: translateY(0.45rem) rotate(45deg);
+}
+
+.site-header__menu-icon[data-open="true"]::after {
+  transform: translateY(-0.45rem) rotate(-45deg);
+}
+
+.site-header__menu-backdrop {
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: rgb(0 0 0 / 0.28);
+  cursor: default;
+}
+
+.site-header__menu-panel {
+  position: absolute;
+  z-index: 2;
+  top: 100%;
+  right: 0;
+  left: 0;
+  display: grid;
+  padding: 0.5rem var(--page-edge) 1rem;
+  border-bottom: 1px solid var(--color-border-emphasis);
+  background: var(--color-header-bg);
+  backdrop-filter: blur(16px);
+  transform: translateY(-0.5rem);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    transform 220ms var(--ease-out),
+    opacity 180ms var(--ease-out),
+    visibility 0s linear 220ms;
+}
+
+.site-header__menu-panel[data-open="true"] {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  transition:
+    transform 220ms var(--ease-out),
+    opacity 180ms var(--ease-out);
+}
+
+.site-header__menu-panel a {
+  padding: 0.85rem 0.25rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: color 180ms var(--ease-out);
+}
+
+.site-header__menu-panel a:last-child {
+  border-bottom: 0;
+}
+
+.site-header__menu-panel a:hover,
+.site-header__menu-panel a:focus-visible {
+  color: var(--color-brand-primary);
 }
 
 .theme-toggle {
@@ -447,7 +567,7 @@ svg {
   background: var(--color-brand-fill);
 }
 
-.site-header nav a {
+.site-header__nav a {
   position: relative;
   /* No default underline — only the animated ::after shows on hover/focus. */
   font-size: 1.25rem;
@@ -455,7 +575,7 @@ svg {
   transition: color 180ms var(--ease-out);
 }
 
-.site-header nav a::after {
+.site-header__nav a::after {
   position: absolute;
   right: 0;
   bottom: -0.35rem;
@@ -468,14 +588,14 @@ svg {
   transition: transform 180ms var(--ease-out);
 }
 
-.site-header nav a:hover::after,
-.site-header nav a:focus-visible::after {
+.site-header__nav a:hover::after,
+.site-header__nav a:focus-visible::after {
   transform: scaleX(1);
   transform-origin: left;
 }
 
-.site-header nav a:hover,
-.site-header nav a:focus-visible {
+.site-header__nav a:hover,
+.site-header__nav a:focus-visible {
   color: var(--color-brand-primary);
 }
 
@@ -1975,6 +2095,8 @@ svg {
 }
 
 .acknowledgements__title-line {
+
+
   display: block;
 }
 
@@ -2394,12 +2516,10 @@ svg {
 }
 
 @media (max-width: 960px) {
+  /* Keep three columns so the theme toggle stays on the same row as the nav
+     instead of wrapping under the logo. */
   .site-header {
-    grid-template-columns: auto 1fr;
-  }
-
-  .site-header nav {
-    justify-self: end;
+    grid-template-columns: auto 1fr auto;
   }
 
   .hero__copy {
@@ -2478,25 +2598,26 @@ svg {
     background-size: 2.5rem 2.5rem;
   }
 
+  /* Nav is hidden below, so only logo + actions remain — two columns keep the
+     toggle and hamburger pinned to the right edge. */
   .site-header {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr auto;
     min-height: 4rem;
   }
 
-  .site-header nav {
-    gap: 1rem;
-    overflow-x: auto;
-    max-width: calc(100vw - 9.5rem);
-    padding-block: 0.5rem;
+  /* Tight viewports: the expanding logo lockup can collide with inline links,
+     so swap the inline nav for the hamburger drop-down. */
+  .site-header__nav {
+    display: none;
+  }
+
+  .site-header__menu {
+    display: block;
   }
 
   /* Icon-only on mobile to save header space; the disc still indicates the mode. */
   .theme-toggle__label {
     display: none;
-  }
-
-  .site-header nav a {
-    font-size: 0.78rem;
   }
 
   .hero {
@@ -2708,7 +2829,9 @@ svg {
 
   .site-footer {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    min-height: 90svh;
+    /* Let the footer size to its content instead of reserving a tall column
+       that leaves a dead gap above the bottom bar on phones. */
+    min-height: auto;
   }
 
   .site-footer__lead,
@@ -2725,16 +2848,21 @@ svg {
     grid-template-columns: 1fr;
   }
 
+  /* Stack the bottom bar into one clean left-aligned column so the name,
+     links, and acknowledgements read in order instead of splitting sideways. */
   .site-footer__base {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
     align-self: end;
+    text-align: left;
   }
 
   .site-footer__base nav {
-    flex-direction: column;
-    gap: 0.4rem;
-    justify-self: end;
-    text-align: right;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    justify-self: start;
+    text-align: left;
   }
 
   .site-footer__note {
