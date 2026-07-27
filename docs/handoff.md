@@ -45,7 +45,7 @@ or remote content service.
 | Approved acknowledgement copy, privacy states, order | `src/content/acknowledgements.ts` |
 | Navigation and homepage section IDs | `src/content/navigation.ts` |
 | Homepage introduction, experience, approach, foundation, footer / contact form copy | `src/content/home.ts` |
-| Project list, order, case studies, publication status, technologies, deployment, integrations, media | `src/content/projects.ts` |
+| Project list, order, case studies, periods, publication status, technologies, deployment, integrations, media | `src/content/projects.ts` |
 | Technology logo map | `src/content/technology-icons.ts` |
 | Global titles, descriptions, availability | `src/content/site-settings.ts` |
 | Shared content types | `src/content/types.ts` |

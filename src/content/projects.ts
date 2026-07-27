@@ -22,6 +22,7 @@ export const allProjects: readonly Project[] = [
     summary:
       "A structured public website and CMS system designed around the people who publish, maintain, and find organizational information.",
     context: "Eastern Testing Services · IT internship",
+    period: "June 2026 — Present",
     stage: "Under development · partially deployed",
     display: "featured",
     visibility: "private-case-study",
@@ -77,6 +78,7 @@ export const allProjects: readonly Project[] = [
     summary:
       "An internal system for managing HSEQ reports and medical-record workflows with role-based access, audit history, and transactional updates.",
     context: "Eastern Testing Services · IT internship",
+    period: "July 2026 — Present",
     stage: "Under development · partially deployed",
     display: "featured",
     visibility: "private-case-study",
@@ -121,6 +123,7 @@ export const allProjects: readonly Project[] = [
     summary:
       "A hands-free Snake game controlled by deliberate head movement through an ordinary webcam.",
     context: "Public project · collaborator credited",
+    period: "May 2026",
     stage: "Public release available",
     display: "supporting",
     visibility: "public",
@@ -162,6 +165,7 @@ export const allProjects: readonly Project[] = [
     summary:
       "A multi-role ride-hailing simulation with Express APIs, MySQL business rules, and rider, driver, and admin surfaces.",
     context: "Public project · collaborative academic context",
+    period: "May 2026",
     stage: "Public prototype · not currently active",
     display: "supporting",
     visibility: "public",
@@ -206,6 +210,7 @@ export const allProjects: readonly Project[] = [
     summary:
       "An end-to-end Streamlit analytics dashboard spanning ingestion, transformation, business KPIs, visualization, export, and a forecasting path.",
     context: "Public project",
+    period: "May 2026",
     stage: "Public prototype",
     display: "supporting",
     visibility: "public",
@@ -250,6 +255,7 @@ export const allProjects: readonly Project[] = [
     summary:
       "A compact Linux pipeline that coordinates processes, IPC, worker threads, and aggregation to turn tick CSV records into per-symbol summaries.",
     context: "Public technical project",
+    period: "May 2026",
     stage: "Completed academic project",
     display: "supporting",
     visibility: "public",

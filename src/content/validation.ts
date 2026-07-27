@@ -110,6 +110,7 @@ function validateProject(
     ["eyebrow", project.eyebrow],
     ["summary", project.summary],
     ["context", project.context],
+    ["period", project.period],
     ["stage", project.stage],
     ["proof", project.proof],
     ["limitation", project.limitation],

@@ -9,6 +9,7 @@ Evidence labels: **repository-verified**, **user-verified**, **inferred**,
 
 ## ETS Website
 
+- Repository history begins in June 2026 and remains active: repository-verified.
 - Core stack (Next.js, React, Payload CMS, PostgreSQL): repository-verified;
   confirmed for portfolio wording as user-verified.
 - Deployment through Vercel with Neon PostgreSQL and Cloudflare R2: user-verified.
@@ -21,6 +22,7 @@ Evidence labels: **repository-verified**, **user-verified**, **inferred**,
 
 ## Sentinel
 
+- Repository history begins in July 2026 and remains active: repository-verified.
 - Core stack (Next.js, TypeScript, PostgreSQL, Drizzle, Zod): repository-verified;
   confirmed for portfolio wording as user-verified.
 - Deployment configuration through Vercel, Neon PostgreSQL, and Cloudflare R2:
@@ -31,6 +33,8 @@ Evidence labels: **repository-verified**, **user-verified**, **inferred**,
 
 ## DataPulse
 
+- GitHub creation and latest observed repository activity both fall in May 2026:
+  repository-verified.
 - Analytics workflow and core Python stack: repository-verified.
 - Streamlit Community Cloud deployment and Supabase-backed services: user-verified.
 - Forecast evaluation quality and role-enforcement depth: unresolved.
@@ -38,6 +42,8 @@ Evidence labels: **repository-verified**, **user-verified**, **inferred**,
 
 ## RideFlow
 
+- GitHub creation and latest observed repository activity both fall in May 2026:
+  repository-verified.
 - Express, JavaScript, and MySQL simulation surface: repository-verified.
 - Railway deployment with Aiven-managed MySQL: user-verified.
 - Hosted demo not currently active: user-verified.
@@ -49,11 +55,15 @@ Evidence labels: **repository-verified**, **user-verified**, **inferred**,
 
 ## Snakinesis
 
+- GitHub creation and latest observed repository activity both fall in May 2026:
+  repository-verified.
 - Gesture-control implementation and tests: repository-verified.
 - Collaborator credit exists; exact contribution split: unresolved.
 
 ## Financial Tick Data Pipeline
 
+- GitHub creation and latest observed repository activity both fall in May 2026:
+  repository-verified.
 - Process/IPC/concurrency implementation: repository-verified.
 - Course context and benchmarks: unresolved.
 

@@ -74,6 +74,10 @@ export function ProjectCard({
             <dd>{project.context}</dd>
           </div>
           <div>
+            <dt>Period</dt>
+            <dd>{project.period}</dd>
+          </div>
+          <div>
             <dt>Status</dt>
             <dd>{project.stage}</dd>
           </div>

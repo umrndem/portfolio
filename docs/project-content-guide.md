@@ -16,6 +16,7 @@ the intent behind each field; the type remains authoritative for syntax.
 | `eyebrow` | Yes | Short context/category line above the title. Do not inflate role or maturity. |
 | `summary` | Yes | Concise card and metadata description grounded in demonstrated work. |
 | `context` | Yes | Employer/public/academic/collaboration context. Qualify uncertainty. |
+| `period` | Yes | Public month/year or range grounded in repository or user evidence. Use “Present” for active work; do not infer completion from the latest commit. |
 | `stage` | Yes | Human-readable current state such as “Versioned releases available.” Never imply production without evidence. |
 | `display` | Yes | `"featured"`, `"supporting"`, or `"hidden"`. Controls prominence/publication. |
 | `visibility` | Yes | `"public"`, `"private-case-study"`, or `"confidential"`. Controls publication boundary. |
@@ -233,6 +234,7 @@ boundaries:
   summary:
     "A hands-free Snake game controlled by deliberate head movement through an ordinary webcam.",
   context: "Public project · collaborator credited",
+  period: "May 2026",
   stage: "Versioned releases available",
   display: "supporting",
   visibility: "public",

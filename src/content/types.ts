@@ -31,6 +31,7 @@ export type Project = {
   eyebrow: string;
   summary: string;
   context: string;
+  period: string;
   stage: string;
   display: ProjectDisplay;
   visibility: ProjectVisibility;
