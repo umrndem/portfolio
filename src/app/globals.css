@@ -1032,7 +1032,7 @@ svg {
   box-sizing: border-box;
   flex: none;
   margin-top: -0.5rem;
-  border: 2px solid var(--color-bg-primary);
+  border: 2px solid var(--color-text-muted);
   border-radius: 50%;
   /* Opaque page fill so the track cannot show through the circle. */
   background: var(--color-bg-primary);
