@@ -155,9 +155,10 @@ separate file.
 ### Content display
 
 - `ProjectCard` renders summary-level project evidence.
-- `RangeLine` maps a project onto the systems-to-people axis, names the spanned
-  topics in a right-aligned caption when an active range is set, and fills when
-  scrolled into view.
+- `RangeLine` maps a project onto the systems-programming-to-people axis, names and marks
+  only the exact areas supported by project evidence, joins adjacent selected
+  areas without crossing unsupported gaps, and uses the same behavior for the
+  full overview axis.
 - `Reveal` provides one-shot scroll entrances for section headings and approach
   steps.
 - `SectionHeading` enforces homepage section hierarchy.

@@ -1,5 +1,5 @@
 export type RangePoint =
-  | "systems"
+  | "systems programming"
   | "data"
   | "databases"
   | "product"
@@ -34,7 +34,8 @@ export type Project = {
   stage: string;
   display: ProjectDisplay;
   visibility: ProjectVisibility;
-  range: readonly [RangePoint, RangePoint];
+  /** Exact ordered areas demonstrated by the project. */
+  range: readonly [RangePoint, ...RangePoint[]];
   /** Core application stack shown as the primary technology row. */
   technologies: readonly string[];
   /** Managed platforms and hosted services (deployment, databases, storage). */

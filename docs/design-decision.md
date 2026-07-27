@@ -22,9 +22,13 @@ Proceed with **Working Proof**.
 
 The site’s memorable device is a **technical range line**. It has five qualitative waypoints:
 
-`systems → data → databases → product → people`
+`systems programming → data → databases → product → people`
 
-Every selected project activates the span it genuinely covers. The line never presents percentages, proficiency, impact, or other invented quantities.
+Every selected project activates only the individual areas its evidence
+supports. Unselected waypoints remain inactive even when they sit between two
+selected areas. The active line joins adjacent supported waypoints but does not
+cross an unsupported gap. The line never presents percentages, proficiency,
+impact, or other invented quantities.
 
 ## Influences transformed
 

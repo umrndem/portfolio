@@ -270,7 +270,9 @@ The site intentionally has no proficiency bars or separate master skill list.
 - Homepage coursework: edit `homeContent.about.strongCoursework`.
 - Technical range labels: edit `rangePoints` only if the conceptual axis itself
   changes; also update every project range. Project cards and case studies name
-  the spanned topics via `RangeLine` from each project’s `range` pair.
+  the exact selected topics via `RangeLine` from each project’s ordered `range`
+  list. Do not include an area merely because it sits between two selected
+  points on the axis.
 - Broader positioning: edit the about paragraphs only with evidence.
 - Skills evidence and deployment framing: update `docs/skills-evidence-map.md`
   and `portfolio-source-of-truth.md` when Umar confirms facts.

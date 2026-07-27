@@ -19,7 +19,7 @@ the intent behind each field; the type remains authoritative for syntax.
 | `stage` | Yes | Human-readable current state such as “Versioned releases available.” Never imply production without evidence. |
 | `display` | Yes | `"featured"`, `"supporting"`, or `"hidden"`. Controls prominence/publication. |
 | `visibility` | Yes | `"public"`, `"private-case-study"`, or `"confidential"`. Controls publication boundary. |
-| `range` | Yes | Start/end pair on the declared systems → people axis, in forward order. |
+| `range` | Yes | Exact non-empty set of supported areas on the declared systems programming → people axis, listed once each in forward order. |
 | `technologies` | Yes | Non-empty, unique core-stack labels actually demonstrated. Primary badge row. |
 | `deployment` | No | Unique managed platforms and hosted services (for example Vercel, Neon, R2). Omit when none. |
 | `integrations` | No | Unique security/third-party integrations (for example Turnstile). Omit when none. Never list Turnstile under deployment. |
@@ -49,6 +49,22 @@ only when those optional lists are present.
 
 Labels must be unique across the three lists for a project. Prefer exact names
 that already exist in `src/content/technology-icons.ts` when a logo is desired.
+
+## Technical-area classification
+
+The five range points classify demonstrated project work:
+
+| Area | Include when the evidence shows |
+|---|---|
+| `systems programming` | Operating-system, IPC, concurrency, memory, or similarly low-level systems work |
+| `data` | Structured operational records, ingestion, transformation, analytics, forecasting, computer-vision signals, or other substantive data handling |
+| `databases` | Persistent data-store integration, relational modelling, queries, transactions, or database-side rules |
+| `product` | A usable application, interface, or end-to-end workflow rather than only a library or isolated exercise |
+| `people` | Direct human interaction, role-specific use, accessibility/control design, or stakeholder-facing workflows |
+
+Classify from concrete implementation evidence, not the project’s subject or a
+dependency alone. A project may select non-adjacent areas. The range line joins
+adjacent selected points but leaves unsupported gaps neutral.
 
 Example:
 

@@ -31,7 +31,7 @@ Use this entire checklist before publishing a new project.
 - [ ] Added to `allProjects` in `src/content/projects.ts`.
 - [ ] Unique lowercase kebab-case `slug`.
 - [ ] Factual `title`, `eyebrow`, `summary`, `context`, and `stage`.
-- [ ] Ordered valid `range`.
+- [ ] `range` lists only exact evidence-backed areas, uniquely and in axis order.
 - [ ] Unique non-empty `technologies` (core stack).
 - [ ] Optional `deployment` / `integrations` lists are accurate, unique, and
       non-overlapping with each other and `technologies`.

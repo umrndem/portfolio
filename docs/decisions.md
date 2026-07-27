@@ -117,3 +117,14 @@ ascending order, while privacy review—not inference—controls identification.
 
 The page sequence is editorial hero → faith foundation panel → continuous
 uniform acknowledgement list → closing panel → standard footer.
+
+## 011 — Project range values identify exact areas
+
+**Status:** accepted
+**Date:** 27 July 2026
+
+A project’s `range` is an ordered non-empty list of the exact areas supported by
+its evidence, not a start/end interval. `RangeLine` marks only those listed
+waypoints, so selecting data and people does not silently claim databases or
+product. Adjacent selected waypoints share an active line segment; unsupported
+gaps remain neutral. Validation enforces uniqueness and the shared axis order.

@@ -62,7 +62,7 @@ export default function OpenGraphImage() {
             {profile.name}
           </div>
           <div style={{ fontSize: 31, color: "#FA2A1E" }}>
-            Systems → Data → Databases → Product → People
+            Systems Programming → Data → Databases → Product → People
           </div>
         </div>
         <div
@@ -73,7 +73,7 @@ export default function OpenGraphImage() {
             gap: 18,
           }}
         >
-          {["systems", "data", "databases", "product", "people"].map(
+          {["systems programming", "data", "databases", "product", "people"].map(
             (point, index) => (
               <div
                 key={point}

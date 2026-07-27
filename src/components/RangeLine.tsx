@@ -4,20 +4,9 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import { rangePoints, type RangePoint } from "@/content/projects";
 
 type RangeLineProps = {
-  active?: readonly [RangePoint, RangePoint];
+  active?: readonly RangePoint[];
   compact?: boolean;
 };
-
-function spannedPoints(active: readonly [RangePoint, RangePoint]) {
-  const start = rangePoints.indexOf(active[0]);
-  const end = rangePoints.indexOf(active[1]);
-
-  if (start === -1 || end === -1 || start > end) {
-    return [] as RangePoint[];
-  }
-
-  return rangePoints.slice(start, end + 1);
-}
 
 function formatRangeTopics(topics: readonly RangePoint[]) {
   if (topics.length === 0) {
@@ -35,12 +24,24 @@ function formatRangeTopics(topics: readonly RangePoint[]) {
   return `${topics.slice(0, -1).join(", ")}, and ${topics[topics.length - 1]}`;
 }
 
+function connectedSegments(selected: readonly RangePoint[]) {
+  const selectedIndexes = new Set(
+    selected.map((point) => rangePoints.indexOf(point)),
+  );
+
+  return rangePoints.slice(0, -1).flatMap((_, index) =>
+    selectedIndexes.has(index) && selectedIndexes.has(index + 1)
+      ? [[index, index + 1] as const]
+      : [],
+  );
+}
+
 export function RangeLine({ active, compact = false }: RangeLineProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
-  const start = active ? rangePoints.indexOf(active[0]) : 0;
-  const end = active ? rangePoints.indexOf(active[1]) : rangePoints.length - 1;
-  const spanned = active ? spannedPoints(active) : [];
+  const selected = active ?? [];
+  const displayedPoints = active ?? rangePoints;
+  const segments = connectedSegments(displayedPoints);
 
   useEffect(() => {
     const node = rootRef.current;
@@ -80,21 +81,19 @@ export function RangeLine({ active, compact = false }: RangeLineProps) {
         .join(" ")}
       style={
         {
-          "--range-start": start,
-          "--range-end": end,
           "--segments": rangePoints.length - 1,
         } as React.CSSProperties
       }
       aria-label={
-        spanned.length > 0
-          ? `Technical range spanning ${formatRangeTopics(spanned)}`
-          : "Technical range from systems through data, databases, product, and people"
+        selected.length > 0
+          ? `Technical areas covered: ${formatRangeTopics(selected)}`
+          : "Technical range from systems programming through data, databases, product, and people"
       }
     >
-      {spanned.length > 0 ? (
+      {selected.length > 0 ? (
         <p className="range-line__span" aria-hidden="true">
-          <span className="range-line__span-prefix">Spans</span>
-          {spanned.map((point, index) => (
+          <span className="range-line__span-prefix">Covers</span>
+          {selected.map((point, index) => (
             <Fragment key={point}>
               {index > 0 ? (
                 <span className="range-line__span-sep"> · </span>
@@ -110,11 +109,22 @@ export function RangeLine({ active, compact = false }: RangeLineProps) {
           exactly the dot column, not the caption above it. */}
       <div className="range-line__body">
         <div className="range-line__track" aria-hidden="true">
-          <span className="range-line__active" />
+          {segments.map(([start, end]) => (
+            <span
+              className="range-line__active"
+              key={`${start}-${end}`}
+              style={
+                {
+                  "--range-start": start,
+                  "--range-end": end,
+                } as React.CSSProperties
+              }
+            />
+          ))}
         </div>
         <ol className="range-line__points">
           {rangePoints.map((point, index) => {
-            const isActive = index >= start && index <= end;
+            const isActive = displayedPoints.includes(point);
             return (
               <li
                 className={isActive ? "is-active" : undefined}

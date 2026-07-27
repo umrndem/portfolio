@@ -134,11 +134,20 @@ function validateProject(
     requireHttpsUrl(project.repositoryUrl, `${field}.repositoryUrl`, errors);
   }
 
-  const rangeStart = rangePoints.indexOf(project.range[0]);
-  const rangeEnd = rangePoints.indexOf(project.range[1]);
+  const rangeIndexes = project.range.map((point) => rangePoints.indexOf(point));
 
-  if (rangeStart === -1 || rangeEnd === -1 || rangeStart > rangeEnd) {
-    errors.push(`${field}.range must follow the declared range-point order.`);
+  if (
+    project.range.length === 0 ||
+    rangeIndexes.some((rangeIndex) => rangeIndex === -1) ||
+    rangeIndexes.some(
+      (rangeIndex, rangeIndexPosition) =>
+        rangeIndexPosition > 0 &&
+        rangeIndex <= rangeIndexes[rangeIndexPosition - 1]!,
+    )
+  ) {
+    errors.push(
+      `${field}.range must contain unique areas in declared range-point order.`,
+    );
   }
 
   if (project.technologies.length === 0) {

@@ -5,7 +5,7 @@
 **Concept:** A precise, evidence-led editorial portfolio. Projects are “working proofs”: each shows the human problem, the system built, the evidence available, and the boundary of what can honestly be claimed.
 
 - **Impression:** capable, curious, structured, early-career but serious.
-- **Visual metaphor:** a continuous range line moving through `systems → data → interfaces → people`; it changes emphasis by project but never pretends to be measured data.
+- **Visual metaphor:** a continuous range line moving through `systems programming → data → interfaces → people`; it changes emphasis by project but never pretends to be measured data.
 - **Typography:** confident sans for display/body; monospaced utility face for evidence, status, and technical labels.
 - **Layout:** wide twelve-column desktop grid, narrow reading measures, strong left alignment, intentional asymmetry around project evidence.
 - **Color:** pale mineral ground, dark pine ink, signal blue, warm safety orange, quiet blue-grey. Accents behave like annotations.

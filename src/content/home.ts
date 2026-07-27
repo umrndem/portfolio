@@ -81,7 +81,7 @@ export const homeContent = {
     },
     paragraphs: [
       "Mathematics and computing brought me to Data Science. The work I have now is broader: C++ and operating systems, relational data, applied computer vision, analytics, and end-to-end web applications.",
-      "I’m looking for environments with meaningful technical exposure—where I can become much stronger in software, data systems, machine learning, and AI.",
+      "I’m looking for environments with meaningful technical exposure where I can become much stronger in software, data systems, machine learning, and AI.",
     ],
     strongCoursework:
       "Data Structures, Operating Systems, Probability & Statistics, Calculus, Linear Algebra",

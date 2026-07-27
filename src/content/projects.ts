@@ -7,7 +7,7 @@ import type {
 export type { Project, RangePoint } from "./types";
 
 export const rangePoints = [
-  "systems",
+  "systems programming",
   "data",
   "databases",
   "product",
@@ -25,7 +25,7 @@ export const allProjects: readonly Project[] = [
     stage: "Under development · partially deployed",
     display: "featured",
     visibility: "private-case-study",
-    range: ["databases", "people"],
+    range: ["data", "databases", "product", "people"],
     technologies: ["Next.js", "React", "Payload CMS", "PostgreSQL"],
     deployment: ["Vercel", "Neon", "Cloudflare R2"],
     integrations: ["Turnstile"],
@@ -80,7 +80,7 @@ export const allProjects: readonly Project[] = [
     stage: "Under development · partially deployed",
     display: "featured",
     visibility: "private-case-study",
-    range: ["databases", "people"],
+    range: ["data", "databases", "product", "people"],
     technologies: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle", "Zod"],
     deployment: ["Vercel", "Neon", "Cloudflare R2"],
     integrations: ["Turnstile"],
@@ -124,7 +124,7 @@ export const allProjects: readonly Project[] = [
     stage: "Public release available",
     display: "supporting",
     visibility: "public",
-    range: ["data", "people"],
+    range: ["data", "product", "people"],
     technologies: ["Python", "OpenCV", "MediaPipe", "NumPy", "Pillow"],
     homepageTechnologies: ["Python", "OpenCV", "MediaPipe", "NumPy"],
     proof:
@@ -165,7 +165,7 @@ export const allProjects: readonly Project[] = [
     stage: "Public prototype · not currently active",
     display: "supporting",
     visibility: "public",
-    range: ["databases", "product"],
+    range: ["data", "databases", "product", "people"],
     technologies: ["Express", "JavaScript", "MySQL"],
     deployment: ["Railway", "Aiven"],
     homepageTechnologies: ["Express", "JavaScript", "MySQL", "Railway"],
@@ -209,7 +209,7 @@ export const allProjects: readonly Project[] = [
     stage: "Public prototype",
     display: "supporting",
     visibility: "public",
-    range: ["data", "product"],
+    range: ["data", "databases", "product", "people"],
     technologies: ["Python", "Pandas", "Streamlit", "Plotly", "Prophet"],
     deployment: ["Streamlit Community Cloud", "Supabase"],
     homepageTechnologies: ["Python", "Pandas", "Streamlit", "Plotly", "Prophet"],
@@ -253,7 +253,7 @@ export const allProjects: readonly Project[] = [
     stage: "Completed academic project",
     display: "supporting",
     visibility: "public",
-    range: ["systems", "data"],
+    range: ["systems programming", "data"],
     technologies: ["C++17", "POSIX IPC", "pthreads", "CMake"],
     homepageTechnologies: ["C++17", "POSIX IPC", "pthreads"],
     proof:
