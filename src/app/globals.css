@@ -1156,6 +1156,9 @@ svg {
   --card-ink-soft: color-mix(in srgb, var(--color-text-primary) 92%, transparent);
   --card-ink-quiet: color-mix(in srgb, var(--color-text-primary) 84%, transparent);
   --card-rule: color-mix(in srgb, var(--color-text-primary) 30%, transparent);
+  /* Badge chip outlines stay page-ink (black in light, white in dark) on every
+     card surface, unlike --card-rule which follows the per-card ink. */
+  --card-badge-rule: var(--color-text-primary);
   color: var(--card-ink);
   transition:
     border-color 180ms var(--ease-out),
@@ -1330,37 +1333,32 @@ svg {
 .project-card__footer li {
   display: inline-flex;
   align-items: center;
-  padding: 0.9rem 1.125rem;
-  min-height: 3.375rem;
-  border: 1px solid var(--card-rule);
+  padding: 0.75rem 0.95rem;
+  min-height: 2.8rem;
+  border: 1px solid var(--card-badge-rule);
   font-family: var(--font-mono), var(--font-mono-fallback);
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   color: var(--card-ink);
 }
 
-/* Homepage cards scale the badge type and marks up 50% over the base badge. */
-.project-card__footer .technology-badge__label {
-  font-size: 0.9rem;
-}
-
+/* Homepage cards scale the badge type and marks up ~25% over the base badge.
+   Secondary (deployment/integration) badges match core badge sizing here;
+   only their quieter border and ink color set them apart. */
+.project-card__footer .technology-badge__label,
 .project-card__footer .technology-badge--secondary .technology-badge__label {
-  font-size: 0.825rem;
+  font-size: 0.75rem;
 }
 
-.project-card__footer .technology-badge__icon {
-  width: 1.6875rem;
-  height: 1.6875rem;
-}
-
+.project-card__footer .technology-badge__icon,
 .project-card__footer
   .technology-badge--secondary:not(.technology-badge--vertical)
   .technology-badge__icon {
-  width: 1.425rem;
-  height: 1.425rem;
+  width: 1.4rem;
+  height: 1.4rem;
 }
 
 .project-card__stack-row--secondary li {
-  border-color: color-mix(in srgb, var(--card-rule) 75%, transparent);
+  border-color: color-mix(in srgb, var(--card-badge-rule) 75%, transparent);
   color: var(--card-ink-soft);
 }
 
