@@ -80,7 +80,8 @@ Use this entire checklist before publishing a new project.
 - [ ] Heading hierarchy and reading order are correct.
 - [ ] Link/focus states are visible.
 - [ ] Images/captions are accessible.
-- [ ] Technology labels wrap cleanly across core and secondary rows.
+- [ ] Technology labels sit on one badge line, wrapping cleanly only when the
+      viewport is too narrow.
 - [ ] Secondary deployment/integration rows remain quieter than the core stack.
 - [ ] Logos remain readable on light, dark, and maroon card surfaces.
 - [ ] Maroon hierarchy remains balanced.

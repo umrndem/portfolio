@@ -132,8 +132,8 @@ export function ProjectCard({
 
           {hasSecondaryStack ? (
             <p className="sr-only">
-              Secondary rows list managed deployment services and security
-              integrations separately from the core application stack.
+              Managed deployment services and security integrations are listed
+              in quieter styling alongside the core application stack.
             </p>
           ) : null}
         </div>

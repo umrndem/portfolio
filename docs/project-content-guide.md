@@ -37,8 +37,8 @@ Do not add optional fields solely to make the schema look comprehensive. Add a
 new field when content exists and a component will render it.
 
 Projects without `deployment`, `integrations`, or `infrastructureNote` remain
-valid. Keep core technologies visually primary; quieter secondary rows render
-only when those optional lists are present.
+valid. Keep core technologies visually primary; quieter secondary badges flow
+inline after the core stack only when those optional lists are present.
 
 ## Stack categories
 
@@ -94,9 +94,9 @@ service. Use `homepageTechnologies` to show a curated ~4–5 item subset:
   `integrations`; validation enforces this. When omitted, the card shows the full
   stack. The case-study page always shows everything.
 
-The card keeps the same visual hierarchy: curated core labels render in the
-primary row, and curated deployment/integration labels render in the quieter
-secondary rows.
+The card keeps the same visual hierarchy: curated core labels render first,
+and curated deployment/integration labels follow inline in quieter styling on
+the same badge line.
 
 Evidence for deployment and integration claims should be tagged in
 `portfolio-source-of-truth.md` / `docs/project-evidence-notes.md` as

@@ -62,8 +62,9 @@ separate route list.
 
 Projects keep a required `technologies` core-stack list and may optionally
 declare `deployment` (managed platforms / hosted databases / object storage)
-and `integrations` (for example Turnstile). Homepage cards keep the core row
-primary and render quieter secondary rows when present. Case studies label the
+and `integrations` (for example Turnstile). Homepage cards flow all badges on
+one line, rendering deployment/integration badges in quieter styling after the
+core stack when present. Case studies label the
 three categories and may include a concise `infrastructureNote`. This keeps
 managed-service facts visible without merging them into the application stack
 or inventing DevOps expertise.
