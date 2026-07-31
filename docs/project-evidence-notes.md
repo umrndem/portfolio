@@ -22,14 +22,31 @@ Evidence labels: **repository-verified**, **user-verified**, **inferred**,
 
 ## Sentinel
 
-- Repository history begins in July 2026 and remains active: repository-verified.
+- Repository history begins in July 2026 and remains active: repository-verified
+  (last local inspection 31 July 2026, ~106 commits).
 - Core stack (Next.js, TypeScript, PostgreSQL, Drizzle, Zod): repository-verified;
   confirmed for portfolio wording as user-verified.
-- Deployment configuration through Vercel, Neon PostgreSQL, and Cloudflare R2:
-  user-verified.
-- Turnstile on public-facing request paths: user-verified / repository-supported.
-- Production scale, live URL publication, and quantified impact: unresolved.
-- Automated tests: repository documentation reports they are not yet committed.
+- Scope grew from HSEQ RIR reporting + medical records to an internal management
+  information system that also covers operations wellsite jobs (lifecycle stages,
+  progress updates, per-job audit timeline) and a separate ICT system-administration
+  authority with an activity log: repository-verified (architecture doc, README,
+  change log).
+- Self-service employee profiles with paginated personal RIR history over an
+  imported read-only historical archive: repository-verified.
+- Session/sign-in hardening (edge route gating, database-backed sessions,
+  stay-signed-in vs. idle expiry, throttling, security headers): repository-verified.
+- Deployment migrated to Railway (app service and managed PostgreSQL) with private
+  S3-compatible object storage behind the authenticated in-app proxy:
+  repository-verified from the change log and maintenance docs. The earlier
+  Vercel + Neon + Cloudflare R2 configuration is superseded (storage passed
+  through a brief Vercel Blob stage first). The specific S3-compatible provider
+  is deliberately not recorded; keep it abstract.
+- Turnstile on sign-in: user-verified / repository-verified.
+- Deployed internally with live operational data: repository-verified (rollout
+  notes and archive import in the change log). Production scale, live URL
+  publication, and quantified impact: unresolved — do not claim.
+- Automated tests: none committed as of the 31 July 2026 inspection (no test
+  files or test script).
 
 ## DataPulse
 

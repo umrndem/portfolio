@@ -76,33 +76,38 @@ export const allProjects: readonly Project[] = [
     title: "Sentinel",
     eyebrow: "Professional work",
     summary:
-      "An internal system for managing HSEQ reports and medical-record workflows with role-based access, audit history, and transactional updates.",
+      "An internal management information system covering HSEQ reporting, employee medical records, and operations job tracking with role-based access, audit trails, and transactional workflows.",
     context: "Eastern Testing Services · IT internship",
     period: "July 2026 — Present",
-    stage: "Under development · partially deployed",
+    stage: "Deployed internally · under active development",
     display: "featured",
     visibility: "private-case-study",
     range: ["data", "databases", "product", "people"],
     technologies: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle", "Zod"],
-    deployment: ["Vercel", "Neon", "Cloudflare R2"],
+    deployment: ["Railway"],
     integrations: ["Turnstile"],
     homepageTechnologies: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle", "Zod"],
     infrastructureNote:
-      "I configured this for deployment through Vercel with Neon PostgreSQL, Cloudflare R2 storage, and Cloudflare Turnstile on public-facing request paths.",
+      "I run this on Railway with Railway-managed PostgreSQL and private S3-compatible object storage that is served only through an authenticated in-app proxy, with Cloudflare Turnstile protecting sign-in.",
     proof:
-      "I can show repository evidence for explicit domain boundaries, authorization, database-backed sessions, transactional workflow actions, private media delivery, and audit events.",
+      "I can show repository evidence for explicit domain boundaries, edge-gated routes with server-side authorization, database-backed sessions, transactional workflow actions with per-record audit timelines, an administrative activity log, and private media delivery.",
     limitation:
       "I do not claim production scale, quantified impact, automated-test coverage, employee data, or security-sensitive implementation. I also do not publish live deployment URLs.",
     sections: [
       {
         title: "The problem",
         body:
-          "I was working with operational reporting and medical-record workflows that need different access boundaries, clear states, and an audit trail. The challenge was not a dashboard; it was preserving rules while keeping the system usable.",
+          "I was working with operational reporting, medical-record, and job-planning workflows that need different access boundaries, clear states, and an audit trail. The challenge was not a dashboard; it was preserving rules while keeping the system usable.",
       },
       {
         title: "The system",
         body:
-          "I separated feature boundaries for reporting, medical, organization, and administration concerns. Role-derived authority and transactional mutations keep workflow changes and audit events together.",
+          "I separated feature boundaries for reporting, medical, organization, jobs, and administration concerns. Role-derived authority and transactional mutations keep workflow changes and their audit events together, and system administration is split from HSEQ authority with its own activity log.",
+      },
+      {
+        title: "How it grew",
+        body:
+          "After the reporting core, I digitized paper job-planning sheets into a jobs module with lifecycle stages, authored progress updates, and a per-job audit timeline; added self-service employee profiles over an imported historical archive; and hardened sessions, sign-in, and outsider-facing surfaces.",
       },
       {
         title: "The tradeoff",
@@ -112,7 +117,7 @@ export const allProjects: readonly Project[] = [
       {
         title: "Known gap",
         body:
-          "The project documentation I inspected says committed automated tests are not yet present. I leave that gap visible instead of disguising it with a polished case-study surface.",
+          "Committed automated tests are still not present in the repository. I leave that gap visible instead of disguising it with a polished case-study surface.",
       },
     ],
   },

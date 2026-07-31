@@ -75,12 +75,15 @@ whether dashboard screenshots are safe; whether any business outcomes may be cla
 | Category | Items | Evidence |
 |---|---|---|
 | Core stack | Next.js, TypeScript, PostgreSQL, Drizzle, Zod | repository-verified / user-verified |
-| Deployment & services | Vercel, Neon PostgreSQL, Cloudflare R2 | user-verified |
-| Security & integrations | Cloudflare Turnstile | user-verified |
-| Infrastructure note | Configured for deployment through Vercel with Neon PostgreSQL, Cloudflare R2 storage, and Cloudflare Turnstile on public-facing request paths. | user-verified |
+| Scope | HSEQ reporting (RIR workflow), employee medical records, operations wellsite jobs, ICT system administration with activity log | repository-verified (31 July 2026 local inspection) |
+| Deployment & services | Railway (app service and managed PostgreSQL); private S3-compatible object storage behind an authenticated in-app proxy | repository-verified (change log records the migration off Vercel Blob/Neon; earlier Vercel + Neon + Cloudflare R2 configuration is superseded) |
+| Security & integrations | Cloudflare Turnstile on sign-in; hardened sessions and security headers | repository-verified / user-verified |
+| Infrastructure note | Runs on Railway with Railway-managed PostgreSQL and private S3-compatible object storage served only through an authenticated in-app proxy, with Cloudflare Turnstile protecting sign-in. | repository-verified |
+| Status | Deployed internally with live operational data (rollout notes, imported historical archive); under active development | repository-verified |
 
-Unresolved: live availability; publishable URLs; safe screenshots; business outcomes;
-automated-test coverage (repository documentation reports a gap).
+Unresolved: publishable URLs; safe screenshots; business outcomes; the object-storage
+provider name (kept abstract as S3-compatible); automated-test coverage
+(no committed tests as of 31 July 2026 inspection).
 
 ### DataPulse — public supporting project
 

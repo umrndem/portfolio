@@ -19,13 +19,14 @@ Evidence labels used in notes: **repository-verified**, **user-verified**, **inf
 | KPI calculation | Revenue, order count, AOV implementation and unit test | DataPulse | Moderate | Yes | Small but direct evidence |
 | Time-series forecasting | Prophet service/path | DataPulse | Limited | Yes, carefully | No verified accuracy or experiment record |
 | Business dashboard/UI | Streamlit pages, Plotly-oriented analytics flow, export/targets | DataPulse | Moderate | Yes | Role enforcement still needs verification |
-| Vercel deployment | Managed Next.js deployment for ETS Website and Sentinel | ETS; Sentinel | Moderate | Conditional | user-verified practical deployment; live URL unresolved |
-| Neon-managed PostgreSQL | Hosted PostgreSQL connected to ETS Website and Sentinel | ETS; Sentinel | Moderate | Conditional | user-verified; do not publish connection details |
-| Cloudflare R2 integration | Object storage for media/assets on ETS Website and Sentinel | ETS; Sentinel | Moderate | Conditional | user-verified; abstract media handling only |
+| Vercel deployment | Managed Next.js deployment for ETS Website (Sentinel migrated off Vercel in July 2026) | ETS | Moderate | Conditional | user-verified practical deployment; live URL unresolved |
+| Neon-managed PostgreSQL | Hosted PostgreSQL connected to ETS Website (Sentinel migrated to Railway PostgreSQL in July 2026) | ETS | Moderate | Conditional | user-verified; do not publish connection details |
+| Cloudflare R2 integration | Object storage for media/assets on ETS Website (Sentinel migrated to private S3-compatible storage) | ETS | Moderate | Conditional | user-verified; abstract media handling only |
+| S3-compatible private object storage | Server-only S3 client behind an authenticated in-app media proxy on Sentinel | Sentinel | Moderate | Conditional | repository-verified; never name the provider, bucket, or endpoint |
 | Cloudflare Turnstile integration | Bot protection / form or request verification | ETS; Sentinel | Moderate | Conditional | user-verified; not a deployment platform; no secrets |
 | Streamlit Community Cloud deployment | Hosted DataPulse deployment | DataPulse | Moderate | Yes, carefully | user-verified; current live status unresolved |
 | Supabase integration | Supabase-backed services used with DataPulse | DataPulse | Moderate | Yes, carefully | user-verified; do not claim advanced backend platform ownership |
-| Railway deployment | Managed deployment for RideFlow | RideFlow | Moderate | Yes, carefully | user-verified; demo liveness unresolved |
+| Railway deployment | Managed deployment for RideFlow; Sentinel app service and managed PostgreSQL | RideFlow; Sentinel | Moderate | Conditional | RideFlow user-verified (demo liveness unresolved); Sentinel repository-verified, keep abstract |
 | Aiven-managed MySQL | Hosted MySQL used by RideFlow | RideFlow | Moderate | Yes, carefully | user-verified; no connection strings in public copy |
 | Relational business modelling | Users, rides, wallets, payments, ratings, complaints, payouts | RideFlow | Moderate | Yes | Academic/collaborative context needs clarification |
 | Database-side business rules | MySQL constraints, procedures, triggers, views | RideFlow | Moderate | Yes | Do not call production-grade |
