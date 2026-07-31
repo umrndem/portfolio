@@ -8,19 +8,25 @@ RideFlow). Those project facts live in `portfolio-source-of-truth.md`,
 
 ## Current portfolio deployment state
 
-As updated on 31 July 2026:
+As updated on 31 July 2026, the site is **live on Cloudflare Workers**:
 
-- the repository is configured for **Cloudflare Workers** via the OpenNext
-  adapter (`@opennextjs/cloudflare`), with `wrangler.jsonc`,
-  `open-next.config.ts`, and `public/_headers` committed;
-- the Worker build and every route were verified locally in the `workerd`
-  runtime through `npm run preview`;
-- **no deployment has been performed** — no Cloudflare account, worker, or
-  domain is connected, and no CI workflow is committed;
-- no production domain is recorded.
+- production origin: `https://umrfolio.umrndem.workers.dev` (workers.dev, no
+  custom domain yet);
+- Worker name: `umrfolio`, deployed through the OpenNext adapter
+  (`@opennextjs/cloudflare`) with `wrangler.jsonc`, `open-next.config.ts`, and
+  `public/_headers` committed;
+- CI: **Workers Builds** is connected to the GitHub repository
+  (`umrndem/umrfolio`). Pushes to `main` build with
+  `npx opennextjs-cloudflare build` and deploy with `npx wrangler deploy`. The
+  build command lives in the Cloudflare dashboard
+  (Workers & Pages → umrfolio → Settings → Build), not in the repository;
+- the canonical origin is baked into `getSiteUrl()` in
+  `src/content/site-settings.ts` as the default, so no dashboard build
+  variable is required. `NEXT_PUBLIC_SITE_URL` overrides it.
 
-Do not describe the portfolio site as deployed until a live origin is explicitly
-confirmed. Do not invent provider or domain instructions.
+The user owns the Cloudflare account and authorizes deployments. Do not run
+`npm run deploy` or change dashboard build settings without explicit
+permission.
 
 ## Project managed-platform facts (not this site)
 
@@ -65,7 +71,10 @@ homepage, public project routes, metadata image/icon, sitemap, and robots file.
 
 ## Environment variables
 
-Required for a real deployment:
+None are required. The canonical origin defaults to
+`https://umrfolio.umrndem.workers.dev` inside `getSiteUrl()`
+(`src/content/site-settings.ts`). To point the build at a different origin
+(for example a future custom domain), set:
 
 ```env
 NEXT_PUBLIC_SITE_URL=https://your-final-origin.example
@@ -114,61 +123,36 @@ incremental cache (R2/KV) with a Durable Object queue per the
 [OpenNext caching guide](https://opennext.js.org/cloudflare/caching), and
 record that in `docs/decisions.md`.
 
-## Before connecting the Cloudflare account
-
-Deployment still requires the maintainer/user to explicitly authorize and
-confirm:
-
-- account/organization owner;
-- source repository and production branch;
-- preview access policy;
-- worker name and `workers.dev` subdomain exposure;
-- environment-variable ownership;
-- canonical domain;
-- who may trigger production deployments;
-- rollback mechanism;
-- whether private professional material is approved for public preview.
-
-## Preview deployment process
-
-Preview deployment is not configured. Once a provider/remote is approved:
-
-1. Create a focused branch.
-2. Run `npm run check` locally.
-3. Inspect the diff/privacy checklist.
-4. Push only with permission.
-5. Let the provider build the branch/PR preview.
-6. Restrict preview access if it contains not-yet-approved professional content.
-7. Verify routes, themes, assets, metadata, and downloads on the preview origin.
-8. Obtain content approval before production merge.
-
-A secret/unlisted preview URL is not a substitute for sanitization.
-
 ## Production deployment process
 
-Once configured:
+Production deploys are driven by Git:
 
-1. Confirm the target commit and clean checks.
-2. Confirm the production `NEXT_PUBLIC_SITE_URL`.
-3. Confirm public approval for all assets and professional material.
-4. Merge/promote through the approved production branch/workflow.
-5. Wait for a successful immutable deployment.
-6. Run the post-deployment checks below.
-7. Record the provider, domain, production branch, and rollback steps in this
-   document.
+1. Confirm clean checks (`npm run check`) and the privacy checklist on the
+   diff.
+2. Push to `main` **only with explicit user permission**.
+3. Workers Builds runs `npx opennextjs-cloudflare build` and deploys with
+   `npx wrangler deploy` automatically.
+4. Watch the build in the dashboard (Workers & Pages → umrfolio →
+   Deployments) or via the builds tooling.
+5. Run the post-deployment checks below against the live origin.
+
+`npm run deploy` performs the same build + deploy directly from the local
+machine and also requires explicit user authorization.
 
 Do not manually upload `.next/` to generic static hosting. The application uses
-Next.js image optimization and generated metadata routes; choose a compatible
-Next.js runtime or deliberately configure a static-export architecture first.
+Next.js image optimization and generated metadata routes; the Worker bundle in
+`.open-next/` is the deployable artifact.
 
 ## Domain configuration
 
-No domain is configured. When one is approved:
+The live origin is the `workers.dev` subdomain. No custom domain is
+configured. When one is approved:
 
-1. Add it to the hosting provider.
+1. Add it as a custom domain on the `umrfolio` Worker.
 2. Configure DNS through the actual domain registrar.
 3. Wait for HTTPS issuance.
-4. Set production `NEXT_PUBLIC_SITE_URL` to the canonical HTTPS origin.
+4. Update the default origin in `getSiteUrl()` (or set production
+   `NEXT_PUBLIC_SITE_URL`) to the canonical HTTPS origin.
 5. Rebuild/redeploy.
 6. Choose whether `www` or apex is canonical and redirect the other.
 7. Verify canonical, sitemap, robots, Open Graph, and structured-data URLs.
@@ -177,15 +161,14 @@ Never place DNS credentials or registrar exports in this repository.
 
 ## Rollback
 
-Because no provider is configured, there is no current one-click rollback.
+Workers keeps immutable versions of every deployment. To roll back:
 
-After choosing a provider, prefer:
+1. `npx wrangler rollback` (or dashboard → umrfolio → Deployments → roll back
+   to a previous version); then
+2. revert the faulty Git commit with a new commit so the next push does not
+   redeploy the problem.
 
-1. re-promoting the last known-good immutable deployment; or
-2. reverting the faulty Git commit with a new commit and redeploying.
-
-Do not force-push/reset the shared production branch. Document the exact
-provider-specific rollback controls after setup.
+Do not force-push/reset the shared production branch.
 
 For a content/privacy incident, remove public access immediately through the
 provider if available, then remove the asset/content, rebuild, and verify that
@@ -209,10 +192,11 @@ Fix the exact slug, URL, visibility, alt-text, or missing-file error.
 provider allows the build-time request, or deliberately move approved font files
 to local `next/font/local` assets.
 
-### Canonical URLs contain localhost
+### Canonical URLs contain the wrong origin
 
-`NEXT_PUBLIC_SITE_URL` was missing or set only after build. Configure it in the
-build environment and redeploy.
+The origin is baked in at build time from `getSiteUrl()` — either the default
+in `src/content/site-settings.ts` or a `NEXT_PUBLIC_SITE_URL` override present
+during the build. Fix the source and redeploy.
 
 ### Images are missing only in production
 
@@ -226,8 +210,8 @@ generated that route.
 
 ### Sitemap/robots use the wrong origin
 
-Correct `NEXT_PUBLIC_SITE_URL` and rebuild; these routes are generated from that
-origin.
+Same cause as above: these routes are generated from `getSiteUrl()` at build
+time. Correct the origin source and rebuild.
 
 ### Old assets remain reachable
 
@@ -261,6 +245,5 @@ Also verify:
 - no confidential slugs/assets;
 - reasonable performance and image delivery.
 
-After the first real deployment, replace the “not configured” section with the
-actual provider, project identifier (non-secret), production branch, domain,
-preview policy, and rollback procedure.
+Keep the "Current portfolio deployment state" section above accurate whenever
+the origin, domain, build command, or rollback procedure changes.

@@ -23,14 +23,17 @@ is no separate SEO CMS or duplicated route catalogue.
 
 ## Production origin
 
-Set:
+The origin defaults to the live Workers URL,
+`https://umrfolio.umrndem.workers.dev`, hardcoded in `getSiteUrl()`
+(`src/content/site-settings.ts`). To override it (custom domain, local
+audits), set:
 
 ```env
 NEXT_PUBLIC_SITE_URL=https://example.com
 ```
 
 Use the final origin only: scheme + host, no path. Validation rejects an origin
-with a path. The local fallback is `http://localhost:3000`.
+with a path.
 
 This variable is public by design. Never place an API key, secret, credential, or
 private endpoint in a `NEXT_PUBLIC_*` variable.

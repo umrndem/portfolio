@@ -113,10 +113,12 @@ page is already open.
 
 ## How deployment works
 
-The repository is configured for Cloudflare Workers via the OpenNext adapter
-(`wrangler.jsonc`, `open-next.config.ts`, `public/_headers`), verified locally
-in `workerd` with `npm run preview`. No account, worker, domain, CI, or actual
-deployment exists yet. The build contract is:
+The site is live on Cloudflare Workers at
+`https://umrfolio.umrndem.workers.dev` (Worker name `umrfolio`) via the
+OpenNext adapter (`wrangler.jsonc`, `open-next.config.ts`, `public/_headers`).
+Workers Builds deploys every push to `main` using
+`npx opennextjs-cloudflare build` + `npx wrangler deploy` (build command set in
+the Cloudflare dashboard). The build contract is:
 
 ```bash
 npm install
@@ -125,11 +127,13 @@ npm run preview   # Worker bundle served locally in workerd
 npm run deploy    # only with explicit user authorization
 ```
 
-Set `NEXT_PUBLIC_SITE_URL` to the final HTTPS origin during production build.
-Read `docs/deployment.md`; update it with the real worker name, branch, domain,
-preview policy, and rollback controls after an explicit deployment decision.
+The canonical origin is the default inside `getSiteUrl()`
+(`src/content/site-settings.ts`); `NEXT_PUBLIC_SITE_URL` overrides it if a
+custom domain arrives. Read `docs/deployment.md` for rollback and domain
+procedures.
 
-Do not push or deploy without user permission.
+Do not push or deploy without user permission — pushes to `main` deploy to
+production automatically.
 
 ## What remains unfinished
 

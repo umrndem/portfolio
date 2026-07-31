@@ -1,7 +1,7 @@
 export type ThemeMode = "system" | "light" | "dark";
 export type ResolvedTheme = "light" | "dark";
 
-export const themeStorageKey = "umar-portfolio-theme";
+export const themeStorageKey = "umrfolio-theme";
 export const themeModes: readonly ThemeMode[] = ["system", "light", "dark"];
 
 export function isThemeMode(value: unknown): value is ThemeMode {

@@ -49,11 +49,15 @@ The current repository is verified with Node 22 and npm 10.
 
 ## 4. Configure local environment
 
+No environment file is required — the canonical origin defaults to the live
+Workers URL inside `getSiteUrl()`. To override it locally (for example to
+audit metadata against localhost):
+
 ```bash
 cp .env.example .env.local
 ```
 
-The only documented variable is:
+and set:
 
 ```env
 NEXT_PUBLIC_SITE_URL=http://localhost:3000

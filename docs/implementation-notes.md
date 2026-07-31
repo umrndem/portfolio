@@ -10,7 +10,7 @@
 
 The dependency set is intentionally small. The initial site does not need a state library, animation package, CMS, analytics, 3D library, or component framework.
 
-`NEXT_PUBLIC_SITE_URL` should be set to the final production origin before deployment. The local fallback is `http://localhost:3000` so metadata generation remains deterministic without inventing a domain.
+The production origin defaults to the live Workers URL inside `getSiteUrl()` (`src/content/site-settings.ts`), so metadata generation is deterministic without any environment configuration. `NEXT_PUBLIC_SITE_URL` overrides it when a different origin (custom domain, localhost audit) is needed.
 
 ## Content architecture
 

@@ -143,4 +143,20 @@ because every route is prerendered — the prerendered `/work/<slug>` pages 404
 on Workers without it. `public/_headers` marks `/_next/static/*` immutable.
 Adding ISR/revalidation later requires a writable cache (R2/KV) and a queue
 per the OpenNext caching guide. Configuration is verified locally in `workerd`
-via `npm run preview`; no deployment, account, or domain is set up yet.
+via `npm run preview`.
+
+## 013 — Production runs on Workers Builds with the origin baked into code
+
+**Status:** accepted
+**Date:** 31 July 2026
+
+The site is live at `https://umrfolio.umrndem.workers.dev` (Worker
+`umrfolio`, repository `umrndem/umrfolio`). Workers Builds deploys every push
+to `main` with
+`npx opennextjs-cloudflare build` + `npx wrangler deploy`; the build command
+is dashboard configuration, not repository code. The canonical origin is the
+hardcoded default inside `getSiteUrl()` rather than a dashboard build
+variable, so metadata, sitemap, and robots are correct with zero platform
+configuration; `NEXT_PUBLIC_SITE_URL` remains an override for a future custom
+domain. `next.config.ts` calls `initOpenNextCloudflareForDev()` so `next dev`
+resolves the Cloudflare context the same way the deployed Worker does.

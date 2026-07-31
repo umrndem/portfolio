@@ -349,7 +349,8 @@ Set `portrait: undefined` to restore the designed placeholder.
 - Social URLs live in `profile.ts`.
 - Project repository URLs live in `projects.ts`.
 - The email address lives in `profile.ts`.
-- The deployment origin lives in `NEXT_PUBLIC_SITE_URL`.
+- The deployment origin lives in `getSiteUrl()` (`site-settings.ts`),
+  overridable with `NEXT_PUBLIC_SITE_URL`.
 
 Use HTTPS for public external URLs. Open each changed link from the rendered site;
 validation proves shape, not that the destination still exists.
@@ -371,7 +372,8 @@ assets documentation, and privacy checks together.
 - Global metadata composition: `src/app/layout.tsx`.
 - Project titles/descriptions: derived from each project’s `title` and `summary`.
 - Social image layout: `src/app/opengraph-image.tsx`.
-- Production origin: `NEXT_PUBLIC_SITE_URL`.
+- Production origin: `getSiteUrl()` default, overridable with
+  `NEXT_PUBLIC_SITE_URL`.
 
 See `docs/seo-and-metadata.md` for canonical URLs, JSON-LD, sitemap, robots, and
 social-preview verification.

@@ -123,7 +123,7 @@ Check:
 Clear the saved key and test system dark:
 
 ```js
-localStorage.removeItem("umar-portfolio-theme");
+localStorage.removeItem("umrfolio-theme");
 ```
 
 See `docs/theme-maintenance.md`.
@@ -134,7 +134,7 @@ Inspect:
 
 - `<html data-theme="...">`;
 - `document.documentElement.style.colorScheme`;
-- `localStorage.getItem("umar-portfolio-theme")`;
+- `localStorage.getItem("umrfolio-theme")`;
 - toggle `aria-pressed`.
 
 Do not render different server markup based on browser-only theme state.
@@ -162,10 +162,12 @@ Check `src/content/site-settings.ts` and `src/app/layout.tsx`.
 Check the project’s `title` and `summary`, then `generateMetadata()` in the
 project route.
 
-### Canonical/social/sitemap URLs show localhost
+### Canonical/social/sitemap URLs show the wrong origin
 
-Set `NEXT_PUBLIC_SITE_URL` in the build environment and rebuild. Environment
-changes made after build do not rewrite generated metadata.
+The origin comes from `getSiteUrl()` at build time — the baked-in Workers
+default or a `NEXT_PUBLIC_SITE_URL` override present during the build.
+Environment changes made after build do not rewrite generated metadata; fix
+the source and rebuild.
 
 ### Social image is stale
 
@@ -182,7 +184,7 @@ Open:
 /robots.txt
 ```
 
-Check `src/app/sitemap.ts`, `src/app/robots.ts`, and `NEXT_PUBLIC_SITE_URL`.
+Check `src/app/sitemap.ts`, `src/app/robots.ts`, and `getSiteUrl()`.
 Sitemap projects must come from the filtered `projects` export, not
 `allProjects`.
 
@@ -278,7 +280,7 @@ Verify:
 - Node 22;
 - `npm install`;
 - `npm run check`;
-- `NEXT_PUBLIC_SITE_URL` set during build;
+- the intended origin resolved by `getSiteUrl()` during build;
 - provider supports Next.js App Router/image optimization;
 - public assets are committed;
 - no secret was placed in a public variable.

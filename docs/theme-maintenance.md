@@ -65,7 +65,7 @@ saved choice.
 The storage key is:
 
 ```ts
-export const themeStorageKey = "umar-portfolio-theme";
+export const themeStorageKey = "umrfolio-theme";
 ```
 
 `ThemeToggle` alternates `light`/`dark`, writes the key to `localStorage`, updates
@@ -179,7 +179,7 @@ the same token works on every surface.
 1. Clear the saved choice:
 
    ```js
-   localStorage.removeItem("umar-portfolio-theme");
+   localStorage.removeItem("umrfolio-theme");
    ```
 
 2. Set the browser/OS emulation to light; reload.

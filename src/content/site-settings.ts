@@ -9,8 +9,13 @@ export const siteSettings = {
   availabilityLabel: "Open to opportunities",
 } as const;
 
+/**
+ * Canonical public origin baked in at build time. The deployed default is the
+ * live Workers origin; set NEXT_PUBLIC_SITE_URL to override it (for example
+ * once a custom domain is connected, or to use localhost during local audits).
+ */
 export function getSiteUrl() {
   return new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://umrfolio.umrndem.workers.dev",
   );
 }

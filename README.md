@@ -1,4 +1,4 @@
-# Muhammad Umar Nadeem — portfolio
+# umrfolio
 
 A repository-managed personal portfolio for Muhammad Umar Nadeem. The current
 site presents selected software and data work as evidence-backed case studies,
@@ -91,10 +91,12 @@ approved, sanitized case studies.
 
 ## Build and deployment
 
-Set `NEXT_PUBLIC_SITE_URL` to the final public origin before a production build.
-The repository currently has no committed hosting-provider configuration and no
-configured production domain. See [`docs/deployment.md`](docs/deployment.md)
-before introducing a deployment workflow.
+The site is deployed to Cloudflare Workers at
+[umrfolio.umrndem.workers.dev](https://umrfolio.umrndem.workers.dev) through
+the OpenNext adapter; pushes to `main` build and deploy via Workers Builds.
+The canonical origin is the default in `getSiteUrl()` and can be overridden
+with `NEXT_PUBLIC_SITE_URL`. See [`docs/deployment.md`](docs/deployment.md)
+for the full workflow.
 
 Before any release:
 

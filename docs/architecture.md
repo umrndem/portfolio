@@ -215,8 +215,9 @@ metadata, and `opengraph-image.tsx` renders the shared social image. `sitemap.ts
 includes the homepage, acknowledgements, and only published project routes.
 `robots.ts` points crawlers to that sitemap.
 
-`NEXT_PUBLIC_SITE_URL` supplies the production origin. The local fallback exists
-only to keep development deterministic.
+`getSiteUrl()` in `src/content/site-settings.ts` supplies the production
+origin: the live Workers URL by default, overridable with
+`NEXT_PUBLIC_SITE_URL`.
 
 ## Validation and failure behavior
 
