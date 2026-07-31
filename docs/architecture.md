@@ -103,6 +103,9 @@ currently returns stub success; it is not a content API or CMS.
 - skip navigation;
 - the shared site header;
 - soft-navigation scroll reset via `ScrollToTop`;
+- address-bar cleanup of `utm_*`/click-id tracking parameters via
+  `CleanTrackingParams` (link-in-bio and ad platforms append them to inbound
+  links);
 - global CSS.
 
 Individual routes own their `<main>` content and footer. Project routes generate
