@@ -28,17 +28,17 @@ export const allProjects: readonly Project[] = [
     visibility: "private-case-study",
     range: ["data", "databases", "product", "people"],
     technologies: ["Next.js", "React", "Payload CMS", "PostgreSQL"],
-    deployment: ["Vercel", "Neon", "Cloudflare R2"],
+    deployment: ["Railway"],
     integrations: ["Turnstile"],
     homepageTechnologies: [
       "Next.js",
       "React",
       "Payload CMS",
       "PostgreSQL",
-      "Cloudflare R2",
+      "Railway",
     ],
     infrastructureNote:
-      "I deployed this through Vercel with Neon PostgreSQL, Cloudflare R2 for media storage, and Cloudflare Turnstile protecting public form submissions.",
+      "I run this on Railway with Railway-managed PostgreSQL and private S3-compatible object storage for uploads, with Cloudflare Turnstile protecting public form submissions.",
     proof:
       "I can show repository evidence across content models, public routes, media, forms, admin surfaces, and responsive refinement.",
     limitation:

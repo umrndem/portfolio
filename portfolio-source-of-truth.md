@@ -63,12 +63,13 @@ production scale, or current live availability unless separately verified.
 | Category | Items | Evidence |
 |---|---|---|
 | Core stack | Next.js, React, Payload CMS, PostgreSQL | repository-verified / user-verified |
-| Deployment & services | Vercel, Neon PostgreSQL, Cloudflare R2 | user-verified |
+| Deployment & services | Railway (app and managed PostgreSQL); private S3-compatible object storage for uploads | user-verified (31 July 2026) / repository-verified (commits migrating storage to S3-compatible bucket and optimizing Railway runtime; earlier Vercel + Neon + Cloudflare R2 configuration is superseded) |
 | Security & integrations | Cloudflare Turnstile | user-verified |
-| Infrastructure note | Deployed through Vercel with Neon PostgreSQL, Cloudflare R2 for media storage, and Cloudflare Turnstile protecting public form submissions. | user-verified |
+| Infrastructure note | Runs on Railway with Railway-managed PostgreSQL and private S3-compatible object storage for uploads, with Cloudflare Turnstile protecting public form submissions. | user-verified / repository-verified |
 
-Unresolved: whether a deployment remains live; which URLs may be published;
-whether dashboard screenshots are safe; whether any business outcomes may be claimed.
+Unresolved: which URLs may be published; whether dashboard screenshots are safe;
+whether any business outcomes may be claimed; the object-storage provider name
+(kept abstract as S3-compatible).
 
 ### Sentinel — private case study
 

@@ -12,7 +12,13 @@ Evidence labels: **repository-verified**, **user-verified**, **inferred**,
 - Repository history begins in June 2026 and remains active: repository-verified.
 - Core stack (Next.js, React, Payload CMS, PostgreSQL): repository-verified;
   confirmed for portfolio wording as user-verified.
-- Deployment through Vercel with Neon PostgreSQL and Cloudflare R2: user-verified.
+- Deployment shifted completely to Railway (app and managed PostgreSQL) with
+  private S3-compatible object storage for uploads: user-verified
+  (31 July 2026) and repository-verified from local inspection ("Migrate upload
+  storage to private S3-compatible bucket", "Optimize Railway runtime usage",
+  "Use DATABASE_URL for shared Postgres"). The earlier Vercel + Neon +
+  Cloudflare R2 configuration is superseded. The specific S3-compatible
+  provider is deliberately not recorded; keep it abstract.
 - Cloudflare Turnstile on public forms: user-verified.
 - Scroll-driven public interaction layer (entrance reveals, pinned section
   sequences, selective heavier 3D moments): repository-verified from local
