@@ -128,3 +128,19 @@ its evidence, not a start/end interval. `RangeLine` marks only those listed
 waypoints, so selecting data and people does not silently claim databases or
 product. Adjacent selected waypoints share an active line segment; unsupported
 gaps remain neutral. Validation enforces uniqueness and the shared axis order.
+
+## 012 — The site targets Cloudflare Workers through OpenNext
+
+**Status:** accepted
+**Date:** 31 July 2026
+
+The repository is configured for Cloudflare Workers using
+`@opennextjs/cloudflare` (build/deploy tooling in `devDependencies`, so
+`npm audit --omit=dev` reflects only shipped runtime code). `wrangler.jsonc`
+defines the Worker (`nodejs_compat`, assets binding); `open-next.config.ts`
+uses the read-only static-assets incremental cache with cache interception
+because every route is prerendered — the prerendered `/work/<slug>` pages 404
+on Workers without it. `public/_headers` marks `/_next/static/*` immutable.
+Adding ISR/revalidation later requires a writable cache (R2/KV) and a queue
+per the OpenNext caching guide. Configuration is verified locally in `workerd`
+via `npm run preview`; no deployment, account, or domain is set up yet.

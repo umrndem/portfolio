@@ -8,6 +8,9 @@
 # Generated/runtime files
 node_modules/
 .next/
+.open-next/
+.wrangler/
+cloudflare-env.d.ts
 __pycache__/
 *.py[cod]
 .venv/

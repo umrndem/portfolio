@@ -8,15 +8,16 @@ RideFlow). Those project facts live in `portfolio-source-of-truth.md`,
 
 ## Current portfolio deployment state
 
-As audited on 24 July 2026:
+As updated on 31 July 2026:
 
-- no hosting provider is configured in the repository;
-- no `vercel.json`, Netlify configuration, container, or CI workflow is
-  committed;
-- no production domain is recorded;
-- no Git remote is configured;
-- no preview-deployment workflow exists;
-- the application produces a standard Next.js production build in `.next/`.
+- the repository is configured for **Cloudflare Workers** via the OpenNext
+  adapter (`@opennextjs/cloudflare`), with `wrangler.jsonc`,
+  `open-next.config.ts`, and `public/_headers` committed;
+- the Worker build and every route were verified locally in the `workerd`
+  runtime through `npm run preview`;
+- **no deployment has been performed** — no Cloudflare account, worker, or
+  domain is connected, and no CI workflow is committed;
+- no production domain is recorded.
 
 Do not describe the portfolio site as deployed until a live origin is explicitly
 confirmed. Do not invent provider or domain instructions.
@@ -80,43 +81,53 @@ Rules:
 
 The application has no database, analytics key, CMS secret, or server credential.
 
-## Choose a hosting provider
+## Cloudflare Workers configuration
 
-The site can run on a provider that supports Next.js 16 App Router and Node 22.
-The maintainer/user must explicitly choose and authorize the provider.
+The repository targets Cloudflare Workers through the OpenNext adapter.
 
-Before connecting a provider, confirm:
+Committed configuration:
+
+| File | Purpose |
+|---|---|
+| `wrangler.jsonc` | Worker definition: name, `nodejs_compat` flag, compatibility date, `.open-next/worker.js` entry, static assets binding, observability |
+| `open-next.config.ts` | OpenNext adapter config: read-only static-assets incremental cache plus cache interception (required so prerendered `/work/<slug>` pages resolve on Workers) |
+| `public/_headers` | Immutable `Cache-Control` for `/_next/static/*` hashed build assets |
+
+Commands:
+
+| Command | Effect |
+|---|---|
+| `npm run preview` | Build the Worker bundle and serve it locally in `workerd` via `wrangler dev` |
+| `npm run deploy` | Build and deploy to Cloudflare — **requires explicit user authorization** |
+| `npm run cf-typegen` | Generate `cloudflare-env.d.ts` binding types (untracked) |
+
+Generated outputs `.open-next/`, `.wrangler/`, and `cloudflare-env.d.ts` are
+gitignored and must not be committed.
+
+`@opennextjs/cloudflare` and `wrangler` are devDependencies: they run at build
+and deploy time only and never ship in the Worker, keeping
+`npm audit --omit=dev` scoped to real runtime code.
+
+Caching note: every route is prerendered, so the read-only static-assets cache
+is sufficient. If ISR/revalidation is ever introduced, switch to a writable
+incremental cache (R2/KV) with a Durable Object queue per the
+[OpenNext caching guide](https://opennext.js.org/cloudflare/caching), and
+record that in `docs/decisions.md`.
+
+## Before connecting the Cloudflare account
+
+Deployment still requires the maintainer/user to explicitly authorize and
+confirm:
 
 - account/organization owner;
 - source repository and production branch;
 - preview access policy;
-- build command and Node version;
+- worker name and `workers.dev` subdomain exposure;
 - environment-variable ownership;
 - canonical domain;
 - who may trigger production deployments;
 - rollback mechanism;
 - whether private professional material is approved for public preview.
-
-Vercel is a natural Next.js option but is not currently configured or assumed.
-Self-hosting is possible but would add server/process/reverse-proxy operations
-that this repository does not presently document.
-
-## Provider configuration
-
-For a conventional managed Next.js deployment:
-
-| Setting | Value |
-|---|---|
-| Install command | `npm install` |
-| Build command | `npm run build` |
-| Output | Provider’s native Next.js output (`.next/`) |
-| Node runtime | 22 |
-| Production environment | `NEXT_PUBLIC_SITE_URL` set to final HTTPS origin |
-| Preview environment | Set to stable preview origin only if canonical behavior is deliberately desired there |
-
-Prefer provider-native zero-configuration support. Add a provider config file
-only when a real setting cannot be expressed in the provider UI/defaults. Record
-that decision in `docs/decisions.md`.
 
 ## Preview deployment process
 

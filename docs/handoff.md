@@ -113,20 +113,20 @@ page is already open.
 
 ## How deployment works
 
-It is not configured.
-
-There is no hosting provider, domain, Git remote, provider config, CI, or preview
-workflow in the repository. The build contract is:
+The repository is configured for Cloudflare Workers via the OpenNext adapter
+(`wrangler.jsonc`, `open-next.config.ts`, `public/_headers`), verified locally
+in `workerd` with `npm run preview`. No account, worker, domain, CI, or actual
+deployment exists yet. The build contract is:
 
 ```bash
 npm install
 npm run check
-npm run build
-npm run start
+npm run preview   # Worker bundle served locally in workerd
+npm run deploy    # only with explicit user authorization
 ```
 
 Set `NEXT_PUBLIC_SITE_URL` to the final HTTPS origin during production build.
-Read `docs/deployment.md`; update it with the real provider, branch, domain,
+Read `docs/deployment.md`; update it with the real worker name, branch, domain,
 preview policy, and rollback controls after an explicit deployment decision.
 
 Do not push or deploy without user permission.

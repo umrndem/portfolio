@@ -16,6 +16,9 @@ framework files are intentionally not documented line by line.
 | `next.config.ts` | Small global Next.js configuration | Framework behavior genuinely requires it | Page-specific behavior |
 | `tsconfig.json` | Strict TypeScript and `@/*` import alias | Compiler/module rules change | Content |
 | `eslint.config.mjs` | Next.js and TypeScript lint rules | Project-wide lint policy changes | One-off exceptions without explanation |
+| `wrangler.jsonc` | Cloudflare Workers runtime config (worker name, compatibility date, assets binding) | Workers deployment settings change | Secrets, account IDs, or route/domain values that are not yet approved |
+| `open-next.config.ts` | OpenNext Cloudflare adapter config (static-assets incremental cache, cache interception) | Caching/ISR architecture changes | App content or runtime logic |
+| `public/_headers` | Cloudflare static-asset headers (immutable caching for `/_next/static/*`) | Asset caching policy changes | Application routes or redirects that belong in Next.js |
 
 ## Editable content
 

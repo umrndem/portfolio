@@ -175,6 +175,16 @@ For dependency changes:
 npm audit --omit=dev
 ```
 
+For changes that affect server behavior or deployment, also verify the app in
+the Cloudflare Workers runtime (`workerd`), which is what production would run:
+
+```bash
+npm run preview
+```
+
+This builds the Worker bundle with the OpenNext adapter and serves it through
+`wrangler dev`. Check the same routes you checked with `npm run dev`.
+
 ## 14. Inspect the diff and privacy boundary
 
 ```bash
