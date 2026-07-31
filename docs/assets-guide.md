@@ -191,6 +191,10 @@ Current managed-service marks and sources (24 July 2026):
 | Express | `express.svg`, `express-dark.svg` | Simple Icons |
 | JavaScript | `javascript.svg` | Simple Icons |
 
+Core-stack exception (1 August 2026): PostgreSQL (`postgresql.svg`) uses the
+official full-color elephant mark from wiki.postgresql.org (3-color version)
+instead of the monochrome Simple Icons glyph.
+
 `npm run validate:content` fails if a mapped icon path is missing for a label
 used in `technologies`, `deployment`, or `integrations`.
 
