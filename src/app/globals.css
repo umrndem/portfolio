@@ -1330,12 +1330,33 @@ svg {
 .project-card__footer li {
   display: inline-flex;
   align-items: center;
-  padding: 0.6rem 0.75rem;
-  min-height: 2.25rem;
+  padding: 0.9rem 1.125rem;
+  min-height: 3.375rem;
   border: 1px solid var(--card-rule);
   font-family: var(--font-mono), var(--font-mono-fallback);
-  font-size: 0.6rem;
+  font-size: 0.9rem;
   color: var(--card-ink);
+}
+
+/* Homepage cards scale the badge type and marks up 50% over the base badge. */
+.project-card__footer .technology-badge__label {
+  font-size: 0.9rem;
+}
+
+.project-card__footer .technology-badge--secondary .technology-badge__label {
+  font-size: 0.825rem;
+}
+
+.project-card__footer .technology-badge__icon {
+  width: 1.6875rem;
+  height: 1.6875rem;
+}
+
+.project-card__footer
+  .technology-badge--secondary:not(.technology-badge--vertical)
+  .technology-badge__icon {
+  width: 1.425rem;
+  height: 1.425rem;
 }
 
 .project-card__stack-row--secondary li {
