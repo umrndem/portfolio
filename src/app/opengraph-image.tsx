@@ -1,4 +1,9 @@
 import { ImageResponse } from "next/og";
+import {
+  brandLogoColors,
+  brandLogoPaths,
+  brandLogoViewBoxPadded,
+} from "@/components/brand-logo-paths";
 import { profile } from "@/content/profile";
 import { siteSettings } from "@/content/site-settings";
 
@@ -17,8 +22,8 @@ export default function OpenGraphImage() {
           position: "relative",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#111111",
-          color: "#F4F1EF",
+          background: "#F8F5F6",
+          color: "#1C191B",
           padding: "72px",
           fontFamily: "sans-serif",
         }}
@@ -29,9 +34,9 @@ export default function OpenGraphImage() {
             display: "flex",
             top: 0,
             right: 0,
-            width: "32%",
+            width: "40%",
             height: "100%",
-            background: "#C71616",
+            background: "#7B1E3A",
           }}
         />
         <div
@@ -44,11 +49,19 @@ export default function OpenGraphImage() {
             letterSpacing: "0.08em",
           }}
         >
-          <span>
-            <span style={{ color: "#FA2A1E" }}>U</span>{" "}
-            <span style={{ color: "#8F8783" }}>/</span> N
+          <svg
+            width="86"
+            height="82"
+            viewBox={brandLogoViewBoxPadded}
+            aria-label="U/N"
+          >
+            <path d={brandLogoPaths.u} fill={brandLogoColors.u} />
+            <path d={brandLogoPaths.slash} fill={brandLogoColors.slash} />
+            <path d={brandLogoPaths.n} fill="#1C191B" />
+          </svg>
+          <span style={{ color: "#FFFFFF", paddingTop: 14 }}>
+            {profile.location.replace(",", " ·")}
           </span>
-          <span>{profile.location.replace(",", " ·")}</span>
         </div>
         <div
           style={{
@@ -58,14 +71,22 @@ export default function OpenGraphImage() {
             gap: 24,
           }}
         >
-          <div style={{ fontSize: 76, lineHeight: 1.05, maxWidth: 940 }}>
-            {profile.name}
+          <div
+            style={{
+              display: "flex",
+              fontSize: 76,
+              lineHeight: 1.05,
+              letterSpacing: "-0.025em",
+            }}
+          >
+            <span>Muhammad Umar&nbsp;</span>
+            <span style={{ color: "#FFFFFF" }}>Nadeem</span>
           </div>
-          <div style={{ display: "flex", fontSize: 31, color: "#FA2A1E" }}>
+          <div style={{ display: "flex", fontSize: 31, color: "#8C2344" }}>
             <span>
               Systems Programming → Data → Databases → 
             </span>
-            <span style={{ color: "#FFF4F1" }}>Product → People</span>
+            <span style={{ color: "#FFFFFF" }}>Product → People</span>
           </div>
         </div>
         <div
@@ -93,17 +114,19 @@ export default function OpenGraphImage() {
                     width: 14,
                     height: 14,
                     borderRadius: 999,
-                    background: index === 4 ? "#FFF4F1" : "#F5453B",
+                    background: index >= 3 ? "#FFFFFF" : "#A12D50",
                   }}
                 />
-                <span>{point}</span>
+                <span style={{ color: index >= 3 ? "#FFFFFF" : "#1C191B" }}>
+                  {point}
+                </span>
                 {index < 4 ? (
                   <span
                     style={{
                       display: "block",
                       height: 2,
                       flex: 1,
-                      background: "#6E2A26",
+                      background: "#B79CA5",
                     }}
                   />
                 ) : null}
