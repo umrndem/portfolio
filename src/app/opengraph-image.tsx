@@ -61,8 +61,11 @@ export default function OpenGraphImage() {
           <div style={{ fontSize: 76, lineHeight: 1.05, maxWidth: 940 }}>
             {profile.name}
           </div>
-          <div style={{ fontSize: 31, color: "#FA2A1E" }}>
-            Systems Programming → Data → Databases → Product → People
+          <div style={{ display: "flex", fontSize: 31, color: "#FA2A1E" }}>
+            <span>
+              Systems Programming → Data → Databases → 
+            </span>
+            <span style={{ color: "#FFF4F1" }}>Product → People</span>
           </div>
         </div>
         <div
@@ -90,7 +93,7 @@ export default function OpenGraphImage() {
                     width: 14,
                     height: 14,
                     borderRadius: 999,
-                    background: index === 4 ? "#FA2A1E" : "#F5453B",
+                    background: index === 4 ? "#FFF4F1" : "#F5453B",
                   }}
                 />
                 <span>{point}</span>
