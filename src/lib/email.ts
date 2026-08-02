@@ -41,9 +41,9 @@ function headerSafeName(value: string): string {
 /** The exact U/N logo (logo.svg rasterized to public/logo-email.png). */
 function logoMarkup(): string {
   return (
-    `<img src="https://umrndem.com/logo-email.png" width="59" height="56" ` +
+    `<img src="https://umrndem.com/logo-email.png" width="66" height="60" ` +
     `alt="U/N — ${escapeHtml(profile.name)}" ` +
-    `style="display:block;border:0;outline:none;height:56px;width:59px;" />`
+    `style="display:block;border:0;outline:none;height:60px;width:66px;" />`
   );
 }
 
