@@ -85,6 +85,22 @@ export function ContactForm() {
   const widgetIdRef = useRef<string | null>(null);
   const [siteKey, setSiteKey] = useState<string | null>(null);
   const [token, setToken] = useState("");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  // Follow the site's resolved theme (data-theme is "light" | "dark", already
+  // resolved from light/dark/system) and react to toggles.
+  useEffect(() => {
+    const root = document.documentElement;
+    const read = () =>
+      setTheme(root.dataset.theme === "dark" ? "dark" : "light");
+    read();
+    const observer = new MutationObserver(read);
+    observer.observe(root, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+    return () => observer.disconnect();
+  }, []);
 
   // Fetch the public Turnstile site key from the Worker env.
   useEffect(() => {
@@ -116,6 +132,7 @@ export function ContactForm() {
         }
         widgetIdRef.current = window.turnstile.render(widgetRef.current, {
           sitekey: siteKey,
+          theme,
           callback: (value) => setToken(value),
           "error-callback": () => setToken(""),
           "expired-callback": () => setToken(""),
@@ -129,8 +146,9 @@ export function ContactForm() {
         window.turnstile.remove(widgetIdRef.current);
         widgetIdRef.current = null;
       }
+      setToken("");
     };
-  }, [siteKey]);
+  }, [siteKey, theme]);
 
   function resetWidget() {
     setToken("");
