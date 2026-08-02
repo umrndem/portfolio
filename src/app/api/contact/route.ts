@@ -1,19 +1,22 @@
 import { NextResponse } from "next/server";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 import {
   validateContactPayload,
   type ContactPayload,
 } from "@/lib/contact";
+import { sendContactEmail } from "@/lib/email";
 
 export const runtime = "nodejs";
 
 /**
- * Stub contact endpoint.
+ * Contact endpoint.
  *
- * Validates the payload and returns success without sending mail.
- * When deploying on a custom domain, replace the stub branch with a provider
- * such as Resend, Postmark, or Amazon SES using server-only env vars.
+ * Validates the payload, drops honeypot traffic, then delivers via Resend when
+ * RESEND_API_KEY is configured on the Worker. Without a key it falls back to a
+ * stub success so local development works without secrets.
  *
- * Never put mail API keys in NEXT_PUBLIC_* variables.
+ * Secrets live in the Worker environment (getCloudflareContext), never in
+ * NEXT_PUBLIC_* variables.
  */
 export async function POST(request: Request) {
   let body: ContactPayload;
@@ -41,17 +44,28 @@ export async function POST(request: Request) {
     );
   }
 
-  // --- Provider hook ---
-  // const apiKey = process.env.CONTACT_EMAIL_API_KEY;
-  // if (apiKey) {
-  //   await sendWithProvider({ ...validation.data, to: process.env.CONTACT_INBOX });
-  //   return NextResponse.json({ ok: true, mode: "live" });
-  // }
+  const { env } = getCloudflareContext();
 
-  return NextResponse.json({
-    ok: true,
-    mode: "stub",
-    message:
-      "Accepted locally. Wire CONTACT_EMAIL_API_KEY (and related vars) to enable delivery.",
-  });
+  if (!env.RESEND_API_KEY) {
+    return NextResponse.json({
+      ok: true,
+      mode: "stub",
+      message:
+        "Accepted locally. Set the RESEND_API_KEY secret to enable delivery.",
+    });
+  }
+
+  const result = await sendContactEmail(env, validation.data);
+
+  if (!result.ok) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "Message could not be sent right now. Please email directly.",
+      },
+      { status: 502 },
+    );
+  }
+
+  return NextResponse.json({ ok: true, mode: "live" });
 }
