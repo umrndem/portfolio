@@ -45,28 +45,60 @@ function buildHtml(data: ContactMessage): string {
 
   const sans = "Arial,Helvetica,sans-serif";
   const mono = "'Courier New',Courier,monospace";
-  const cell = `font-family:${sans};font-size:14px;color:${brand.ink};line-height:1.55;`;
-  const label =
-    `font-family:${mono};font-size:11px;letter-spacing:0.1em;` +
-    `text-transform:uppercase;color:${brand.muted};padding:0 0 5px;`;
+  // Dark tokens match the site's dark theme (globals.css). Used only inside
+  // prefers-color-scheme / Outlook.com dark selectors — light stays inline.
+  const dark = {
+    page: "#111111",
+    card: "#191919",
+    border: "#332f2d",
+    ink: "#f4f1ef",
+    muted: "#8f8783",
+    red: "#f5453b",
+  } as const;
+
+  // Header is a full-bleed PNG (black + red/white mark). Raster images are not
+  // inverted by Gmail/Apple Mail dark mode, so this band stays fixed while the
+  // rest of the message adapts. Asset is 1120×176 → 560×88 at 1x.
+  const headerImg =
+    `<img src="https://umrndem.com/email-header.png" width="560" height="88" ` +
+    `alt="U/N — ${escapeHtml(profile.name)}" ` +
+    `style="display:block;width:100%;max-width:560px;height:auto;border:0;outline:none;" />`;
 
   return `<!doctype html>
 <html>
   <head>
     <meta name="color-scheme" content="light dark" />
     <meta name="supported-color-schemes" content="light dark" />
+    <style>
+      :root { color-scheme: light dark; supported-color-schemes: light dark; }
+      @media (prefers-color-scheme: dark) {
+        .email-body, .email-shell { background-color: ${dark.page} !important; }
+        .email-card { background-color: ${dark.card} !important; border-color: ${dark.border} !important; }
+        .email-title, .email-text { color: ${dark.ink} !important; }
+        .email-label { color: ${dark.muted} !important; }
+        .email-link { color: ${dark.red} !important; }
+      }
+      /* Outlook.com / Outlook app dark mode */
+      [data-ogsc] .email-body, [data-ogsc] .email-shell { background-color: ${dark.page} !important; }
+      [data-ogsc] .email-card { background-color: ${dark.card} !important; border-color: ${dark.border} !important; }
+      [data-ogsc] .email-title, [data-ogsc] .email-text { color: ${dark.ink} !important; }
+      [data-ogsc] .email-label { color: ${dark.muted} !important; }
+      [data-ogsc] .email-link { color: ${dark.red} !important; }
+    </style>
   </head>
-  <body style="margin:0;padding:0;background:${brand.page};">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${brand.page};padding:32px 16px;">
+  <body class="email-body" style="margin:0;padding:0;background:${brand.page};">
+    <table role="presentation" class="email-shell" width="100%" cellpadding="0" cellspacing="0" style="background:${brand.page};padding:32px 16px;">
       <tr>
         <td align="center">
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:${brand.card};border:1px solid ${brand.border};">
+          <table role="presentation" class="email-card" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:${brand.card};border:1px solid ${brand.border};">
             <tr>
-              <td height="120" bgcolor="${brand.ink}" background="https://umrndem.com/email-header.png" style="height:120px;background-color:${brand.ink};background-image:url('https://umrndem.com/email-header.png');background-repeat:no-repeat;background-position:left center;background-size:cover;font-size:0;line-height:0;">&nbsp;</td>
+              <td bgcolor="${brand.ink}" style="padding:0;background-color:${brand.ink};font-size:0;line-height:0;">
+                ${headerImg}
+              </td>
             </tr>
             <tr>
               <td style="padding:28px 32px 6px;">
-                <h1 style="margin:0;font-family:${sans};font-size:21px;line-height:1.25;color:${brand.ink};font-weight:700;letter-spacing:-0.01em;">
+                <h1 class="email-title" style="margin:0;font-family:${sans};font-size:21px;line-height:1.25;color:${brand.ink};font-weight:700;letter-spacing:-0.01em;">
                   ${name} reached out via your portfolio
                 </h1>
               </td>
@@ -74,18 +106,18 @@ function buildHtml(data: ContactMessage): string {
             <tr>
               <td style="padding:16px 32px 6px;">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-                  <tr><td style="${label}">From</td></tr>
-                  <tr><td style="${cell}padding:0 0 16px;font-weight:700;">${name}</td></tr>
-                  <tr><td style="${label}">Email</td></tr>
+                  <tr><td class="email-label" style="font-family:${mono};font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:${brand.muted};padding:0 0 5px;">From</td></tr>
+                  <tr><td class="email-text" style="font-family:${sans};font-size:14px;color:${brand.ink};line-height:1.55;padding:0 0 16px;font-weight:700;">${name}</td></tr>
+                  <tr><td class="email-label" style="font-family:${mono};font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:${brand.muted};padding:0 0 5px;">Email</td></tr>
                   <tr>
-                    <td style="${cell}padding:0 0 16px;">
-                      <a href="mailto:${email}" style="color:${brand.red};text-decoration:none;font-weight:700;">${email}</a>
+                    <td style="font-family:${sans};font-size:14px;line-height:1.55;padding:0 0 16px;">
+                      <a class="email-link" href="mailto:${email}" style="color:${brand.red};text-decoration:none;font-weight:700;">${email}</a>
                     </td>
                   </tr>
-                  <tr><td style="${label}">Message</td></tr>
+                  <tr><td class="email-label" style="font-family:${mono};font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:${brand.muted};padding:0 0 5px;">Message</td></tr>
                   <tr>
                     <td style="padding:0 0 8px;">
-                      <div style="${cell}border-left:4px solid ${brand.redBright};padding:2px 0 2px 16px;">
+                      <div class="email-text" style="font-family:${sans};font-size:14px;color:${brand.ink};line-height:1.55;border-left:4px solid ${brand.redBright};padding:2px 0 2px 16px;">
                         ${message}
                       </div>
                     </td>
