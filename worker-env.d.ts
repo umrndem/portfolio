@@ -8,4 +8,8 @@ interface CloudflareEnv {
   CONTACT_INBOX?: string;
   /** Verified Resend sender, e.g. "Portfolio <contact@umrndem.dev>". */
   CONTACT_FROM?: string;
+  /** Cloudflare Turnstile site key (public, rendered in the widget). */
+  TURNSTILE_SITE_KEY?: string;
+  /** Cloudflare Turnstile secret key. Secret only — used for /siteverify. */
+  TURNSTILE_SECRET_KEY?: string;
 }

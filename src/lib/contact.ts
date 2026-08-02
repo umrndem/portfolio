@@ -4,6 +4,8 @@ export type ContactPayload = {
   message: string;
   /** Honeypot. Must stay empty for legitimate submissions. */
   company?: string;
+  /** Cloudflare Turnstile token from the client widget. */
+  turnstileToken?: string;
 };
 
 export type ContactValidationResult =

@@ -1,9 +1,63 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import { homeContent } from "@/content/home";
 import { profile } from "@/content/profile";
+
+const TURNSTILE_SCRIPT_SRC =
+  "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+
+type TurnstileApi = {
+  render: (
+    container: HTMLElement,
+    options: {
+      sitekey: string;
+      callback: (token: string) => void;
+      "error-callback"?: () => void;
+      "expired-callback"?: () => void;
+      theme?: "auto" | "light" | "dark";
+    },
+  ) => string;
+  reset: (widgetId?: string) => void;
+  remove: (widgetId?: string) => void;
+};
+
+declare global {
+  interface Window {
+    turnstile?: TurnstileApi;
+  }
+}
+
+function loadTurnstileScript(): Promise<void> {
+  if (typeof window === "undefined") {
+    return Promise.resolve();
+  }
+  if (window.turnstile) {
+    return Promise.resolve();
+  }
+
+  const existing = document.querySelector<HTMLScriptElement>(
+    `script[src="${TURNSTILE_SCRIPT_SRC}"]`,
+  );
+  if (existing) {
+    return new Promise((resolve) =>
+      existing.addEventListener("load", () => resolve(), { once: true }),
+    );
+  }
+
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = TURNSTILE_SCRIPT_SRC;
+    script.async = true;
+    script.defer = true;
+    script.addEventListener("load", () => resolve(), { once: true });
+    script.addEventListener("error", () => reject(new Error("turnstile")), {
+      once: true,
+    });
+    document.head.appendChild(script);
+  });
+}
 
 type FormStatus =
   | { state: "idle" }
@@ -27,10 +81,76 @@ export function ContactForm() {
   const [company, setCompany] = useState("");
   const [status, setStatus] = useState<FormStatus>({ state: "idle" });
 
+  const widgetRef = useRef<HTMLDivElement | null>(null);
+  const widgetIdRef = useRef<string | null>(null);
+  const [siteKey, setSiteKey] = useState<string | null>(null);
+  const [token, setToken] = useState("");
+
+  // Fetch the public Turnstile site key from the Worker env.
+  useEffect(() => {
+    let active = true;
+    fetch("/api/contact/config")
+      .then((res) => res.json())
+      .then((data: { siteKey?: string | null }) => {
+        if (active && data.siteKey) {
+          setSiteKey(data.siteKey);
+        }
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  // Render the widget once we have a site key and the script has loaded.
+  useEffect(() => {
+    if (!siteKey) {
+      return;
+    }
+    let cancelled = false;
+
+    loadTurnstileScript()
+      .then(() => {
+        if (cancelled || !widgetRef.current || !window.turnstile) {
+          return;
+        }
+        widgetIdRef.current = window.turnstile.render(widgetRef.current, {
+          sitekey: siteKey,
+          callback: (value) => setToken(value),
+          "error-callback": () => setToken(""),
+          "expired-callback": () => setToken(""),
+        });
+      })
+      .catch(() => {});
+
+    return () => {
+      cancelled = true;
+      if (widgetIdRef.current && window.turnstile) {
+        window.turnstile.remove(widgetIdRef.current);
+        widgetIdRef.current = null;
+      }
+    };
+  }, [siteKey]);
+
+  function resetWidget() {
+    setToken("");
+    if (widgetIdRef.current && window.turnstile) {
+      window.turnstile.reset(widgetIdRef.current);
+    }
+  }
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (status.state === "submitting") {
+      return;
+    }
+
+    if (siteKey && !token) {
+      setStatus({
+        state: "error",
+        detail: "Please complete the verification below.",
+      });
       return;
     }
 
@@ -40,7 +160,13 @@ export function ContactForm() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message, company }),
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          company,
+          turnstileToken: token,
+        }),
       });
 
       const payload = (await response.json()) as {
@@ -50,6 +176,7 @@ export function ContactForm() {
       };
 
       if (!response.ok || !payload.ok) {
+        resetWidget();
         setStatus({
           state: "error",
           detail: payload.error ?? copy.errorBody,
@@ -61,11 +188,13 @@ export function ContactForm() {
       setEmail("");
       setMessage("");
       setCompany("");
+      resetWidget();
       setStatus({
         state: "success",
         detail: copy.successBody,
       });
     } catch {
+      resetWidget();
       setStatus({
         state: "error",
         detail: copy.errorBody,
@@ -140,6 +269,10 @@ export function ContactForm() {
           onChange={(event) => setCompany(event.target.value)}
         />
       </label>
+
+      {siteKey ? (
+        <div className="contact-form__turnstile" ref={widgetRef} />
+      ) : null}
 
       <div className="contact-form__actions">
         <button className="button-link button-link--light" type="submit" disabled={busy}>

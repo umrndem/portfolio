@@ -101,9 +101,9 @@ export const homeContent = {
       messagePlaceholder: "What are you working on, and how might I help?",
       submitLabel: "Send message",
       submittingLabel: "Sending…",
-      successTitle: "Message ready",
+      successTitle: "Message sent",
       successBody:
-        "Thanks — the form is working. Email delivery will connect when this site is deployed with a mail provider.",
+        "Thanks — your message is on its way and a copy has been sent to your inbox. I’ll get back to you soon.",
       errorTitle: "Could not send",
       errorBody:
         "Something went wrong on the form endpoint. You can still reach me directly by email.",

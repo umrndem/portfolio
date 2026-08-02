@@ -5,6 +5,7 @@ import {
   type ContactPayload,
 } from "@/lib/contact";
 import { sendContactEmail } from "@/lib/email";
+import { verifyTurnstile } from "@/lib/turnstile";
 
 export const runtime = "nodejs";
 
@@ -45,6 +46,23 @@ export async function POST(request: Request) {
   }
 
   const { env } = getCloudflareContext();
+
+  // Turnstile: verify the challenge when a secret is configured.
+  if (env.TURNSTILE_SECRET_KEY) {
+    const remoteIp = request.headers.get("cf-connecting-ip") ?? undefined;
+    const passed = await verifyTurnstile(
+      env.TURNSTILE_SECRET_KEY,
+      body.turnstileToken?.trim() ?? "",
+      remoteIp,
+    );
+
+    if (!passed) {
+      return NextResponse.json(
+        { ok: false, error: "Please complete the verification and try again." },
+        { status: 400 },
+      );
+    }
+  }
 
   if (!env.RESEND_API_KEY) {
     return NextResponse.json({
