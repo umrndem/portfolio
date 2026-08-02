@@ -58,9 +58,10 @@ function buildHtml(data: ContactMessage): string {
 
   // Header is a full-bleed PNG (black + red/white mark). Raster images are not
   // inverted by Gmail/Apple Mail dark mode, so this band stays fixed while the
-  // rest of the message adapts. Asset is 1120×96 → 560×48 at 1x.
+  // rest of the message adapts. Asset is 1120×143 → 560×72 at 1x; logo left
+  // inset matches the 32px body text padding below.
   const headerImg =
-    `<img src="https://umrndem.com/email-header.png" width="560" height="48" ` +
+    `<img src="https://umrndem.com/email-header.png" width="560" height="72" ` +
     `alt="U/N — ${escapeHtml(profile.name)}" ` +
     `style="display:block;width:100%;max-width:560px;height:auto;border:0;outline:none;" />`;
 
