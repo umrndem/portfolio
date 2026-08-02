@@ -39,23 +39,16 @@ function headerSafeName(value: string): string {
 }
 
 /**
- * The exact U/N logo (logo.svg rasterized).
+ * The exact U/N logo (logo.svg rasterized to public/logo-email.png).
  *
- * Two variants swapped via prefers-color-scheme:
- *  - light (default): white chip with the ink N — safe everywhere, incl. Gmail,
- *    which ignores the media query and keeps this legible in its dark mode.
- *  - dark: transparent mark with the light N — shown in clients that support
- *    prefers-color-scheme (Apple Mail / iOS Mail).
+ * A single static image with the light background baked in, so it renders
+ * identically in every inbox — no mode-dependent swapping.
  */
 function logoMarkup(): string {
-  const base = "border:0;outline:none;height:60px;width:66px;";
   return (
-    `<img class="logo-light" src="https://umrndem.com/logo-email.png" ` +
-    `width="66" height="60" alt="U/N — ${escapeHtml(profile.name)}" ` +
-    `style="display:block;${base}" />` +
-    `<img class="logo-dark" src="https://umrndem.com/logo-email-dark.png" ` +
-    `width="66" height="60" alt="" ` +
-    `style="display:none;${base}" />`
+    `<img src="https://umrndem.com/logo-email.png" width="66" height="60" ` +
+    `alt="U/N — ${escapeHtml(profile.name)}" ` +
+    `style="display:block;border:0;outline:none;height:60px;width:66px;" />`
   );
 }
 
@@ -74,16 +67,6 @@ function buildHtml(data: ContactMessage): string {
 
   return `<!doctype html>
 <html>
-  <head>
-    <meta name="color-scheme" content="light dark" />
-    <meta name="supported-color-schemes" content="light dark" />
-    <style>
-      @media (prefers-color-scheme: dark) {
-        .logo-light { display: none !important; }
-        .logo-dark { display: block !important; }
-      }
-    </style>
-  </head>
   <body style="margin:0;padding:0;background:${brand.page};">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${brand.page};padding:32px 16px;">
       <tr>
