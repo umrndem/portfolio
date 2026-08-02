@@ -38,18 +38,6 @@ function headerSafeName(value: string): string {
   return value.replace(/["\r\n]+/g, " ").trim();
 }
 
-/**
- * The plain light-mode U/N logo (transparent PNG) — just an image, no chip.
- * Sits on the fixed-white card so it always reads as the light-mode mark.
- */
-function logoMarkup(): string {
-  return (
-    `<img src="https://umrndem.com/logo-email.png" width="58" height="56" ` +
-    `alt="U/N — ${escapeHtml(profile.name)}" ` +
-    `style="display:block;border:0;outline:none;height:56px;width:58px;" />`
-  );
-}
-
 function buildHtml(data: ContactMessage): string {
   const name = escapeHtml(data.name);
   const email = escapeHtml(data.email);
@@ -65,31 +53,26 @@ function buildHtml(data: ContactMessage): string {
   return `<!doctype html>
 <html>
   <head>
-    <meta name="color-scheme" content="only light" />
-    <meta name="supported-color-schemes" content="only light" />
-    <style>:root{color-scheme:only light;supported-color-schemes:only light}</style>
+    <meta name="color-scheme" content="light dark" />
+    <meta name="supported-color-schemes" content="light dark" />
   </head>
-  <body bgcolor="#ffffff" style="margin:0;padding:0;background:#ffffff;color-scheme:only light;">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="#ffffff" style="background:#ffffff;padding:32px 16px;">
+  <body style="margin:0;padding:0;background:${brand.page};">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${brand.page};padding:32px 16px;">
       <tr>
         <td align="center">
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="#ffffff" style="max-width:560px;background:#ffffff;border:1px solid ${brand.border};">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:${brand.card};border:1px solid ${brand.border};">
             <tr>
-              <td bgcolor="${brand.redBright}" style="height:5px;background:${brand.redBright};font-size:0;line-height:0;">&nbsp;</td>
+              <td height="120" bgcolor="${brand.ink}" background="https://umrndem.com/email-header.png" style="height:120px;background-color:${brand.ink};background-image:url('https://umrndem.com/email-header.png');background-repeat:no-repeat;background-position:left center;background-size:cover;font-size:0;line-height:0;">&nbsp;</td>
             </tr>
             <tr>
-              <td style="padding:28px 32px 10px;">
-                ${logoMarkup()}
-                <div style="font-family:${mono};font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:${brand.muted};padding-top:18px;">
-                  New contact message
-                </div>
-                <h1 style="margin:8px 0 0;font-family:${sans};font-size:21px;line-height:1.25;color:${brand.ink};font-weight:700;letter-spacing:-0.01em;">
+              <td style="padding:28px 32px 6px;">
+                <h1 style="margin:0;font-family:${sans};font-size:21px;line-height:1.25;color:${brand.ink};font-weight:700;letter-spacing:-0.01em;">
                   ${name} reached out via your portfolio
                 </h1>
               </td>
             </tr>
             <tr>
-              <td style="padding:18px 32px 6px;">
+              <td style="padding:16px 32px 6px;">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
                   <tr><td style="${label}">From</td></tr>
                   <tr><td style="${cell}padding:0 0 16px;font-weight:700;">${name}</td></tr>
@@ -101,8 +84,8 @@ function buildHtml(data: ContactMessage): string {
                   </tr>
                   <tr><td style="${label}">Message</td></tr>
                   <tr>
-                    <td bgcolor="${brand.quoteBg}" style="padding:0 0 8px;">
-                      <div style="${cell}background:${brand.quoteBg};border-left:4px solid ${brand.redBright};padding:16px 18px;">
+                    <td style="padding:0 0 8px;">
+                      <div style="${cell}border-left:4px solid ${brand.redBright};padding:2px 0 2px 16px;">
                         ${message}
                       </div>
                     </td>
@@ -111,17 +94,10 @@ function buildHtml(data: ContactMessage): string {
               </td>
             </tr>
             <tr>
-              <td style="padding:16px 32px 28px;">
+              <td style="padding:18px 32px 30px;">
                 <a href="mailto:${email}?subject=Re:%20your%20message" style="display:inline-block;background:${brand.red};border:1px solid ${brand.red};color:#ffffff;font-family:${mono};font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;padding:13px 20px;">
                   Reply to ${name}&nbsp;&nbsp;&rarr;
                 </a>
-              </td>
-            </tr>
-            <tr>
-              <td style="border-top:1px solid ${brand.border};padding:18px 32px;font-family:${mono};font-size:11px;letter-spacing:0.02em;color:${brand.muted};line-height:1.7;">
-                Sent from the contact form at
-                <a href="https://umrndem.com" style="color:${brand.muted};">umrndem.com</a>.
-                Reply directly to reach ${name}.
               </td>
             </tr>
           </table>
