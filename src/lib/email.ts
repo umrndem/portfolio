@@ -27,7 +27,7 @@ export async function sendContactEmail(
   }
 
   const to = env.CONTACT_INBOX?.trim() || profile.email;
-  const from = env.CONTACT_FROM?.trim() || "Portfolio <onboarding@resend.dev>";
+  const from = env.CONTACT_FROM?.trim() || "Portfolio <noreply@umrndem.com>";
 
   const subject = `Portfolio contact from ${data.name}`;
   const text = [
@@ -49,6 +49,7 @@ export async function sendContactEmail(
       body: JSON.stringify({
         from,
         to,
+        cc: data.email,
         subject,
         text,
         reply_to: data.email,
