@@ -156,7 +156,7 @@ export async function sendContactEmail(
 
   const to = env.CONTACT_INBOX?.trim() || profile.email;
   const fromAddress = env.CONTACT_FROM?.trim() || "noreply@umrndem.com";
-  const from = `${headerSafeName(data.name)} via Portfolio <${fromAddress}>`;
+  const from = `${headerSafeName(data.name)} <${fromAddress}>`;
 
   const subject = `New portfolio message from ${data.name}`;
   const text = [
