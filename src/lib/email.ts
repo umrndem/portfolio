@@ -16,7 +16,7 @@ const brand = {
   muted: "#7a716c",
   page: "#f7f5f3",
   card: "#ffffff",
-  border: "#e4ddd6",
+  border: "#dad2cc",
   red: "#c71616",
   redBright: "#e5120e",
   slate: "#8f8783",
@@ -57,58 +57,54 @@ function buildHtml(data: ContactMessage): string {
   const email = escapeHtml(data.email);
   const message = escapeHtml(data.message).replace(/\n/g, "<br />");
 
-  const cell =
-    `font-family:Arial,Helvetica,sans-serif;font-size:14px;` +
-    `color:${brand.ink};line-height:1.55;`;
-  const labelStyle =
-    `font-family:Arial,Helvetica,sans-serif;font-size:11px;` +
-    `letter-spacing:0.12em;text-transform:uppercase;color:${brand.muted};` +
-    `padding:0 0 4px;`;
+  const sans = "Arial,Helvetica,sans-serif";
+  const mono = "'Courier New',Courier,monospace";
+  const cell = `font-family:${sans};font-size:14px;color:${brand.ink};line-height:1.55;`;
+  const label =
+    `font-family:${mono};font-size:11px;letter-spacing:0.1em;` +
+    `text-transform:uppercase;color:${brand.muted};padding:0 0 5px;`;
 
   return `<!doctype html>
 <html>
-  <body style="margin:0;padding:0;background:${brand.page};">
+  <head>
+    <meta name="color-scheme" content="light" />
+    <meta name="supported-color-schemes" content="light" />
+    <style>:root{color-scheme:light only;supported-color-schemes:light}</style>
+  </head>
+  <body style="margin:0;padding:0;background:${brand.page};color-scheme:light only;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${brand.page};padding:32px 16px;">
       <tr>
         <td align="center">
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:${brand.card};border:1px solid ${brand.border};border-radius:14px;overflow:hidden;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:${brand.card};border:1px solid ${brand.border};">
             <tr>
-              <td style="height:4px;background:${brand.redBright};font-size:0;line-height:0;">&nbsp;</td>
+              <td style="height:5px;background:${brand.redBright};font-size:0;line-height:0;">&nbsp;</td>
             </tr>
             <tr>
-              <td style="padding:26px 30px 8px;">
+              <td style="padding:28px 32px 10px;">
                 ${logoMarkup()}
-                <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:${brand.muted};padding-top:14px;">
+                <div style="font-family:${mono};font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:${brand.muted};padding-top:18px;">
                   New contact message
                 </div>
-                <h1 style="margin:6px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.3;color:${brand.ink};font-weight:700;">
+                <h1 style="margin:8px 0 0;font-family:${sans};font-size:21px;line-height:1.25;color:${brand.ink};font-weight:700;letter-spacing:-0.01em;">
                   ${name} reached out via your portfolio
                 </h1>
               </td>
             </tr>
             <tr>
-              <td style="padding:18px 30px 4px;">
+              <td style="padding:18px 32px 6px;">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td style="${labelStyle}">From</td>
-                  </tr>
-                  <tr>
-                    <td style="${cell}padding:0 0 16px;font-weight:600;">${name}</td>
-                  </tr>
-                  <tr>
-                    <td style="${labelStyle}">Email</td>
-                  </tr>
+                  <tr><td style="${label}">From</td></tr>
+                  <tr><td style="${cell}padding:0 0 16px;font-weight:700;">${name}</td></tr>
+                  <tr><td style="${label}">Email</td></tr>
                   <tr>
                     <td style="${cell}padding:0 0 16px;">
-                      <a href="mailto:${email}" style="color:${brand.red};text-decoration:none;font-weight:600;">${email}</a>
+                      <a href="mailto:${email}" style="color:${brand.red};text-decoration:none;font-weight:700;">${email}</a>
                     </td>
                   </tr>
-                  <tr>
-                    <td style="${labelStyle}">Message</td>
-                  </tr>
+                  <tr><td style="${label}">Message</td></tr>
                   <tr>
                     <td style="padding:0 0 8px;">
-                      <div style="${cell}background:${brand.quoteBg};border-left:3px solid ${brand.redBright};border-radius:0 8px 8px 0;padding:14px 16px;">
+                      <div style="${cell}background:${brand.quoteBg};border-left:4px solid ${brand.redBright};padding:16px 18px;">
                         ${message}
                       </div>
                     </td>
@@ -117,14 +113,14 @@ function buildHtml(data: ContactMessage): string {
               </td>
             </tr>
             <tr>
-              <td style="padding:14px 30px 26px;">
-                <a href="mailto:${email}?subject=Re:%20your%20message" style="display:inline-block;background:${brand.red};color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:600;text-decoration:none;padding:11px 20px;border-radius:8px;">
-                  Reply to ${name}
+              <td style="padding:16px 32px 28px;">
+                <a href="mailto:${email}?subject=Re:%20your%20message" style="display:inline-block;background:${brand.red};border:1px solid ${brand.red};color:#ffffff;font-family:${mono};font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;padding:13px 20px;">
+                  Reply to ${name}&nbsp;&nbsp;&rarr;
                 </a>
               </td>
             </tr>
             <tr>
-              <td style="border-top:1px solid ${brand.border};padding:16px 30px;font-family:Arial,Helvetica,sans-serif;font-size:11px;color:${brand.muted};line-height:1.6;">
+              <td style="border-top:1px solid ${brand.border};padding:18px 32px;font-family:${mono};font-size:11px;letter-spacing:0.02em;color:${brand.muted};line-height:1.7;">
                 Sent from the contact form at
                 <a href="https://umrndem.com" style="color:${brand.muted};">umrndem.com</a>.
                 Reply directly to reach ${name}.
