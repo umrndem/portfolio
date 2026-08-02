@@ -39,16 +39,14 @@ function headerSafeName(value: string): string {
 }
 
 /**
- * The exact U/N logo (logo.svg rasterized to public/logo-email.png).
- *
- * A single static image with the light background baked in, so it renders
- * identically in every inbox — no mode-dependent swapping.
+ * The plain light-mode U/N logo (transparent PNG) — just an image, no chip.
+ * Sits on the fixed-white card so it always reads as the light-mode mark.
  */
 function logoMarkup(): string {
   return (
-    `<img src="https://umrndem.com/logo-email.png" width="66" height="60" ` +
+    `<img src="https://umrndem.com/logo-email.png" width="58" height="56" ` +
     `alt="U/N — ${escapeHtml(profile.name)}" ` +
-    `style="display:block;border:0;outline:none;height:60px;width:66px;" />`
+    `style="display:block;border:0;outline:none;height:56px;width:58px;" />`
   );
 }
 
@@ -67,17 +65,17 @@ function buildHtml(data: ContactMessage): string {
   return `<!doctype html>
 <html>
   <head>
-    <meta name="color-scheme" content="light" />
-    <meta name="supported-color-schemes" content="light" />
-    <style>:root{color-scheme:light only;supported-color-schemes:light}</style>
+    <meta name="color-scheme" content="only light" />
+    <meta name="supported-color-schemes" content="only light" />
+    <style>:root{color-scheme:only light;supported-color-schemes:only light}</style>
   </head>
-  <body style="margin:0;padding:0;background:${brand.page};color-scheme:light only;">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${brand.page};padding:32px 16px;">
+  <body bgcolor="#ffffff" style="margin:0;padding:0;background:#ffffff;color-scheme:only light;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="#ffffff" style="background:#ffffff;padding:32px 16px;">
       <tr>
         <td align="center">
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:${brand.card};border:1px solid ${brand.border};">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="#ffffff" style="max-width:560px;background:#ffffff;border:1px solid ${brand.border};">
             <tr>
-              <td style="height:5px;background:${brand.redBright};font-size:0;line-height:0;">&nbsp;</td>
+              <td bgcolor="${brand.redBright}" style="height:5px;background:${brand.redBright};font-size:0;line-height:0;">&nbsp;</td>
             </tr>
             <tr>
               <td style="padding:28px 32px 10px;">
@@ -103,7 +101,7 @@ function buildHtml(data: ContactMessage): string {
                   </tr>
                   <tr><td style="${label}">Message</td></tr>
                   <tr>
-                    <td style="padding:0 0 8px;">
+                    <td bgcolor="${brand.quoteBg}" style="padding:0 0 8px;">
                       <div style="${cell}background:${brand.quoteBg};border-left:4px solid ${brand.redBright};padding:16px 18px;">
                         ${message}
                       </div>
