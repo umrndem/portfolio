@@ -219,7 +219,7 @@ includes the homepage, acknowledgements, and only published project routes.
 `robots.ts` points crawlers to that sitemap.
 
 `getSiteUrl()` in `src/content/site-settings.ts` supplies the production
-origin: the live Workers URL by default, overridable with
+origin: `https://umrndem.com` by default, overridable with
 `NEXT_PUBLIC_SITE_URL`.
 
 ## Validation and failure behavior

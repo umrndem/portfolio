@@ -113,8 +113,8 @@ page is already open.
 
 ## How deployment works
 
-The site is live on Cloudflare Workers at
-`https://umrfolio.umrndem.workers.dev` (Worker name `umrfolio`) via the
+The site is live on Cloudflare Workers at `https://umrndem.com` (Worker name
+`umrfolio`; `umrfolio.umrndem.workers.dev` remains a secondary URL) via the
 OpenNext adapter (`wrangler.jsonc`, `open-next.config.ts`, `public/_headers`).
 Workers Builds deploys every push to `main` using
 `npx opennextjs-cloudflare build` + `npx wrangler deploy` (build command set in
@@ -128,9 +128,9 @@ npm run deploy    # only with explicit user authorization
 ```
 
 The canonical origin is the default inside `getSiteUrl()`
-(`src/content/site-settings.ts`); `NEXT_PUBLIC_SITE_URL` overrides it if a
-custom domain arrives. Read `docs/deployment.md` for rollback and domain
-procedures.
+(`src/content/site-settings.ts`); `NEXT_PUBLIC_SITE_URL` overrides it when a
+different origin is needed for audits. Read `docs/deployment.md` for rollback
+and domain procedures.
 
 Do not push or deploy without user permission — pushes to `main` deploy to
 production automatically.

@@ -150,14 +150,16 @@ via `npm run preview`.
 
 **Status:** accepted
 **Date:** 31 July 2026
+**Updated:** 6 August 2026
 
-The site is live at `https://umrfolio.umrndem.workers.dev` (Worker
-`umrfolio`, repository `umrndem/umrfolio`). Workers Builds deploys every push
-to `main` with
+The site is live at `https://umrndem.com` on Worker `umrfolio` (repository
+`umrndem/umrfolio`); `https://umrfolio.umrndem.workers.dev` remains a secondary
+Workers URL. Workers Builds deploys every push to `main` with
 `npx opennextjs-cloudflare build` + `npx wrangler deploy`; the build command
 is dashboard configuration, not repository code. The canonical origin is the
 hardcoded default inside `getSiteUrl()` rather than a dashboard build
-variable, so metadata, sitemap, and robots are correct with zero platform
-configuration; `NEXT_PUBLIC_SITE_URL` remains an override for a future custom
-domain. `next.config.ts` calls `initOpenNextCloudflareForDev()` so `next dev`
-resolves the Cloudflare context the same way the deployed Worker does.
+variable, so metadata, sitemap, and robots stay correct with zero platform
+configuration; `NEXT_PUBLIC_SITE_URL` remains an override for audits or
+temporary alternate hosts. `next.config.ts` calls
+`initOpenNextCloudflareForDev()` so `next dev` resolves the Cloudflare
+context the same way the deployed Worker does.

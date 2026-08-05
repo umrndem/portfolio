@@ -31,7 +31,7 @@ framework files are intentionally not documented line by line.
 | `src/content/projects.ts` | Project order, prominence, visibility, cards, case studies, core/deployment/integration tags, repository links, media | Any project update | `projects` is the publication-safe filtered export; never bypass it in routes. Homepage order also drives next-project links and positional card surfaces. |
 | `src/content/project-surfaces.ts` | Positional lead-red opacity scale and ink | Changing the Selected Work surface scale or ink rules | Surfaces are positional; never key colors to project names |
 | `src/content/technology-icons.ts` | Local SVG mapping for stack badges | Adding/changing a technology logo | Prefer exact display-name keys; validate files exist |
-| `src/content/site-settings.ts` | Global title, descriptions, availability label, site origin | Branding/metadata copy or deployment origin behavior changes | Default origin is the live Workers URL; `NEXT_PUBLIC_SITE_URL` overrides it |
+| `src/content/site-settings.ts` | Global title, descriptions, availability label, site origin | Branding/metadata copy or deployment origin behavior changes | Default origin is `https://umrndem.com`; `NEXT_PUBLIC_SITE_URL` overrides it |
 | `src/content/types.ts` | Shared content model | A real rendering/content requirement needs a new field | Update validation and both content guides at the same time |
 | `src/content/validation.ts` | Runtime rules protecting content and publication | The content model or privacy rules change | Keep errors specific; avoid weakening a rule just to pass invalid content |
 

@@ -8,10 +8,10 @@ RideFlow). Those project facts live in `portfolio-source-of-truth.md`,
 
 ## Current portfolio deployment state
 
-As updated on 31 July 2026, the site is **live on Cloudflare Workers**:
+As updated on 6 August 2026, the site is **live on Cloudflare Workers**:
 
-- production origin: `https://umrfolio.umrndem.workers.dev` (workers.dev, no
-  custom domain yet);
+- production origin: `https://umrndem.com` (custom domain on Worker `umrfolio`;
+  `https://umrfolio.umrndem.workers.dev` remains available as a secondary URL);
 - Worker name: `umrfolio`, deployed through the OpenNext adapter
   (`@opennextjs/cloudflare`) with `wrangler.jsonc`, `open-next.config.ts`, and
   `public/_headers` committed;
@@ -71,10 +71,10 @@ homepage, public project routes, metadata image/icon, sitemap, and robots file.
 
 ## Environment variables
 
-None are required. The canonical origin defaults to
-`https://umrfolio.umrndem.workers.dev` inside `getSiteUrl()`
+None are required for a read-only deploy. The canonical origin defaults to
+`https://umrndem.com` inside `getSiteUrl()`
 (`src/content/site-settings.ts`). To point the build at a different origin
-(for example a future custom domain), set:
+(for example localhost audits), set:
 
 ```env
 NEXT_PUBLIC_SITE_URL=https://your-final-origin.example
@@ -88,7 +88,39 @@ Rules:
 - never put a secret in a `NEXT_PUBLIC_*` variable;
 - never commit `.env.local` or provider-exported secrets.
 
-The application has no database, analytics key, CMS secret, or server credential.
+### Contact form / Turnstile secrets (Worker only)
+
+Live mail delivery and bot checks use Worker secrets, not `NEXT_PUBLIC_*`:
+
+| Secret | Purpose |
+|---|---|
+| `RESEND_API_KEY` | Resend delivery |
+| `TURNSTILE_SITE_KEY` | Public widget key (served by `/api/contact/config`) |
+| `TURNSTILE_SECRET_KEY` | Server-side `/siteverify` — required whenever the site key is set |
+| `CONTACT_INBOX` / `CONTACT_FROM` | Optional Resend routing overrides |
+
+Sync keys from the Turnstile widget with Wrangler (do not paste secrets into git):
+
+```bash
+npx wrangler turnstile widget list
+npx wrangler turnstile widget get <sitekey>
+printf '%s' '<sitekey>' | npx wrangler secret put TURNSTILE_SITE_KEY
+printf '%s' '<secret>' | npx wrangler secret put TURNSTILE_SECRET_KEY
+```
+
+Allowed widget hostnames must include every origin that embeds the form
+(`umrndem.com`, `www.umrndem.com`, and `umrfolio.umrndem.workers.dev` if that
+URL stays public). Update with:
+
+```bash
+npx wrangler turnstile widget update <sitekey> \
+  --domain umrndem.com \
+  --domain www.umrndem.com \
+  --domain umrfolio.umrndem.workers.dev \
+  --domain localhost
+```
+
+Local development uses Cloudflare test keys in `.dev.vars` (gitignored).
 
 ## Cloudflare Workers configuration
 
@@ -145,16 +177,21 @@ Next.js image optimization and generated metadata routes; the Worker bundle in
 
 ## Domain configuration
 
-The live origin is the `workers.dev` subdomain. No custom domain is
-configured. When one is approved:
+The canonical origin is `https://umrndem.com` on Worker `umrfolio`. The
+`workers.dev` URL remains reachable as a secondary host. Keep sitemap,
+robots, canonical, Open Graph, and structured-data URLs on the apex domain
+via `getSiteUrl()`.
 
-1. Add it as a custom domain on the `umrfolio` Worker.
-2. Configure DNS through the actual domain registrar.
+If DNS or the custom domain binding changes:
+
+1. Confirm the hostname on the `umrfolio` Worker custom domains list.
+2. Confirm DNS at the registrar points at Cloudflare as required.
 3. Wait for HTTPS issuance.
-4. Update the default origin in `getSiteUrl()` (or set production
-   `NEXT_PUBLIC_SITE_URL`) to the canonical HTTPS origin.
+4. Keep the default origin in `getSiteUrl()` (or production
+   `NEXT_PUBLIC_SITE_URL`) aligned with the chosen canonical HTTPS origin.
 5. Rebuild/redeploy.
-6. Choose whether `www` or apex is canonical and redirect the other.
+6. Keep `www` vs apex consistent — prefer apex `umrndem.com` and redirect
+   `www` if both are served.
 7. Verify canonical, sitemap, robots, Open Graph, and structured-data URLs.
 
 Never place DNS credentials or registrar exports in this repository.

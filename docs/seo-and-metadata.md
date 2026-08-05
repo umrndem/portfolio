@@ -23,10 +23,10 @@ is no separate SEO CMS or duplicated route catalogue.
 
 ## Production origin
 
-The origin defaults to the live Workers URL,
-`https://umrfolio.umrndem.workers.dev`, hardcoded in `getSiteUrl()`
-(`src/content/site-settings.ts`). To override it (custom domain, local
-audits), set:
+The origin defaults to the canonical custom domain,
+`https://umrndem.com`, hardcoded in `getSiteUrl()`
+(`src/content/site-settings.ts`). To override it (local audits, temporary
+workers.dev checks), set:
 
 ```env
 NEXT_PUBLIC_SITE_URL=https://example.com

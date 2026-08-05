@@ -1,18 +1,15 @@
 /**
  * Verifies a Cloudflare Turnstile token against the siteverify endpoint.
  *
- * Runs on the Workers runtime with plain fetch. The secret comes from the
- * Worker environment — never from NEXT_PUBLIC_* vars.
+ * Always POSTs to siteverify when invoked — including empty tokens — so
+ * Cloudflare can attribute validation attempts to the widget. The secret comes
+ * from the Worker environment — never from NEXT_PUBLIC_* vars.
  */
 export async function verifyTurnstile(
   secret: string,
   token: string,
   remoteIp?: string,
 ): Promise<boolean> {
-  if (!token) {
-    return false;
-  }
-
   const form = new URLSearchParams();
   form.append("secret", secret);
   form.append("response", token);
@@ -25,7 +22,13 @@ export async function verifyTurnstile(
   try {
     response = await fetch(
       "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-      { method: "POST", body: form },
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/x-www-form-urlencoded",
+        },
+        body: form,
+      },
     );
   } catch {
     return false;

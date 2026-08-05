@@ -164,10 +164,10 @@ project route.
 
 ### Canonical/social/sitemap URLs show the wrong origin
 
-The origin comes from `getSiteUrl()` at build time — the baked-in Workers
-default or a `NEXT_PUBLIC_SITE_URL` override present during the build.
-Environment changes made after build do not rewrite generated metadata; fix
-the source and rebuild.
+The origin comes from `getSiteUrl()` at build time — the baked-in
+`https://umrndem.com` default or a `NEXT_PUBLIC_SITE_URL` override present
+during the build. Environment changes made after build do not rewrite
+generated metadata; fix the source and rebuild.
 
 ### Social image is stale
 

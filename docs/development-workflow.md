@@ -49,9 +49,9 @@ The current repository is verified with Node 22 and npm 10.
 
 ## 4. Configure local environment
 
-No environment file is required — the canonical origin defaults to the live
-Workers URL inside `getSiteUrl()`. To override it locally (for example to
-audit metadata against localhost):
+No environment file is required — the canonical origin defaults to
+`https://umrndem.com` inside `getSiteUrl()`. To override it locally (for
+example to audit metadata against localhost):
 
 ```bash
 cp .env.example .env.local

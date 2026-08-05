@@ -10,7 +10,7 @@
 
 The dependency set is intentionally small. The initial site does not need a state library, animation package, CMS, analytics, 3D library, or component framework.
 
-The production origin defaults to the live Workers URL inside `getSiteUrl()` (`src/content/site-settings.ts`), so metadata generation is deterministic without any environment configuration. `NEXT_PUBLIC_SITE_URL` overrides it when a different origin (custom domain, localhost audit) is needed.
+The production origin defaults to `https://umrndem.com` inside `getSiteUrl()` (`src/content/site-settings.ts`), so metadata generation is deterministic without any environment configuration. `NEXT_PUBLIC_SITE_URL` overrides it when a different origin (workers.dev check, localhost audit) is needed.
 
 ## Content architecture
 

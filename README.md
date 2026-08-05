@@ -92,11 +92,10 @@ approved, sanitized case studies.
 ## Build and deployment
 
 The site is deployed to Cloudflare Workers at
-[umrfolio.umrndem.workers.dev](https://umrfolio.umrndem.workers.dev) through
-the OpenNext adapter; pushes to `main` build and deploy via Workers Builds.
-The canonical origin is the default in `getSiteUrl()` and can be overridden
-with `NEXT_PUBLIC_SITE_URL`. See [`docs/deployment.md`](docs/deployment.md)
-for the full workflow.
+[umrndem.com](https://umrndem.com) through the OpenNext adapter; pushes to
+`main` build and deploy via Workers Builds. The canonical origin is the
+default in `getSiteUrl()` and can be overridden with `NEXT_PUBLIC_SITE_URL`.
+See [`docs/deployment.md`](docs/deployment.md) for the full workflow.
 
 Before any release:
 
