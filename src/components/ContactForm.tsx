@@ -17,6 +17,7 @@ type TurnstileApi = {
       "error-callback"?: () => void;
       "expired-callback"?: () => void;
       theme?: "auto" | "light" | "dark";
+      action?: string;
     },
   ) => string;
   reset: (widgetId?: string) => void;
@@ -133,6 +134,7 @@ export function ContactForm() {
         widgetIdRef.current = window.turnstile.render(widgetRef.current, {
           sitekey: siteKey,
           theme,
+          action: "turnstile-spin-v2",
           callback: (value) => setToken(value),
           "error-callback": () => setToken(""),
           "expired-callback": () => setToken(""),

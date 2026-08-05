@@ -96,7 +96,7 @@ Live mail delivery and bot checks use Worker secrets, not `NEXT_PUBLIC_*`:
 |---|---|
 | `RESEND_API_KEY` | Resend delivery |
 | `TURNSTILE_SITE_KEY` | Public widget key (served by `/api/contact/config`) |
-| `TURNSTILE_SECRET_KEY` | Server-side `/siteverify` — required whenever the site key is set |
+| `TURNSTILE_SECRET` | Server-side `/siteverify` — required whenever the site key is set |
 | `CONTACT_INBOX` / `CONTACT_FROM` | Optional Resend routing overrides |
 
 Sync keys from the Turnstile widget with Wrangler (do not paste secrets into git):
@@ -105,19 +105,20 @@ Sync keys from the Turnstile widget with Wrangler (do not paste secrets into git
 npx wrangler turnstile widget list
 npx wrangler turnstile widget get <sitekey>
 printf '%s' '<sitekey>' | npx wrangler secret put TURNSTILE_SITE_KEY
-printf '%s' '<secret>' | npx wrangler secret put TURNSTILE_SECRET_KEY
+printf '%s' '<secret>' | npx wrangler secret put TURNSTILE_SECRET
 ```
 
 Allowed widget hostnames must include every origin that embeds the form
-(`umrndem.com`, `www.umrndem.com`, and `umrfolio.umrndem.workers.dev` if that
-URL stays public). Update with:
+(`umrndem.com`, `www.umrndem.com`, `umrfolio.umrndem.workers.dev`, plus
+`localhost` / `127.0.0.1` for local checks). Update with:
 
 ```bash
 npx wrangler turnstile widget update <sitekey> \
   --domain umrndem.com \
   --domain www.umrndem.com \
   --domain umrfolio.umrndem.workers.dev \
-  --domain localhost
+  --domain localhost \
+  --domain 127.0.0.1
 ```
 
 Local development uses Cloudflare test keys in `.dev.vars` (gitignored).

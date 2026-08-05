@@ -49,8 +49,8 @@ export async function POST(request: Request) {
 
   // Turnstile: fail closed whenever either key is present. Skipping siteverify
   // leaves the form open to bots even if the widget rendered on the client.
-  if (env.TURNSTILE_SITE_KEY || env.TURNSTILE_SECRET_KEY) {
-    if (!env.TURNSTILE_SECRET_KEY) {
+  if (env.TURNSTILE_SITE_KEY || env.TURNSTILE_SECRET) {
+    if (!env.TURNSTILE_SECRET) {
       return NextResponse.json(
         { ok: false, error: "Message could not be sent right now. Please email directly." },
         { status: 503 },
@@ -59,7 +59,7 @@ export async function POST(request: Request) {
 
     const remoteIp = request.headers.get("cf-connecting-ip") ?? undefined;
     const passed = await verifyTurnstile(
-      env.TURNSTILE_SECRET_KEY,
+      env.TURNSTILE_SECRET,
       body.turnstileToken?.trim() ?? "",
       remoteIp,
     );
